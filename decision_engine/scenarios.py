@@ -5,7 +5,15 @@ Allows the system to test how changes in cost, risk, and market
 conditions affect the final booking decision.
 """
 
-from engine import evaluate_option
+from engine import (
+    evaluate_option,
+    evaluate_options
+)
+
+from optimization import (
+    rank_options,
+    get_best_option
+)
 
 
 def apply_percentage_change(value, percentage):
@@ -95,4 +103,84 @@ def compare_scenario_results(base_result, scenario_result):
         "score_change": round(score_change, 2),
         "base_decision": base_result["booking_decision"]["decision"],
         "scenario_decision": scenario_result["booking_decision"]["decision"]
+    }
+
+def evaluate_multi_option_scenario(options, option_id, changes):
+    """
+    Evaluate a what-if scenario for one option while keeping
+    the other available options unchanged.
+
+    Parameters
+    ----------
+    options : list of dict
+        Available booking options.
+
+    option_id : str
+        ID of the option being modified.
+
+    changes : dict
+        Percentage changes to apply.
+
+    Returns
+    -------
+    dict
+        Ranked scenario results and best option.
+    """
+
+    # Create independent copies so the original options
+    # are not modified.
+    scenario_options = [
+        option.copy()
+        for option in options
+    ]
+
+    # Find the selected option.
+    selected_option = None
+
+    for option in scenario_options:
+        if option["option_id"] == option_id:
+            selected_option = option
+            break
+
+    if selected_option is None:
+        raise ValueError(
+            f"Option '{option_id}' was not found."
+        )
+
+    # Apply the requested percentage changes.
+    for field, percentage in changes.items():
+
+        if field not in selected_option:
+            raise ValueError(
+                f"Field '{field}' does not exist "
+                f"for option '{option_id}'."
+            )
+
+        selected_option[field] = apply_percentage_change(
+            selected_option[field],
+            percentage
+        )
+
+    # Recalculate all options.
+    evaluated_options = evaluate_options(
+        scenario_options
+    )
+
+    # Extract information needed for optimization.
+    optimization_options = [
+        {
+            "option_id": option["option_id"],
+            "decision_score": option["decision_score"]
+        }
+        for option in evaluated_options
+    ]
+
+    optimized = rank_options(
+        optimization_options
+    )
+
+    return {
+        "evaluated_options": evaluated_options,
+        "ranked_options": optimized,
+        "best_option": get_best_option(optimized)
     }
