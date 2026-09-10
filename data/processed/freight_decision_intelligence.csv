@@ -1,0 +1,3 @@
+Route,Latest_Date,Current_Price,Forecast_Price,Forecast_Change,Forecast_Change_Pct,Forecast_Lower_Bound,Forecast_Upper_Bound,Direction,Signal,Risk,Trend_4W,Change_4W_Pct,Change_12W_Pct,Volatility_4W_Pct,Decision
+US Gulf → Japan,2026-08-19,184.97,184.29,-0.68,-0.37,181.35,187.22,Decrease,Stable,High Risk,Rising,4.66,1.04,1.45,Monitor Closely
+Pacific Northwest → Japan,2026-08-19,173.4,173.36,-0.04,-0.02,170.52,176.19,Decrease,Stable,High Risk,Rising,1.38,-1.34,0.88,Monitor Closely

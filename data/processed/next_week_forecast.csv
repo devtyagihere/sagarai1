@@ -1,0 +1,3 @@
+Target,Latest_Date,Current_Price,Predicted_Change,Predicted_Change_Pct,Predicted_Next_Week_Price,Forecast_Lower_Bound,Forecast_Upper_Bound,Direction,Signal,Risk,Recommendation,Historical_MAE,Historical_RMSE,Model
+Gulf_Vessel,2026-08-19,184.97,-0.6830502285130547,-0.36927622236744057,184.28694977148695,181.35294977148695,187.22094977148694,Decrease,Stable,High Risk,High Uncertainty - Monitor,2.1935,2.934,gulf_fuel_change_model.joblib
+Pacific_Vessel,2026-08-19,173.4,-0.04114879209279579,-0.023730560607148666,173.3588512079072,170.5238512079072,176.19385120790722,Decrease,Stable,High Risk,High Uncertainty - Monitor,2.1142,2.835,pacific_fuel_change_model.joblib
