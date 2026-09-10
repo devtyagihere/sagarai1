@@ -2,3 +2,14 @@
 __pycache__/
 *.pyc
 .vscode/
+.venv/
+__pycache__/
+*.pyc
+.vscode/
+.env
+
+# Large trained model files
+models/*.pkl
+
+# Raw/local datasets
+data/*.xls
