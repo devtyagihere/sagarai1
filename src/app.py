@@ -1719,33 +1719,106 @@ def predict():
 
 
             # ------------------------------------------------
-            # Run idle scenario only when all required
-            # real benchmark values are available.
+            # Run idle / waiting scenario.
+            #
+            # Prefer the exact current and 30-day benchmark
+            # rates already stored in the vessel comparison
+            # results. This avoids losing the values because of
+            # an intermediate variable not being populated.
             # ------------------------------------------------
 
-            if (
-                vessel_capacity is not None
-                and current_vessel_freight is not None
-                and future_vessel_freight is not None
-            ):
+            if recommended_vessel:
 
-                idle_result = idle_scenario(
-
-                    vessel_capacity_mt=
-                        vessel_capacity,
-
-                    cargo_quantity_mt=
-                        cargo_quantity,
-
-                    current_freight=
-                        current_vessel_freight,
-
-                    future_freight=
-                        future_vessel_freight,
-
-                    congestion_score=
-                        primary_congestion
+                # Re-read the current recommended vessel details
+                # directly from the optimization result.
+                current_comparison = (
+                    vessel_result.get("comparison", {})
+                    if isinstance(vessel_result, dict)
+                    else {}
                 )
+
+                current_details = current_comparison.get(
+                    recommended_vessel,
+                    {}
+                )
+
+                current_vessel_freight = safe_float(
+                    current_details.get("freight_rate")
+                )
+
+                # Re-read the 30-day forecast details directly.
+                forecast_30 = (
+                    forecast_vessel_result.get("30_day", {})
+                    if isinstance(forecast_vessel_result, dict)
+                    else {}
+                )
+
+                future_comparison = (
+                    forecast_30.get("comparison", {})
+                    if isinstance(forecast_30, dict)
+                    else {}
+                )
+
+                future_details = future_comparison.get(
+                    recommended_vessel,
+                    {}
+                )
+
+                future_vessel_freight = safe_float(
+                    future_details.get("freight_rate")
+                )
+
+                # Robust fallback: if a benchmark rate is not exposed
+                # directly, derive the same daily rate from the
+                # optimization total cost and estimated voyage duration.
+                if current_vessel_freight is None:
+                    current_total = safe_float(
+                        current_details.get("estimated_total_freight_cost")
+                    )
+                    current_days = safe_float(
+                        current_details.get("voyage_days")
+                    )
+                    if current_total is not None and current_days:
+                        current_vessel_freight = current_total / current_days
+
+                if future_vessel_freight is None:
+                    future_total = safe_float(
+                        future_details.get("estimated_total_freight_cost")
+                    )
+                    future_days = safe_float(
+                        future_details.get("voyage_days")
+                    )
+                    if future_total is not None and future_days:
+                        future_vessel_freight = future_total / future_days
+
+                # Use the actual vessel DWT from the profile.
+                vessel_profile = VESSEL_PROFILES.get(
+                    recommended_vessel,
+                    {}
+                )
+
+                vessel_capacity = safe_float(
+                    vessel_profile.get("dwt")
+                )
+
+                if (
+                    vessel_capacity is not None
+                    and current_vessel_freight is not None
+                    and future_vessel_freight is not None
+                ):
+
+                    idle_result = idle_scenario(
+                        vessel_capacity_mt=vessel_capacity,
+                        cargo_quantity_mt=cargo_quantity,
+                        current_freight=current_vessel_freight,
+                        future_freight=future_vessel_freight,
+                        congestion_score=primary_congestion
+                    )
+                else:
+                    idle_result = {
+                        "status": "insufficient_data",
+                        "message": "Idle scenario could not obtain a valid vessel capacity or current/future benchmark rate."
+                    }
 
 
         except Exception as error:
