@@ -1,110 +1,365 @@
-import React from 'react';
+import { useState } from "react";
+import {
+  ArrowRight,
+  BarChart3,
+  Calculator,
+  RotateCcw,
+  SlidersHorizontal,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-export default function ScenarioComparison({ baselineScenario, currentScenario }) {
-  if (!currentScenario) return null;
+import ScenarioInputs from "../components/simulator/ScenarioInputs";
+import ScenarioComparison from "../components/simulator/ScenarioComparison";
+import WhatIfComparison from "../components/whatif/WhatIfComparison";
+import { getShipment } from "../services/shipmentStorage";
 
-  const base = baselineScenario || {
-    label: 'Scenario A (Baseline: 150k MT Spot)',
-    ratePerMt: currentScenario.ratePerMt ? currentScenario.ratePerMt * 1.052 : 26.80,
-    totalVoyageCost: currentScenario.totalVoyageCost ? currentScenario.totalVoyageCost * 1.045 : 4280000,
-    transitDays: currentScenario.transitDays ? currentScenario.transitDays + 2 : 24,
-    bunkerCost: currentScenario.totalVoyageCost ? currentScenario.totalVoyageCost * 0.44 : 1880000,
-    ciiScore: 'C'
+export default function ScenarioSimulator() {
+  const navigate = useNavigate();
+
+  const [scenario, setScenario] = useState(null);
+  const [scenarioB, setScenarioB] = useState(null);
+  const [error, setError] = useState("");
+
+  const shipment = getShipment();
+
+  const runScenario = (scenarioData) => {
+    setError("");
+
+    if (!shipment) {
+      setError(
+        "No shipment has been planned yet. Please enter shipment details first."
+      );
+      return;
+    }
+
+    /*
+      Frontend-only stage:
+      Keep the user's original shipment together with the
+      scenario assumptions.
+
+      The real ML/backend calculation will replace this
+      when the backend is connected.
+    */
+    const preparedScenario = {
+      ...shipment,
+      ...scenarioData,
+      baseShipment: shipment,
+    };
+
+    setScenario(preparedScenario);
+
+    setScenarioB({
+      ...preparedScenario,
+      scenarioName: "Alternative scenario",
+    });
   };
 
-  const current = {
-    label: 'Scenario B (Current Simulation)',
-    ratePerMt: currentScenario.ratePerMt || 25.40,
-    totalVoyageCost: currentScenario.totalVoyageCost || 4050000,
-    transitDays: currentScenario.transitDays || 22,
-    bunkerCost: currentScenario.totalVoyageCost ? currentScenario.totalVoyageCost * 0.41 : 1660000,
-    ciiScore: currentScenario.ciiRating || 'B'
+  const resetSimulator = () => {
+    setScenario(null);
+    setScenarioB(null);
+    setError("");
   };
 
-  const rateDelta = current.ratePerMt - base.ratePerMt;
-  const rateDeltaPct = ((rateDelta / base.ratePerMt) * 100).toFixed(1);
-  const costDelta = current.totalVoyageCost - base.totalVoyageCost;
-  const daysDelta = current.transitDays - base.transitDays;
-  const bunkerDelta = current.bunkerCost - base.bunkerCost;
+  if (!shipment) {
+    return (
+      <div className="simulator-page">
+
+        <section className="simulator-header">
+          <div>
+            <p className="section-label">
+              SCENARIO SIMULATOR
+            </p>
+
+            <h1>
+              No shipment selected.
+            </h1>
+
+            <p>
+              Start by planning a shipment before testing different
+              freight and operational assumptions.
+            </p>
+
+            <button
+              className="text-action"
+              onClick={() => navigate("/")}
+              type="button"
+            >
+              Plan a shipment
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        </section>
+
+      </div>
+    );
+  }
 
   return (
-    <div className="fi-card">
-      <div className="fi-card-header">
-        <div className="fi-card-title">
-          <span className="fi-card-title-icon">⚖️</span>
-          Scenario A/B Delta Analysis
-        </div>
-        <span className="badge-mono" style={{ fontSize: '10px', color: 'var(--text-muted)' }}>COMPARISON</span>
-      </div>
+    <div className="simulator-page">
 
-      <div className="fi-card-body" style={{ padding: 0 }}>
-        <table className="fi-compare-table">
-          <thead>
-            <tr>
-              <th style={{ width: '28%' }}>Metric / Term</th>
-              <th style={{ width: '24%' }}>{base.label}</th>
-              <th style={{ width: '24%' }}>{current.label}</th>
-              <th style={{ width: '24%' }}>Variance (Delta)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="fi-compare-metric">Freight Rate ($/MT)</td>
-              <td className="tabular-nums">${base.ratePerMt.toFixed(2)}</td>
-              <td className="tabular-nums" style={{ fontWeight: 600 }}>${current.ratePerMt.toFixed(2)}</td>
-              <td>
-                <span className={`fi-delta-badge ${rateDelta < 0 ? 'pos' : rateDelta > 0 ? 'neg' : 'same'}`}>
-                  {rateDelta < 0 ? '↓' : rateDelta > 0 ? '↑' : '—'} {Math.abs(rateDeltaPct)}% (${Math.abs(rateDelta).toFixed(2)}/t)
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td className="fi-compare-metric">Total Fixture Cost</td>
-              <td className="tabular-nums">${base.totalVoyageCost.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
-              <td className="tabular-nums" style={{ fontWeight: 600 }}>
-                ${current.totalVoyageCost.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-              </td>
-              <td>
-                <span className={`fi-delta-badge ${costDelta < 0 ? 'pos' : costDelta > 0 ? 'neg' : 'same'}`}>
-                  {costDelta < 0 ? '↓ Savings: ' : costDelta > 0 ? '↑ Premium: ' : '—'}
-                  ${Math.abs(costDelta).toLocaleString(undefined, { maximumFractionDigits: 0 })}
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td className="fi-compare-metric">Transit & Turnaround</td>
-              <td className="tabular-nums">{base.transitDays} Sea Days</td>
-              <td className="tabular-nums" style={{ fontWeight: 600 }}>{current.transitDays} Sea Days</td>
-              <td>
-                <span className={`fi-delta-badge ${daysDelta < 0 ? 'pos' : daysDelta > 0 ? 'neg' : 'same'}`}>
-                  {daysDelta < 0 ? '↓' : daysDelta > 0 ? '↑' : '—'} {Math.abs(daysDelta)} Days
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td className="fi-compare-metric">Est. Bunker Burn</td>
-              <td className="tabular-nums">${base.bunkerCost.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
-              <td className="tabular-nums" style={{ fontWeight: 600 }}>
-                ${current.bunkerCost.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-              </td>
-              <td>
-                <span className={`fi-delta-badge ${bunkerDelta < 0 ? 'pos' : bunkerDelta > 0 ? 'neg' : 'same'}`}>
-                  {bunkerDelta < 0 ? '↓' : bunkerDelta > 0 ? '↑' : '—'}
-                  ${Math.abs(bunkerDelta).toLocaleString(undefined, { maximumFractionDigits: 0 })}
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td className="fi-compare-metric">CII Rating Target</td>
-              <td className="tabular-nums">Grade {base.ciiScore}</td>
-              <td className="tabular-nums" style={{ fontWeight: 600, color: '#34D399' }}>Grade {current.ciiScore}</td>
-              <td>
-                <span className="fi-delta-badge pos">✓ Target Compliant</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {/* HEADER */}
+
+      <section className="simulator-header">
+
+        <div>
+          <p className="section-label">
+            SCENARIO SIMULATOR
+          </p>
+
+          <h1>
+            What changes if your assumptions change?
+          </h1>
+
+          <p>
+            Test different freight, cargo and operational assumptions
+            before making the final shipment decision.
+          </p>
+        </div>
+
+        <div className="simulator-header-status">
+          <SlidersHorizontal size={17} />
+          <span>What-if planning workspace</span>
+        </div>
+
+      </section>
+
+
+      {/* SHIPMENT CONTEXT */}
+
+      <section className="simulator-shipment-context">
+
+        <div>
+          <span>ROUTE</span>
+          <strong>
+            {shipment.origin} → {shipment.destination}
+          </strong>
+        </div>
+
+        <div>
+          <span>CARGO</span>
+          <strong>{shipment.cargo}</strong>
+        </div>
+
+        <div>
+          <span>QUANTITY</span>
+          <strong>
+            {Number(shipment.quantity).toLocaleString()} MT
+          </strong>
+        </div>
+
+        <div>
+          <span>DELIVERY</span>
+          <strong>{shipment.deliveryDate}</strong>
+        </div>
+
+        <div>
+          <span>PRIORITY</span>
+          <strong>{shipment.priority}</strong>
+        </div>
+
+      </section>
+
+
+      {/* INTRO */}
+
+      <section className="simulator-intro">
+
+        <div className="simulator-intro-icon">
+          <Calculator size={21} />
+        </div>
+
+        <div>
+          <p className="section-label">
+            HOW IT WORKS
+          </p>
+
+          <h2>
+            Change one assumption at a time.
+          </h2>
+
+          <p>
+            Compare the resulting freight economics and decision impact
+            to understand which assumptions matter most.
+          </p>
+        </div>
+
+      </section>
+
+
+      {/* INPUTS */}
+
+      <section className="simulator-section">
+
+        <div className="simulator-section-heading">
+
+          <div>
+            <p className="section-label">
+              SCENARIO INPUTS
+            </p>
+
+            <h2>
+              Build your scenario
+            </h2>
+
+            <p>
+              Enter the assumptions you want to test.
+            </p>
+          </div>
+
+          {scenario && (
+            <button
+              className="simulator-reset"
+              onClick={resetSimulator}
+              type="button"
+            >
+              <RotateCcw size={15} />
+              Reset
+            </button>
+          )}
+
+        </div>
+
+
+        <div className="simulator-input-card">
+
+          <ScenarioInputs
+            onRunScenario={runScenario}
+          />
+
+        </div>
+
+
+        {error && (
+          <div className="simulator-error">
+            {error}
+          </div>
+        )}
+
+      </section>
+
+
+      {/* RESULTS */}
+
+      {scenario && (
+        <>
+
+          <section className="simulator-section">
+
+            <div className="simulator-section-heading">
+
+              <div>
+                <p className="section-label">
+                  SCENARIO RESULT
+                </p>
+
+                <h2>
+                  Scenario prepared
+                </h2>
+
+                <p>
+                  Your selected shipment and scenario assumptions are
+                  ready for comparison.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div className="simulator-result-card">
+
+              <div className="simulator-result-icon">
+                <BarChart3 size={21} />
+              </div>
+
+              <div>
+                <span>ANALYSIS STATUS</span>
+
+                <strong>
+                  Scenario ready
+                </strong>
+
+                <p>
+                  The scenario has been prepared using your current
+                  shipment information.
+                </p>
+              </div>
+
+            </div>
+
+
+            <ScenarioComparison
+              scenario={scenario}
+              scenarioB={scenarioB}
+            />
+
+          </section>
+
+
+          <section className="simulator-section">
+
+            <div className="simulator-section-heading">
+
+              <div>
+                <p className="section-label">
+                  WHAT-IF COMPARISON
+                </p>
+
+                <h2>
+                  Compare the decision impact
+                </h2>
+
+                <p>
+                  See how changing the scenario can influence the
+                  resulting decision.
+                </p>
+              </div>
+
+            </div>
+
+
+            <WhatIfComparison
+              scenario={scenario}
+              scenarioB={scenarioB}
+            />
+
+          </section>
+
+
+          {/* NEXT STEP */}
+
+          <section className="simulator-next">
+
+            <div>
+
+              <p className="section-label">
+                NEXT STEP
+              </p>
+
+              <h2>
+                Refine the decision before you commit.
+              </h2>
+
+              <p>
+                Use different assumptions to understand how the
+                shipment decision may change.
+              </p>
+
+            </div>
+
+            <button
+              className="text-action"
+              onClick={() => navigate("/decision")}
+              type="button"
+            >
+              Return to decision engine
+              <ArrowRight size={16} />
+            </button>
+
+          </section>
+
+        </>
+      )}
+
     </div>
   );
 }

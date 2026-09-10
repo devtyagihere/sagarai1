@@ -2,6 +2,13 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import AppShell from "./layout/AppShell";
 import Home from "./pages/Home";
+import Overview from "./pages/Overview";
+import FreightForecast from "./pages/FreightForecast";
+import VesselEconomics from "./pages/VesselEconomics";
+import PortIntelligence from "./pages/PortIntelligence";
+import RiskCenter from "./pages/RiskCenter";
+import DecisionEngine from "./pages/DecisionEngine";
+import DecisionHistory from "./pages/DecisionHistory";
 
 function PlaceholderPage({ title }) {
   return (
@@ -23,48 +30,55 @@ function App() {
     <BrowserRouter>
       <AppShell>
         <Routes>
+          {/* HOME */}
           <Route path="/" element={<Home />} />
 
-          <Route
-            path="/overview"
-            element={<PlaceholderPage title="Shipment Overview" />}
-          />
+          {/* OVERVIEW */}
+          <Route path="/overview" element={<Overview />} />
 
+          {/* FREIGHT FORECAST */}
           <Route
-            path="/forecast"
-            element={<PlaceholderPage title="Freight Forecast" />}
-          />
+  path="/forecast"
+  element={<FreightForecast />}
+/>
 
+          {/* VESSEL ECONOMICS */}
           <Route
-            path="/vessels"
-            element={<PlaceholderPage title="Vessel Economics" />}
-          />
+  path="/vessels"
+  element={<VesselEconomics />}
+/>
 
+          {/* PORT INTELLIGENCE */}
           <Route
-            path="/ports"
-            element={<PlaceholderPage title="Port Intelligence" />}
-          />
+  path="/ports"
+  element={<PortIntelligence />}
+/>
 
+          {/* RISK CENTER */}
           <Route
-            path="/risk"
-            element={<PlaceholderPage title="Risk Center" />}
-          />
+  path="/risk"
+  element={<RiskCenter />}
+/>
 
+          {/* DECISION ENGINE */}
           <Route
-            path="/decision"
-            element={<PlaceholderPage title="Decision Engine" />}
-          />
+  path="/decision"
+  element={<DecisionEngine />}
+/>
 
+          {/* SCENARIO SIMULATOR */}
           <Route
-            path="/simulator"
-            element={<PlaceholderPage title="Scenario Simulator" />}
-          />
+  path="/simulator"
+  element={<ScenarioSimulator />}
+/>
 
+          {/* DECISION HISTORY */}
           <Route
-            path="/history"
-            element={<PlaceholderPage title="Decision History" />}
-          />
+  path="/history"
+  element={<DecisionHistory />}
+/>
 
+          {/* UNKNOWN URL */}
           <Route
             path="*"
             element={<Navigate to="/" replace />}
