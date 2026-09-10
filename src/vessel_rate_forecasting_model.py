@@ -588,13 +588,19 @@ def create_features(df, vessel):
 
 def create_target(df, vessel, horizon):
     """
-    H market observations ahead.
-    Because the KOBC dataframe contains business-day
-    observations, shift(-H) is the correct observation-based
-    target.
+    Predict the H-observation-ahead RATE CHANGE rather than
+    the absolute rate level.
+
+    This makes the ML task more useful for a market series where
+    persistence is a strong baseline: the model learns the
+    expected movement away from today's rate, while the final
+    forecast is current_rate + predicted_change.
     """
 
-    target = df[vessel].shift(-horizon)
+    future_rate = df[vessel].shift(-horizon)
+    current_rate = df[vessel]
+
+    target = future_rate - current_rate
 
     return target
 
@@ -638,11 +644,16 @@ def build_training_data(df, vessel, horizon):
 def baseline_metrics(test):
     actual = test["target_value"].values
 
-    persistence = test["value"].values
+    # Because target_value is future_rate - current_rate,
+    # persistence corresponds to predicting zero change.
+    persistence = np.zeros(len(test), dtype=float)
 
-    recent_mean = test[
-        "rate_mean_7"
-    ].values
+    # A recent-trend baseline: use the latest observed movement
+    # as the expected future movement.
+    recent_mean = (
+        test["rate_mean_7"].values
+        - test["value"].values
+    )
 
     result = {}
 
@@ -1054,6 +1065,8 @@ def forecast_one(
     )
 
     if model_info["selected_method"] == "persistence":
+        # Persistence = zero future change.
+        predicted_change = 0.0
         prediction = current
 
         rf_prediction = None
@@ -1084,7 +1097,7 @@ def forecast_one(
             "blend_weights"
         ]
 
-        prediction = (
+        predicted_change = (
             weights["random_forest"]
             * rf_prediction
             + weights["extra_trees"]
@@ -1093,7 +1106,10 @@ def forecast_one(
             * ridge_prediction
         )
 
-    # Broad sanity guard.
+        prediction = current + predicted_change
+
+    # Broad sanity guard on the final rate, while preserving
+    # the ML model's direction and magnitude within a wide band.
     prediction = float(
         np.clip(
             prediction,
@@ -1101,6 +1117,7 @@ def forecast_one(
             current * 1.50
         )
     )
+    predicted_change = prediction - current
 
     target_date = (
         df["date"].iloc[-1]
@@ -1113,6 +1130,9 @@ def forecast_one(
 
         "forecast":
             prediction,
+
+        "predicted_change":
+            float(predicted_change),
 
         "current":
             current,

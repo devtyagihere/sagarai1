@@ -2,11 +2,11 @@
 # FREIGHT INTELLIGENCE - FLASK API
 # ============================================================
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 import pandas as pd
+import os
 
 from src.bdi_forecasting_model import forecast_bdi
-
 from src.oil_forecasting_model import forecast_oil_prices
 
 from src.commodity_price_provider import (
@@ -21,8 +21,20 @@ from src.port_congestion_forecasting_model import (
 
 from src.train_model import load_models
 
-from src.vessel_optimization import optimize_vessel
-from src.market_entry_decision import evaluate_market_entry
+from src.vessel_optimization import (
+    optimize_vessel,
+    optimize_vessel_with_rate_forecast,
+    VESSEL_PROFILES
+)
+
+from src.market_entry_decision import (
+    evaluate_market_entry
+)
+
+from src.decision_engine import (
+    unified_risk,
+    idle_scenario
+)
 
 
 # ============================================================
@@ -104,17 +116,10 @@ def safe_int(value):
 
 
 # ============================================================
-# CONGESTION SUPPORT CHECK
+# CONGESTION SUPPORT
 # ============================================================
 
 def destination_has_congestion(destination_port):
-
-    """
-    Currently real port congestion forecasting
-    is available for Paradip.
-
-    Other destinations use the base freight model.
-    """
 
     if not destination_port:
         return False
@@ -145,20 +150,8 @@ def predict_freight(
     use_congestion=False
 ):
 
-    """
-    Selects:
-
-        Paradip + congestion available
-            -> congestion model
-
-        Other destination
-            -> base model
-
-    Missing congestion is NEVER replaced by fake 0.
-    """
-
     # --------------------------------------------------------
-    # SELECT MODEL TYPE
+    # SELECT MODEL
     # --------------------------------------------------------
 
     if (
@@ -174,7 +167,7 @@ def predict_freight(
 
 
     # --------------------------------------------------------
-    # CHECK MODEL TYPE
+    # CHECK MODEL
     # --------------------------------------------------------
 
     if model_type not in freight_models:
@@ -203,23 +196,15 @@ def predict_freight(
         )
 
 
-    model_info = horizon_models[
-        horizon
-    ]
+    model_info = horizon_models[horizon]
 
+    model = model_info["model"]
 
-    model = model_info[
-        "model"
-    ]
-
-
-    feature_columns = model_info[
-        "features"
-    ]
+    feature_columns = model_info["features"]
 
 
     # --------------------------------------------------------
-    # CREATE INPUT ROW
+    # CREATE INPUT
     # --------------------------------------------------------
 
     row = {
@@ -263,7 +248,7 @@ def predict_freight(
 
 
     # --------------------------------------------------------
-    # ADD CONGESTION ONLY IF MODEL NEEDS IT
+    # CONGESTION FEATURE
     # --------------------------------------------------------
 
     if "port_congestion" in feature_columns:
@@ -275,31 +260,22 @@ def predict_freight(
                 "for congestion-aware model."
             )
 
-        row[
-            "port_congestion"
-        ] = port_congestion
+        row["port_congestion"] = port_congestion
 
-
-    # --------------------------------------------------------
-    # DATAFRAME
-    # --------------------------------------------------------
 
     X = pd.DataFrame(
         [row]
     )
 
 
-    # --------------------------------------------------------
-    # EXACT FEATURE ORDER
-    # --------------------------------------------------------
-
+    # Exact training feature order
     X = X[
         feature_columns
     ]
 
 
     # --------------------------------------------------------
-    # PREDICT
+    # MODEL PREDICTION
     # --------------------------------------------------------
 
     prediction = model.predict(
@@ -332,7 +308,7 @@ def home():
             "Freight Intelligence API",
 
         "version":
-            "2.0",
+            "3.1",
 
         "freight_models":
             list(
@@ -358,9 +334,53 @@ def home():
                 "Environmental Risk",
                 "Port Congestion Forecast",
                 "Freight Forecast",
-                "Vessel Optimization"
+                "Market Entry Decision",
+                "Vessel Optimization",
+                "Forecast Vessel Optimization",
+                "Unified Risk Engine",
+                "Idle Scenario Engine"
             ]
     })
+
+
+# ============================================================
+# DASHBOARD
+# ============================================================
+
+@app.route(
+    "/dashboard",
+    methods=["GET"]
+)
+def dashboard():
+
+    dashboard_path = os.path.join(
+        os.path.dirname(
+            os.path.dirname(
+                os.path.abspath(__file__)
+            )
+        ),
+        "dashboard.html"
+    )
+
+
+    if not os.path.exists(
+        dashboard_path
+    ):
+
+        return jsonify({
+
+            "status":
+                "error",
+
+            "message":
+                "dashboard.html not found."
+
+        }), 404
+
+
+    return send_file(
+        dashboard_path
+    )
 
 
 # ============================================================
@@ -401,7 +421,7 @@ def predict():
 
         origin_port = data.get(
             "origin_port",
-            "Mumbai"
+            "Gladstone"
         )
 
 
@@ -429,11 +449,15 @@ def predict():
             "date"
         )
 
-        # Optional current/spot freight rate.
-        # Do not invent this value: if unavailable, the decision layer
-        # simply does not use the freight-trend contribution.
+
+        # Optional route-specific current freight.
+        #
+        # We NEVER fabricate this value.
+        #
         current_freight_rate = safe_float(
-            data.get("current_freight_rate")
+            data.get(
+                "current_freight_rate"
+            )
         )
 
 
@@ -457,8 +481,10 @@ def predict():
                         "error",
 
                     "message":
-                        "Invalid date format. "
-                        "Use YYYY-MM-DD."
+                        (
+                            "Invalid date format. "
+                            "Use YYYY-MM-DD."
+                        )
 
                 }), 400
 
@@ -468,7 +494,7 @@ def predict():
 
 
         # ====================================================
-        # VALIDATION
+        # INPUT VALIDATION
         # ====================================================
 
         if cargo_quantity is None:
@@ -479,7 +505,10 @@ def predict():
                     "error",
 
                 "message":
-                    "cargo_quantity must be a valid number."
+                    (
+                        "cargo_quantity must "
+                        "be a valid number."
+                    )
 
             }), 400
 
@@ -492,7 +521,10 @@ def predict():
                     "error",
 
                 "message":
-                    "cargo_quantity must be greater than 0."
+                    (
+                        "cargo_quantity must "
+                        "be greater than 0."
+                    )
 
             }), 400
 
@@ -600,7 +632,10 @@ def predict():
                     "error",
 
                 "message":
-                    f"Commodity forecast failed: {error}"
+                    (
+                        "Commodity forecast failed: "
+                        f"{error}"
+                    )
 
             }), 500
 
@@ -637,32 +672,26 @@ def predict():
         )
 
 
-        # ====================================================
-        # FALLBACKS
-        # ====================================================
+        # ----------------------------------------------------
+        # Neutral fallback only for model fields that require
+        # numeric input.
+        # ----------------------------------------------------
 
         if current_bdi is None:
-
             current_bdi = 0.0
 
-
         if current_oil is None:
-
             current_oil = 0.0
 
-
         if current_commodity is None:
-
             current_commodity = 0.0
 
-
         if commodity_demand is None:
-
             commodity_demand = 0.0
 
 
         # ====================================================
-        # CONGESTION SUPPORT
+        # CONGESTION
         # ====================================================
 
         congestion_supported = (
@@ -676,10 +705,6 @@ def predict():
 
         congestion_forecast = {}
 
-
-        # ----------------------------------------------------
-        # PARADIP CONGESTION
-        # ----------------------------------------------------
 
         if congestion_supported:
 
@@ -736,10 +761,9 @@ def predict():
 
         for horizon, label in horizons.items():
 
-
-            # =================================================
+            # ------------------------------------------------
             # TARGET DATE
-            # =================================================
+            # ------------------------------------------------
 
             target_date = (
 
@@ -752,9 +776,9 @@ def predict():
             )
 
 
-            # =================================================
-            # BDI FORECAST
-            # =================================================
+            # ------------------------------------------------
+            # BDI
+            # ------------------------------------------------
 
             bdi_forecast = safe_float(
 
@@ -774,9 +798,9 @@ def predict():
                 bdi_forecast = current_bdi
 
 
-            # =================================================
-            # OIL FORECAST
-            # =================================================
+            # ------------------------------------------------
+            # OIL
+            # ------------------------------------------------
 
             oil_forecast = safe_float(
 
@@ -796,9 +820,9 @@ def predict():
                 oil_forecast = current_oil
 
 
-            # =================================================
-            # COMMODITY FORECAST
-            # =================================================
+            # ------------------------------------------------
+            # COMMODITY
+            # ------------------------------------------------
 
             commodity_forecast = safe_float(
 
@@ -815,14 +839,12 @@ def predict():
 
             if commodity_forecast is None:
 
-                commodity_forecast = (
-                    current_commodity
-                )
+                commodity_forecast = current_commodity
 
 
-            # =================================================
+            # ------------------------------------------------
             # WEATHER
-            # =================================================
+            # ------------------------------------------------
 
             try:
 
@@ -845,9 +867,9 @@ def predict():
                 weather = {}
 
 
-            # =================================================
+            # ------------------------------------------------
             # WEATHER DISRUPTION
-            # =================================================
+            # ------------------------------------------------
 
             weather_disruption = safe_int(
 
@@ -862,20 +884,17 @@ def predict():
                 weather_disruption = 0
 
 
-            # =================================================
+            # ------------------------------------------------
             # USD INDEX
-            # =================================================
+            # ------------------------------------------------
 
             # No fabricated live USD value.
-            #
-            # Demo model uses neutral value.
-
             usd_index = 0.0
 
 
-            # =================================================
+            # ------------------------------------------------
             # CONGESTION
-            # =================================================
+            # ------------------------------------------------
 
             port_congestion = None
 
@@ -912,10 +931,7 @@ def predict():
                     )
 
 
-                    if (
-                        port_congestion
-                        is not None
-                    ):
+                    if port_congestion is not None:
 
                         congestion_used = True
 
@@ -929,9 +945,9 @@ def predict():
                     )
 
 
-            # =================================================
+            # ------------------------------------------------
             # FREIGHT PREDICTION
-            # =================================================
+            # ------------------------------------------------
 
             predicted_freight, model_used = (
                 predict_freight(
@@ -978,9 +994,9 @@ def predict():
             )
 
 
-            # =================================================
+            # ------------------------------------------------
             # WEATHER VALUES
-            # =================================================
+            # ------------------------------------------------
 
             weather_code = safe_int(
                 weather.get(
@@ -1010,9 +1026,9 @@ def predict():
             )
 
 
-            # =================================================
+            # ------------------------------------------------
             # MARINE
-            # =================================================
+            # ------------------------------------------------
 
             marine_available = bool(
 
@@ -1044,9 +1060,9 @@ def predict():
             )
 
 
-            # =================================================
+            # ------------------------------------------------
             # RISK
-            # =================================================
+            # ------------------------------------------------
 
             marine_risk_score = safe_float(
                 weather.get(
@@ -1078,8 +1094,22 @@ def predict():
             )
 
 
+            # ------------------------------------------------
+            # IMPORTANT DATA QUALITY RULE
+            #
+            # If marine data is unavailable, its risk score
+            # must NOT be treated as a real Severe/100 signal.
+            # ------------------------------------------------
+
+            if not marine_available:
+
+                marine_risk_score = None
+
+                marine_risk_level = "Unavailable"
+
+
             # =================================================
-            # SAVE RESULT
+            # SAVE FORECAST
             # =================================================
 
             forecast_results[label] = {
@@ -1098,6 +1128,7 @@ def predict():
                 "model_used":
                     model_used,
 
+
                 "bdi": {
 
                     "current":
@@ -1107,6 +1138,7 @@ def predict():
                         bdi_forecast
                 },
 
+
                 "oil": {
 
                     "current":
@@ -1115,6 +1147,7 @@ def predict():
                     "forecast":
                         oil_forecast
                 },
+
 
                 "commodity": {
 
@@ -1129,6 +1162,7 @@ def predict():
                     "forecast":
                         commodity_forecast
                 },
+
 
                 "congestion": {
 
@@ -1148,6 +1182,7 @@ def predict():
                         congestion_reference_date
                 },
 
+
                 "weather": {
 
                     "temperature":
@@ -1166,6 +1201,7 @@ def predict():
                         weather_disruption
                 },
 
+
                 "marine": {
 
                     "available":
@@ -1180,6 +1216,7 @@ def predict():
                     "wave_direction":
                         wave_direction
                 },
+
 
                 "risk": {
 
@@ -1199,76 +1236,155 @@ def predict():
 
 
         # ====================================================
-        # MARKET ENTRY DECISION INTELLIGENCE
+        # MARKET ENTRY DECISION
         # ====================================================
-        #
-        # Uses the actual 7/15/30-day outputs above:
-        # freight forecast + BDI + oil + commodity + congestion
-        # + weather + marine + environmental risk.
-        #
-        # No synthetic market values are introduced here.
-        #
+
         market_entry_decisions = {}
 
+
         for horizon, label in horizons.items():
-            item = forecast_results.get(label, {})
 
-            bdi_item = item.get("bdi", {})
-            oil_item = item.get("oil", {})
-            commodity_item = item.get("commodity", {})
-            congestion_item = item.get("congestion", {})
-            weather_item = item.get("weather", {})
-            risk_item = item.get("risk", {})
-
-            decision_result = evaluate_market_entry(
-                current_freight=current_freight_rate,
-                future_freight=safe_float(
-                    item.get("predicted_freight_rate")
-                ),
-                current_bdi=safe_float(
-                    bdi_item.get("current")
-                ),
-                future_bdi=safe_float(
-                    bdi_item.get("forecast")
-                ),
-                current_oil=safe_float(
-                    oil_item.get("current")
-                ),
-                future_oil=safe_float(
-                    oil_item.get("forecast")
-                ),
-                current_commodity=safe_float(
-                    commodity_item.get("current")
-                ),
-                future_commodity=safe_float(
-                    commodity_item.get("forecast")
-                ),
-                congestion_score=safe_float(
-                    congestion_item.get("forecast_score")
-                ),
-                weather_disruption=safe_float(
-                    weather_item.get("weather_disruption")
-                ),
-                environmental_score=safe_float(
-                    risk_item.get("environmental_score")
-                ),
-                marine_score=safe_float(
-                    risk_item.get("marine_score")
-                ),
+            item = forecast_results.get(
+                label,
+                {}
             )
 
+
+            bdi_item = item.get(
+                "bdi",
+                {}
+            )
+
+            oil_item = item.get(
+                "oil",
+                {}
+            )
+
+            commodity_item = item.get(
+                "commodity",
+                {}
+            )
+
+            congestion_item = item.get(
+                "congestion",
+                {}
+            )
+
+            weather_item = item.get(
+                "weather",
+                {}
+            )
+
+            risk_item = item.get(
+                "risk",
+                {}
+            )
+
+
+            decision_result = evaluate_market_entry(
+
+                current_freight=
+                    current_freight_rate,
+
+                future_freight=
+                    safe_float(
+                        item.get(
+                            "predicted_freight_rate"
+                        )
+                    ),
+
+                current_bdi=
+                    safe_float(
+                        bdi_item.get(
+                            "current"
+                        )
+                    ),
+
+                future_bdi=
+                    safe_float(
+                        bdi_item.get(
+                            "forecast"
+                        )
+                    ),
+
+                current_oil=
+                    safe_float(
+                        oil_item.get(
+                            "current"
+                        )
+                    ),
+
+                future_oil=
+                    safe_float(
+                        oil_item.get(
+                            "forecast"
+                        )
+                    ),
+
+                current_commodity=
+                    safe_float(
+                        commodity_item.get(
+                            "current"
+                        )
+                    ),
+
+                future_commodity=
+                    safe_float(
+                        commodity_item.get(
+                            "forecast"
+                        )
+                    ),
+
+                congestion_score=
+                    safe_float(
+                        congestion_item.get(
+                            "forecast_score"
+                        )
+                    ),
+
+                weather_disruption=
+                    safe_float(
+                        weather_item.get(
+                            "weather_disruption"
+                        )
+                    ),
+
+                environmental_score=
+                    safe_float(
+                        risk_item.get(
+                            "environmental_score"
+                        )
+                    ),
+
+                marine_score=
+                    safe_float(
+                        risk_item.get(
+                            "marine_score"
+                        )
+                    )
+            )
+
+
             market_entry_decisions[label] = {
-                "target_date": item.get("target_date"),
-                **decision_result,
+
+                "target_date":
+                    item.get(
+                        "target_date"
+                    ),
+
+                **decision_result
             }
 
-        # 7-day is the nearest-term primary timing signal.
-        primary_market_entry = market_entry_decisions.get(
-            "7_day"
+
+        primary_market_entry = (
+            market_entry_decisions.get(
+                "7_day"
+            )
         )
 
+
         # ====================================================
-        # VESSEL OPTIMIZATION
+        # CURRENT VESSEL OPTIMIZATION
         # ====================================================
 
         vessel_result = optimize_vessel(
@@ -1280,8 +1396,374 @@ def predict():
                 destination_port,
 
             cargo_type=
-                cargo_type
+                cargo_type,
+
+            origin=
+                origin_port
         )
+
+
+        # ====================================================
+        # FORECAST VESSEL OPTIMIZATION
+        # ====================================================
+
+        forecast_vessel_result = {}
+
+
+        try:
+
+            forecast_vessel_result = (
+                optimize_vessel_with_rate_forecast(
+
+                    cargo_quantity=
+                        cargo_quantity,
+
+                    destination_port=
+                        destination_port,
+
+                    cargo_type=
+                        cargo_type,
+
+                    origin=
+                        origin_port
+                )
+            )
+
+        except Exception as error:
+
+            print(
+                "Forecast vessel optimization unavailable:",
+                error
+            )
+
+            forecast_vessel_result = {}
+
+
+        # ====================================================
+        # DECISION ENGINE
+        # ====================================================
+
+        primary_forecast = forecast_results.get(
+            "7_day",
+            {}
+        )
+
+
+        # ====================================================
+        # MARKET MOVEMENT
+        # ====================================================
+
+        market_move_pct = None
+
+
+        if current_freight_rate is not None:
+
+            future_primary_freight = safe_float(
+
+                primary_forecast.get(
+                    "predicted_freight_rate"
+                )
+            )
+
+
+            if (
+                future_primary_freight is not None
+                and current_freight_rate != 0
+            ):
+
+                market_move_pct = (
+
+                    (
+                        future_primary_freight
+                        -
+                        current_freight_rate
+                    )
+                    /
+                    current_freight_rate
+                ) * 100
+
+
+        # ====================================================
+        # PRIMARY RISK SIGNALS
+        # ====================================================
+
+        primary_congestion = safe_float(
+
+            primary_forecast
+            .get(
+                "congestion",
+                {}
+            )
+            .get(
+                "forecast_score"
+            )
+        )
+
+
+        primary_weather = safe_float(
+
+            primary_forecast
+            .get(
+                "weather",
+                {}
+            )
+            .get(
+                "weather_disruption"
+            )
+        )
+
+
+        primary_marine = safe_float(
+
+            primary_forecast
+            .get(
+                "risk",
+                {}
+            )
+            .get(
+                "marine_score"
+            )
+        )
+
+
+        primary_environmental = safe_float(
+
+            primary_forecast
+            .get(
+                "risk",
+                {}
+            )
+            .get(
+                "environmental_score"
+            )
+        )
+
+
+        # ====================================================
+        # UNIFIED RISK
+        # ====================================================
+
+        risk_result = unified_risk(
+
+            weather=
+                primary_weather,
+
+            marine=
+                primary_marine,
+
+            environmental=
+                primary_environmental,
+
+            congestion=
+                primary_congestion,
+
+            market_move_pct=
+                market_move_pct
+        )
+
+
+        # ====================================================
+        # IDLE SCENARIO
+        # ====================================================
+
+        idle_result = {
+
+            "status":
+                "insufficient_data",
+
+            "message":
+                (
+                    "Idle scenario requires "
+                    "current and future vessel "
+                    "freight rates."
+                )
+        }
+
+
+        try:
+
+            # ------------------------------------------------
+            # Recommended current vessel
+            # ------------------------------------------------
+
+            recommended_vessel = (
+                vessel_result.get(
+                    "recommended_vessel"
+                )
+            )
+
+
+            # ------------------------------------------------
+            # Vessel DWT
+            # ------------------------------------------------
+
+            vessel_capacity = None
+
+
+            if recommended_vessel:
+
+                vessel_profile = (
+                    VESSEL_PROFILES.get(
+                        recommended_vessel
+                    )
+                )
+
+
+                if vessel_profile:
+
+                    vessel_capacity = safe_float(
+
+                        vessel_profile.get(
+                            "dwt"
+                        )
+                    )
+
+
+            # ------------------------------------------------
+            # Current vessel rate
+            #
+            # The optimization result stores rates inside
+            # comparison[recommended_vessel].
+            # ------------------------------------------------
+
+            current_vessel_freight = None
+
+
+            if (
+                recommended_vessel
+                and isinstance(
+                    vessel_result,
+                    dict
+                )
+            ):
+
+                comparison = vessel_result.get(
+                    "comparison",
+                    {}
+                )
+
+
+                recommended_details = (
+                    comparison.get(
+                        recommended_vessel,
+                        {}
+                    )
+                )
+
+
+                current_vessel_freight = (
+                    safe_float(
+                        recommended_details.get(
+                            "freight_rate"
+                        )
+                    )
+                )
+
+
+            # ------------------------------------------------
+            # Future vessel rate
+            #
+            # Use 30-day KOBC forecast because the idle
+            # scenario is explicitly comparing current vs
+            # future vessel benchmark.
+            # ------------------------------------------------
+
+            future_vessel_freight = None
+
+
+            forecast_30 = (
+
+                forecast_vessel_result.get(
+                    "30_day"
+                )
+                if isinstance(
+                    forecast_vessel_result,
+                    dict
+                )
+                else None
+            )
+
+
+            if isinstance(
+                forecast_30,
+                dict
+            ):
+
+                future_comparison = (
+                    forecast_30.get(
+                        "comparison",
+                        {}
+                    )
+                )
+
+
+                # Prefer the same recommended vessel
+                # for apples-to-apples comparison.
+                if recommended_vessel:
+
+                    future_vessel_details = (
+                        future_comparison.get(
+                            recommended_vessel,
+                            {}
+                        )
+                    )
+
+
+                    future_vessel_freight = (
+                        safe_float(
+                            future_vessel_details.get(
+                                "freight_rate"
+                            )
+                        )
+                    )
+
+
+            # ------------------------------------------------
+            # Run idle scenario only when all required
+            # real benchmark values are available.
+            # ------------------------------------------------
+
+            if (
+                vessel_capacity is not None
+                and current_vessel_freight is not None
+                and future_vessel_freight is not None
+            ):
+
+                idle_result = idle_scenario(
+
+                    vessel_capacity_mt=
+                        vessel_capacity,
+
+                    cargo_quantity_mt=
+                        cargo_quantity,
+
+                    current_freight=
+                        current_vessel_freight,
+
+                    future_freight=
+                        future_vessel_freight,
+
+                    congestion_score=
+                        primary_congestion
+                )
+
+
+        except Exception as error:
+
+            print(
+                "Idle scenario unavailable:",
+                error
+            )
+
+
+            idle_result = {
+
+                "status":
+                    "error",
+
+                "message":
+                    str(error)
+            }
 
 
         # ====================================================
@@ -1293,10 +1775,12 @@ def predict():
             "status":
                 "success",
 
+
             "base_date":
                 base_date.strftime(
                     "%Y-%m-%d"
                 ),
+
 
             "route": {
 
@@ -1307,6 +1791,7 @@ def predict():
                     destination_port
             },
 
+
             "cargo": {
 
                 "type":
@@ -1315,6 +1800,11 @@ def predict():
                 "quantity_mt":
                     cargo_quantity
             },
+
+
+            # =================================================
+            # FREIGHT MODEL LOGIC
+            # =================================================
 
             "freight_model_logic": {
 
@@ -1333,27 +1823,77 @@ def predict():
                     )
             },
 
+
+            # =================================================
+            # FREIGHT FORECAST
+            # =================================================
+
             "forecast":
                 forecast_results,
+
+
+            # =================================================
+            # CURRENT VESSEL OPTIMIZATION
+            # =================================================
 
             "vessel_optimization":
                 vessel_result,
 
+
+            # =================================================
+            # FORECAST VESSEL OPTIMIZATION
+            # =================================================
+
+            "forecast_vessel_optimization":
+                forecast_vessel_result,
+
+
+            # =================================================
+            # MARKET ENTRY
+            # =================================================
+
             "market_entry_decision": {
+
                 "current_freight_rate_provided":
                     current_freight_rate is not None,
+
                 "primary":
                     primary_market_entry,
+
                 "horizons":
                     market_entry_decisions,
+
                 "note":
                     (
-                        "Explainable decision-support layer; "
-                        "confidence is signal-based, not statistical "
-                        "model probability, and the decision does not "
-                        "guarantee profit."
-                    ),
+                        "Explainable decision-support "
+                        "layer; confidence is "
+                        "signal-based, not statistical "
+                        "model probability, and the "
+                        "decision does not guarantee "
+                        "profit."
+                    )
             },
+
+
+            # =================================================
+            # UNIFIED RISK
+            # =================================================
+
+            "unified_risk":
+                risk_result,
+
+
+            # =================================================
+            # IDLE SCENARIO
+            # =================================================
+
+            "idle_scenario":
+                idle_result,
+
+
+            # =================================================
+            # MARKET DATA
+            # =================================================
 
             "market_data": {
 
@@ -1373,6 +1913,10 @@ def predict():
             response
         )
 
+
+    # ========================================================
+    # GLOBAL API ERROR
+    # ========================================================
 
     except Exception as error:
 
