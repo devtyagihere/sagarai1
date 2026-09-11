@@ -1,6 +1,3 @@
-# freight-intelligence
-AI-powered freight forecasting and intelligent ship-booking decision platform
-
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
