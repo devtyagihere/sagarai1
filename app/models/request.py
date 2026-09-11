@@ -96,3 +96,29 @@ class ShippingResponse(BaseModel):
     recommendation: RecommendationResult = Field(..., description="Primary vessel recommendation and rationale")
     route_estimate: RouteEstimate = Field(..., description="Route distance and duration estimation")
     data_quality: DataQualityReport = Field(..., description="Data reliability audit report")
+    # Phase 2 extension — optional so existing tests need no changes
+    market_intelligence: Optional[Any] = Field(
+        None,
+        description="Market data snapshot and freight rate forecast (Phase 2). None if market data unavailable.",
+    )
+    # Phase 3 extensions — all optional, backward-compatible
+    port_operations: Optional[Any] = Field(
+        None,
+        description="Operational congestion for origin and destination ports (Phase 3).",
+    )
+    risk_assessment: Optional[Any] = Field(
+        None,
+        description="Weather and marine risk score for the route (Phase 3).",
+    )
+    vessel_economics: Optional[Any] = Field(
+        None,
+        description="Voyage cost comparison across all vessel classes (Phase 3).",
+    )
+    # Phase 4 extension — integrated decision engine output
+    decision: Optional[Any] = Field(
+        None,
+        description=(
+            "Integrated charter decision: CHARTER NOW / WAIT / NEGOTIATE, "
+            "with confidence, overall_score, factor_scores, and reasons (Phase 4)."
+        ),
+    )

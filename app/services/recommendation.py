@@ -40,6 +40,14 @@ class RecommendationEngine:
                 message="Port constraints must be verified before making a reliable vessel recommendation.",
             )
 
+        # BUG 1 FIX: A port may exist in our DB but have data_status=MISSING (e.g. unverified private berths).
+        # This is distinct from a port being absent entirely (None). We must detect this case and
+        # downgrade confidence/status so the output is consistent with the INSUFFICIENT data quality report.
+        has_missing_port_data = (
+            (origin_port is not None and origin_port.data_status == DataQualityStatus.MISSING)
+            or (destination_port is not None and destination_port.data_status == DataQualityStatus.MISSING)
+        )
+
         # Filter candidates
         feasible_candidates = [
             item for item in analysis_items if item.feasibility_status == FeasibilityStatus.FEASIBLE
@@ -55,8 +63,13 @@ class RecommendationEngine:
                 key=lambda x: (x.score or 0.0, x.capacity_utilization), reverse=True
             )
             best_item = feasible_candidates[0]
-            confidence = RecommendationConfidence.HIGH
-            status = RecommendationStatus.RECOMMENDED
+            # BUG 1 FIX: If a MISSING-status port influenced the analysis, downgrade to conditional
+            if has_missing_port_data:
+                confidence = RecommendationConfidence.MEDIUM
+                status = RecommendationStatus.CONDITIONALLY_RECOMMENDED
+            else:
+                confidence = RecommendationConfidence.HIGH
+                status = RecommendationStatus.RECOMMENDED
         elif conditional_candidates:
             # Only conditionally feasible vessels exist
             conditional_candidates.sort(
@@ -83,6 +96,13 @@ class RecommendationEngine:
         # Generate clear, human-readable reasoning
         vessel_obj: Optional[Vessel] = vessels_map.get(best_item.vessel_class.lower())
         reasoning = self._build_reasoning(best_item, vessel_obj, request, origin_port, destination_port)
+
+        # BUG 1 FIX: Append explicit warning when MISSING-status port data influenced the result
+        if has_missing_port_data:
+            reasoning.append(
+                "Warning: One or more ports have unverified (MISSING) data status. "
+                "Physical constraints may be incomplete — confirm directly with port authority before fixture."
+            )
 
         return RecommendationResult(
             recommended_vessel=best_item.vessel_class,
@@ -117,12 +137,21 @@ class RecommendationEngine:
         reasons.append(f"Full cargo compatibility for '{request.cargo_type}' with vessel hold/gear configuration.")
 
         # 3. Port constraints
+        # BUG 2 FIX: Guard vessel against None before accessing vessel.typical_draft_m.
+        # Previously, lines accessing vessel.typical_draft_m had no None check and would crash
+        # with AttributeError when vessel_class was not found in vessels_map.
         if origin_port:
-            draft_info = f"draft {vessel.typical_draft_m:.1f}m <= max {origin_port.max_draft_m:.1f}m" if origin_port.max_draft_m else "verified"
+            if vessel and origin_port.max_draft_m is not None:
+                draft_info = f"draft {vessel.typical_draft_m:.1f}m <= max {origin_port.max_draft_m:.1f}m"
+            else:
+                draft_info = "verified"
             reasons.append(f"Complies with origin port ({origin_port.port_name}) draft and berth limits ({draft_info}).")
 
         if destination_port:
-            draft_info = f"draft {vessel.typical_draft_m:.1f}m <= max {destination_port.max_draft_m:.1f}m" if destination_port.max_draft_m else "verified"
+            if vessel and destination_port.max_draft_m is not None:
+                draft_info = f"draft {vessel.typical_draft_m:.1f}m <= max {destination_port.max_draft_m:.1f}m"
+            else:
+                draft_info = "verified"
             reasons.append(f"Complies with destination port ({destination_port.port_name}) navigational limits ({draft_info}).")
 
         # 4. Suitability Score

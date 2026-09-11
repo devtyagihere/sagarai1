@@ -6,7 +6,7 @@ from geopy.distance import geodesic
 from app.models.port import Port
 from app.models.request import DistanceEstimate, RouteEstimate
 from app.models.vessel import Vessel
-from config import DEFAULT_VESSEL_SPEED_KNOTS, HOURS_PER_DAY, NAUTICAL_MILE_KM
+from config import DEFAULT_VESSEL_SPEED_KNOTS, HOURS_PER_DAY, MARITIME_DETOUR_FACTOR, NAUTICAL_MILE_KM
 
 
 class RouteService:
@@ -23,17 +23,21 @@ class RouteService:
         deadline_days: Optional[float] = None,
     ) -> RouteEstimate:
         """
-        Compute geodesic distance in nautical miles and estimate voyage duration.
+        Compute sea-lane adjusted distance in nautical miles and estimate voyage duration.
 
-        NOTE: This is clearly labeled as a GEOGRAPHIC ESTIMATE (great circle).
-        Actual maritime routes via sea lanes (e.g. Malacca, Suez, Cape) are longer.
+        BUG 4 FIX: MARITIME_DETOUR_FACTOR (1.15) is now applied to the raw geodesic distance.
+        Pure great-circle distances underestimate real maritime routes by 15-20% because they
+        cross land. The factor accounts for navigational detours through straits, canals, and TSS.
         """
         origin_coords = (origin_port.latitude, origin_port.longitude)
         dest_coords = (destination_port.latitude, destination_port.longitude)
 
         # Geodesic distance in kilometers converted to Nautical Miles
         distance_km = geodesic(origin_coords, dest_coords).kilometers
-        distance_nm = round(distance_km / NAUTICAL_MILE_KM, 1)
+        distance_nm_geodesic = distance_km / NAUTICAL_MILE_KM
+
+        # BUG 4 FIX: Apply maritime detour factor for realistic sea-lane estimate
+        distance_nm = round(distance_nm_geodesic * MARITIME_DETOUR_FACTOR, 1)
 
         # Determine vessel cruising speed
         speed_knots = vessel.avg_speed_knots if vessel else self.default_speed_knots
@@ -55,13 +59,13 @@ class RouteService:
             distance_estimate=DistanceEstimate(
                 value=distance_nm,
                 unit="nautical_miles",
-                method="geographic_estimate",
+                method="sea_lane_estimate",
             ),
             estimated_duration_days=duration_days,
             deadline_met=deadline_met,
             warning=(
-                "Geographic distance is an idealized great-circle estimate. "
-                "Actual maritime route and duration may differ significantly due to "
+                f"Sea-lane adjusted distance (geodesic x {MARITIME_DETOUR_FACTOR} detour factor). "
+                "Actual maritime route and duration may still differ due to "
                 "navigational straits, TSS routing, canal transit, and weather conditions."
             ),
         )

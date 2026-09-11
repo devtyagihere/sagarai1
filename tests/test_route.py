@@ -62,9 +62,10 @@ def test_distance_calculation(route_service, paradip_port, rotterdam_port):
     """Test geographic distance between Paradip and Rotterdam returns valid nautical miles."""
     estimate = route_service.estimate_route(paradip_port, rotterdam_port)
     assert estimate.distance_estimate.unit == "nautical_miles"
-    assert estimate.distance_estimate.method == "geographic_estimate"
-    # Great circle distance Paradip - Rotterdam is approx 4,000 - 5,000 NM
-    assert 3500 <= estimate.distance_estimate.value <= 5500
+    # After Bug 4 fix: method is 'sea_lane_estimate' (detour factor applied)
+    assert estimate.distance_estimate.method == "sea_lane_estimate"
+    # Sea-lane adjusted distance Paradip - Rotterdam is approx 4,000 - 6,000 NM (geodesic x 1.15)
+    assert 4000 <= estimate.distance_estimate.value <= 6000
 
 
 def test_voyage_duration_calculation(route_service, paradip_port, rotterdam_port, panamax_vessel):
@@ -87,6 +88,7 @@ def test_deadline_met(route_service, paradip_port, rotterdam_port, panamax_vesse
 
 
 def test_route_warning_present(route_service, paradip_port, rotterdam_port):
-    """Ensure transparent warning regarding geographic estimate vs sea routes."""
+    """Ensure transparent warning regarding sea-lane estimate vs actual route."""
     estimate = route_service.estimate_route(paradip_port, rotterdam_port)
-    assert "great-circle estimate" in estimate.warning
+    # After Bug 4 fix: warning text updated to reflect detour factor application
+    assert "detour factor" in estimate.warning
