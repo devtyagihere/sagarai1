@@ -16,7 +16,7 @@ def test_decision_engine_end_to_end():
         forecast_uncertainty=15,
         cost_score=80,
         forecast_score=85,
-        reliability_score=90
+        reliability_score=90,
     )
 
     vessel_b = evaluate_option(
@@ -33,7 +33,7 @@ def test_decision_engine_end_to_end():
         forecast_uncertainty=25,
         cost_score=85,
         forecast_score=70,
-        reliability_score=82
+        reliability_score=82,
     )
 
     vessel_c = evaluate_option(
@@ -50,10 +50,9 @@ def test_decision_engine_end_to_end():
         forecast_uncertainty=10,
         cost_score=75,
         forecast_score=90,
-        reliability_score=95
+        reliability_score=95,
     )
 
-    # Basic checks for each evaluated option
     assert vessel_a["option_id"] == "VESSEL_A"
     assert vessel_b["option_id"] == "VESSEL_B"
     assert vessel_c["option_id"] == "VESSEL_C"
@@ -62,32 +61,15 @@ def test_decision_engine_end_to_end():
     assert 0 <= vessel_b["decision_score"] <= 100
     assert 0 <= vessel_c["decision_score"] <= 100
 
-    # Prepare options for optimization
     options = [
-        {
-            "option_id": vessel_a["option_id"],
-            "decision_score": vessel_a["decision_score"]
-        },
-        {
-            "option_id": vessel_b["option_id"],
-            "decision_score": vessel_b["decision_score"]
-        },
-        {
-            "option_id": vessel_c["option_id"],
-            "decision_score": vessel_c["decision_score"]
-        }
+        {"option_id": vessel_a["option_id"], "decision_score": vessel_a["decision_score"]},
+        {"option_id": vessel_b["option_id"], "decision_score": vessel_b["decision_score"]},
+        {"option_id": vessel_c["option_id"], "decision_score": vessel_c["decision_score"]},
     ]
 
-    # Optimize
     result = optimize_options(options)
 
-    # Check optimization output
     assert "ranked_options" in result
     assert "best_option" in result
-
     assert len(result["ranked_options"]) == 3
-    assert result["best_option"]["option_id"] in [
-        "VESSEL_A",
-        "VESSEL_B",
-        "VESSEL_C"
-    ]
+    assert result["best_option"]["option_id"] in ["VESSEL_A", "VESSEL_B", "VESSEL_C"]
