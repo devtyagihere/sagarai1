@@ -14,12 +14,16 @@ import {
 
 const mainNavigation = [
   {
+    label: "New Shipment",
+    path: "/",
+    icon: Ship,
+  },
+  {
     label: "Overview",
     path: "/overview",
     icon: LayoutDashboard,
   },
 ];
-
 const intelligenceNavigation = [
   {
     label: "Freight Forecast",

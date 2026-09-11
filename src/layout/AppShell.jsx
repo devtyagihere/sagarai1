@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 
-export default function AppShell({ children }) {
+export default function AppShell({
+  children,
+  user,
+  onLogout,
+}) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -24,6 +28,8 @@ export default function AppShell({ children }) {
       <div className="app-main">
         <TopBar
           onMenuClick={() => setSidebarOpen(true)}
+          user={user}
+          onLogout={onLogout}
         />
 
         <main className="page-content">

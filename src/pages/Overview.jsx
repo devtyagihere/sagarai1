@@ -9,23 +9,26 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
 import { getShipment } from "../services/shipmentStorage";
+import FreightRateChart from "../components/forecast/FreightRateChart";
 
 export default function Overview() {
   const navigate = useNavigate();
   const shipment = getShipment();
 
-  // If no shipment has been created yet, send the user back to Home.
   if (!shipment) {
     return (
       <div className="overview-page">
         <section className="overview-header">
           <div>
             <p className="section-label">SHIPMENT OVERVIEW</p>
+
             <h1>No shipment planned yet.</h1>
+
             <p>
-              Start by entering your shipment details so the decision workspace
-              can be prepared for you.
+              Start by entering your shipment details so the
+              decision workspace can be prepared for you.
             </p>
 
             <button
@@ -52,6 +55,17 @@ export default function Overview() {
     priority,
   } = shipment;
 
+  const formattedDeliveryDate = deliveryDate
+    ? new Date(deliveryDate).toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
+    : "Not specified";
+
+  const quantityValue = Number(quantity) || 0;
+  const durationValue = Number(contractDuration) || 0;
+
   return (
     <div className="overview-page">
 
@@ -64,8 +78,8 @@ export default function Overview() {
           <h1>Your freight at a glance.</h1>
 
           <p>
-            A quick operational view of the market, shipment,
-            and signals influencing your next chartering decision.
+            A quick operational view of your shipment and
+            the signals influencing your next chartering decision.
           </p>
         </div>
 
@@ -76,13 +90,14 @@ export default function Overview() {
       </section>
 
 
-      {/* SHIPMENT CARD */}
+      {/* CURRENT SHIPMENT */}
 
       <section className="overview-shipment">
 
         <div className="overview-section-heading">
           <div>
             <p className="section-label">CURRENT SHIPMENT</p>
+
             <h2>Voyage plan</h2>
           </div>
 
@@ -91,6 +106,8 @@ export default function Overview() {
           </span>
         </div>
 
+
+        {/* ROUTE */}
 
         <div className="voyage-route">
 
@@ -104,22 +121,32 @@ export default function Overview() {
 
 
           <div className="voyage-line">
+
             <div className="voyage-line-track" />
-            <Ship size={22} />
+
+            <div className="voyage-vessel">
+              <Ship size={22} />
+            </div>
+
             <ArrowRight size={18} />
+
           </div>
 
 
           <div className="voyage-port destination">
+
             <span>DESTINATION</span>
 
             <strong>{destination}</strong>
 
             <small>Discharge port</small>
+
           </div>
 
         </div>
 
+
+        {/* SHIPMENT METRICS */}
 
         <div className="shipment-metrics">
 
@@ -130,12 +157,15 @@ export default function Overview() {
 
           <div>
             <span>QUANTITY</span>
-            <strong>{Number(quantity).toLocaleString()} MT</strong>
+
+            <strong>
+              {quantityValue.toLocaleString()} MT
+            </strong>
           </div>
 
           <div>
             <span>DELIVERY</span>
-            <strong>{deliveryDate}</strong>
+            <strong>{formattedDeliveryDate}</strong>
           </div>
 
           <div>
@@ -146,18 +176,137 @@ export default function Overview() {
         </div>
 
 
+        {/* EXTRA DETAILS */}
+
         <div className="shipment-extra">
 
           <div>
-            <span>CONTRACT</span>
-            <strong>{contractDuration}</strong>
+            <span>CONTRACT DURATION</span>
+
+            <strong>
+              {durationValue} days
+            </strong>
           </div>
 
           <div>
             <span>ROUTE</span>
+
             <strong>
               {origin} → {destination}
             </strong>
+          </div>
+
+          <div>
+            <span>SHIPMENT STATUS</span>
+
+            <strong className="overview-status">
+              Analysis ready
+            </strong>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* VOYAGE TIMELINE */}
+
+      <section className="overview-section">
+
+        <div className="overview-section-heading">
+
+          <div>
+            <p className="section-label">
+              VOYAGE TIMELINE
+            </p>
+
+            <h2>Planning milestones</h2>
+
+            <p>
+              The current shipment moves through these
+              decision stages before fixing.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div className="voyage-timeline">
+
+          <div className="timeline-item timeline-complete">
+
+            <div className="timeline-marker">
+              <span>01</span>
+            </div>
+
+            <div className="timeline-content">
+
+              <span>COMPLETED</span>
+
+              <strong>
+                Shipment details captured
+              </strong>
+
+              <p>
+                {cargo} ·{" "}
+                {quantityValue.toLocaleString()} MT
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div className="timeline-connector" />
+
+
+          <div className="timeline-item timeline-active">
+
+            <div className="timeline-marker">
+              <span>02</span>
+            </div>
+
+            <div className="timeline-content">
+
+              <span>IN PROGRESS</span>
+
+              <strong>
+                Market and vessel analysis
+              </strong>
+
+              <p>
+                Freight conditions and vessel economics
+                are being evaluated.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div className="timeline-connector" />
+
+
+          <div className="timeline-item">
+
+            <div className="timeline-marker">
+              <span>03</span>
+            </div>
+
+            <div className="timeline-content">
+
+              <span>NEXT</span>
+
+              <strong>
+                Chartering decision
+              </strong>
+
+              <p>
+                Compare fixing strategies before committing.
+              </p>
+
+            </div>
+
           </div>
 
         </div>
@@ -170,10 +319,18 @@ export default function Overview() {
       <section className="overview-section">
 
         <div className="overview-section-heading">
+
           <div>
-            <p className="section-label">FREIGHT OUTLOOK</p>
+            <p className="section-label">
+              FREIGHT OUTLOOK
+            </p>
 
             <h2>Where the market is heading</h2>
+
+            <p>
+              Historical freight movement and the current
+              simulated forecast horizon.
+            </p>
           </div>
 
           <button
@@ -181,11 +338,19 @@ export default function Overview() {
             onClick={() => navigate("/forecast")}
             type="button"
           >
-            View forecast
+            View full forecast
             <ArrowRight size={16} />
           </button>
+
         </div>
 
+
+        {/* FREIGHT RATE GRAPH */}
+
+        <FreightRateChart />
+
+
+        {/* FREIGHT SUMMARY */}
 
         <div className="forecast-overview-grid">
 
@@ -196,7 +361,7 @@ export default function Overview() {
             </div>
 
             <div className="rate-value">
-              $24.50
+              $25.40
             </div>
 
             <div className="rate-unit">
@@ -218,7 +383,7 @@ export default function Overview() {
             </div>
 
             <div className="rate-value">
-              $25.10
+              $26.20
             </div>
 
             <div className="rate-unit">
@@ -243,7 +408,9 @@ export default function Overview() {
               <TrendingUp size={24} />
             </div>
 
-            <strong>Moderately rising</strong>
+            <strong>
+              Moderately rising
+            </strong>
 
             <p>
               Freight conditions currently favour
@@ -268,7 +435,9 @@ export default function Overview() {
               MARKET SIGNALS
             </p>
 
-            <h2>What is influencing the decision</h2>
+            <h2>
+              What is influencing the decision
+            </h2>
           </div>
 
         </div>
@@ -388,7 +557,9 @@ export default function Overview() {
               <TrendingUp size={18} />
             </div>
 
-            <strong>Freight market</strong>
+            <strong>
+              Freight market
+            </strong>
 
             <p>
               Market data available
@@ -408,7 +579,9 @@ export default function Overview() {
               <Ship size={18} />
             </div>
 
-            <strong>Vessel economics</strong>
+            <strong>
+              Vessel economics
+            </strong>
 
             <p>
               Vessel comparison required
@@ -428,7 +601,9 @@ export default function Overview() {
               <CircleAlert size={18} />
             </div>
 
-            <strong>Operational risk</strong>
+            <strong>
+              Operational risk
+            </strong>
 
             <p>
               Review port and weather signals
@@ -441,6 +616,39 @@ export default function Overview() {
           </div>
 
         </div>
+
+      </section>
+
+
+      {/* DECISION ACTION */}
+
+      <section className="decision-next">
+
+        <div>
+
+          <p className="section-label">
+            READY FOR THE NEXT STEP
+          </p>
+
+          <h2>
+            Continue to your freight decision.
+          </h2>
+
+          <p>
+            Review the available fixing strategies for
+            this {origin} → {destination} voyage.
+          </p>
+
+        </div>
+
+        <button
+          className="text-action"
+          onClick={() => navigate("/decision")}
+          type="button"
+        >
+          Open Decision Engine
+          <ArrowRight size={16} />
+        </button>
 
       </section>
 
