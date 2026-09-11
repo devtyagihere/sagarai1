@@ -1,0 +1,69 @@
+from engine import evaluate_options
+
+
+def test_automatic_cost_scoring():
+    options = [
+        {
+            "option_id": "VESSEL_A",
+            "freight_cost": 8000000,
+            "charter_cost": 2500000,
+            "port_cost": 700000,
+            "delay_cost": 100000,
+            "other_cost": 200000,
+            "freight_volatility": 40,
+            "port_congestion": 30,
+            "vessel_reliability": 0.90,
+            "delay_probability": 20,
+            "forecast_uncertainty": 15,
+            "forecast_score": 85,
+            "reliability_score": 90
+        },
+        {
+            "option_id": "VESSEL_B",
+            "freight_cost": 7500000,
+            "charter_cost": 2300000,
+            "port_cost": 900000,
+            "delay_cost": 300000,
+            "other_cost": 150000,
+            "freight_volatility": 55,
+            "port_congestion": 50,
+            "vessel_reliability": 0.82,
+            "delay_probability": 35,
+            "forecast_uncertainty": 25,
+            "forecast_score": 70,
+            "reliability_score": 82
+        },
+        {
+            "option_id": "VESSEL_C",
+            "freight_cost": 8500000,
+            "charter_cost": 2600000,
+            "port_cost": 500000,
+            "delay_cost": 50000,
+            "other_cost": 100000,
+            "freight_volatility": 25,
+            "port_congestion": 20,
+            "vessel_reliability": 0.95,
+            "delay_probability": 10,
+            "forecast_uncertainty": 10,
+            "forecast_score": 90,
+            "reliability_score": 95
+        }
+    ]
+
+    results = evaluate_options(options)
+
+    assert len(results) == 3
+
+    for result in results:
+        assert "option_id" in result
+        assert "cost" in result
+        assert "decision_score" in result
+        assert "total_cost" in result["cost"]
+
+        assert result["cost"]["total_cost"] > 0
+        assert 0 <= result["decision_score"] <= 100
+
+    # VESSEL_B total cost:
+    # 7,500,000 + 2,300,000 + 900,000 + 300,000 + 150,000
+    # = 11,150,000
+    assert results[1]["cost"]["total_cost"] == 11150000

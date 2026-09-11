@@ -1,3 +1,12 @@
+# Python virtual environment
+decision_engine/venv/
+
+# Python cache
+__pycache__/
+decision_engine/__pycache__/
+
+# Compiled Python files
+*.pyc
 .venv/
 __pycache__/
 *.pyc
