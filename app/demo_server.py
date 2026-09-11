@@ -38,39 +38,55 @@ app = FastAPI(
     version="3.0.0",
 )
 
-TEMPLATE_PATH = BASE_DIR / "templates" / "index.html"
-
-
 class AnalyzeRequestPayload(BaseModel):
     cargo_type: str = Field(..., example="iron_ore")
     cargo_quantity_tonnes: float = Field(..., example=75000)
-    origin_port: str = Field(..., example="Paradip")
-    destination_port: str = Field(..., example="Rotterdam")
+    origin_port: Optional[str] = Field(None, example="Paradip")
+    origin: Optional[str] = Field(None, example="Paradip")
+    destination_port: Optional[str] = Field(None, example="Rotterdam")
+    destination: Optional[str] = Field(None, example="Rotterdam")
     shipping_deadline_days: Optional[float] = Field(None, example=30)
 
+    def get_origin(self) -> str:
+        return (self.origin_port or self.origin or "").strip()
+
+    def get_destination(self) -> str:
+        return (self.destination_port or self.destination or "").strip()
+
 
 # ──────────────────────────────────────────────────────────────────────────────
-# EXISTING ENDPOINTS (Phase 1 — unchanged)
+# CORE API ENDPOINTS
 # ──────────────────────────────────────────────────────────────────────────────
 
-@app.get("/", response_class=HTMLResponse)
-def serve_dashboard():
-    """Serve the interactive decision intelligence dashboard UI."""
-    if not TEMPLATE_PATH.exists():
-        raise HTTPException(status_code=404, detail="Dashboard template not found.")
-    with open(TEMPLATE_PATH, "r", encoding="utf-8") as f:
-        return HTMLResponse(content=f.read())
+@app.get("/")
+def api_root():
+    """API health and index endpoint."""
+    return {
+        "service": "Shipping & Vessel Intelligence Engine API",
+        "version": "4.0.0",
+        "status": "operational",
+        "docs_url": "/docs",
+        "analyze_url": "/analyze",
+    }
 
 
+@app.post("/analyze")
 @app.post("/api/analyze")
 def api_analyze(payload: AnalyzeRequestPayload) -> Dict[str, Any]:
-    """Execute complete vessel feasibility, scoring, recommendation, route analysis, and market intelligence."""
+    """Execute complete vessel feasibility, scoring, recommendation, route analysis, and integrated decision."""
     try:
+        origin = payload.get_origin()
+        destination = payload.get_destination()
+        if not origin:
+            raise ValueError("origin or origin_port is required")
+        if not destination:
+            raise ValueError("destination or destination_port is required")
+
         result = analyze_shipping_request(
             cargo_type=payload.cargo_type,
             cargo_quantity_tonnes=payload.cargo_quantity_tonnes,
-            origin_port=payload.origin_port,
-            destination_port=payload.destination_port,
+            origin_port=origin,
+            destination_port=destination,
             shipping_deadline_days=payload.shipping_deadline_days,
         )
         return result
