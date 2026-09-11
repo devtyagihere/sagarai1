@@ -1,7 +1,6 @@
 port_name,country,latitude,longitude,max_draft_m,max_length_m,max_beam_m,data_status,source,last_verified
 Paradip,India,20.2644,86.6715,17.1,260.0,48.0,verified,Paradip Port Authority Handbook,2024-06-15
 Visakhapatnam,India,17.6868,83.2185,18.1,300.0,50.0,verified,Visakhapatnam Port Authority Berthing Guidelines,2024-05-10
-Vizag,India,17.6868,83.2185,18.1,300.0,50.0,verified,Visakhapatnam Port Authority Berthing Guidelines,2024-05-10
 Gangavaram,India,17.6186,83.2389,21.0,330.0,55.0,verified,Adani Gangavaram Port Tariff & Vessel Info,2024-07-01
 Gopalpur,India,19.3080,84.9660,14.5,225.0,33.0,verified,Gopalpur Ports Limited Operating Guidelines,2024-04-12
 Dhamra,India,20.8222,86.9745,18.0,300.0,48.0,verified,Adani Dhamra Port Master Plan,2024-06-20

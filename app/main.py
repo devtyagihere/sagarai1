@@ -28,6 +28,31 @@ from app.utils.constants import (
     RecommendationStatus,
 )
 
+# Phase 2: Market data + forecasting (imported with graceful fallback)
+try:
+    from app.models.market import MarketAndForecastResult
+    from app.services.market_service import default_market_service
+    from app.services.freight_forecasting import default_forecasting_service
+    _MARKET_AVAILABLE = True
+except ImportError:
+    _MARKET_AVAILABLE = False
+
+# Phase 3: Port operations, risk, vessel economics (graceful fallback)
+try:
+    from app.services.port_operations import default_port_ops_service
+    from app.services.risk_service import default_risk_service
+    from app.services.vessel_economics import default_vessel_economics_service
+    _PHASE3_AVAILABLE = True
+except ImportError:
+    _PHASE3_AVAILABLE = False
+
+# Phase 4: Integrated Decision Engine (graceful fallback)
+try:
+    from app.services.decision_engine import default_decision_engine
+    _PHASE4_AVAILABLE = True
+except ImportError:
+    _PHASE4_AVAILABLE = False
+
 
 def analyze_shipping_request(
     cargo_type: str,
@@ -134,7 +159,42 @@ def analyze_shipping_request(
     # 7. Audit Data Quality & Verification
     data_quality = _build_data_quality_report(origin_port_obj, dest_port_obj, analysis_items)
 
-    # 8. Assemble Full Response
+    # 8. Phase 2 — Market Data & Freight Rate Forecast (graceful: never breaks core pipeline)
+    market_intelligence = None
+    if _MARKET_AVAILABLE:
+        market_intelligence = _build_market_intelligence(
+            request=request,
+            route_estimate=route_estimate,
+            recommendation=recommendation,
+        )
+
+    # 9. Phase 3 — Port Operations, Risk, Vessel Economics (graceful: never breaks core pipeline)
+    port_operations = None
+    risk_assessment = None
+    vessel_economics = None
+    if _PHASE3_AVAILABLE:
+        port_operations = _build_port_operations(request.origin_port, request.destination_port)
+        risk_assessment = _build_risk_assessment(request.origin_port, request.destination_port)
+        vessel_economics = _build_vessel_economics(
+            analysis_items=analysis_items,
+            voyage_days=route_estimate.estimated_duration_days,
+            cargo_quantity=request.cargo_quantity_tonnes,
+            recommended_vessel=recommendation.recommended_vessel,
+        )
+
+    # 10. Phase 4 — Integrated Decision Engine (graceful: never breaks core pipeline)
+    decision = None
+    if _PHASE4_AVAILABLE:
+        decision = _build_decision(
+            market_intelligence=market_intelligence,
+            port_operations=port_operations,
+            risk_assessment=risk_assessment,
+            vessel_economics=vessel_economics,
+            recommended_vessel=recommendation.recommended_vessel,
+            analysis_items=analysis_items,
+        )
+
+    # 11. Assemble Full Response
     response = ShippingResponse(
         request={
             "cargo_type": request.cargo_type,
@@ -147,9 +207,121 @@ def analyze_shipping_request(
         recommendation=recommendation,
         route_estimate=route_estimate,
         data_quality=data_quality,
+        market_intelligence=market_intelligence,
+        port_operations=port_operations,
+        risk_assessment=risk_assessment,
+        vessel_economics=vessel_economics,
+        decision=decision,
     )
 
     return response.model_dump()
+
+
+def _build_market_intelligence(
+    request: ShippingRequest,
+    route_estimate: "RouteEstimate",
+    recommendation: "RecommendationResult",
+) -> Optional[Dict[str, Any]]:
+    """
+    Collect market snapshot and freight forecast for the current request.
+    Returns None on any error so the core pipeline is never interrupted.
+    """
+    try:
+        market_snapshot = default_market_service.get_market_snapshot(request.cargo_type)
+        vessel_type = recommendation.recommended_vessel or "Panamax"
+        distance_nm = route_estimate.distance_estimate.value if route_estimate else 4000.0
+
+        freight_forecast = default_forecasting_service.forecast(
+            origin=request.origin_port,
+            destination=request.destination_port,
+            cargo_type=request.cargo_type,
+            vessel_type=vessel_type,
+            distance_nm=distance_nm,
+        )
+        model_evaluation = default_forecasting_service.get_evaluation()
+
+        result = MarketAndForecastResult(
+            market_snapshot=market_snapshot,
+            freight_forecast=freight_forecast,
+            model_evaluation=model_evaluation,
+        )
+        return result.model_dump()
+    except Exception:
+        return None
+
+
+def _build_port_operations(origin: str, destination: str) -> Optional[Dict[str, Any]]:
+    """
+    Collect operational congestion data for origin and destination ports.
+    Physical feasibility is NOT re-computed here — that is FeasibilityEngine's job.
+    Returns None on any error.
+    """
+    try:
+        result = default_port_ops_service.get_port_operations_result(origin, destination)
+        return result.model_dump()
+    except Exception:
+        return None
+
+
+def _build_risk_assessment(origin: str, destination: str) -> Optional[Dict[str, Any]]:
+    """
+    Compute weather and marine risk score for the route.
+    Returns None on any error.
+    """
+    try:
+        result = default_risk_service.assess(origin, destination)
+        return result.model_dump()
+    except Exception:
+        return None
+
+
+def _build_vessel_economics(
+    analysis_items: List[VesselAnalysisItem],
+    voyage_days: float,
+    cargo_quantity: float,
+    recommended_vessel: Optional[str],
+) -> Optional[Dict[str, Any]]:
+    """
+    Build voyage cost comparison for all vessel classes.
+    Returns None on any error.
+    """
+    try:
+        result = default_vessel_economics_service.compute(
+            analysis_items=analysis_items,
+            voyage_days=voyage_days,
+            cargo_quantity_tonnes=cargo_quantity,
+            recommended_vessel=recommended_vessel,
+        )
+        return result.model_dump()
+    except Exception:
+        return None
+
+
+def _build_decision(
+    market_intelligence: Optional[Dict[str, Any]],
+    port_operations: Optional[Dict[str, Any]],
+    risk_assessment: Optional[Dict[str, Any]],
+    vessel_economics: Optional[Dict[str, Any]],
+    recommended_vessel: Optional[str],
+    analysis_items: Optional[List[VesselAnalysisItem]] = None,
+) -> Optional[Dict[str, Any]]:
+    """
+    Run the Phase 4 integrated decision engine.
+    Combines all upstream module outputs into CHARTER NOW / WAIT / NEGOTIATE.
+    Returns None on any error so the core pipeline is never interrupted.
+    """
+    try:
+        result = default_decision_engine.decide(
+            market_intelligence=market_intelligence,
+            port_operations=port_operations,
+            risk_assessment=risk_assessment,
+            vessel_economics=vessel_economics,
+            recommended_vessel=recommended_vessel,
+            analysis_items=analysis_items,
+        )
+        return result.model_dump()
+    except Exception:
+        return None
 
 
 def _build_data_quality_report(

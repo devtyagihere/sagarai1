@@ -79,12 +79,17 @@ class ScoringEngine:
         # ---------------------------------------------------------
         # 3. CARGO COMPATIBILITY SCORE (0 - 100 raw)
         # ---------------------------------------------------------
-        req_cargo = request.cargo_type.lower()
-        vessel_cargos = [c.lower() for c in vessel.supported_cargo]
-        if req_cargo in vessel_cargos:
+        # cargo check tri-state: True=compatible, False=incompatible, None=unknown
+        # True  → 100 : full credit (feasibility already validated it)
+        # False → 0   : vessel is cargo-incompatible and must never be recommended
+        # None  → 50  : conditional / unverifiable (e.g. partial data)
+        cargo_check = analysis_item.checks.get("cargo")
+        if cargo_check is True:
             raw_cargo_score = 100.0
+        elif cargo_check is False:
+            raw_cargo_score = 0.0     # incompatible — hard disqualifier
         else:
-            raw_cargo_score = 80.0
+            raw_cargo_score = 50.0   # unknown/conditional
 
         cargo_points = round(raw_cargo_score * w_cargo, 2)
 
