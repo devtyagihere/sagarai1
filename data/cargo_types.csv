@@ -1,0 +1,11 @@
+cargo_type,category,stowage_factor_m3_per_tonne,requires_geared_vessel,hazmat_class,allowed_vessel_classes,description
+iron_ore,dry_bulk,0.45,false,none,Handysize;Handymax;Supramax;Panamax;Capesize,High density iron ore fines and lumps for steel manufacturing
+coal,dry_bulk,1.25,false,none,Handysize;Handymax;Supramax;Panamax;Capesize,Thermal and coking/metallurgical coal
+grain,dry_bulk,1.35,false,none,Mini-Bulker;Handysize;Handymax;Supramax;Panamax,Agricultural grain crops including wheat corn and soy
+bauxite,dry_bulk,0.85,false,none,Handysize;Handymax;Supramax;Panamax;Capesize,Aluminum ore bulk cargo
+fertilizer,dry_bulk,1.10,false,none,Mini-Bulker;Handysize;Handymax;Supramax;Panamax,Dry chemical fertilizers (Urea DAP MOP)
+steel_coils,break_bulk,0.35,true,none,Mini-Bulker;Handysize;Handymax;Supramax,Heavy hot/cold rolled steel coils requiring heavy-lift gear or cranes
+steel_plates,break_bulk,0.30,true,none,Mini-Bulker;Handysize;Handymax;Supramax,Structural steel plates and slabs requiring geared handling
+steel_products,break_bulk,0.40,true,none,Mini-Bulker;Handysize;Handymax;Supramax,Finished steel rebar wire rods pipes and shapes
+liquefied_gas,liquid_bulk,1.80,false,gas,none,Specialized gas tanker cargo - incompatible with standard dry bulk vessels
+crude_oil,liquid_bulk,1.15,false,flammable,none,Liquid crude petroleum cargo - incompatible with dry bulk vessels
