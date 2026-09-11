@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 import ScenarioInputs from "../components/simulator/ScenarioInputs";
 import ScenarioComparison from "../components/simulator/ScenarioComparison";
-import WhatIfComparison from "../components/whatif/WhatIfComparison";
+import WhatIfComparison from "../whatif/WhatIfComparison";
 import { getShipment } from "../services/shipmentStorage";
 
 export default function ScenarioSimulator() {

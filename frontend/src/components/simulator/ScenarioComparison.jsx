@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function ScenarioComparison({ scenarioA, scenarioB, onUpdate }) {
-  const [form, setForm] = useState(scenarioB);
-
-  useEffect(() => {
-    setForm(scenarioB);
-  }, [scenarioB]);
+  const [editedScenario, setEditedScenario] = useState(null);
 
   if (!scenarioA || !scenarioB) {
     return null;
   }
+
+  const form = editedScenario || scenarioB;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -19,7 +17,7 @@ function ScenarioComparison({ scenarioA, scenarioB, onUpdate }) {
       [name]: value,
     };
 
-    setForm(updatedScenario);
+    setEditedScenario(updatedScenario);
     onUpdate(updatedScenario);
   };
 
@@ -32,16 +30,11 @@ function ScenarioComparison({ scenarioA, scenarioB, onUpdate }) {
   };
 
   const formatRoute = (scenario) => {
-    return `${scenario.origin} → ${scenario.destination}`;
+    return `${scenario.origin || "—"} → ${scenario.destination || "—"}`;
   };
 
   return (
     <section className="comparison-section">
-
-      {/* =========================
-          SECTION HEADER
-          ========================= */}
-
       <div className="comparison-heading">
         <p className="section-label">WHAT-IF SCENARIO</p>
 
@@ -53,12 +46,7 @@ function ScenarioComparison({ scenarioA, scenarioB, onUpdate }) {
         </p>
       </div>
 
-      {/* =========================
-          SCENARIO B FORM
-          ========================= */}
-
       <div className="comparison-form">
-
         <div className="form-field">
           <label htmlFor="comparison-origin">
             Origin
@@ -174,80 +162,46 @@ function ScenarioComparison({ scenarioA, scenarioB, onUpdate }) {
             </option>
           </select>
         </div>
-
       </div>
 
-      {/* =========================
-          COMPARISON TABLE
-          ========================= */}
-
       <div className="comparison-table">
-
-        {/* TABLE HEADER */}
-
         <div className="comparison-row comparison-header">
           <div>Metric</div>
           <div>Scenario A</div>
           <div>Scenario B</div>
         </div>
 
-        {/* ROUTE */}
-
         <div className="comparison-row">
           <div>Route</div>
 
-          <div>
-            {formatRoute(scenarioA)}
-          </div>
+          <div>{formatRoute(scenarioA)}</div>
 
-          <div>
-            {formatRoute(form)}
-          </div>
+          <div>{formatRoute(form)}</div>
         </div>
-
-        {/* CARGO */}
 
         <div className="comparison-row">
           <div>Cargo</div>
 
-          <div>
-            {scenarioA.cargoType || "—"}
-          </div>
+          <div>{scenarioA.cargoType || "—"}</div>
 
-          <div>
-            {form.cargoType || "—"}
-          </div>
+          <div>{form.cargoType || "—"}</div>
         </div>
-
-        {/* QUANTITY */}
 
         <div className="comparison-row">
           <div>Quantity</div>
 
-          <div>
-            {formatQuantity(scenarioA.quantity)}
-          </div>
+          <div>{formatQuantity(scenarioA.quantity)}</div>
 
-          <div>
-            {formatQuantity(form.quantity)}
-          </div>
+          <div>{formatQuantity(form.quantity)}</div>
         </div>
-
-        {/* URGENCY */}
 
         <div className="comparison-row">
           <div>Urgency</div>
 
-          <div>
-            {scenarioA.urgency || "—"}
-          </div>
+          <div>{scenarioA.urgency || "—"}</div>
 
-          <div>
-            {form.urgency || "—"}
-          </div>
+          <div>{form.urgency || "—"}</div>
         </div>
-
-        {/* CONTRACT DURATION */}
 
         <div className="comparison-row">
           <div>Contract Duration</div>
@@ -265,22 +219,14 @@ function ScenarioComparison({ scenarioA, scenarioB, onUpdate }) {
           </div>
         </div>
 
-        {/* DELIVERY DATE */}
-
         <div className="comparison-row">
           <div>Delivery Date</div>
 
-          <div>
-            {scenarioA.deliveryDate || "—"}
-          </div>
+          <div>{scenarioA.deliveryDate || "—"}</div>
 
-          <div>
-            {form.deliveryDate || "—"}
-          </div>
+          <div>{form.deliveryDate || "—"}</div>
         </div>
-
       </div>
-
     </section>
   );
 }
