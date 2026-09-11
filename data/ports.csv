@@ -1,0 +1,26 @@
+port_name,country,latitude,longitude,max_draft_m,max_length_m,max_beam_m,data_status,source,last_verified
+Paradip,India,20.2644,86.6715,17.1,260.0,48.0,verified,Paradip Port Authority Handbook,2024-06-15
+Visakhapatnam,India,17.6868,83.2185,18.1,300.0,50.0,verified,Visakhapatnam Port Authority Berthing Guidelines,2024-05-10
+Gangavaram,India,17.6186,83.2389,21.0,330.0,55.0,verified,Adani Gangavaram Port Tariff & Vessel Info,2024-07-01
+Gopalpur,India,19.3080,84.9660,14.5,225.0,33.0,verified,Gopalpur Ports Limited Operating Guidelines,2024-04-12
+Dhamra,India,20.8222,86.9745,18.0,300.0,48.0,verified,Adani Dhamra Port Master Plan,2024-06-20
+Haldia,India,22.0257,88.0645,8.5,195.0,32.2,verified,Syama Prasad Mookerjee Port Authority Kolkata,2024-03-30
+Sagar-Sandheads,India,21.6500,88.0833,11.0,230.0,35.0,verified,Syama Prasad Mookerjee Port Deep Water Anchorage,2024-03-30
+Rotterdam,Netherlands,51.9244,4.4777,24.0,400.0,60.0,verified,Port of Rotterdam Authority Vessel Rules,2024-06-01
+Port Hedland,Australia,-20.3167,118.5833,19.5,330.0,55.0,verified,Pilbara Ports Authority Handbook,2024-05-18
+Hay Point,Australia,-21.2833,149.3000,19.0,320.0,55.0,verified,North Queensland Bulk Ports,2024-05-12
+Newcastle,Australia,-32.9167,151.7833,15.2,260.0,47.0,verified,Port Authority of New South Wales,2024-04-20
+Richards Bay,South Africa,-28.8000,32.0833,17.5,315.0,48.0,verified,Transnet Port Terminals,2024-02-15
+Maputo,Mozambique,-25.9692,32.5732,14.2,250.0,36.0,verified,Maputo Port Development Company,2024-03-10
+Tanjung Bara,Indonesia,0.5333,117.6333,16.0,280.0,45.0,verified,PT Kaltim Prima Coal Marine Terminal,2024-01-20
+Samarinda,Indonesia,-0.5022,117.1536,11.5,210.0,32.0,verified,Pelindo IV Port Guidelines,2024-02-28
+Ust-Luga,Russia,59.6833,28.3333,16.5,300.0,48.0,verified,Rosmorport Ust-Luga Harbor Master,2024-04-05
+Vostochny,Russia,42.7333,133.0833,17.5,310.0,50.0,verified,Rosmorport Far East Division,2024-04-10
+Baltimore,United States,39.2904,-76.6122,15.2,365.0,50.0,verified,Maryland Port Administration,2024-06-11
+Norfolk,United States,36.8508,-76.2859,16.8,400.0,55.0,verified,Port of Virginia Harbor Master,2024-05-25
+Singapore,Singapore,1.3521,103.8198,20.0,400.0,60.0,verified,Maritime and Port Authority of Singapore,2024-06-18
+Shanghai,China,31.2304,121.4737,15.5,350.0,50.0,verified,Shanghai International Port Group,2024-05-15
+Qingdao,China,36.0671,120.3826,21.0,400.0,60.0,verified,Qingdao Port Authority,2024-05-20
+Port_Alpha,DemoLand,15.0000,80.0000,13.0,220.0,32.0,estimated,Satellite AIS Estimation,2023-08-10
+Port_Beta,DemoLand,12.0000,75.0000,,200.0,32.0,missing,Unverified Private Berth,2022-01-01
+Port_Gamma,DemoLand,-5.0000,105.0000,10.5,,,demo,Simulation Test Port,2023-01-01

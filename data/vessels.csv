@@ -1,0 +1,7 @@
+vessel_class,min_capacity_tonnes,max_capacity_tonnes,typical_draft_m,typical_length_m,typical_beam_m,avg_speed_knots,supported_cargo,data_status,source
+Handysize,15000,39999,10.0,180.0,28.4,13.0,iron_ore;coal;grain;steel_coils;steel_plates;steel_products;bauxite;fertilizer,verified,BIMCO Standard Dry Bulk Handysize Class 2024
+Handymax,35000,49999,11.5,190.0,30.5,13.5,iron_ore;coal;grain;steel_coils;steel_plates;steel_products;fertilizer,verified,BIMCO Standard Handymax Class Specification
+Supramax,40000,64999,12.8,200.0,32.26,13.5,iron_ore;coal;grain;steel_coils;steel_plates;steel_products;bauxite;fertilizer,verified,Baltic Exchange Supramax-63 / Ultramax Specification
+Panamax,65000,84999,14.5,229.0,32.3,14.0,iron_ore;coal;grain;bauxite;fertilizer,verified,Baltic Exchange Panamax / Kamsarmax Standard 2024
+Capesize,100000,200000,18.2,292.0,45.0,14.5,iron_ore;coal;bauxite,verified,Baltic Exchange Capesize Standard Specification
+Mini-Bulker,5000,14999,7.5,120.0,19.0,11.5,grain;steel_coils;steel_plates;steel_products;fertilizer,estimated,Regional Coastal Shipping Directory
