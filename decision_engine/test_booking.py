@@ -1,46 +1,31 @@
 from booking import make_booking_decision
 
 
-# -----------------------------------
-# Scenario 1: Good option
-# -----------------------------------
+def test_good_booking_option():
+    result = make_booking_decision(
+        decision_score=85,
+        risk_score=25,
+        forecast_score=85
+    )
 
-good_option = make_booking_decision(
-    decision_score=85,
-    risk_score=25,
-    forecast_score=85
-)
-
-print("SCENARIO 1")
-print("--------------------")
-print(good_option)
+    assert result is not None
 
 
-# -----------------------------------
-# Scenario 2: Poor option
-# -----------------------------------
+def test_poor_booking_option():
+    result = make_booking_decision(
+        decision_score=40,
+        risk_score=45,
+        forecast_score=35
+    )
 
-poor_option = make_booking_decision(
-    decision_score=40,
-    risk_score=45,
-    forecast_score=35
-)
-
-print("\nSCENARIO 2")
-print("--------------------")
-print(poor_option)
+    assert result is not None
 
 
-# -----------------------------------
-# Scenario 3: Very high risk
-# -----------------------------------
+def test_high_risk_booking_option():
+    result = make_booking_decision(
+        decision_score=80,
+        risk_score=85,
+        forecast_score=90
+    )
 
-high_risk_option = make_booking_decision(
-    decision_score=80,
-    risk_score=85,
-    forecast_score=90
-)
-
-print("\nSCENARIO 3")
-print("--------------------")
-print(high_risk_option)
+    assert result is not None
