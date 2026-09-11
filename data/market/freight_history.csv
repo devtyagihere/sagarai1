@@ -1,0 +1,1576 @@
+date,origin,destination,cargo_type,vessel_type,freight_rate_usd_mt,bdi,oil_price,commodity_price,distance_nm,data_source
+2023-09-12,Paradip,Rotterdam,iron_ore,Panamax,12.84,1500,80.0,105.0,4800,SYNTHETIC
+2023-09-12,Port Hedland,Qingdao,iron_ore,Capesize,7.76,1500,80.0,105.0,4000,SYNTHETIC
+2023-09-12,Port Hedland,Gangavaram,coal,Capesize,8.49,1500,80.0,140.0,3800,SYNTHETIC
+2023-09-12,Samarinda,Gangavaram,coal,Panamax,10.87,1500,80.0,140.0,2200,SYNTHETIC
+2023-09-12,Samarinda,Shanghai,coal,Supramax,13.53,1500,80.0,140.0,2600,SYNTHETIC
+2023-09-12,Paradip,Rotterdam,grain,Supramax,15.7,1500,80.0,220.0,4800,SYNTHETIC
+2023-09-12,Paradip,Singapore,steel_coils,Handysize,27.22,1500,80.0,220.0,1900,SYNTHETIC
+2023-09-12,Dhamra,Singapore,steel_coils,Handymax,25.31,1500,80.0,220.0,2100,SYNTHETIC
+2023-09-12,Richards Bay,Rotterdam,coal,Panamax,14.47,1500,80.0,140.0,5200,SYNTHETIC
+2023-09-12,Newcastle,Qingdao,coal,Panamax,13.04,1500,80.0,140.0,4200,SYNTHETIC
+2023-09-12,Baltimore,Rotterdam,grain,Handymax,23.38,1500,80.0,220.0,3400,SYNTHETIC
+2023-09-12,Norfolk,Rotterdam,grain,Panamax,18.85,1500,80.0,220.0,3300,SYNTHETIC
+2023-09-12,Paradip,Rotterdam,iron_ore,Handymax,17.52,1500,80.0,105.0,4800,SYNTHETIC
+2023-09-12,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.53,1500,80.0,105.0,4700,SYNTHETIC
+2023-09-12,Port Hedland,Rotterdam,iron_ore,Capesize,6.3,1500,80.0,105.0,8200,SYNTHETIC
+2023-09-19,Paradip,Rotterdam,iron_ore,Panamax,11.06,1422,91.58,93.43,4800,SYNTHETIC
+2023-09-19,Port Hedland,Qingdao,iron_ore,Capesize,6.65,1422,91.58,93.43,4000,SYNTHETIC
+2023-09-19,Port Hedland,Gangavaram,coal,Capesize,7.52,1422,91.58,137.36,3800,SYNTHETIC
+2023-09-19,Samarinda,Gangavaram,coal,Panamax,10.75,1422,91.58,137.36,2200,SYNTHETIC
+2023-09-19,Samarinda,Shanghai,coal,Supramax,13.74,1422,91.58,137.36,2600,SYNTHETIC
+2023-09-19,Paradip,Rotterdam,grain,Supramax,16.1,1422,91.58,221.19,4800,SYNTHETIC
+2023-09-19,Paradip,Singapore,steel_coils,Handysize,24.99,1422,91.58,221.19,1900,SYNTHETIC
+2023-09-19,Dhamra,Singapore,steel_coils,Handymax,23.1,1422,91.58,221.19,2100,SYNTHETIC
+2023-09-19,Richards Bay,Rotterdam,coal,Panamax,13.54,1422,91.58,137.36,5200,SYNTHETIC
+2023-09-19,Newcastle,Qingdao,coal,Panamax,11.42,1422,91.58,137.36,4200,SYNTHETIC
+2023-09-19,Baltimore,Rotterdam,grain,Handymax,21.5,1422,91.58,221.19,3400,SYNTHETIC
+2023-09-19,Norfolk,Rotterdam,grain,Panamax,18.41,1422,91.58,221.19,3300,SYNTHETIC
+2023-09-19,Paradip,Rotterdam,iron_ore,Handymax,16.69,1422,91.58,93.43,4800,SYNTHETIC
+2023-09-19,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.06,1422,91.58,93.43,4700,SYNTHETIC
+2023-09-19,Port Hedland,Rotterdam,iron_ore,Capesize,6.31,1422,91.58,93.43,8200,SYNTHETIC
+2023-09-26,Paradip,Rotterdam,iron_ore,Panamax,12.07,1577,86.86,96.85,4800,SYNTHETIC
+2023-09-26,Port Hedland,Qingdao,iron_ore,Capesize,7.47,1577,86.86,96.85,4000,SYNTHETIC
+2023-09-26,Port Hedland,Gangavaram,coal,Capesize,7.67,1577,86.86,149.79,3800,SYNTHETIC
+2023-09-26,Samarinda,Gangavaram,coal,Panamax,11.97,1577,86.86,149.79,2200,SYNTHETIC
+2023-09-26,Samarinda,Shanghai,coal,Supramax,15.17,1577,86.86,149.79,2600,SYNTHETIC
+2023-09-26,Paradip,Rotterdam,grain,Supramax,16.96,1577,86.86,210.28,4800,SYNTHETIC
+2023-09-26,Paradip,Singapore,steel_coils,Handysize,26.09,1577,86.86,210.28,1900,SYNTHETIC
+2023-09-26,Dhamra,Singapore,steel_coils,Handymax,23.69,1577,86.86,210.28,2100,SYNTHETIC
+2023-09-26,Richards Bay,Rotterdam,coal,Panamax,12.64,1577,86.86,149.79,5200,SYNTHETIC
+2023-09-26,Newcastle,Qingdao,coal,Panamax,13.24,1577,86.86,149.79,4200,SYNTHETIC
+2023-09-26,Baltimore,Rotterdam,grain,Handymax,21.59,1577,86.86,210.28,3400,SYNTHETIC
+2023-09-26,Norfolk,Rotterdam,grain,Panamax,18.51,1577,86.86,210.28,3300,SYNTHETIC
+2023-09-26,Paradip,Rotterdam,iron_ore,Handymax,18.49,1577,86.86,96.85,4800,SYNTHETIC
+2023-09-26,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.42,1577,86.86,96.85,4700,SYNTHETIC
+2023-09-26,Port Hedland,Rotterdam,iron_ore,Capesize,6.68,1577,86.86,96.85,8200,SYNTHETIC
+2023-10-03,Paradip,Rotterdam,iron_ore,Panamax,11.37,1594,87.14,110.82,4800,SYNTHETIC
+2023-10-03,Port Hedland,Qingdao,iron_ore,Capesize,7.53,1594,87.14,110.82,4000,SYNTHETIC
+2023-10-03,Port Hedland,Gangavaram,coal,Capesize,8.68,1594,87.14,148.23,3800,SYNTHETIC
+2023-10-03,Samarinda,Gangavaram,coal,Panamax,11.94,1594,87.14,148.23,2200,SYNTHETIC
+2023-10-03,Samarinda,Shanghai,coal,Supramax,15.32,1594,87.14,148.23,2600,SYNTHETIC
+2023-10-03,Paradip,Rotterdam,grain,Supramax,17.17,1594,87.14,231.15,4800,SYNTHETIC
+2023-10-03,Paradip,Singapore,steel_coils,Handysize,30.27,1594,87.14,231.15,1900,SYNTHETIC
+2023-10-03,Dhamra,Singapore,steel_coils,Handymax,25.28,1594,87.14,231.15,2100,SYNTHETIC
+2023-10-03,Richards Bay,Rotterdam,coal,Panamax,13.25,1594,87.14,148.23,5200,SYNTHETIC
+2023-10-03,Newcastle,Qingdao,coal,Panamax,12.07,1594,87.14,148.23,4200,SYNTHETIC
+2023-10-03,Baltimore,Rotterdam,grain,Handymax,21.06,1594,87.14,231.15,3400,SYNTHETIC
+2023-10-03,Norfolk,Rotterdam,grain,Panamax,18.84,1594,87.14,231.15,3300,SYNTHETIC
+2023-10-03,Paradip,Rotterdam,iron_ore,Handymax,18.48,1594,87.14,110.82,4800,SYNTHETIC
+2023-10-03,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.41,1594,87.14,110.82,4700,SYNTHETIC
+2023-10-03,Port Hedland,Rotterdam,iron_ore,Capesize,6.6,1594,87.14,110.82,8200,SYNTHETIC
+2023-10-10,Paradip,Rotterdam,iron_ore,Panamax,11.29,1587,95.18,104.76,4800,SYNTHETIC
+2023-10-10,Port Hedland,Qingdao,iron_ore,Capesize,7.86,1587,95.18,104.76,4000,SYNTHETIC
+2023-10-10,Port Hedland,Gangavaram,coal,Capesize,7.75,1587,95.18,140.95,3800,SYNTHETIC
+2023-10-10,Samarinda,Gangavaram,coal,Panamax,11.31,1587,95.18,140.95,2200,SYNTHETIC
+2023-10-10,Samarinda,Shanghai,coal,Supramax,14.11,1587,95.18,140.95,2600,SYNTHETIC
+2023-10-10,Paradip,Rotterdam,grain,Supramax,16.97,1587,95.18,241.97,4800,SYNTHETIC
+2023-10-10,Paradip,Singapore,steel_coils,Handysize,26.52,1587,95.18,241.97,1900,SYNTHETIC
+2023-10-10,Dhamra,Singapore,steel_coils,Handymax,23.8,1587,95.18,241.97,2100,SYNTHETIC
+2023-10-10,Richards Bay,Rotterdam,coal,Panamax,12.67,1587,95.18,140.95,5200,SYNTHETIC
+2023-10-10,Newcastle,Qingdao,coal,Panamax,12.83,1587,95.18,140.95,4200,SYNTHETIC
+2023-10-10,Baltimore,Rotterdam,grain,Handymax,21.1,1587,95.18,241.97,3400,SYNTHETIC
+2023-10-10,Norfolk,Rotterdam,grain,Panamax,17.65,1587,95.18,241.97,3300,SYNTHETIC
+2023-10-10,Paradip,Rotterdam,iron_ore,Handymax,18.74,1587,95.18,104.76,4800,SYNTHETIC
+2023-10-10,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.82,1587,95.18,104.76,4700,SYNTHETIC
+2023-10-10,Port Hedland,Rotterdam,iron_ore,Capesize,6.08,1587,95.18,104.76,8200,SYNTHETIC
+2023-10-17,Paradip,Rotterdam,iron_ore,Panamax,10.02,1158,93.18,104.37,4800,SYNTHETIC
+2023-10-17,Port Hedland,Qingdao,iron_ore,Capesize,6.55,1158,93.18,104.37,4000,SYNTHETIC
+2023-10-17,Port Hedland,Gangavaram,coal,Capesize,6.38,1158,93.18,132.23,3800,SYNTHETIC
+2023-10-17,Samarinda,Gangavaram,coal,Panamax,9.92,1158,93.18,132.23,2200,SYNTHETIC
+2023-10-17,Samarinda,Shanghai,coal,Supramax,12.57,1158,93.18,132.23,2600,SYNTHETIC
+2023-10-17,Paradip,Rotterdam,grain,Supramax,14.08,1158,93.18,253.24,4800,SYNTHETIC
+2023-10-17,Paradip,Singapore,steel_coils,Handysize,22.57,1158,93.18,253.24,1900,SYNTHETIC
+2023-10-17,Dhamra,Singapore,steel_coils,Handymax,19.47,1158,93.18,253.24,2100,SYNTHETIC
+2023-10-17,Richards Bay,Rotterdam,coal,Panamax,11.35,1158,93.18,132.23,5200,SYNTHETIC
+2023-10-17,Newcastle,Qingdao,coal,Panamax,11.22,1158,93.18,132.23,4200,SYNTHETIC
+2023-10-17,Baltimore,Rotterdam,grain,Handymax,17.44,1158,93.18,253.24,3400,SYNTHETIC
+2023-10-17,Norfolk,Rotterdam,grain,Panamax,14.7,1158,93.18,253.24,3300,SYNTHETIC
+2023-10-17,Paradip,Rotterdam,iron_ore,Handymax,15.27,1158,93.18,104.37,4800,SYNTHETIC
+2023-10-17,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.93,1158,93.18,104.37,4700,SYNTHETIC
+2023-10-17,Port Hedland,Rotterdam,iron_ore,Capesize,5.13,1158,93.18,104.37,8200,SYNTHETIC
+2023-10-24,Paradip,Rotterdam,iron_ore,Panamax,10.65,1197,91.98,98.43,4800,SYNTHETIC
+2023-10-24,Port Hedland,Qingdao,iron_ore,Capesize,6.84,1197,91.98,98.43,4000,SYNTHETIC
+2023-10-24,Port Hedland,Gangavaram,coal,Capesize,7.36,1197,91.98,114.78,3800,SYNTHETIC
+2023-10-24,Samarinda,Gangavaram,coal,Panamax,9.88,1197,91.98,114.78,2200,SYNTHETIC
+2023-10-24,Samarinda,Shanghai,coal,Supramax,12.25,1197,91.98,114.78,2600,SYNTHETIC
+2023-10-24,Paradip,Rotterdam,grain,Supramax,14.1,1197,91.98,264.91,4800,SYNTHETIC
+2023-10-24,Paradip,Singapore,steel_coils,Handysize,23.64,1197,91.98,264.91,1900,SYNTHETIC
+2023-10-24,Dhamra,Singapore,steel_coils,Handymax,21.39,1197,91.98,264.91,2100,SYNTHETIC
+2023-10-24,Richards Bay,Rotterdam,coal,Panamax,12.06,1197,91.98,114.78,5200,SYNTHETIC
+2023-10-24,Newcastle,Qingdao,coal,Panamax,10.56,1197,91.98,114.78,4200,SYNTHETIC
+2023-10-24,Baltimore,Rotterdam,grain,Handymax,19.37,1197,91.98,264.91,3400,SYNTHETIC
+2023-10-24,Norfolk,Rotterdam,grain,Panamax,16.09,1197,91.98,264.91,3300,SYNTHETIC
+2023-10-24,Paradip,Rotterdam,iron_ore,Handymax,16.38,1197,91.98,98.43,4800,SYNTHETIC
+2023-10-24,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.29,1197,91.98,98.43,4700,SYNTHETIC
+2023-10-24,Port Hedland,Rotterdam,iron_ore,Capesize,5.35,1197,91.98,98.43,8200,SYNTHETIC
+2023-10-31,Paradip,Rotterdam,iron_ore,Panamax,10.64,1426,93.94,86.23,4800,SYNTHETIC
+2023-10-31,Port Hedland,Qingdao,iron_ore,Capesize,6.62,1426,93.94,86.23,4000,SYNTHETIC
+2023-10-31,Port Hedland,Gangavaram,coal,Capesize,7.06,1426,93.94,110.08,3800,SYNTHETIC
+2023-10-31,Samarinda,Gangavaram,coal,Panamax,10.8,1426,93.94,110.08,2200,SYNTHETIC
+2023-10-31,Samarinda,Shanghai,coal,Supramax,14.16,1426,93.94,110.08,2600,SYNTHETIC
+2023-10-31,Paradip,Rotterdam,grain,Supramax,15.71,1426,93.94,237.53,4800,SYNTHETIC
+2023-10-31,Paradip,Singapore,steel_coils,Handysize,24.84,1426,93.94,237.53,1900,SYNTHETIC
+2023-10-31,Dhamra,Singapore,steel_coils,Handymax,22.2,1426,93.94,237.53,2100,SYNTHETIC
+2023-10-31,Richards Bay,Rotterdam,coal,Panamax,13.48,1426,93.94,110.08,5200,SYNTHETIC
+2023-10-31,Newcastle,Qingdao,coal,Panamax,12.67,1426,93.94,110.08,4200,SYNTHETIC
+2023-10-31,Baltimore,Rotterdam,grain,Handymax,21.05,1426,93.94,237.53,3400,SYNTHETIC
+2023-10-31,Norfolk,Rotterdam,grain,Panamax,16.09,1426,93.94,237.53,3300,SYNTHETIC
+2023-10-31,Paradip,Rotterdam,iron_ore,Handymax,15.82,1426,93.94,86.23,4800,SYNTHETIC
+2023-10-31,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.88,1426,93.94,86.23,4700,SYNTHETIC
+2023-10-31,Port Hedland,Rotterdam,iron_ore,Capesize,6.48,1426,93.94,86.23,8200,SYNTHETIC
+2023-11-07,Paradip,Rotterdam,iron_ore,Panamax,12.34,1401,80.76,77.74,4800,SYNTHETIC
+2023-11-07,Port Hedland,Qingdao,iron_ore,Capesize,6.96,1401,80.76,77.74,4000,SYNTHETIC
+2023-11-07,Port Hedland,Gangavaram,coal,Capesize,7.48,1401,80.76,97.35,3800,SYNTHETIC
+2023-11-07,Samarinda,Gangavaram,coal,Panamax,10.81,1401,80.76,97.35,2200,SYNTHETIC
+2023-11-07,Samarinda,Shanghai,coal,Supramax,14.01,1401,80.76,97.35,2600,SYNTHETIC
+2023-11-07,Paradip,Rotterdam,grain,Supramax,15.33,1401,80.76,220.97,4800,SYNTHETIC
+2023-11-07,Paradip,Singapore,steel_coils,Handysize,27.18,1401,80.76,220.97,1900,SYNTHETIC
+2023-11-07,Dhamra,Singapore,steel_coils,Handymax,21.9,1401,80.76,220.97,2100,SYNTHETIC
+2023-11-07,Richards Bay,Rotterdam,coal,Panamax,12.68,1401,80.76,97.35,5200,SYNTHETIC
+2023-11-07,Newcastle,Qingdao,coal,Panamax,12.01,1401,80.76,97.35,4200,SYNTHETIC
+2023-11-07,Baltimore,Rotterdam,grain,Handymax,20.88,1401,80.76,220.97,3400,SYNTHETIC
+2023-11-07,Norfolk,Rotterdam,grain,Panamax,16.67,1401,80.76,220.97,3300,SYNTHETIC
+2023-11-07,Paradip,Rotterdam,iron_ore,Handymax,18.41,1401,80.76,77.74,4800,SYNTHETIC
+2023-11-07,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.58,1401,80.76,77.74,4700,SYNTHETIC
+2023-11-07,Port Hedland,Rotterdam,iron_ore,Capesize,6.21,1401,80.76,77.74,8200,SYNTHETIC
+2023-11-14,Paradip,Rotterdam,iron_ore,Panamax,12.07,1652,101.25,91.91,4800,SYNTHETIC
+2023-11-14,Port Hedland,Qingdao,iron_ore,Capesize,7.72,1652,101.25,91.91,4000,SYNTHETIC
+2023-11-14,Port Hedland,Gangavaram,coal,Capesize,7.65,1652,101.25,88.45,3800,SYNTHETIC
+2023-11-14,Samarinda,Gangavaram,coal,Panamax,11.44,1652,101.25,88.45,2200,SYNTHETIC
+2023-11-14,Samarinda,Shanghai,coal,Supramax,14.87,1652,101.25,88.45,2600,SYNTHETIC
+2023-11-14,Paradip,Rotterdam,grain,Supramax,16.74,1652,101.25,209.68,4800,SYNTHETIC
+2023-11-14,Paradip,Singapore,steel_coils,Handysize,28.82,1652,101.25,209.68,1900,SYNTHETIC
+2023-11-14,Dhamra,Singapore,steel_coils,Handymax,23.57,1652,101.25,209.68,2100,SYNTHETIC
+2023-11-14,Richards Bay,Rotterdam,coal,Panamax,14.75,1652,101.25,88.45,5200,SYNTHETIC
+2023-11-14,Newcastle,Qingdao,coal,Panamax,11.9,1652,101.25,88.45,4200,SYNTHETIC
+2023-11-14,Baltimore,Rotterdam,grain,Handymax,24.06,1652,101.25,209.68,3400,SYNTHETIC
+2023-11-14,Norfolk,Rotterdam,grain,Panamax,19.36,1652,101.25,209.68,3300,SYNTHETIC
+2023-11-14,Paradip,Rotterdam,iron_ore,Handymax,18.17,1652,101.25,91.91,4800,SYNTHETIC
+2023-11-14,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.33,1652,101.25,91.91,4700,SYNTHETIC
+2023-11-14,Port Hedland,Rotterdam,iron_ore,Capesize,6.58,1652,101.25,91.91,8200,SYNTHETIC
+2023-11-21,Paradip,Rotterdam,iron_ore,Panamax,12.58,1606,89.93,109.23,4800,SYNTHETIC
+2023-11-21,Port Hedland,Qingdao,iron_ore,Capesize,7.46,1606,89.93,109.23,4000,SYNTHETIC
+2023-11-21,Port Hedland,Gangavaram,coal,Capesize,8.75,1606,89.93,96.02,3800,SYNTHETIC
+2023-11-21,Samarinda,Gangavaram,coal,Panamax,10.87,1606,89.93,96.02,2200,SYNTHETIC
+2023-11-21,Samarinda,Shanghai,coal,Supramax,14.96,1606,89.93,96.02,2600,SYNTHETIC
+2023-11-21,Paradip,Rotterdam,grain,Supramax,15.49,1606,89.93,205.05,4800,SYNTHETIC
+2023-11-21,Paradip,Singapore,steel_coils,Handysize,29.48,1606,89.93,205.05,1900,SYNTHETIC
+2023-11-21,Dhamra,Singapore,steel_coils,Handymax,25.57,1606,89.93,205.05,2100,SYNTHETIC
+2023-11-21,Richards Bay,Rotterdam,coal,Panamax,14.14,1606,89.93,96.02,5200,SYNTHETIC
+2023-11-21,Newcastle,Qingdao,coal,Panamax,11.78,1606,89.93,96.02,4200,SYNTHETIC
+2023-11-21,Baltimore,Rotterdam,grain,Handymax,23.64,1606,89.93,205.05,3400,SYNTHETIC
+2023-11-21,Norfolk,Rotterdam,grain,Panamax,17.81,1606,89.93,205.05,3300,SYNTHETIC
+2023-11-21,Paradip,Rotterdam,iron_ore,Handymax,18.23,1606,89.93,109.23,4800,SYNTHETIC
+2023-11-21,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.47,1606,89.93,109.23,4700,SYNTHETIC
+2023-11-21,Port Hedland,Rotterdam,iron_ore,Capesize,7.11,1606,89.93,109.23,8200,SYNTHETIC
+2023-11-28,Paradip,Rotterdam,iron_ore,Panamax,13.23,1752,83.91,112.3,4800,SYNTHETIC
+2023-11-28,Port Hedland,Qingdao,iron_ore,Capesize,8.51,1752,83.91,112.3,4000,SYNTHETIC
+2023-11-28,Port Hedland,Gangavaram,coal,Capesize,9.27,1752,83.91,114.41,3800,SYNTHETIC
+2023-11-28,Samarinda,Gangavaram,coal,Panamax,11.91,1752,83.91,114.41,2200,SYNTHETIC
+2023-11-28,Samarinda,Shanghai,coal,Supramax,14.66,1752,83.91,114.41,2600,SYNTHETIC
+2023-11-28,Paradip,Rotterdam,grain,Supramax,17.69,1752,83.91,215.08,4800,SYNTHETIC
+2023-11-28,Paradip,Singapore,steel_coils,Handysize,32.46,1752,83.91,215.08,1900,SYNTHETIC
+2023-11-28,Dhamra,Singapore,steel_coils,Handymax,26.86,1752,83.91,215.08,2100,SYNTHETIC
+2023-11-28,Richards Bay,Rotterdam,coal,Panamax,14.26,1752,83.91,114.41,5200,SYNTHETIC
+2023-11-28,Newcastle,Qingdao,coal,Panamax,13.49,1752,83.91,114.41,4200,SYNTHETIC
+2023-11-28,Baltimore,Rotterdam,grain,Handymax,22.82,1752,83.91,215.08,3400,SYNTHETIC
+2023-11-28,Norfolk,Rotterdam,grain,Panamax,20.51,1752,83.91,215.08,3300,SYNTHETIC
+2023-11-28,Paradip,Rotterdam,iron_ore,Handymax,18.4,1752,83.91,112.3,4800,SYNTHETIC
+2023-11-28,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.2,1752,83.91,112.3,4700,SYNTHETIC
+2023-11-28,Port Hedland,Rotterdam,iron_ore,Capesize,6.87,1752,83.91,112.3,8200,SYNTHETIC
+2023-12-05,Paradip,Rotterdam,iron_ore,Panamax,10.74,1410,85.37,101.07,4800,SYNTHETIC
+2023-12-05,Port Hedland,Qingdao,iron_ore,Capesize,7.42,1410,85.37,101.07,4000,SYNTHETIC
+2023-12-05,Port Hedland,Gangavaram,coal,Capesize,7.71,1410,85.37,108.4,3800,SYNTHETIC
+2023-12-05,Samarinda,Gangavaram,coal,Panamax,10.98,1410,85.37,108.4,2200,SYNTHETIC
+2023-12-05,Samarinda,Shanghai,coal,Supramax,14.07,1410,85.37,108.4,2600,SYNTHETIC
+2023-12-05,Paradip,Rotterdam,grain,Supramax,15.74,1410,85.37,222.55,4800,SYNTHETIC
+2023-12-05,Paradip,Singapore,steel_coils,Handysize,26.46,1410,85.37,222.55,1900,SYNTHETIC
+2023-12-05,Dhamra,Singapore,steel_coils,Handymax,21.61,1410,85.37,222.55,2100,SYNTHETIC
+2023-12-05,Richards Bay,Rotterdam,coal,Panamax,12.1,1410,85.37,108.4,5200,SYNTHETIC
+2023-12-05,Newcastle,Qingdao,coal,Panamax,12.27,1410,85.37,108.4,4200,SYNTHETIC
+2023-12-05,Baltimore,Rotterdam,grain,Handymax,20.23,1410,85.37,222.55,3400,SYNTHETIC
+2023-12-05,Norfolk,Rotterdam,grain,Panamax,16.6,1410,85.37,222.55,3300,SYNTHETIC
+2023-12-05,Paradip,Rotterdam,iron_ore,Handymax,16.36,1410,85.37,101.07,4800,SYNTHETIC
+2023-12-05,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.37,1410,85.37,101.07,4700,SYNTHETIC
+2023-12-05,Port Hedland,Rotterdam,iron_ore,Capesize,6.42,1410,85.37,101.07,8200,SYNTHETIC
+2023-12-12,Paradip,Rotterdam,iron_ore,Panamax,11.27,1620,90.32,106.54,4800,SYNTHETIC
+2023-12-12,Port Hedland,Qingdao,iron_ore,Capesize,7.92,1620,90.32,106.54,4000,SYNTHETIC
+2023-12-12,Port Hedland,Gangavaram,coal,Capesize,8.26,1620,90.32,90.84,3800,SYNTHETIC
+2023-12-12,Samarinda,Gangavaram,coal,Panamax,11.53,1620,90.32,90.84,2200,SYNTHETIC
+2023-12-12,Samarinda,Shanghai,coal,Supramax,15.39,1620,90.32,90.84,2600,SYNTHETIC
+2023-12-12,Paradip,Rotterdam,grain,Supramax,15.39,1620,90.32,210.1,4800,SYNTHETIC
+2023-12-12,Paradip,Singapore,steel_coils,Handysize,30.6,1620,90.32,210.1,1900,SYNTHETIC
+2023-12-12,Dhamra,Singapore,steel_coils,Handymax,24.18,1620,90.32,210.1,2100,SYNTHETIC
+2023-12-12,Richards Bay,Rotterdam,coal,Panamax,14.52,1620,90.32,90.84,5200,SYNTHETIC
+2023-12-12,Newcastle,Qingdao,coal,Panamax,13.61,1620,90.32,90.84,4200,SYNTHETIC
+2023-12-12,Baltimore,Rotterdam,grain,Handymax,20.98,1620,90.32,210.1,3400,SYNTHETIC
+2023-12-12,Norfolk,Rotterdam,grain,Panamax,20.29,1620,90.32,210.1,3300,SYNTHETIC
+2023-12-12,Paradip,Rotterdam,iron_ore,Handymax,17.41,1620,90.32,106.54,4800,SYNTHETIC
+2023-12-12,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.83,1620,90.32,106.54,4700,SYNTHETIC
+2023-12-12,Port Hedland,Rotterdam,iron_ore,Capesize,7.14,1620,90.32,106.54,8200,SYNTHETIC
+2023-12-19,Paradip,Rotterdam,iron_ore,Panamax,13.35,1791,84.65,105.37,4800,SYNTHETIC
+2023-12-19,Port Hedland,Qingdao,iron_ore,Capesize,8.27,1791,84.65,105.37,4000,SYNTHETIC
+2023-12-19,Port Hedland,Gangavaram,coal,Capesize,9.35,1791,84.65,87.14,3800,SYNTHETIC
+2023-12-19,Samarinda,Gangavaram,coal,Panamax,12.2,1791,84.65,87.14,2200,SYNTHETIC
+2023-12-19,Samarinda,Shanghai,coal,Supramax,14.98,1791,84.65,87.14,2600,SYNTHETIC
+2023-12-19,Paradip,Rotterdam,grain,Supramax,16.09,1791,84.65,228.56,4800,SYNTHETIC
+2023-12-19,Paradip,Singapore,steel_coils,Handysize,29.17,1791,84.65,228.56,1900,SYNTHETIC
+2023-12-19,Dhamra,Singapore,steel_coils,Handymax,26.03,1791,84.65,228.56,2100,SYNTHETIC
+2023-12-19,Richards Bay,Rotterdam,coal,Panamax,15.11,1791,84.65,87.14,5200,SYNTHETIC
+2023-12-19,Newcastle,Qingdao,coal,Panamax,14.57,1791,84.65,87.14,4200,SYNTHETIC
+2023-12-19,Baltimore,Rotterdam,grain,Handymax,24.49,1791,84.65,228.56,3400,SYNTHETIC
+2023-12-19,Norfolk,Rotterdam,grain,Panamax,19.7,1791,84.65,228.56,3300,SYNTHETIC
+2023-12-19,Paradip,Rotterdam,iron_ore,Handymax,20.16,1791,84.65,105.37,4800,SYNTHETIC
+2023-12-19,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.23,1791,84.65,105.37,4700,SYNTHETIC
+2023-12-19,Port Hedland,Rotterdam,iron_ore,Capesize,7.24,1791,84.65,105.37,8200,SYNTHETIC
+2023-12-26,Paradip,Rotterdam,iron_ore,Panamax,13.8,1823,82.44,106.66,4800,SYNTHETIC
+2023-12-26,Port Hedland,Qingdao,iron_ore,Capesize,8.74,1823,82.44,106.66,4000,SYNTHETIC
+2023-12-26,Port Hedland,Gangavaram,coal,Capesize,9.02,1823,82.44,102.16,3800,SYNTHETIC
+2023-12-26,Samarinda,Gangavaram,coal,Panamax,11.68,1823,82.44,102.16,2200,SYNTHETIC
+2023-12-26,Samarinda,Shanghai,coal,Supramax,15.79,1823,82.44,102.16,2600,SYNTHETIC
+2023-12-26,Paradip,Rotterdam,grain,Supramax,17.24,1823,82.44,238.77,4800,SYNTHETIC
+2023-12-26,Paradip,Singapore,steel_coils,Handysize,28.96,1823,82.44,238.77,1900,SYNTHETIC
+2023-12-26,Dhamra,Singapore,steel_coils,Handymax,24.66,1823,82.44,238.77,2100,SYNTHETIC
+2023-12-26,Richards Bay,Rotterdam,coal,Panamax,14.84,1823,82.44,102.16,5200,SYNTHETIC
+2023-12-26,Newcastle,Qingdao,coal,Panamax,14.14,1823,82.44,102.16,4200,SYNTHETIC
+2023-12-26,Baltimore,Rotterdam,grain,Handymax,24.26,1823,82.44,238.77,3400,SYNTHETIC
+2023-12-26,Norfolk,Rotterdam,grain,Panamax,18.82,1823,82.44,238.77,3300,SYNTHETIC
+2023-12-26,Paradip,Rotterdam,iron_ore,Handymax,20.05,1823,82.44,106.66,4800,SYNTHETIC
+2023-12-26,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.92,1823,82.44,106.66,4700,SYNTHETIC
+2023-12-26,Port Hedland,Rotterdam,iron_ore,Capesize,6.9,1823,82.44,106.66,8200,SYNTHETIC
+2024-01-02,Paradip,Rotterdam,iron_ore,Panamax,13.78,1840,83.44,122.09,4800,SYNTHETIC
+2024-01-02,Port Hedland,Qingdao,iron_ore,Capesize,8.68,1840,83.44,122.09,4000,SYNTHETIC
+2024-01-02,Port Hedland,Gangavaram,coal,Capesize,8.39,1840,83.44,122.17,3800,SYNTHETIC
+2024-01-02,Samarinda,Gangavaram,coal,Panamax,12.12,1840,83.44,122.17,2200,SYNTHETIC
+2024-01-02,Samarinda,Shanghai,coal,Supramax,15.83,1840,83.44,122.17,2600,SYNTHETIC
+2024-01-02,Paradip,Rotterdam,grain,Supramax,17.49,1840,83.44,264.53,4800,SYNTHETIC
+2024-01-02,Paradip,Singapore,steel_coils,Handysize,31.29,1840,83.44,264.53,1900,SYNTHETIC
+2024-01-02,Dhamra,Singapore,steel_coils,Handymax,24.82,1840,83.44,264.53,2100,SYNTHETIC
+2024-01-02,Richards Bay,Rotterdam,coal,Panamax,13.88,1840,83.44,122.17,5200,SYNTHETIC
+2024-01-02,Newcastle,Qingdao,coal,Panamax,14.72,1840,83.44,122.17,4200,SYNTHETIC
+2024-01-02,Baltimore,Rotterdam,grain,Handymax,25.46,1840,83.44,264.53,3400,SYNTHETIC
+2024-01-02,Norfolk,Rotterdam,grain,Panamax,19.41,1840,83.44,264.53,3300,SYNTHETIC
+2024-01-02,Paradip,Rotterdam,iron_ore,Handymax,20.89,1840,83.44,122.09,4800,SYNTHETIC
+2024-01-02,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.75,1840,83.44,122.09,4700,SYNTHETIC
+2024-01-02,Port Hedland,Rotterdam,iron_ore,Capesize,7.25,1840,83.44,122.09,8200,SYNTHETIC
+2024-01-09,Paradip,Rotterdam,iron_ore,Panamax,13.26,1816,82.41,124.94,4800,SYNTHETIC
+2024-01-09,Port Hedland,Qingdao,iron_ore,Capesize,8.65,1816,82.41,124.94,4000,SYNTHETIC
+2024-01-09,Port Hedland,Gangavaram,coal,Capesize,8.77,1816,82.41,106.96,3800,SYNTHETIC
+2024-01-09,Samarinda,Gangavaram,coal,Panamax,12.12,1816,82.41,106.96,2200,SYNTHETIC
+2024-01-09,Samarinda,Shanghai,coal,Supramax,15.59,1816,82.41,106.96,2600,SYNTHETIC
+2024-01-09,Paradip,Rotterdam,grain,Supramax,18.18,1816,82.41,244.94,4800,SYNTHETIC
+2024-01-09,Paradip,Singapore,steel_coils,Handysize,32.19,1816,82.41,244.94,1900,SYNTHETIC
+2024-01-09,Dhamra,Singapore,steel_coils,Handymax,24.78,1816,82.41,244.94,2100,SYNTHETIC
+2024-01-09,Richards Bay,Rotterdam,coal,Panamax,15.43,1816,82.41,106.96,5200,SYNTHETIC
+2024-01-09,Newcastle,Qingdao,coal,Panamax,14.76,1816,82.41,106.96,4200,SYNTHETIC
+2024-01-09,Baltimore,Rotterdam,grain,Handymax,25.71,1816,82.41,244.94,3400,SYNTHETIC
+2024-01-09,Norfolk,Rotterdam,grain,Panamax,19.29,1816,82.41,244.94,3300,SYNTHETIC
+2024-01-09,Paradip,Rotterdam,iron_ore,Handymax,20.09,1816,82.41,124.94,4800,SYNTHETIC
+2024-01-09,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.03,1816,82.41,124.94,4700,SYNTHETIC
+2024-01-09,Port Hedland,Rotterdam,iron_ore,Capesize,7.2,1816,82.41,124.94,8200,SYNTHETIC
+2024-01-16,Paradip,Rotterdam,iron_ore,Panamax,13.15,1643,78.71,116.1,4800,SYNTHETIC
+2024-01-16,Port Hedland,Qingdao,iron_ore,Capesize,7.37,1643,78.71,116.1,4000,SYNTHETIC
+2024-01-16,Port Hedland,Gangavaram,coal,Capesize,7.87,1643,78.71,121.01,3800,SYNTHETIC
+2024-01-16,Samarinda,Gangavaram,coal,Panamax,10.96,1643,78.71,121.01,2200,SYNTHETIC
+2024-01-16,Samarinda,Shanghai,coal,Supramax,13.85,1643,78.71,121.01,2600,SYNTHETIC
+2024-01-16,Paradip,Rotterdam,grain,Supramax,16.9,1643,78.71,252.2,4800,SYNTHETIC
+2024-01-16,Paradip,Singapore,steel_coils,Handysize,30.93,1643,78.71,252.2,1900,SYNTHETIC
+2024-01-16,Dhamra,Singapore,steel_coils,Handymax,23.23,1643,78.71,252.2,2100,SYNTHETIC
+2024-01-16,Richards Bay,Rotterdam,coal,Panamax,15.2,1643,78.71,121.01,5200,SYNTHETIC
+2024-01-16,Newcastle,Qingdao,coal,Panamax,13.09,1643,78.71,121.01,4200,SYNTHETIC
+2024-01-16,Baltimore,Rotterdam,grain,Handymax,22.51,1643,78.71,252.2,3400,SYNTHETIC
+2024-01-16,Norfolk,Rotterdam,grain,Panamax,19.49,1643,78.71,252.2,3300,SYNTHETIC
+2024-01-16,Paradip,Rotterdam,iron_ore,Handymax,18.59,1643,78.71,116.1,4800,SYNTHETIC
+2024-01-16,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.0,1643,78.71,116.1,4700,SYNTHETIC
+2024-01-16,Port Hedland,Rotterdam,iron_ore,Capesize,6.25,1643,78.71,116.1,8200,SYNTHETIC
+2024-01-23,Paradip,Rotterdam,iron_ore,Panamax,13.22,1944,84.0,108.13,4800,SYNTHETIC
+2024-01-23,Port Hedland,Qingdao,iron_ore,Capesize,9.14,1944,84.0,108.13,4000,SYNTHETIC
+2024-01-23,Port Hedland,Gangavaram,coal,Capesize,9.13,1944,84.0,144.27,3800,SYNTHETIC
+2024-01-23,Samarinda,Gangavaram,coal,Panamax,13.08,1944,84.0,144.27,2200,SYNTHETIC
+2024-01-23,Samarinda,Shanghai,coal,Supramax,16.34,1944,84.0,144.27,2600,SYNTHETIC
+2024-01-23,Paradip,Rotterdam,grain,Supramax,18.05,1944,84.0,234.97,4800,SYNTHETIC
+2024-01-23,Paradip,Singapore,steel_coils,Handysize,32.26,1944,84.0,234.97,1900,SYNTHETIC
+2024-01-23,Dhamra,Singapore,steel_coils,Handymax,28.16,1944,84.0,234.97,2100,SYNTHETIC
+2024-01-23,Richards Bay,Rotterdam,coal,Panamax,15.42,1944,84.0,144.27,5200,SYNTHETIC
+2024-01-23,Newcastle,Qingdao,coal,Panamax,15.33,1944,84.0,144.27,4200,SYNTHETIC
+2024-01-23,Baltimore,Rotterdam,grain,Handymax,24.44,1944,84.0,234.97,3400,SYNTHETIC
+2024-01-23,Norfolk,Rotterdam,grain,Panamax,21.18,1944,84.0,234.97,3300,SYNTHETIC
+2024-01-23,Paradip,Rotterdam,iron_ore,Handymax,19.53,1944,84.0,108.13,4800,SYNTHETIC
+2024-01-23,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.31,1944,84.0,108.13,4700,SYNTHETIC
+2024-01-23,Port Hedland,Rotterdam,iron_ore,Capesize,7.78,1944,84.0,108.13,8200,SYNTHETIC
+2024-01-30,Paradip,Rotterdam,iron_ore,Panamax,13.06,1985,92.4,99.09,4800,SYNTHETIC
+2024-01-30,Port Hedland,Qingdao,iron_ore,Capesize,8.1,1985,92.4,99.09,4000,SYNTHETIC
+2024-01-30,Port Hedland,Gangavaram,coal,Capesize,8.8,1985,92.4,158.26,3800,SYNTHETIC
+2024-01-30,Samarinda,Gangavaram,coal,Panamax,13.16,1985,92.4,158.26,2200,SYNTHETIC
+2024-01-30,Samarinda,Shanghai,coal,Supramax,17.07,1985,92.4,158.26,2600,SYNTHETIC
+2024-01-30,Paradip,Rotterdam,grain,Supramax,18.48,1985,92.4,222.68,4800,SYNTHETIC
+2024-01-30,Paradip,Singapore,steel_coils,Handysize,30.37,1985,92.4,222.68,1900,SYNTHETIC
+2024-01-30,Dhamra,Singapore,steel_coils,Handymax,26.65,1985,92.4,222.68,2100,SYNTHETIC
+2024-01-30,Richards Bay,Rotterdam,coal,Panamax,14.43,1985,92.4,158.26,5200,SYNTHETIC
+2024-01-30,Newcastle,Qingdao,coal,Panamax,14.48,1985,92.4,158.26,4200,SYNTHETIC
+2024-01-30,Baltimore,Rotterdam,grain,Handymax,23.29,1985,92.4,222.68,3400,SYNTHETIC
+2024-01-30,Norfolk,Rotterdam,grain,Panamax,20.2,1985,92.4,222.68,3300,SYNTHETIC
+2024-01-30,Paradip,Rotterdam,iron_ore,Handymax,20.07,1985,92.4,99.09,4800,SYNTHETIC
+2024-01-30,Visakhapatnam,Rotterdam,iron_ore,Panamax,15.12,1985,92.4,99.09,4700,SYNTHETIC
+2024-01-30,Port Hedland,Rotterdam,iron_ore,Capesize,7.27,1985,92.4,99.09,8200,SYNTHETIC
+2024-02-06,Paradip,Rotterdam,iron_ore,Panamax,12.01,1809,96.86,91.07,4800,SYNTHETIC
+2024-02-06,Port Hedland,Qingdao,iron_ore,Capesize,7.73,1809,96.86,91.07,4000,SYNTHETIC
+2024-02-06,Port Hedland,Gangavaram,coal,Capesize,8.48,1809,96.86,173.34,3800,SYNTHETIC
+2024-02-06,Samarinda,Gangavaram,coal,Panamax,12.16,1809,96.86,173.34,2200,SYNTHETIC
+2024-02-06,Samarinda,Shanghai,coal,Supramax,15.1,1809,96.86,173.34,2600,SYNTHETIC
+2024-02-06,Paradip,Rotterdam,grain,Supramax,15.98,1809,96.86,225.66,4800,SYNTHETIC
+2024-02-06,Paradip,Singapore,steel_coils,Handysize,31.14,1809,96.86,225.66,1900,SYNTHETIC
+2024-02-06,Dhamra,Singapore,steel_coils,Handymax,27.78,1809,96.86,225.66,2100,SYNTHETIC
+2024-02-06,Richards Bay,Rotterdam,coal,Panamax,14.93,1809,96.86,173.34,5200,SYNTHETIC
+2024-02-06,Newcastle,Qingdao,coal,Panamax,12.75,1809,96.86,173.34,4200,SYNTHETIC
+2024-02-06,Baltimore,Rotterdam,grain,Handymax,23.11,1809,96.86,225.66,3400,SYNTHETIC
+2024-02-06,Norfolk,Rotterdam,grain,Panamax,20.34,1809,96.86,225.66,3300,SYNTHETIC
+2024-02-06,Paradip,Rotterdam,iron_ore,Handymax,20.29,1809,96.86,91.07,4800,SYNTHETIC
+2024-02-06,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.63,1809,96.86,91.07,4700,SYNTHETIC
+2024-02-06,Port Hedland,Rotterdam,iron_ore,Capesize,6.88,1809,96.86,91.07,8200,SYNTHETIC
+2024-02-13,Paradip,Rotterdam,iron_ore,Panamax,12.42,1852,91.08,82.01,4800,SYNTHETIC
+2024-02-13,Port Hedland,Qingdao,iron_ore,Capesize,8.87,1852,91.08,82.01,4000,SYNTHETIC
+2024-02-13,Port Hedland,Gangavaram,coal,Capesize,8.67,1852,91.08,169.74,3800,SYNTHETIC
+2024-02-13,Samarinda,Gangavaram,coal,Panamax,11.14,1852,91.08,169.74,2200,SYNTHETIC
+2024-02-13,Samarinda,Shanghai,coal,Supramax,15.6,1852,91.08,169.74,2600,SYNTHETIC
+2024-02-13,Paradip,Rotterdam,grain,Supramax,16.35,1852,91.08,185.27,4800,SYNTHETIC
+2024-02-13,Paradip,Singapore,steel_coils,Handysize,28.84,1852,91.08,185.27,1900,SYNTHETIC
+2024-02-13,Dhamra,Singapore,steel_coils,Handymax,24.66,1852,91.08,185.27,2100,SYNTHETIC
+2024-02-13,Richards Bay,Rotterdam,coal,Panamax,14.91,1852,91.08,169.74,5200,SYNTHETIC
+2024-02-13,Newcastle,Qingdao,coal,Panamax,12.75,1852,91.08,169.74,4200,SYNTHETIC
+2024-02-13,Baltimore,Rotterdam,grain,Handymax,24.65,1852,91.08,185.27,3400,SYNTHETIC
+2024-02-13,Norfolk,Rotterdam,grain,Panamax,19.83,1852,91.08,185.27,3300,SYNTHETIC
+2024-02-13,Paradip,Rotterdam,iron_ore,Handymax,19.2,1852,91.08,82.01,4800,SYNTHETIC
+2024-02-13,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.2,1852,91.08,82.01,4700,SYNTHETIC
+2024-02-13,Port Hedland,Rotterdam,iron_ore,Capesize,7.54,1852,91.08,82.01,8200,SYNTHETIC
+2024-02-20,Paradip,Rotterdam,iron_ore,Panamax,13.58,2049,76.96,102.56,4800,SYNTHETIC
+2024-02-20,Port Hedland,Qingdao,iron_ore,Capesize,8.18,2049,76.96,102.56,4000,SYNTHETIC
+2024-02-20,Port Hedland,Gangavaram,coal,Capesize,9.28,2049,76.96,154.07,3800,SYNTHETIC
+2024-02-20,Samarinda,Gangavaram,coal,Panamax,14.0,2049,76.96,154.07,2200,SYNTHETIC
+2024-02-20,Samarinda,Shanghai,coal,Supramax,16.25,2049,76.96,154.07,2600,SYNTHETIC
+2024-02-20,Paradip,Rotterdam,grain,Supramax,17.74,2049,76.96,191.69,4800,SYNTHETIC
+2024-02-20,Paradip,Singapore,steel_coils,Handysize,35.4,2049,76.96,191.69,1900,SYNTHETIC
+2024-02-20,Dhamra,Singapore,steel_coils,Handymax,26.93,2049,76.96,191.69,2100,SYNTHETIC
+2024-02-20,Richards Bay,Rotterdam,coal,Panamax,16.56,2049,76.96,154.07,5200,SYNTHETIC
+2024-02-20,Newcastle,Qingdao,coal,Panamax,14.34,2049,76.96,154.07,4200,SYNTHETIC
+2024-02-20,Baltimore,Rotterdam,grain,Handymax,27.38,2049,76.96,191.69,3400,SYNTHETIC
+2024-02-20,Norfolk,Rotterdam,grain,Panamax,21.86,2049,76.96,191.69,3300,SYNTHETIC
+2024-02-20,Paradip,Rotterdam,iron_ore,Handymax,21.4,2049,76.96,102.56,4800,SYNTHETIC
+2024-02-20,Visakhapatnam,Rotterdam,iron_ore,Panamax,15.27,2049,76.96,102.56,4700,SYNTHETIC
+2024-02-20,Port Hedland,Rotterdam,iron_ore,Capesize,8.14,2049,76.96,102.56,8200,SYNTHETIC
+2024-02-27,Paradip,Rotterdam,iron_ore,Panamax,15.23,2279,70.51,81.09,4800,SYNTHETIC
+2024-02-27,Port Hedland,Qingdao,iron_ore,Capesize,9.6,2279,70.51,81.09,4000,SYNTHETIC
+2024-02-27,Port Hedland,Gangavaram,coal,Capesize,10.71,2279,70.51,159.85,3800,SYNTHETIC
+2024-02-27,Samarinda,Gangavaram,coal,Panamax,13.12,2279,70.51,159.85,2200,SYNTHETIC
+2024-02-27,Samarinda,Shanghai,coal,Supramax,18.88,2279,70.51,159.85,2600,SYNTHETIC
+2024-02-27,Paradip,Rotterdam,grain,Supramax,19.78,2279,70.51,196.56,4800,SYNTHETIC
+2024-02-27,Paradip,Singapore,steel_coils,Handysize,34.37,2279,70.51,196.56,1900,SYNTHETIC
+2024-02-27,Dhamra,Singapore,steel_coils,Handymax,31.38,2279,70.51,196.56,2100,SYNTHETIC
+2024-02-27,Richards Bay,Rotterdam,coal,Panamax,18.27,2279,70.51,159.85,5200,SYNTHETIC
+2024-02-27,Newcastle,Qingdao,coal,Panamax,15.81,2279,70.51,159.85,4200,SYNTHETIC
+2024-02-27,Baltimore,Rotterdam,grain,Handymax,28.11,2279,70.51,196.56,3400,SYNTHETIC
+2024-02-27,Norfolk,Rotterdam,grain,Panamax,24.59,2279,70.51,196.56,3300,SYNTHETIC
+2024-02-27,Paradip,Rotterdam,iron_ore,Handymax,22.57,2279,70.51,81.09,4800,SYNTHETIC
+2024-02-27,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.8,2279,70.51,81.09,4700,SYNTHETIC
+2024-02-27,Port Hedland,Rotterdam,iron_ore,Capesize,7.54,2279,70.51,81.09,8200,SYNTHETIC
+2024-03-05,Paradip,Rotterdam,iron_ore,Panamax,14.58,2132,75.47,101.52,4800,SYNTHETIC
+2024-03-05,Port Hedland,Qingdao,iron_ore,Capesize,8.59,2132,75.47,101.52,4000,SYNTHETIC
+2024-03-05,Port Hedland,Gangavaram,coal,Capesize,9.12,2132,75.47,164.25,3800,SYNTHETIC
+2024-03-05,Samarinda,Gangavaram,coal,Panamax,13.08,2132,75.47,164.25,2200,SYNTHETIC
+2024-03-05,Samarinda,Shanghai,coal,Supramax,17.61,2132,75.47,164.25,2600,SYNTHETIC
+2024-03-05,Paradip,Rotterdam,grain,Supramax,18.01,2132,75.47,176.24,4800,SYNTHETIC
+2024-03-05,Paradip,Singapore,steel_coils,Handysize,35.17,2132,75.47,176.24,1900,SYNTHETIC
+2024-03-05,Dhamra,Singapore,steel_coils,Handymax,31.31,2132,75.47,176.24,2100,SYNTHETIC
+2024-03-05,Richards Bay,Rotterdam,coal,Panamax,16.91,2132,75.47,164.25,5200,SYNTHETIC
+2024-03-05,Newcastle,Qingdao,coal,Panamax,14.55,2132,75.47,164.25,4200,SYNTHETIC
+2024-03-05,Baltimore,Rotterdam,grain,Handymax,27.14,2132,75.47,176.24,3400,SYNTHETIC
+2024-03-05,Norfolk,Rotterdam,grain,Panamax,23.17,2132,75.47,176.24,3300,SYNTHETIC
+2024-03-05,Paradip,Rotterdam,iron_ore,Handymax,20.72,2132,75.47,101.52,4800,SYNTHETIC
+2024-03-05,Visakhapatnam,Rotterdam,iron_ore,Panamax,16.34,2132,75.47,101.52,4700,SYNTHETIC
+2024-03-05,Port Hedland,Rotterdam,iron_ore,Capesize,8.26,2132,75.47,101.52,8200,SYNTHETIC
+2024-03-12,Paradip,Rotterdam,iron_ore,Panamax,13.69,1905,63.95,95.94,4800,SYNTHETIC
+2024-03-12,Port Hedland,Qingdao,iron_ore,Capesize,8.25,1905,63.95,95.94,4000,SYNTHETIC
+2024-03-12,Port Hedland,Gangavaram,coal,Capesize,9.02,1905,63.95,140.72,3800,SYNTHETIC
+2024-03-12,Samarinda,Gangavaram,coal,Panamax,13.43,1905,63.95,140.72,2200,SYNTHETIC
+2024-03-12,Samarinda,Shanghai,coal,Supramax,16.94,1905,63.95,140.72,2600,SYNTHETIC
+2024-03-12,Paradip,Rotterdam,grain,Supramax,19.17,1905,63.95,160.0,4800,SYNTHETIC
+2024-03-12,Paradip,Singapore,steel_coils,Handysize,30.94,1905,63.95,160.0,1900,SYNTHETIC
+2024-03-12,Dhamra,Singapore,steel_coils,Handymax,28.94,1905,63.95,160.0,2100,SYNTHETIC
+2024-03-12,Richards Bay,Rotterdam,coal,Panamax,16.5,1905,63.95,140.72,5200,SYNTHETIC
+2024-03-12,Newcastle,Qingdao,coal,Panamax,14.05,1905,63.95,140.72,4200,SYNTHETIC
+2024-03-12,Baltimore,Rotterdam,grain,Handymax,24.34,1905,63.95,160.0,3400,SYNTHETIC
+2024-03-12,Norfolk,Rotterdam,grain,Panamax,19.72,1905,63.95,160.0,3300,SYNTHETIC
+2024-03-12,Paradip,Rotterdam,iron_ore,Handymax,19.15,1905,63.95,95.94,4800,SYNTHETIC
+2024-03-12,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.78,1905,63.95,95.94,4700,SYNTHETIC
+2024-03-12,Port Hedland,Rotterdam,iron_ore,Capesize,7.94,1905,63.95,95.94,8200,SYNTHETIC
+2024-03-19,Paradip,Rotterdam,iron_ore,Panamax,12.8,1864,73.17,97.82,4800,SYNTHETIC
+2024-03-19,Port Hedland,Qingdao,iron_ore,Capesize,7.85,1864,73.17,97.82,4000,SYNTHETIC
+2024-03-19,Port Hedland,Gangavaram,coal,Capesize,9.37,1864,73.17,128.59,3800,SYNTHETIC
+2024-03-19,Samarinda,Gangavaram,coal,Panamax,12.5,1864,73.17,128.59,2200,SYNTHETIC
+2024-03-19,Samarinda,Shanghai,coal,Supramax,15.76,1864,73.17,128.59,2600,SYNTHETIC
+2024-03-19,Paradip,Rotterdam,grain,Supramax,19.11,1864,73.17,166.9,4800,SYNTHETIC
+2024-03-19,Paradip,Singapore,steel_coils,Handysize,33.89,1864,73.17,166.9,1900,SYNTHETIC
+2024-03-19,Dhamra,Singapore,steel_coils,Handymax,26.72,1864,73.17,166.9,2100,SYNTHETIC
+2024-03-19,Richards Bay,Rotterdam,coal,Panamax,15.23,1864,73.17,128.59,5200,SYNTHETIC
+2024-03-19,Newcastle,Qingdao,coal,Panamax,14.61,1864,73.17,128.59,4200,SYNTHETIC
+2024-03-19,Baltimore,Rotterdam,grain,Handymax,24.71,1864,73.17,166.9,3400,SYNTHETIC
+2024-03-19,Norfolk,Rotterdam,grain,Panamax,20.9,1864,73.17,166.9,3300,SYNTHETIC
+2024-03-19,Paradip,Rotterdam,iron_ore,Handymax,21.9,1864,73.17,97.82,4800,SYNTHETIC
+2024-03-19,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.96,1864,73.17,97.82,4700,SYNTHETIC
+2024-03-19,Port Hedland,Rotterdam,iron_ore,Capesize,7.56,1864,73.17,97.82,8200,SYNTHETIC
+2024-03-26,Paradip,Rotterdam,iron_ore,Panamax,13.54,1921,65.81,115.21,4800,SYNTHETIC
+2024-03-26,Port Hedland,Qingdao,iron_ore,Capesize,8.75,1921,65.81,115.21,4000,SYNTHETIC
+2024-03-26,Port Hedland,Gangavaram,coal,Capesize,9.77,1921,65.81,124.66,3800,SYNTHETIC
+2024-03-26,Samarinda,Gangavaram,coal,Panamax,13.1,1921,65.81,124.66,2200,SYNTHETIC
+2024-03-26,Samarinda,Shanghai,coal,Supramax,16.59,1921,65.81,124.66,2600,SYNTHETIC
+2024-03-26,Paradip,Rotterdam,grain,Supramax,18.93,1921,65.81,202.7,4800,SYNTHETIC
+2024-03-26,Paradip,Singapore,steel_coils,Handysize,33.37,1921,65.81,202.7,1900,SYNTHETIC
+2024-03-26,Dhamra,Singapore,steel_coils,Handymax,26.38,1921,65.81,202.7,2100,SYNTHETIC
+2024-03-26,Richards Bay,Rotterdam,coal,Panamax,16.06,1921,65.81,124.66,5200,SYNTHETIC
+2024-03-26,Newcastle,Qingdao,coal,Panamax,15.36,1921,65.81,124.66,4200,SYNTHETIC
+2024-03-26,Baltimore,Rotterdam,grain,Handymax,26.52,1921,65.81,202.7,3400,SYNTHETIC
+2024-03-26,Norfolk,Rotterdam,grain,Panamax,22.49,1921,65.81,202.7,3300,SYNTHETIC
+2024-03-26,Paradip,Rotterdam,iron_ore,Handymax,20.72,1921,65.81,115.21,4800,SYNTHETIC
+2024-03-26,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.58,1921,65.81,115.21,4700,SYNTHETIC
+2024-03-26,Port Hedland,Rotterdam,iron_ore,Capesize,7.58,1921,65.81,115.21,8200,SYNTHETIC
+2024-04-02,Paradip,Rotterdam,iron_ore,Panamax,15.55,2109,66.38,119.52,4800,SYNTHETIC
+2024-04-02,Port Hedland,Qingdao,iron_ore,Capesize,9.3,2109,66.38,119.52,4000,SYNTHETIC
+2024-04-02,Port Hedland,Gangavaram,coal,Capesize,10.24,2109,66.38,129.04,3800,SYNTHETIC
+2024-04-02,Samarinda,Gangavaram,coal,Panamax,13.32,2109,66.38,129.04,2200,SYNTHETIC
+2024-04-02,Samarinda,Shanghai,coal,Supramax,16.15,2109,66.38,129.04,2600,SYNTHETIC
+2024-04-02,Paradip,Rotterdam,grain,Supramax,17.99,2109,66.38,171.98,4800,SYNTHETIC
+2024-04-02,Paradip,Singapore,steel_coils,Handysize,35.61,2109,66.38,171.98,1900,SYNTHETIC
+2024-04-02,Dhamra,Singapore,steel_coils,Handymax,29.02,2109,66.38,171.98,2100,SYNTHETIC
+2024-04-02,Richards Bay,Rotterdam,coal,Panamax,17.47,2109,66.38,129.04,5200,SYNTHETIC
+2024-04-02,Newcastle,Qingdao,coal,Panamax,14.89,2109,66.38,129.04,4200,SYNTHETIC
+2024-04-02,Baltimore,Rotterdam,grain,Handymax,26.03,2109,66.38,171.98,3400,SYNTHETIC
+2024-04-02,Norfolk,Rotterdam,grain,Panamax,21.87,2109,66.38,171.98,3300,SYNTHETIC
+2024-04-02,Paradip,Rotterdam,iron_ore,Handymax,20.37,2109,66.38,119.52,4800,SYNTHETIC
+2024-04-02,Visakhapatnam,Rotterdam,iron_ore,Panamax,16.08,2109,66.38,119.52,4700,SYNTHETIC
+2024-04-02,Port Hedland,Rotterdam,iron_ore,Capesize,7.53,2109,66.38,119.52,8200,SYNTHETIC
+2024-04-09,Paradip,Rotterdam,iron_ore,Panamax,13.79,1908,71.72,96.16,4800,SYNTHETIC
+2024-04-09,Port Hedland,Qingdao,iron_ore,Capesize,8.93,1908,71.72,96.16,4000,SYNTHETIC
+2024-04-09,Port Hedland,Gangavaram,coal,Capesize,8.57,1908,71.72,161.07,3800,SYNTHETIC
+2024-04-09,Samarinda,Gangavaram,coal,Panamax,12.15,1908,71.72,161.07,2200,SYNTHETIC
+2024-04-09,Samarinda,Shanghai,coal,Supramax,15.46,1908,71.72,161.07,2600,SYNTHETIC
+2024-04-09,Paradip,Rotterdam,grain,Supramax,17.43,1908,71.72,206.45,4800,SYNTHETIC
+2024-04-09,Paradip,Singapore,steel_coils,Handysize,33.18,1908,71.72,206.45,1900,SYNTHETIC
+2024-04-09,Dhamra,Singapore,steel_coils,Handymax,27.7,1908,71.72,206.45,2100,SYNTHETIC
+2024-04-09,Richards Bay,Rotterdam,coal,Panamax,14.72,1908,71.72,161.07,5200,SYNTHETIC
+2024-04-09,Newcastle,Qingdao,coal,Panamax,13.82,1908,71.72,161.07,4200,SYNTHETIC
+2024-04-09,Baltimore,Rotterdam,grain,Handymax,26.86,1908,71.72,206.45,3400,SYNTHETIC
+2024-04-09,Norfolk,Rotterdam,grain,Panamax,21.6,1908,71.72,206.45,3300,SYNTHETIC
+2024-04-09,Paradip,Rotterdam,iron_ore,Handymax,21.62,1908,71.72,96.16,4800,SYNTHETIC
+2024-04-09,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.21,1908,71.72,96.16,4700,SYNTHETIC
+2024-04-09,Port Hedland,Rotterdam,iron_ore,Capesize,7.38,1908,71.72,96.16,8200,SYNTHETIC
+2024-04-16,Paradip,Rotterdam,iron_ore,Panamax,14.07,1939,75.71,87.7,4800,SYNTHETIC
+2024-04-16,Port Hedland,Qingdao,iron_ore,Capesize,8.61,1939,75.71,87.7,4000,SYNTHETIC
+2024-04-16,Port Hedland,Gangavaram,coal,Capesize,8.99,1939,75.71,153.57,3800,SYNTHETIC
+2024-04-16,Samarinda,Gangavaram,coal,Panamax,12.89,1939,75.71,153.57,2200,SYNTHETIC
+2024-04-16,Samarinda,Shanghai,coal,Supramax,15.67,1939,75.71,153.57,2600,SYNTHETIC
+2024-04-16,Paradip,Rotterdam,grain,Supramax,17.98,1939,75.71,202.78,4800,SYNTHETIC
+2024-04-16,Paradip,Singapore,steel_coils,Handysize,29.67,1939,75.71,202.78,1900,SYNTHETIC
+2024-04-16,Dhamra,Singapore,steel_coils,Handymax,29.34,1939,75.71,202.78,2100,SYNTHETIC
+2024-04-16,Richards Bay,Rotterdam,coal,Panamax,14.75,1939,75.71,153.57,5200,SYNTHETIC
+2024-04-16,Newcastle,Qingdao,coal,Panamax,14.05,1939,75.71,153.57,4200,SYNTHETIC
+2024-04-16,Baltimore,Rotterdam,grain,Handymax,23.7,1939,75.71,202.78,3400,SYNTHETIC
+2024-04-16,Norfolk,Rotterdam,grain,Panamax,21.26,1939,75.71,202.78,3300,SYNTHETIC
+2024-04-16,Paradip,Rotterdam,iron_ore,Handymax,19.34,1939,75.71,87.7,4800,SYNTHETIC
+2024-04-16,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.42,1939,75.71,87.7,4700,SYNTHETIC
+2024-04-16,Port Hedland,Rotterdam,iron_ore,Capesize,7.07,1939,75.71,87.7,8200,SYNTHETIC
+2024-04-23,Paradip,Rotterdam,iron_ore,Panamax,12.53,1816,73.22,93.11,4800,SYNTHETIC
+2024-04-23,Port Hedland,Qingdao,iron_ore,Capesize,8.32,1816,73.22,93.11,4000,SYNTHETIC
+2024-04-23,Port Hedland,Gangavaram,coal,Capesize,8.4,1816,73.22,144.79,3800,SYNTHETIC
+2024-04-23,Samarinda,Gangavaram,coal,Panamax,12.53,1816,73.22,144.79,2200,SYNTHETIC
+2024-04-23,Samarinda,Shanghai,coal,Supramax,14.87,1816,73.22,144.79,2600,SYNTHETIC
+2024-04-23,Paradip,Rotterdam,grain,Supramax,17.48,1816,73.22,233.74,4800,SYNTHETIC
+2024-04-23,Paradip,Singapore,steel_coils,Handysize,30.11,1816,73.22,233.74,1900,SYNTHETIC
+2024-04-23,Dhamra,Singapore,steel_coils,Handymax,26.36,1816,73.22,233.74,2100,SYNTHETIC
+2024-04-23,Richards Bay,Rotterdam,coal,Panamax,14.24,1816,73.22,144.79,5200,SYNTHETIC
+2024-04-23,Newcastle,Qingdao,coal,Panamax,14.58,1816,73.22,144.79,4200,SYNTHETIC
+2024-04-23,Baltimore,Rotterdam,grain,Handymax,22.91,1816,73.22,233.74,3400,SYNTHETIC
+2024-04-23,Norfolk,Rotterdam,grain,Panamax,20.35,1816,73.22,233.74,3300,SYNTHETIC
+2024-04-23,Paradip,Rotterdam,iron_ore,Handymax,21.08,1816,73.22,93.11,4800,SYNTHETIC
+2024-04-23,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.14,1816,73.22,93.11,4700,SYNTHETIC
+2024-04-23,Port Hedland,Rotterdam,iron_ore,Capesize,7.05,1816,73.22,93.11,8200,SYNTHETIC
+2024-04-30,Paradip,Rotterdam,iron_ore,Panamax,14.08,2044,73.93,86.24,4800,SYNTHETIC
+2024-04-30,Port Hedland,Qingdao,iron_ore,Capesize,8.69,2044,73.93,86.24,4000,SYNTHETIC
+2024-04-30,Port Hedland,Gangavaram,coal,Capesize,10.05,2044,73.93,150.53,3800,SYNTHETIC
+2024-04-30,Samarinda,Gangavaram,coal,Panamax,12.41,2044,73.93,150.53,2200,SYNTHETIC
+2024-04-30,Samarinda,Shanghai,coal,Supramax,15.77,2044,73.93,150.53,2600,SYNTHETIC
+2024-04-30,Paradip,Rotterdam,grain,Supramax,17.57,2044,73.93,235.69,4800,SYNTHETIC
+2024-04-30,Paradip,Singapore,steel_coils,Handysize,32.64,2044,73.93,235.69,1900,SYNTHETIC
+2024-04-30,Dhamra,Singapore,steel_coils,Handymax,29.56,2044,73.93,235.69,2100,SYNTHETIC
+2024-04-30,Richards Bay,Rotterdam,coal,Panamax,17.03,2044,73.93,150.53,5200,SYNTHETIC
+2024-04-30,Newcastle,Qingdao,coal,Panamax,14.01,2044,73.93,150.53,4200,SYNTHETIC
+2024-04-30,Baltimore,Rotterdam,grain,Handymax,24.83,2044,73.93,235.69,3400,SYNTHETIC
+2024-04-30,Norfolk,Rotterdam,grain,Panamax,21.86,2044,73.93,235.69,3300,SYNTHETIC
+2024-04-30,Paradip,Rotterdam,iron_ore,Handymax,21.9,2044,73.93,86.24,4800,SYNTHETIC
+2024-04-30,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.26,2044,73.93,86.24,4700,SYNTHETIC
+2024-04-30,Port Hedland,Rotterdam,iron_ore,Capesize,7.61,2044,73.93,86.24,8200,SYNTHETIC
+2024-05-07,Paradip,Rotterdam,iron_ore,Panamax,13.61,1863,75.89,99.44,4800,SYNTHETIC
+2024-05-07,Port Hedland,Qingdao,iron_ore,Capesize,8.84,1863,75.89,99.44,4000,SYNTHETIC
+2024-05-07,Port Hedland,Gangavaram,coal,Capesize,9.31,1863,75.89,162.63,3800,SYNTHETIC
+2024-05-07,Samarinda,Gangavaram,coal,Panamax,12.03,1863,75.89,162.63,2200,SYNTHETIC
+2024-05-07,Samarinda,Shanghai,coal,Supramax,16.42,1863,75.89,162.63,2600,SYNTHETIC
+2024-05-07,Paradip,Rotterdam,grain,Supramax,19.1,1863,75.89,235.35,4800,SYNTHETIC
+2024-05-07,Paradip,Singapore,steel_coils,Handysize,31.52,1863,75.89,235.35,1900,SYNTHETIC
+2024-05-07,Dhamra,Singapore,steel_coils,Handymax,28.84,1863,75.89,235.35,2100,SYNTHETIC
+2024-05-07,Richards Bay,Rotterdam,coal,Panamax,16.02,1863,75.89,162.63,5200,SYNTHETIC
+2024-05-07,Newcastle,Qingdao,coal,Panamax,13.82,1863,75.89,162.63,4200,SYNTHETIC
+2024-05-07,Baltimore,Rotterdam,grain,Handymax,23.21,1863,75.89,235.35,3400,SYNTHETIC
+2024-05-07,Norfolk,Rotterdam,grain,Panamax,19.51,1863,75.89,235.35,3300,SYNTHETIC
+2024-05-07,Paradip,Rotterdam,iron_ore,Handymax,18.7,1863,75.89,99.44,4800,SYNTHETIC
+2024-05-07,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.29,1863,75.89,99.44,4700,SYNTHETIC
+2024-05-07,Port Hedland,Rotterdam,iron_ore,Capesize,7.31,1863,75.89,99.44,8200,SYNTHETIC
+2024-05-14,Paradip,Rotterdam,iron_ore,Panamax,12.35,1464,70.72,102.89,4800,SYNTHETIC
+2024-05-14,Port Hedland,Qingdao,iron_ore,Capesize,7.09,1464,70.72,102.89,4000,SYNTHETIC
+2024-05-14,Port Hedland,Gangavaram,coal,Capesize,8.12,1464,70.72,160.16,3800,SYNTHETIC
+2024-05-14,Samarinda,Gangavaram,coal,Panamax,10.58,1464,70.72,160.16,2200,SYNTHETIC
+2024-05-14,Samarinda,Shanghai,coal,Supramax,14.87,1464,70.72,160.16,2600,SYNTHETIC
+2024-05-14,Paradip,Rotterdam,grain,Supramax,16.39,1464,70.72,228.14,4800,SYNTHETIC
+2024-05-14,Paradip,Singapore,steel_coils,Handysize,27.34,1464,70.72,228.14,1900,SYNTHETIC
+2024-05-14,Dhamra,Singapore,steel_coils,Handymax,22.89,1464,70.72,228.14,2100,SYNTHETIC
+2024-05-14,Richards Bay,Rotterdam,coal,Panamax,13.29,1464,70.72,160.16,5200,SYNTHETIC
+2024-05-14,Newcastle,Qingdao,coal,Panamax,12.85,1464,70.72,160.16,4200,SYNTHETIC
+2024-05-14,Baltimore,Rotterdam,grain,Handymax,20.84,1464,70.72,228.14,3400,SYNTHETIC
+2024-05-14,Norfolk,Rotterdam,grain,Panamax,17.24,1464,70.72,228.14,3300,SYNTHETIC
+2024-05-14,Paradip,Rotterdam,iron_ore,Handymax,17.8,1464,70.72,102.89,4800,SYNTHETIC
+2024-05-14,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.84,1464,70.72,102.89,4700,SYNTHETIC
+2024-05-14,Port Hedland,Rotterdam,iron_ore,Capesize,6.69,1464,70.72,102.89,8200,SYNTHETIC
+2024-05-21,Paradip,Rotterdam,iron_ore,Panamax,13.31,1633,74.68,108.36,4800,SYNTHETIC
+2024-05-21,Port Hedland,Qingdao,iron_ore,Capesize,8.48,1633,74.68,108.36,4000,SYNTHETIC
+2024-05-21,Port Hedland,Gangavaram,coal,Capesize,8.04,1633,74.68,164.88,3800,SYNTHETIC
+2024-05-21,Samarinda,Gangavaram,coal,Panamax,12.12,1633,74.68,164.88,2200,SYNTHETIC
+2024-05-21,Samarinda,Shanghai,coal,Supramax,13.96,1633,74.68,164.88,2600,SYNTHETIC
+2024-05-21,Paradip,Rotterdam,grain,Supramax,17.32,1633,74.68,258.63,4800,SYNTHETIC
+2024-05-21,Paradip,Singapore,steel_coils,Handysize,30.8,1633,74.68,258.63,1900,SYNTHETIC
+2024-05-21,Dhamra,Singapore,steel_coils,Handymax,25.96,1633,74.68,258.63,2100,SYNTHETIC
+2024-05-21,Richards Bay,Rotterdam,coal,Panamax,14.15,1633,74.68,164.88,5200,SYNTHETIC
+2024-05-21,Newcastle,Qingdao,coal,Panamax,12.43,1633,74.68,164.88,4200,SYNTHETIC
+2024-05-21,Baltimore,Rotterdam,grain,Handymax,24.87,1633,74.68,258.63,3400,SYNTHETIC
+2024-05-21,Norfolk,Rotterdam,grain,Panamax,19.67,1633,74.68,258.63,3300,SYNTHETIC
+2024-05-21,Paradip,Rotterdam,iron_ore,Handymax,19.27,1633,74.68,108.36,4800,SYNTHETIC
+2024-05-21,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.53,1633,74.68,108.36,4700,SYNTHETIC
+2024-05-21,Port Hedland,Rotterdam,iron_ore,Capesize,6.41,1633,74.68,108.36,8200,SYNTHETIC
+2024-05-28,Paradip,Rotterdam,iron_ore,Panamax,12.93,1993,78.55,108.62,4800,SYNTHETIC
+2024-05-28,Port Hedland,Qingdao,iron_ore,Capesize,9.41,1993,78.55,108.62,4000,SYNTHETIC
+2024-05-28,Port Hedland,Gangavaram,coal,Capesize,9.94,1993,78.55,152.22,3800,SYNTHETIC
+2024-05-28,Samarinda,Gangavaram,coal,Panamax,12.64,1993,78.55,152.22,2200,SYNTHETIC
+2024-05-28,Samarinda,Shanghai,coal,Supramax,16.59,1993,78.55,152.22,2600,SYNTHETIC
+2024-05-28,Paradip,Rotterdam,grain,Supramax,17.39,1993,78.55,268.66,4800,SYNTHETIC
+2024-05-28,Paradip,Singapore,steel_coils,Handysize,30.23,1993,78.55,268.66,1900,SYNTHETIC
+2024-05-28,Dhamra,Singapore,steel_coils,Handymax,27.5,1993,78.55,268.66,2100,SYNTHETIC
+2024-05-28,Richards Bay,Rotterdam,coal,Panamax,15.22,1993,78.55,152.22,5200,SYNTHETIC
+2024-05-28,Newcastle,Qingdao,coal,Panamax,14.85,1993,78.55,152.22,4200,SYNTHETIC
+2024-05-28,Baltimore,Rotterdam,grain,Handymax,24.49,1993,78.55,268.66,3400,SYNTHETIC
+2024-05-28,Norfolk,Rotterdam,grain,Panamax,20.96,1993,78.55,268.66,3300,SYNTHETIC
+2024-05-28,Paradip,Rotterdam,iron_ore,Handymax,20.87,1993,78.55,108.62,4800,SYNTHETIC
+2024-05-28,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.56,1993,78.55,108.62,4700,SYNTHETIC
+2024-05-28,Port Hedland,Rotterdam,iron_ore,Capesize,7.73,1993,78.55,108.62,8200,SYNTHETIC
+2024-06-04,Paradip,Rotterdam,iron_ore,Panamax,13.62,2013,77.5,111.29,4800,SYNTHETIC
+2024-06-04,Port Hedland,Qingdao,iron_ore,Capesize,8.46,2013,77.5,111.29,4000,SYNTHETIC
+2024-06-04,Port Hedland,Gangavaram,coal,Capesize,9.04,2013,77.5,136.39,3800,SYNTHETIC
+2024-06-04,Samarinda,Gangavaram,coal,Panamax,12.58,2013,77.5,136.39,2200,SYNTHETIC
+2024-06-04,Samarinda,Shanghai,coal,Supramax,16.18,2013,77.5,136.39,2600,SYNTHETIC
+2024-06-04,Paradip,Rotterdam,grain,Supramax,18.2,2013,77.5,272.05,4800,SYNTHETIC
+2024-06-04,Paradip,Singapore,steel_coils,Handysize,30.43,2013,77.5,272.05,1900,SYNTHETIC
+2024-06-04,Dhamra,Singapore,steel_coils,Handymax,26.05,2013,77.5,272.05,2100,SYNTHETIC
+2024-06-04,Richards Bay,Rotterdam,coal,Panamax,14.68,2013,77.5,136.39,5200,SYNTHETIC
+2024-06-04,Newcastle,Qingdao,coal,Panamax,15.22,2013,77.5,136.39,4200,SYNTHETIC
+2024-06-04,Baltimore,Rotterdam,grain,Handymax,24.58,2013,77.5,272.05,3400,SYNTHETIC
+2024-06-04,Norfolk,Rotterdam,grain,Panamax,21.57,2013,77.5,272.05,3300,SYNTHETIC
+2024-06-04,Paradip,Rotterdam,iron_ore,Handymax,22.46,2013,77.5,111.29,4800,SYNTHETIC
+2024-06-04,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.71,2013,77.5,111.29,4700,SYNTHETIC
+2024-06-04,Port Hedland,Rotterdam,iron_ore,Capesize,7.23,2013,77.5,111.29,8200,SYNTHETIC
+2024-06-11,Paradip,Rotterdam,iron_ore,Panamax,12.52,1489,89.98,121.95,4800,SYNTHETIC
+2024-06-11,Port Hedland,Qingdao,iron_ore,Capesize,7.14,1489,89.98,121.95,4000,SYNTHETIC
+2024-06-11,Port Hedland,Gangavaram,coal,Capesize,7.55,1489,89.98,141.33,3800,SYNTHETIC
+2024-06-11,Samarinda,Gangavaram,coal,Panamax,10.02,1489,89.98,141.33,2200,SYNTHETIC
+2024-06-11,Samarinda,Shanghai,coal,Supramax,12.57,1489,89.98,141.33,2600,SYNTHETIC
+2024-06-11,Paradip,Rotterdam,grain,Supramax,15.71,1489,89.98,259.04,4800,SYNTHETIC
+2024-06-11,Paradip,Singapore,steel_coils,Handysize,28.84,1489,89.98,259.04,1900,SYNTHETIC
+2024-06-11,Dhamra,Singapore,steel_coils,Handymax,22.74,1489,89.98,259.04,2100,SYNTHETIC
+2024-06-11,Richards Bay,Rotterdam,coal,Panamax,13.65,1489,89.98,141.33,5200,SYNTHETIC
+2024-06-11,Newcastle,Qingdao,coal,Panamax,11.9,1489,89.98,141.33,4200,SYNTHETIC
+2024-06-11,Baltimore,Rotterdam,grain,Handymax,22.38,1489,89.98,259.04,3400,SYNTHETIC
+2024-06-11,Norfolk,Rotterdam,grain,Panamax,18.1,1489,89.98,259.04,3300,SYNTHETIC
+2024-06-11,Paradip,Rotterdam,iron_ore,Handymax,17.17,1489,89.98,121.95,4800,SYNTHETIC
+2024-06-11,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.46,1489,89.98,121.95,4700,SYNTHETIC
+2024-06-11,Port Hedland,Rotterdam,iron_ore,Capesize,6.04,1489,89.98,121.95,8200,SYNTHETIC
+2024-06-18,Paradip,Rotterdam,iron_ore,Panamax,11.96,1630,95.09,110.08,4800,SYNTHETIC
+2024-06-18,Port Hedland,Qingdao,iron_ore,Capesize,8.09,1630,95.09,110.08,4000,SYNTHETIC
+2024-06-18,Port Hedland,Gangavaram,coal,Capesize,7.64,1630,95.09,145.38,3800,SYNTHETIC
+2024-06-18,Samarinda,Gangavaram,coal,Panamax,11.6,1630,95.09,145.38,2200,SYNTHETIC
+2024-06-18,Samarinda,Shanghai,coal,Supramax,13.35,1630,95.09,145.38,2600,SYNTHETIC
+2024-06-18,Paradip,Rotterdam,grain,Supramax,16.47,1630,95.09,286.74,4800,SYNTHETIC
+2024-06-18,Paradip,Singapore,steel_coils,Handysize,30.31,1630,95.09,286.74,1900,SYNTHETIC
+2024-06-18,Dhamra,Singapore,steel_coils,Handymax,24.97,1630,95.09,286.74,2100,SYNTHETIC
+2024-06-18,Richards Bay,Rotterdam,coal,Panamax,13.03,1630,95.09,145.38,5200,SYNTHETIC
+2024-06-18,Newcastle,Qingdao,coal,Panamax,13.11,1630,95.09,145.38,4200,SYNTHETIC
+2024-06-18,Baltimore,Rotterdam,grain,Handymax,23.86,1630,95.09,286.74,3400,SYNTHETIC
+2024-06-18,Norfolk,Rotterdam,grain,Panamax,17.51,1630,95.09,286.74,3300,SYNTHETIC
+2024-06-18,Paradip,Rotterdam,iron_ore,Handymax,18.41,1630,95.09,110.08,4800,SYNTHETIC
+2024-06-18,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.37,1630,95.09,110.08,4700,SYNTHETIC
+2024-06-18,Port Hedland,Rotterdam,iron_ore,Capesize,6.84,1630,95.09,110.08,8200,SYNTHETIC
+2024-06-25,Paradip,Rotterdam,iron_ore,Panamax,11.84,1340,92.86,110.75,4800,SYNTHETIC
+2024-06-25,Port Hedland,Qingdao,iron_ore,Capesize,6.53,1340,92.86,110.75,4000,SYNTHETIC
+2024-06-25,Port Hedland,Gangavaram,coal,Capesize,7.58,1340,92.86,143.1,3800,SYNTHETIC
+2024-06-25,Samarinda,Gangavaram,coal,Panamax,9.33,1340,92.86,143.1,2200,SYNTHETIC
+2024-06-25,Samarinda,Shanghai,coal,Supramax,12.18,1340,92.86,143.1,2600,SYNTHETIC
+2024-06-25,Paradip,Rotterdam,grain,Supramax,14.76,1340,92.86,290.7,4800,SYNTHETIC
+2024-06-25,Paradip,Singapore,steel_coils,Handysize,24.6,1340,92.86,290.7,1900,SYNTHETIC
+2024-06-25,Dhamra,Singapore,steel_coils,Handymax,23.28,1340,92.86,290.7,2100,SYNTHETIC
+2024-06-25,Richards Bay,Rotterdam,coal,Panamax,13.05,1340,92.86,143.1,5200,SYNTHETIC
+2024-06-25,Newcastle,Qingdao,coal,Panamax,12.18,1340,92.86,143.1,4200,SYNTHETIC
+2024-06-25,Baltimore,Rotterdam,grain,Handymax,21.66,1340,92.86,290.7,3400,SYNTHETIC
+2024-06-25,Norfolk,Rotterdam,grain,Panamax,18.0,1340,92.86,290.7,3300,SYNTHETIC
+2024-06-25,Paradip,Rotterdam,iron_ore,Handymax,16.33,1340,92.86,110.75,4800,SYNTHETIC
+2024-06-25,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.83,1340,92.86,110.75,4700,SYNTHETIC
+2024-06-25,Port Hedland,Rotterdam,iron_ore,Capesize,6.34,1340,92.86,110.75,8200,SYNTHETIC
+2024-07-02,Paradip,Rotterdam,iron_ore,Panamax,10.37,1365,89.84,101.46,4800,SYNTHETIC
+2024-07-02,Port Hedland,Qingdao,iron_ore,Capesize,6.87,1365,89.84,101.46,4000,SYNTHETIC
+2024-07-02,Port Hedland,Gangavaram,coal,Capesize,7.94,1365,89.84,124.66,3800,SYNTHETIC
+2024-07-02,Samarinda,Gangavaram,coal,Panamax,10.22,1365,89.84,124.66,2200,SYNTHETIC
+2024-07-02,Samarinda,Shanghai,coal,Supramax,12.01,1365,89.84,124.66,2600,SYNTHETIC
+2024-07-02,Paradip,Rotterdam,grain,Supramax,15.09,1365,89.84,286.03,4800,SYNTHETIC
+2024-07-02,Paradip,Singapore,steel_coils,Handysize,26.82,1365,89.84,286.03,1900,SYNTHETIC
+2024-07-02,Dhamra,Singapore,steel_coils,Handymax,20.96,1365,89.84,286.03,2100,SYNTHETIC
+2024-07-02,Richards Bay,Rotterdam,coal,Panamax,11.63,1365,89.84,124.66,5200,SYNTHETIC
+2024-07-02,Newcastle,Qingdao,coal,Panamax,11.73,1365,89.84,124.66,4200,SYNTHETIC
+2024-07-02,Baltimore,Rotterdam,grain,Handymax,21.39,1365,89.84,286.03,3400,SYNTHETIC
+2024-07-02,Norfolk,Rotterdam,grain,Panamax,17.71,1365,89.84,286.03,3300,SYNTHETIC
+2024-07-02,Paradip,Rotterdam,iron_ore,Handymax,17.36,1365,89.84,101.46,4800,SYNTHETIC
+2024-07-02,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.42,1365,89.84,101.46,4700,SYNTHETIC
+2024-07-02,Port Hedland,Rotterdam,iron_ore,Capesize,6.21,1365,89.84,101.46,8200,SYNTHETIC
+2024-07-09,Paradip,Rotterdam,iron_ore,Panamax,12.81,1590,91.03,92.87,4800,SYNTHETIC
+2024-07-09,Port Hedland,Qingdao,iron_ore,Capesize,8.13,1590,91.03,92.87,4000,SYNTHETIC
+2024-07-09,Port Hedland,Gangavaram,coal,Capesize,7.63,1590,91.03,136.78,3800,SYNTHETIC
+2024-07-09,Samarinda,Gangavaram,coal,Panamax,11.53,1590,91.03,136.78,2200,SYNTHETIC
+2024-07-09,Samarinda,Shanghai,coal,Supramax,13.85,1590,91.03,136.78,2600,SYNTHETIC
+2024-07-09,Paradip,Rotterdam,grain,Supramax,16.85,1590,91.03,274.8,4800,SYNTHETIC
+2024-07-09,Paradip,Singapore,steel_coils,Handysize,27.77,1590,91.03,274.8,1900,SYNTHETIC
+2024-07-09,Dhamra,Singapore,steel_coils,Handymax,23.31,1590,91.03,274.8,2100,SYNTHETIC
+2024-07-09,Richards Bay,Rotterdam,coal,Panamax,12.92,1590,91.03,136.78,5200,SYNTHETIC
+2024-07-09,Newcastle,Qingdao,coal,Panamax,11.91,1590,91.03,136.78,4200,SYNTHETIC
+2024-07-09,Baltimore,Rotterdam,grain,Handymax,21.17,1590,91.03,274.8,3400,SYNTHETIC
+2024-07-09,Norfolk,Rotterdam,grain,Panamax,19.23,1590,91.03,274.8,3300,SYNTHETIC
+2024-07-09,Paradip,Rotterdam,iron_ore,Handymax,19.24,1590,91.03,92.87,4800,SYNTHETIC
+2024-07-09,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.18,1590,91.03,92.87,4700,SYNTHETIC
+2024-07-09,Port Hedland,Rotterdam,iron_ore,Capesize,6.5,1590,91.03,92.87,8200,SYNTHETIC
+2024-07-16,Paradip,Rotterdam,iron_ore,Panamax,12.93,1645,81.23,88.53,4800,SYNTHETIC
+2024-07-16,Port Hedland,Qingdao,iron_ore,Capesize,7.85,1645,81.23,88.53,4000,SYNTHETIC
+2024-07-16,Port Hedland,Gangavaram,coal,Capesize,8.08,1645,81.23,148.65,3800,SYNTHETIC
+2024-07-16,Samarinda,Gangavaram,coal,Panamax,10.95,1645,81.23,148.65,2200,SYNTHETIC
+2024-07-16,Samarinda,Shanghai,coal,Supramax,15.08,1645,81.23,148.65,2600,SYNTHETIC
+2024-07-16,Paradip,Rotterdam,grain,Supramax,16.82,1645,81.23,289.57,4800,SYNTHETIC
+2024-07-16,Paradip,Singapore,steel_coils,Handysize,27.65,1645,81.23,289.57,1900,SYNTHETIC
+2024-07-16,Dhamra,Singapore,steel_coils,Handymax,23.2,1645,81.23,289.57,2100,SYNTHETIC
+2024-07-16,Richards Bay,Rotterdam,coal,Panamax,13.48,1645,81.23,148.65,5200,SYNTHETIC
+2024-07-16,Newcastle,Qingdao,coal,Panamax,12.07,1645,81.23,148.65,4200,SYNTHETIC
+2024-07-16,Baltimore,Rotterdam,grain,Handymax,21.64,1645,81.23,289.57,3400,SYNTHETIC
+2024-07-16,Norfolk,Rotterdam,grain,Panamax,20.47,1645,81.23,289.57,3300,SYNTHETIC
+2024-07-16,Paradip,Rotterdam,iron_ore,Handymax,20.05,1645,81.23,88.53,4800,SYNTHETIC
+2024-07-16,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.55,1645,81.23,88.53,4700,SYNTHETIC
+2024-07-16,Port Hedland,Rotterdam,iron_ore,Capesize,7.09,1645,81.23,88.53,8200,SYNTHETIC
+2024-07-23,Paradip,Rotterdam,iron_ore,Panamax,12.7,1601,76.54,78.82,4800,SYNTHETIC
+2024-07-23,Port Hedland,Qingdao,iron_ore,Capesize,7.45,1601,76.54,78.82,4000,SYNTHETIC
+2024-07-23,Port Hedland,Gangavaram,coal,Capesize,8.7,1601,76.54,147.0,3800,SYNTHETIC
+2024-07-23,Samarinda,Gangavaram,coal,Panamax,11.44,1601,76.54,147.0,2200,SYNTHETIC
+2024-07-23,Samarinda,Shanghai,coal,Supramax,13.33,1601,76.54,147.0,2600,SYNTHETIC
+2024-07-23,Paradip,Rotterdam,grain,Supramax,16.15,1601,76.54,305.08,4800,SYNTHETIC
+2024-07-23,Paradip,Singapore,steel_coils,Handysize,29.45,1601,76.54,305.08,1900,SYNTHETIC
+2024-07-23,Dhamra,Singapore,steel_coils,Handymax,24.3,1601,76.54,305.08,2100,SYNTHETIC
+2024-07-23,Richards Bay,Rotterdam,coal,Panamax,13.03,1601,76.54,147.0,5200,SYNTHETIC
+2024-07-23,Newcastle,Qingdao,coal,Panamax,13.35,1601,76.54,147.0,4200,SYNTHETIC
+2024-07-23,Baltimore,Rotterdam,grain,Handymax,22.94,1601,76.54,305.08,3400,SYNTHETIC
+2024-07-23,Norfolk,Rotterdam,grain,Panamax,19.82,1601,76.54,305.08,3300,SYNTHETIC
+2024-07-23,Paradip,Rotterdam,iron_ore,Handymax,18.35,1601,76.54,78.82,4800,SYNTHETIC
+2024-07-23,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.16,1601,76.54,78.82,4700,SYNTHETIC
+2024-07-23,Port Hedland,Rotterdam,iron_ore,Capesize,6.53,1601,76.54,78.82,8200,SYNTHETIC
+2024-07-30,Paradip,Rotterdam,iron_ore,Panamax,11.53,1635,84.23,89.54,4800,SYNTHETIC
+2024-07-30,Port Hedland,Qingdao,iron_ore,Capesize,8.15,1635,84.23,89.54,4000,SYNTHETIC
+2024-07-30,Port Hedland,Gangavaram,coal,Capesize,8.7,1635,84.23,144.85,3800,SYNTHETIC
+2024-07-30,Samarinda,Gangavaram,coal,Panamax,10.86,1635,84.23,144.85,2200,SYNTHETIC
+2024-07-30,Samarinda,Shanghai,coal,Supramax,15.56,1635,84.23,144.85,2600,SYNTHETIC
+2024-07-30,Paradip,Rotterdam,grain,Supramax,15.69,1635,84.23,286.42,4800,SYNTHETIC
+2024-07-30,Paradip,Singapore,steel_coils,Handysize,31.14,1635,84.23,286.42,1900,SYNTHETIC
+2024-07-30,Dhamra,Singapore,steel_coils,Handymax,24.97,1635,84.23,286.42,2100,SYNTHETIC
+2024-07-30,Richards Bay,Rotterdam,coal,Panamax,15.03,1635,84.23,144.85,5200,SYNTHETIC
+2024-07-30,Newcastle,Qingdao,coal,Panamax,13.5,1635,84.23,144.85,4200,SYNTHETIC
+2024-07-30,Baltimore,Rotterdam,grain,Handymax,23.77,1635,84.23,286.42,3400,SYNTHETIC
+2024-07-30,Norfolk,Rotterdam,grain,Panamax,17.93,1635,84.23,286.42,3300,SYNTHETIC
+2024-07-30,Paradip,Rotterdam,iron_ore,Handymax,19.35,1635,84.23,89.54,4800,SYNTHETIC
+2024-07-30,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.68,1635,84.23,89.54,4700,SYNTHETIC
+2024-07-30,Port Hedland,Rotterdam,iron_ore,Capesize,6.89,1635,84.23,89.54,8200,SYNTHETIC
+2024-08-06,Paradip,Rotterdam,iron_ore,Panamax,13.75,1783,85.73,104.74,4800,SYNTHETIC
+2024-08-06,Port Hedland,Qingdao,iron_ore,Capesize,8.29,1783,85.73,104.74,4000,SYNTHETIC
+2024-08-06,Port Hedland,Gangavaram,coal,Capesize,8.73,1783,85.73,152.43,3800,SYNTHETIC
+2024-08-06,Samarinda,Gangavaram,coal,Panamax,12.51,1783,85.73,152.43,2200,SYNTHETIC
+2024-08-06,Samarinda,Shanghai,coal,Supramax,14.47,1783,85.73,152.43,2600,SYNTHETIC
+2024-08-06,Paradip,Rotterdam,grain,Supramax,16.67,1783,85.73,265.57,4800,SYNTHETIC
+2024-08-06,Paradip,Singapore,steel_coils,Handysize,30.69,1783,85.73,265.57,1900,SYNTHETIC
+2024-08-06,Dhamra,Singapore,steel_coils,Handymax,27.25,1783,85.73,265.57,2100,SYNTHETIC
+2024-08-06,Richards Bay,Rotterdam,coal,Panamax,15.2,1783,85.73,152.43,5200,SYNTHETIC
+2024-08-06,Newcastle,Qingdao,coal,Panamax,12.78,1783,85.73,152.43,4200,SYNTHETIC
+2024-08-06,Baltimore,Rotterdam,grain,Handymax,22.78,1783,85.73,265.57,3400,SYNTHETIC
+2024-08-06,Norfolk,Rotterdam,grain,Panamax,20.74,1783,85.73,265.57,3300,SYNTHETIC
+2024-08-06,Paradip,Rotterdam,iron_ore,Handymax,19.07,1783,85.73,104.74,4800,SYNTHETIC
+2024-08-06,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.4,1783,85.73,104.74,4700,SYNTHETIC
+2024-08-06,Port Hedland,Rotterdam,iron_ore,Capesize,6.58,1783,85.73,104.74,8200,SYNTHETIC
+2024-08-13,Paradip,Rotterdam,iron_ore,Panamax,11.53,1537,75.99,110.26,4800,SYNTHETIC
+2024-08-13,Port Hedland,Qingdao,iron_ore,Capesize,7.21,1537,75.99,110.26,4000,SYNTHETIC
+2024-08-13,Port Hedland,Gangavaram,coal,Capesize,8.57,1537,75.99,143.97,3800,SYNTHETIC
+2024-08-13,Samarinda,Gangavaram,coal,Panamax,10.58,1537,75.99,143.97,2200,SYNTHETIC
+2024-08-13,Samarinda,Shanghai,coal,Supramax,14.15,1537,75.99,143.97,2600,SYNTHETIC
+2024-08-13,Paradip,Rotterdam,grain,Supramax,16.79,1537,75.99,254.23,4800,SYNTHETIC
+2024-08-13,Paradip,Singapore,steel_coils,Handysize,29.01,1537,75.99,254.23,1900,SYNTHETIC
+2024-08-13,Dhamra,Singapore,steel_coils,Handymax,22.43,1537,75.99,254.23,2100,SYNTHETIC
+2024-08-13,Richards Bay,Rotterdam,coal,Panamax,12.93,1537,75.99,143.97,5200,SYNTHETIC
+2024-08-13,Newcastle,Qingdao,coal,Panamax,12.0,1537,75.99,143.97,4200,SYNTHETIC
+2024-08-13,Baltimore,Rotterdam,grain,Handymax,21.89,1537,75.99,254.23,3400,SYNTHETIC
+2024-08-13,Norfolk,Rotterdam,grain,Panamax,19.05,1537,75.99,254.23,3300,SYNTHETIC
+2024-08-13,Paradip,Rotterdam,iron_ore,Handymax,16.96,1537,75.99,110.26,4800,SYNTHETIC
+2024-08-13,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.78,1537,75.99,110.26,4700,SYNTHETIC
+2024-08-13,Port Hedland,Rotterdam,iron_ore,Capesize,6.31,1537,75.99,110.26,8200,SYNTHETIC
+2024-08-20,Paradip,Rotterdam,iron_ore,Panamax,13.4,1646,77.84,114.84,4800,SYNTHETIC
+2024-08-20,Port Hedland,Qingdao,iron_ore,Capesize,8.45,1646,77.84,114.84,4000,SYNTHETIC
+2024-08-20,Port Hedland,Gangavaram,coal,Capesize,7.85,1646,77.84,123.82,3800,SYNTHETIC
+2024-08-20,Samarinda,Gangavaram,coal,Panamax,11.58,1646,77.84,123.82,2200,SYNTHETIC
+2024-08-20,Samarinda,Shanghai,coal,Supramax,15.2,1646,77.84,123.82,2600,SYNTHETIC
+2024-08-20,Paradip,Rotterdam,grain,Supramax,17.59,1646,77.84,253.26,4800,SYNTHETIC
+2024-08-20,Paradip,Singapore,steel_coils,Handysize,29.83,1646,77.84,253.26,1900,SYNTHETIC
+2024-08-20,Dhamra,Singapore,steel_coils,Handymax,24.66,1646,77.84,253.26,2100,SYNTHETIC
+2024-08-20,Richards Bay,Rotterdam,coal,Panamax,13.06,1646,77.84,123.82,5200,SYNTHETIC
+2024-08-20,Newcastle,Qingdao,coal,Panamax,13.78,1646,77.84,123.82,4200,SYNTHETIC
+2024-08-20,Baltimore,Rotterdam,grain,Handymax,24.03,1646,77.84,253.26,3400,SYNTHETIC
+2024-08-20,Norfolk,Rotterdam,grain,Panamax,19.84,1646,77.84,253.26,3300,SYNTHETIC
+2024-08-20,Paradip,Rotterdam,iron_ore,Handymax,17.49,1646,77.84,114.84,4800,SYNTHETIC
+2024-08-20,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.57,1646,77.84,114.84,4700,SYNTHETIC
+2024-08-20,Port Hedland,Rotterdam,iron_ore,Capesize,6.36,1646,77.84,114.84,8200,SYNTHETIC
+2024-08-27,Paradip,Rotterdam,iron_ore,Panamax,11.79,1617,73.17,112.08,4800,SYNTHETIC
+2024-08-27,Port Hedland,Qingdao,iron_ore,Capesize,7.98,1617,73.17,112.08,4000,SYNTHETIC
+2024-08-27,Port Hedland,Gangavaram,coal,Capesize,7.69,1617,73.17,127.24,3800,SYNTHETIC
+2024-08-27,Samarinda,Gangavaram,coal,Panamax,12.32,1617,73.17,127.24,2200,SYNTHETIC
+2024-08-27,Samarinda,Shanghai,coal,Supramax,15.66,1617,73.17,127.24,2600,SYNTHETIC
+2024-08-27,Paradip,Rotterdam,grain,Supramax,15.63,1617,73.17,239.14,4800,SYNTHETIC
+2024-08-27,Paradip,Singapore,steel_coils,Handysize,30.29,1617,73.17,239.14,1900,SYNTHETIC
+2024-08-27,Dhamra,Singapore,steel_coils,Handymax,24.37,1617,73.17,239.14,2100,SYNTHETIC
+2024-08-27,Richards Bay,Rotterdam,coal,Panamax,14.54,1617,73.17,127.24,5200,SYNTHETIC
+2024-08-27,Newcastle,Qingdao,coal,Panamax,12.41,1617,73.17,127.24,4200,SYNTHETIC
+2024-08-27,Baltimore,Rotterdam,grain,Handymax,22.86,1617,73.17,239.14,3400,SYNTHETIC
+2024-08-27,Norfolk,Rotterdam,grain,Panamax,19.48,1617,73.17,239.14,3300,SYNTHETIC
+2024-08-27,Paradip,Rotterdam,iron_ore,Handymax,18.6,1617,73.17,112.08,4800,SYNTHETIC
+2024-08-27,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.33,1617,73.17,112.08,4700,SYNTHETIC
+2024-08-27,Port Hedland,Rotterdam,iron_ore,Capesize,6.59,1617,73.17,112.08,8200,SYNTHETIC
+2024-09-03,Paradip,Rotterdam,iron_ore,Panamax,12.47,1784,72.74,122.9,4800,SYNTHETIC
+2024-09-03,Port Hedland,Qingdao,iron_ore,Capesize,7.67,1784,72.74,122.9,4000,SYNTHETIC
+2024-09-03,Port Hedland,Gangavaram,coal,Capesize,9.07,1784,72.74,123.91,3800,SYNTHETIC
+2024-09-03,Samarinda,Gangavaram,coal,Panamax,12.35,1784,72.74,123.91,2200,SYNTHETIC
+2024-09-03,Samarinda,Shanghai,coal,Supramax,14.47,1784,72.74,123.91,2600,SYNTHETIC
+2024-09-03,Paradip,Rotterdam,grain,Supramax,18.52,1784,72.74,220.93,4800,SYNTHETIC
+2024-09-03,Paradip,Singapore,steel_coils,Handysize,28.85,1784,72.74,220.93,1900,SYNTHETIC
+2024-09-03,Dhamra,Singapore,steel_coils,Handymax,25.55,1784,72.74,220.93,2100,SYNTHETIC
+2024-09-03,Richards Bay,Rotterdam,coal,Panamax,14.88,1784,72.74,123.91,5200,SYNTHETIC
+2024-09-03,Newcastle,Qingdao,coal,Panamax,14.49,1784,72.74,123.91,4200,SYNTHETIC
+2024-09-03,Baltimore,Rotterdam,grain,Handymax,22.82,1784,72.74,220.93,3400,SYNTHETIC
+2024-09-03,Norfolk,Rotterdam,grain,Panamax,21.7,1784,72.74,220.93,3300,SYNTHETIC
+2024-09-03,Paradip,Rotterdam,iron_ore,Handymax,18.3,1784,72.74,122.9,4800,SYNTHETIC
+2024-09-03,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.59,1784,72.74,122.9,4700,SYNTHETIC
+2024-09-03,Port Hedland,Rotterdam,iron_ore,Capesize,6.75,1784,72.74,122.9,8200,SYNTHETIC
+2024-09-10,Paradip,Rotterdam,iron_ore,Panamax,12.76,1616,78.16,117.46,4800,SYNTHETIC
+2024-09-10,Port Hedland,Qingdao,iron_ore,Capesize,7.44,1616,78.16,117.46,4000,SYNTHETIC
+2024-09-10,Port Hedland,Gangavaram,coal,Capesize,8.8,1616,78.16,132.38,3800,SYNTHETIC
+2024-09-10,Samarinda,Gangavaram,coal,Panamax,11.2,1616,78.16,132.38,2200,SYNTHETIC
+2024-09-10,Samarinda,Shanghai,coal,Supramax,15.41,1616,78.16,132.38,2600,SYNTHETIC
+2024-09-10,Paradip,Rotterdam,grain,Supramax,17.45,1616,78.16,220.06,4800,SYNTHETIC
+2024-09-10,Paradip,Singapore,steel_coils,Handysize,27.24,1616,78.16,220.06,1900,SYNTHETIC
+2024-09-10,Dhamra,Singapore,steel_coils,Handymax,23.58,1616,78.16,220.06,2100,SYNTHETIC
+2024-09-10,Richards Bay,Rotterdam,coal,Panamax,13.13,1616,78.16,132.38,5200,SYNTHETIC
+2024-09-10,Newcastle,Qingdao,coal,Panamax,12.14,1616,78.16,132.38,4200,SYNTHETIC
+2024-09-10,Baltimore,Rotterdam,grain,Handymax,24.48,1616,78.16,220.06,3400,SYNTHETIC
+2024-09-10,Norfolk,Rotterdam,grain,Panamax,18.75,1616,78.16,220.06,3300,SYNTHETIC
+2024-09-10,Paradip,Rotterdam,iron_ore,Handymax,19.01,1616,78.16,117.46,4800,SYNTHETIC
+2024-09-10,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.17,1616,78.16,117.46,4700,SYNTHETIC
+2024-09-10,Port Hedland,Rotterdam,iron_ore,Capesize,7.2,1616,78.16,117.46,8200,SYNTHETIC
+2024-09-17,Paradip,Rotterdam,iron_ore,Panamax,13.79,1749,81.84,115.86,4800,SYNTHETIC
+2024-09-17,Port Hedland,Qingdao,iron_ore,Capesize,8.59,1749,81.84,115.86,4000,SYNTHETIC
+2024-09-17,Port Hedland,Gangavaram,coal,Capesize,8.76,1749,81.84,164.46,3800,SYNTHETIC
+2024-09-17,Samarinda,Gangavaram,coal,Panamax,11.24,1749,81.84,164.46,2200,SYNTHETIC
+2024-09-17,Samarinda,Shanghai,coal,Supramax,15.15,1749,81.84,164.46,2600,SYNTHETIC
+2024-09-17,Paradip,Rotterdam,grain,Supramax,17.51,1749,81.84,222.22,4800,SYNTHETIC
+2024-09-17,Paradip,Singapore,steel_coils,Handysize,31.02,1749,81.84,222.22,1900,SYNTHETIC
+2024-09-17,Dhamra,Singapore,steel_coils,Handymax,24.4,1749,81.84,222.22,2100,SYNTHETIC
+2024-09-17,Richards Bay,Rotterdam,coal,Panamax,14.93,1749,81.84,164.46,5200,SYNTHETIC
+2024-09-17,Newcastle,Qingdao,coal,Panamax,13.04,1749,81.84,164.46,4200,SYNTHETIC
+2024-09-17,Baltimore,Rotterdam,grain,Handymax,24.9,1749,81.84,222.22,3400,SYNTHETIC
+2024-09-17,Norfolk,Rotterdam,grain,Panamax,19.44,1749,81.84,222.22,3300,SYNTHETIC
+2024-09-17,Paradip,Rotterdam,iron_ore,Handymax,18.16,1749,81.84,115.86,4800,SYNTHETIC
+2024-09-17,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.36,1749,81.84,115.86,4700,SYNTHETIC
+2024-09-17,Port Hedland,Rotterdam,iron_ore,Capesize,7.18,1749,81.84,115.86,8200,SYNTHETIC
+2024-09-24,Paradip,Rotterdam,iron_ore,Panamax,12.7,1471,74.69,114.49,4800,SYNTHETIC
+2024-09-24,Port Hedland,Qingdao,iron_ore,Capesize,7.79,1471,74.69,114.49,4000,SYNTHETIC
+2024-09-24,Port Hedland,Gangavaram,coal,Capesize,8.18,1471,74.69,155.58,3800,SYNTHETIC
+2024-09-24,Samarinda,Gangavaram,coal,Panamax,10.15,1471,74.69,155.58,2200,SYNTHETIC
+2024-09-24,Samarinda,Shanghai,coal,Supramax,12.75,1471,74.69,155.58,2600,SYNTHETIC
+2024-09-24,Paradip,Rotterdam,grain,Supramax,16.93,1471,74.69,228.63,4800,SYNTHETIC
+2024-09-24,Paradip,Singapore,steel_coils,Handysize,26.15,1471,74.69,228.63,1900,SYNTHETIC
+2024-09-24,Dhamra,Singapore,steel_coils,Handymax,24.34,1471,74.69,228.63,2100,SYNTHETIC
+2024-09-24,Richards Bay,Rotterdam,coal,Panamax,12.97,1471,74.69,155.58,5200,SYNTHETIC
+2024-09-24,Newcastle,Qingdao,coal,Panamax,12.15,1471,74.69,155.58,4200,SYNTHETIC
+2024-09-24,Baltimore,Rotterdam,grain,Handymax,22.54,1471,74.69,228.63,3400,SYNTHETIC
+2024-09-24,Norfolk,Rotterdam,grain,Panamax,19.14,1471,74.69,228.63,3300,SYNTHETIC
+2024-09-24,Paradip,Rotterdam,iron_ore,Handymax,17.75,1471,74.69,114.49,4800,SYNTHETIC
+2024-09-24,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.51,1471,74.69,114.49,4700,SYNTHETIC
+2024-09-24,Port Hedland,Rotterdam,iron_ore,Capesize,6.51,1471,74.69,114.49,8200,SYNTHETIC
+2024-10-01,Paradip,Rotterdam,iron_ore,Panamax,12.57,1468,83.55,115.69,4800,SYNTHETIC
+2024-10-01,Port Hedland,Qingdao,iron_ore,Capesize,7.06,1468,83.55,115.69,4000,SYNTHETIC
+2024-10-01,Port Hedland,Gangavaram,coal,Capesize,7.29,1468,83.55,172.64,3800,SYNTHETIC
+2024-10-01,Samarinda,Gangavaram,coal,Panamax,11.58,1468,83.55,172.64,2200,SYNTHETIC
+2024-10-01,Samarinda,Shanghai,coal,Supramax,12.96,1468,83.55,172.64,2600,SYNTHETIC
+2024-10-01,Paradip,Rotterdam,grain,Supramax,15.32,1468,83.55,186.69,4800,SYNTHETIC
+2024-10-01,Paradip,Singapore,steel_coils,Handysize,26.53,1468,83.55,186.69,1900,SYNTHETIC
+2024-10-01,Dhamra,Singapore,steel_coils,Handymax,23.13,1468,83.55,186.69,2100,SYNTHETIC
+2024-10-01,Richards Bay,Rotterdam,coal,Panamax,13.58,1468,83.55,172.64,5200,SYNTHETIC
+2024-10-01,Newcastle,Qingdao,coal,Panamax,12.03,1468,83.55,172.64,4200,SYNTHETIC
+2024-10-01,Baltimore,Rotterdam,grain,Handymax,22.47,1468,83.55,186.69,3400,SYNTHETIC
+2024-10-01,Norfolk,Rotterdam,grain,Panamax,17.57,1468,83.55,186.69,3300,SYNTHETIC
+2024-10-01,Paradip,Rotterdam,iron_ore,Handymax,18.41,1468,83.55,115.69,4800,SYNTHETIC
+2024-10-01,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.5,1468,83.55,115.69,4700,SYNTHETIC
+2024-10-01,Port Hedland,Rotterdam,iron_ore,Capesize,6.08,1468,83.55,115.69,8200,SYNTHETIC
+2024-10-08,Paradip,Rotterdam,iron_ore,Panamax,12.54,1694,81.76,104.85,4800,SYNTHETIC
+2024-10-08,Port Hedland,Qingdao,iron_ore,Capesize,7.94,1694,81.76,104.85,4000,SYNTHETIC
+2024-10-08,Port Hedland,Gangavaram,coal,Capesize,8.52,1694,81.76,147.25,3800,SYNTHETIC
+2024-10-08,Samarinda,Gangavaram,coal,Panamax,11.71,1694,81.76,147.25,2200,SYNTHETIC
+2024-10-08,Samarinda,Shanghai,coal,Supramax,15.58,1694,81.76,147.25,2600,SYNTHETIC
+2024-10-08,Paradip,Rotterdam,grain,Supramax,16.63,1694,81.76,161.71,4800,SYNTHETIC
+2024-10-08,Paradip,Singapore,steel_coils,Handysize,30.03,1694,81.76,161.71,1900,SYNTHETIC
+2024-10-08,Dhamra,Singapore,steel_coils,Handymax,25.09,1694,81.76,161.71,2100,SYNTHETIC
+2024-10-08,Richards Bay,Rotterdam,coal,Panamax,14.47,1694,81.76,147.25,5200,SYNTHETIC
+2024-10-08,Newcastle,Qingdao,coal,Panamax,13.64,1694,81.76,147.25,4200,SYNTHETIC
+2024-10-08,Baltimore,Rotterdam,grain,Handymax,24.22,1694,81.76,161.71,3400,SYNTHETIC
+2024-10-08,Norfolk,Rotterdam,grain,Panamax,20.22,1694,81.76,161.71,3300,SYNTHETIC
+2024-10-08,Paradip,Rotterdam,iron_ore,Handymax,18.25,1694,81.76,104.85,4800,SYNTHETIC
+2024-10-08,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.18,1694,81.76,104.85,4700,SYNTHETIC
+2024-10-08,Port Hedland,Rotterdam,iron_ore,Capesize,7.43,1694,81.76,104.85,8200,SYNTHETIC
+2024-10-15,Paradip,Rotterdam,iron_ore,Panamax,11.52,1675,89.15,108.15,4800,SYNTHETIC
+2024-10-15,Port Hedland,Qingdao,iron_ore,Capesize,7.87,1675,89.15,108.15,4000,SYNTHETIC
+2024-10-15,Port Hedland,Gangavaram,coal,Capesize,8.93,1675,89.15,131.66,3800,SYNTHETIC
+2024-10-15,Samarinda,Gangavaram,coal,Panamax,12.21,1675,89.15,131.66,2200,SYNTHETIC
+2024-10-15,Samarinda,Shanghai,coal,Supramax,13.53,1675,89.15,131.66,2600,SYNTHETIC
+2024-10-15,Paradip,Rotterdam,grain,Supramax,16.24,1675,89.15,175.6,4800,SYNTHETIC
+2024-10-15,Paradip,Singapore,steel_coils,Handysize,30.75,1675,89.15,175.6,1900,SYNTHETIC
+2024-10-15,Dhamra,Singapore,steel_coils,Handymax,26.43,1675,89.15,175.6,2100,SYNTHETIC
+2024-10-15,Richards Bay,Rotterdam,coal,Panamax,14.76,1675,89.15,131.66,5200,SYNTHETIC
+2024-10-15,Newcastle,Qingdao,coal,Panamax,12.57,1675,89.15,131.66,4200,SYNTHETIC
+2024-10-15,Baltimore,Rotterdam,grain,Handymax,21.58,1675,89.15,175.6,3400,SYNTHETIC
+2024-10-15,Norfolk,Rotterdam,grain,Panamax,20.33,1675,89.15,175.6,3300,SYNTHETIC
+2024-10-15,Paradip,Rotterdam,iron_ore,Handymax,20.13,1675,89.15,108.15,4800,SYNTHETIC
+2024-10-15,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.86,1675,89.15,108.15,4700,SYNTHETIC
+2024-10-15,Port Hedland,Rotterdam,iron_ore,Capesize,6.48,1675,89.15,108.15,8200,SYNTHETIC
+2024-10-22,Paradip,Rotterdam,iron_ore,Panamax,11.9,1391,86.91,122.23,4800,SYNTHETIC
+2024-10-22,Port Hedland,Qingdao,iron_ore,Capesize,6.57,1391,86.91,122.23,4000,SYNTHETIC
+2024-10-22,Port Hedland,Gangavaram,coal,Capesize,7.1,1391,86.91,119.49,3800,SYNTHETIC
+2024-10-22,Samarinda,Gangavaram,coal,Panamax,11.13,1391,86.91,119.49,2200,SYNTHETIC
+2024-10-22,Samarinda,Shanghai,coal,Supramax,13.63,1391,86.91,119.49,2600,SYNTHETIC
+2024-10-22,Paradip,Rotterdam,grain,Supramax,14.79,1391,86.91,191.67,4800,SYNTHETIC
+2024-10-22,Paradip,Singapore,steel_coils,Handysize,24.39,1391,86.91,191.67,1900,SYNTHETIC
+2024-10-22,Dhamra,Singapore,steel_coils,Handymax,24.3,1391,86.91,191.67,2100,SYNTHETIC
+2024-10-22,Richards Bay,Rotterdam,coal,Panamax,12.46,1391,86.91,119.49,5200,SYNTHETIC
+2024-10-22,Newcastle,Qingdao,coal,Panamax,12.16,1391,86.91,119.49,4200,SYNTHETIC
+2024-10-22,Baltimore,Rotterdam,grain,Handymax,21.28,1391,86.91,191.67,3400,SYNTHETIC
+2024-10-22,Norfolk,Rotterdam,grain,Panamax,16.25,1391,86.91,191.67,3300,SYNTHETIC
+2024-10-22,Paradip,Rotterdam,iron_ore,Handymax,17.88,1391,86.91,122.23,4800,SYNTHETIC
+2024-10-22,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.48,1391,86.91,122.23,4700,SYNTHETIC
+2024-10-22,Port Hedland,Rotterdam,iron_ore,Capesize,5.67,1391,86.91,122.23,8200,SYNTHETIC
+2024-10-29,Paradip,Rotterdam,iron_ore,Panamax,10.81,1339,88.71,115.16,4800,SYNTHETIC
+2024-10-29,Port Hedland,Qingdao,iron_ore,Capesize,6.44,1339,88.71,115.16,4000,SYNTHETIC
+2024-10-29,Port Hedland,Gangavaram,coal,Capesize,6.87,1339,88.71,122.93,3800,SYNTHETIC
+2024-10-29,Samarinda,Gangavaram,coal,Panamax,10.24,1339,88.71,122.93,2200,SYNTHETIC
+2024-10-29,Samarinda,Shanghai,coal,Supramax,13.53,1339,88.71,122.93,2600,SYNTHETIC
+2024-10-29,Paradip,Rotterdam,grain,Supramax,13.9,1339,88.71,176.46,4800,SYNTHETIC
+2024-10-29,Paradip,Singapore,steel_coils,Handysize,24.46,1339,88.71,176.46,1900,SYNTHETIC
+2024-10-29,Dhamra,Singapore,steel_coils,Handymax,22.95,1339,88.71,176.46,2100,SYNTHETIC
+2024-10-29,Richards Bay,Rotterdam,coal,Panamax,12.92,1339,88.71,122.93,5200,SYNTHETIC
+2024-10-29,Newcastle,Qingdao,coal,Panamax,11.87,1339,88.71,122.93,4200,SYNTHETIC
+2024-10-29,Baltimore,Rotterdam,grain,Handymax,19.6,1339,88.71,176.46,3400,SYNTHETIC
+2024-10-29,Norfolk,Rotterdam,grain,Panamax,16.79,1339,88.71,176.46,3300,SYNTHETIC
+2024-10-29,Paradip,Rotterdam,iron_ore,Handymax,16.14,1339,88.71,115.16,4800,SYNTHETIC
+2024-10-29,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.02,1339,88.71,115.16,4700,SYNTHETIC
+2024-10-29,Port Hedland,Rotterdam,iron_ore,Capesize,6.17,1339,88.71,115.16,8200,SYNTHETIC
+2024-11-05,Paradip,Rotterdam,iron_ore,Panamax,11.08,1429,87.03,138.52,4800,SYNTHETIC
+2024-11-05,Port Hedland,Qingdao,iron_ore,Capesize,6.78,1429,87.03,138.52,4000,SYNTHETIC
+2024-11-05,Port Hedland,Gangavaram,coal,Capesize,8.12,1429,87.03,110.08,3800,SYNTHETIC
+2024-11-05,Samarinda,Gangavaram,coal,Panamax,9.73,1429,87.03,110.08,2200,SYNTHETIC
+2024-11-05,Samarinda,Shanghai,coal,Supramax,13.92,1429,87.03,110.08,2600,SYNTHETIC
+2024-11-05,Paradip,Rotterdam,grain,Supramax,15.31,1429,87.03,165.85,4800,SYNTHETIC
+2024-11-05,Paradip,Singapore,steel_coils,Handysize,24.68,1429,87.03,165.85,1900,SYNTHETIC
+2024-11-05,Dhamra,Singapore,steel_coils,Handymax,24.17,1429,87.03,165.85,2100,SYNTHETIC
+2024-11-05,Richards Bay,Rotterdam,coal,Panamax,13.28,1429,87.03,110.08,5200,SYNTHETIC
+2024-11-05,Newcastle,Qingdao,coal,Panamax,12.67,1429,87.03,110.08,4200,SYNTHETIC
+2024-11-05,Baltimore,Rotterdam,grain,Handymax,21.22,1429,87.03,165.85,3400,SYNTHETIC
+2024-11-05,Norfolk,Rotterdam,grain,Panamax,18.62,1429,87.03,165.85,3300,SYNTHETIC
+2024-11-05,Paradip,Rotterdam,iron_ore,Handymax,18.36,1429,87.03,138.52,4800,SYNTHETIC
+2024-11-05,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.96,1429,87.03,138.52,4700,SYNTHETIC
+2024-11-05,Port Hedland,Rotterdam,iron_ore,Capesize,6.42,1429,87.03,138.52,8200,SYNTHETIC
+2024-11-12,Paradip,Rotterdam,iron_ore,Panamax,11.62,1495,86.97,131.32,4800,SYNTHETIC
+2024-11-12,Port Hedland,Qingdao,iron_ore,Capesize,6.95,1495,86.97,131.32,4000,SYNTHETIC
+2024-11-12,Port Hedland,Gangavaram,coal,Capesize,8.44,1495,86.97,117.54,3800,SYNTHETIC
+2024-11-12,Samarinda,Gangavaram,coal,Panamax,10.82,1495,86.97,117.54,2200,SYNTHETIC
+2024-11-12,Samarinda,Shanghai,coal,Supramax,14.78,1495,86.97,117.54,2600,SYNTHETIC
+2024-11-12,Paradip,Rotterdam,grain,Supramax,14.75,1495,86.97,160.0,4800,SYNTHETIC
+2024-11-12,Paradip,Singapore,steel_coils,Handysize,26.19,1495,86.97,160.0,1900,SYNTHETIC
+2024-11-12,Dhamra,Singapore,steel_coils,Handymax,23.98,1495,86.97,160.0,2100,SYNTHETIC
+2024-11-12,Richards Bay,Rotterdam,coal,Panamax,12.64,1495,86.97,117.54,5200,SYNTHETIC
+2024-11-12,Newcastle,Qingdao,coal,Panamax,11.64,1495,86.97,117.54,4200,SYNTHETIC
+2024-11-12,Baltimore,Rotterdam,grain,Handymax,22.42,1495,86.97,160.0,3400,SYNTHETIC
+2024-11-12,Norfolk,Rotterdam,grain,Panamax,18.31,1495,86.97,160.0,3300,SYNTHETIC
+2024-11-12,Paradip,Rotterdam,iron_ore,Handymax,18.62,1495,86.97,131.32,4800,SYNTHETIC
+2024-11-12,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.88,1495,86.97,131.32,4700,SYNTHETIC
+2024-11-12,Port Hedland,Rotterdam,iron_ore,Capesize,6.34,1495,86.97,131.32,8200,SYNTHETIC
+2024-11-19,Paradip,Rotterdam,iron_ore,Panamax,12.49,1747,83.91,109.58,4800,SYNTHETIC
+2024-11-19,Port Hedland,Qingdao,iron_ore,Capesize,8.23,1747,83.91,109.58,4000,SYNTHETIC
+2024-11-19,Port Hedland,Gangavaram,coal,Capesize,9.03,1747,83.91,132.99,3800,SYNTHETIC
+2024-11-19,Samarinda,Gangavaram,coal,Panamax,11.17,1747,83.91,132.99,2200,SYNTHETIC
+2024-11-19,Samarinda,Shanghai,coal,Supramax,15.75,1747,83.91,132.99,2600,SYNTHETIC
+2024-11-19,Paradip,Rotterdam,grain,Supramax,17.57,1747,83.91,178.54,4800,SYNTHETIC
+2024-11-19,Paradip,Singapore,steel_coils,Handysize,28.58,1747,83.91,178.54,1900,SYNTHETIC
+2024-11-19,Dhamra,Singapore,steel_coils,Handymax,24.14,1747,83.91,178.54,2100,SYNTHETIC
+2024-11-19,Richards Bay,Rotterdam,coal,Panamax,13.51,1747,83.91,132.99,5200,SYNTHETIC
+2024-11-19,Newcastle,Qingdao,coal,Panamax,13.63,1747,83.91,132.99,4200,SYNTHETIC
+2024-11-19,Baltimore,Rotterdam,grain,Handymax,24.92,1747,83.91,178.54,3400,SYNTHETIC
+2024-11-19,Norfolk,Rotterdam,grain,Panamax,18.35,1747,83.91,178.54,3300,SYNTHETIC
+2024-11-19,Paradip,Rotterdam,iron_ore,Handymax,18.64,1747,83.91,109.58,4800,SYNTHETIC
+2024-11-19,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.5,1747,83.91,109.58,4700,SYNTHETIC
+2024-11-19,Port Hedland,Rotterdam,iron_ore,Capesize,6.49,1747,83.91,109.58,8200,SYNTHETIC
+2024-11-26,Paradip,Rotterdam,iron_ore,Panamax,12.48,1608,84.85,119.08,4800,SYNTHETIC
+2024-11-26,Port Hedland,Qingdao,iron_ore,Capesize,7.99,1608,84.85,119.08,4000,SYNTHETIC
+2024-11-26,Port Hedland,Gangavaram,coal,Capesize,7.94,1608,84.85,144.27,3800,SYNTHETIC
+2024-11-26,Samarinda,Gangavaram,coal,Panamax,11.35,1608,84.85,144.27,2200,SYNTHETIC
+2024-11-26,Samarinda,Shanghai,coal,Supramax,14.65,1608,84.85,144.27,2600,SYNTHETIC
+2024-11-26,Paradip,Rotterdam,grain,Supramax,15.15,1608,84.85,174.82,4800,SYNTHETIC
+2024-11-26,Paradip,Singapore,steel_coils,Handysize,27.61,1608,84.85,174.82,1900,SYNTHETIC
+2024-11-26,Dhamra,Singapore,steel_coils,Handymax,26.44,1608,84.85,174.82,2100,SYNTHETIC
+2024-11-26,Richards Bay,Rotterdam,coal,Panamax,13.96,1608,84.85,144.27,5200,SYNTHETIC
+2024-11-26,Newcastle,Qingdao,coal,Panamax,12.93,1608,84.85,144.27,4200,SYNTHETIC
+2024-11-26,Baltimore,Rotterdam,grain,Handymax,23.57,1608,84.85,174.82,3400,SYNTHETIC
+2024-11-26,Norfolk,Rotterdam,grain,Panamax,17.56,1608,84.85,174.82,3300,SYNTHETIC
+2024-11-26,Paradip,Rotterdam,iron_ore,Handymax,17.88,1608,84.85,119.08,4800,SYNTHETIC
+2024-11-26,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.7,1608,84.85,119.08,4700,SYNTHETIC
+2024-11-26,Port Hedland,Rotterdam,iron_ore,Capesize,6.13,1608,84.85,119.08,8200,SYNTHETIC
+2024-12-03,Paradip,Rotterdam,iron_ore,Panamax,9.66,1080,83.97,114.05,4800,SYNTHETIC
+2024-12-03,Port Hedland,Qingdao,iron_ore,Capesize,5.96,1080,83.97,114.05,4000,SYNTHETIC
+2024-12-03,Port Hedland,Gangavaram,coal,Capesize,6.48,1080,83.97,123.52,3800,SYNTHETIC
+2024-12-03,Samarinda,Gangavaram,coal,Panamax,8.62,1080,83.97,123.52,2200,SYNTHETIC
+2024-12-03,Samarinda,Shanghai,coal,Supramax,12.0,1080,83.97,123.52,2600,SYNTHETIC
+2024-12-03,Paradip,Rotterdam,grain,Supramax,13.66,1080,83.97,196.87,4800,SYNTHETIC
+2024-12-03,Paradip,Singapore,steel_coils,Handysize,24.81,1080,83.97,196.87,1900,SYNTHETIC
+2024-12-03,Dhamra,Singapore,steel_coils,Handymax,20.41,1080,83.97,196.87,2100,SYNTHETIC
+2024-12-03,Richards Bay,Rotterdam,coal,Panamax,10.4,1080,83.97,123.52,5200,SYNTHETIC
+2024-12-03,Newcastle,Qingdao,coal,Panamax,10.14,1080,83.97,123.52,4200,SYNTHETIC
+2024-12-03,Baltimore,Rotterdam,grain,Handymax,18.82,1080,83.97,196.87,3400,SYNTHETIC
+2024-12-03,Norfolk,Rotterdam,grain,Panamax,14.27,1080,83.97,196.87,3300,SYNTHETIC
+2024-12-03,Paradip,Rotterdam,iron_ore,Handymax,15.56,1080,83.97,114.05,4800,SYNTHETIC
+2024-12-03,Visakhapatnam,Rotterdam,iron_ore,Panamax,9.72,1080,83.97,114.05,4700,SYNTHETIC
+2024-12-03,Port Hedland,Rotterdam,iron_ore,Capesize,5.43,1080,83.97,114.05,8200,SYNTHETIC
+2024-12-10,Paradip,Rotterdam,iron_ore,Panamax,9.8,1100,83.63,100.64,4800,SYNTHETIC
+2024-12-10,Port Hedland,Qingdao,iron_ore,Capesize,6.33,1100,83.63,100.64,4000,SYNTHETIC
+2024-12-10,Port Hedland,Gangavaram,coal,Capesize,7.04,1100,83.63,115.09,3800,SYNTHETIC
+2024-12-10,Samarinda,Gangavaram,coal,Panamax,8.85,1100,83.63,115.09,2200,SYNTHETIC
+2024-12-10,Samarinda,Shanghai,coal,Supramax,11.01,1100,83.63,115.09,2600,SYNTHETIC
+2024-12-10,Paradip,Rotterdam,grain,Supramax,13.24,1100,83.63,236.07,4800,SYNTHETIC
+2024-12-10,Paradip,Singapore,steel_coils,Handysize,24.75,1100,83.63,236.07,1900,SYNTHETIC
+2024-12-10,Dhamra,Singapore,steel_coils,Handymax,18.68,1100,83.63,236.07,2100,SYNTHETIC
+2024-12-10,Richards Bay,Rotterdam,coal,Panamax,11.63,1100,83.63,115.09,5200,SYNTHETIC
+2024-12-10,Newcastle,Qingdao,coal,Panamax,11.05,1100,83.63,115.09,4200,SYNTHETIC
+2024-12-10,Baltimore,Rotterdam,grain,Handymax,19.22,1100,83.63,236.07,3400,SYNTHETIC
+2024-12-10,Norfolk,Rotterdam,grain,Panamax,15.78,1100,83.63,236.07,3300,SYNTHETIC
+2024-12-10,Paradip,Rotterdam,iron_ore,Handymax,15.63,1100,83.63,100.64,4800,SYNTHETIC
+2024-12-10,Visakhapatnam,Rotterdam,iron_ore,Panamax,9.84,1100,83.63,100.64,4700,SYNTHETIC
+2024-12-10,Port Hedland,Rotterdam,iron_ore,Capesize,5.81,1100,83.63,100.64,8200,SYNTHETIC
+2024-12-17,Paradip,Rotterdam,iron_ore,Panamax,10.59,1198,77.69,112.32,4800,SYNTHETIC
+2024-12-17,Port Hedland,Qingdao,iron_ore,Capesize,6.84,1198,77.69,112.32,4000,SYNTHETIC
+2024-12-17,Port Hedland,Gangavaram,coal,Capesize,7.21,1198,77.69,115.55,3800,SYNTHETIC
+2024-12-17,Samarinda,Gangavaram,coal,Panamax,10.35,1198,77.69,115.55,2200,SYNTHETIC
+2024-12-17,Samarinda,Shanghai,coal,Supramax,12.01,1198,77.69,115.55,2600,SYNTHETIC
+2024-12-17,Paradip,Rotterdam,grain,Supramax,14.73,1198,77.69,231.27,4800,SYNTHETIC
+2024-12-17,Paradip,Singapore,steel_coils,Handysize,24.01,1198,77.69,231.27,1900,SYNTHETIC
+2024-12-17,Dhamra,Singapore,steel_coils,Handymax,20.65,1198,77.69,231.27,2100,SYNTHETIC
+2024-12-17,Richards Bay,Rotterdam,coal,Panamax,12.56,1198,77.69,115.55,5200,SYNTHETIC
+2024-12-17,Newcastle,Qingdao,coal,Panamax,10.88,1198,77.69,115.55,4200,SYNTHETIC
+2024-12-17,Baltimore,Rotterdam,grain,Handymax,20.58,1198,77.69,231.27,3400,SYNTHETIC
+2024-12-17,Norfolk,Rotterdam,grain,Panamax,17.0,1198,77.69,231.27,3300,SYNTHETIC
+2024-12-17,Paradip,Rotterdam,iron_ore,Handymax,15.56,1198,77.69,112.32,4800,SYNTHETIC
+2024-12-17,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.49,1198,77.69,112.32,4700,SYNTHETIC
+2024-12-17,Port Hedland,Rotterdam,iron_ore,Capesize,5.82,1198,77.69,112.32,8200,SYNTHETIC
+2024-12-24,Paradip,Rotterdam,iron_ore,Panamax,10.7,1384,73.35,134.13,4800,SYNTHETIC
+2024-12-24,Port Hedland,Qingdao,iron_ore,Capesize,6.78,1384,73.35,134.13,4000,SYNTHETIC
+2024-12-24,Port Hedland,Gangavaram,coal,Capesize,7.81,1384,73.35,116.65,3800,SYNTHETIC
+2024-12-24,Samarinda,Gangavaram,coal,Panamax,10.52,1384,73.35,116.65,2200,SYNTHETIC
+2024-12-24,Samarinda,Shanghai,coal,Supramax,14.05,1384,73.35,116.65,2600,SYNTHETIC
+2024-12-24,Paradip,Rotterdam,grain,Supramax,14.44,1384,73.35,234.23,4800,SYNTHETIC
+2024-12-24,Paradip,Singapore,steel_coils,Handysize,28.39,1384,73.35,234.23,1900,SYNTHETIC
+2024-12-24,Dhamra,Singapore,steel_coils,Handymax,23.14,1384,73.35,234.23,2100,SYNTHETIC
+2024-12-24,Richards Bay,Rotterdam,coal,Panamax,13.89,1384,73.35,116.65,5200,SYNTHETIC
+2024-12-24,Newcastle,Qingdao,coal,Panamax,12.5,1384,73.35,116.65,4200,SYNTHETIC
+2024-12-24,Baltimore,Rotterdam,grain,Handymax,19.66,1384,73.35,234.23,3400,SYNTHETIC
+2024-12-24,Norfolk,Rotterdam,grain,Panamax,16.56,1384,73.35,234.23,3300,SYNTHETIC
+2024-12-24,Paradip,Rotterdam,iron_ore,Handymax,16.71,1384,73.35,134.13,4800,SYNTHETIC
+2024-12-24,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.79,1384,73.35,134.13,4700,SYNTHETIC
+2024-12-24,Port Hedland,Rotterdam,iron_ore,Capesize,5.88,1384,73.35,134.13,8200,SYNTHETIC
+2024-12-31,Paradip,Rotterdam,iron_ore,Panamax,10.6,1279,75.42,122.9,4800,SYNTHETIC
+2024-12-31,Port Hedland,Qingdao,iron_ore,Capesize,6.72,1279,75.42,122.9,4000,SYNTHETIC
+2024-12-31,Port Hedland,Gangavaram,coal,Capesize,6.84,1279,75.42,119.19,3800,SYNTHETIC
+2024-12-31,Samarinda,Gangavaram,coal,Panamax,9.55,1279,75.42,119.19,2200,SYNTHETIC
+2024-12-31,Samarinda,Shanghai,coal,Supramax,13.38,1279,75.42,119.19,2600,SYNTHETIC
+2024-12-31,Paradip,Rotterdam,grain,Supramax,14.08,1279,75.42,244.14,4800,SYNTHETIC
+2024-12-31,Paradip,Singapore,steel_coils,Handysize,25.53,1279,75.42,244.14,1900,SYNTHETIC
+2024-12-31,Dhamra,Singapore,steel_coils,Handymax,21.12,1279,75.42,244.14,2100,SYNTHETIC
+2024-12-31,Richards Bay,Rotterdam,coal,Panamax,13.11,1279,75.42,119.19,5200,SYNTHETIC
+2024-12-31,Newcastle,Qingdao,coal,Panamax,11.72,1279,75.42,119.19,4200,SYNTHETIC
+2024-12-31,Baltimore,Rotterdam,grain,Handymax,18.98,1279,75.42,244.14,3400,SYNTHETIC
+2024-12-31,Norfolk,Rotterdam,grain,Panamax,15.92,1279,75.42,244.14,3300,SYNTHETIC
+2024-12-31,Paradip,Rotterdam,iron_ore,Handymax,16.66,1279,75.42,122.9,4800,SYNTHETIC
+2024-12-31,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.6,1279,75.42,122.9,4700,SYNTHETIC
+2024-12-31,Port Hedland,Rotterdam,iron_ore,Capesize,6.29,1279,75.42,122.9,8200,SYNTHETIC
+2025-01-07,Paradip,Rotterdam,iron_ore,Panamax,9.69,1076,85.13,105.05,4800,SYNTHETIC
+2025-01-07,Port Hedland,Qingdao,iron_ore,Capesize,6.51,1076,85.13,105.05,4000,SYNTHETIC
+2025-01-07,Port Hedland,Gangavaram,coal,Capesize,7.0,1076,85.13,121.12,3800,SYNTHETIC
+2025-01-07,Samarinda,Gangavaram,coal,Panamax,8.49,1076,85.13,121.12,2200,SYNTHETIC
+2025-01-07,Samarinda,Shanghai,coal,Supramax,11.24,1076,85.13,121.12,2600,SYNTHETIC
+2025-01-07,Paradip,Rotterdam,grain,Supramax,13.86,1076,85.13,218.43,4800,SYNTHETIC
+2025-01-07,Paradip,Singapore,steel_coils,Handysize,24.64,1076,85.13,218.43,1900,SYNTHETIC
+2025-01-07,Dhamra,Singapore,steel_coils,Handymax,19.3,1076,85.13,218.43,2100,SYNTHETIC
+2025-01-07,Richards Bay,Rotterdam,coal,Panamax,11.4,1076,85.13,121.12,5200,SYNTHETIC
+2025-01-07,Newcastle,Qingdao,coal,Panamax,10.27,1076,85.13,121.12,4200,SYNTHETIC
+2025-01-07,Baltimore,Rotterdam,grain,Handymax,17.37,1076,85.13,218.43,3400,SYNTHETIC
+2025-01-07,Norfolk,Rotterdam,grain,Panamax,16.1,1076,85.13,218.43,3300,SYNTHETIC
+2025-01-07,Paradip,Rotterdam,iron_ore,Handymax,15.2,1076,85.13,105.05,4800,SYNTHETIC
+2025-01-07,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.46,1076,85.13,105.05,4700,SYNTHETIC
+2025-01-07,Port Hedland,Rotterdam,iron_ore,Capesize,5.46,1076,85.13,105.05,8200,SYNTHETIC
+2025-01-14,Paradip,Rotterdam,iron_ore,Panamax,9.91,1033,90.93,112.21,4800,SYNTHETIC
+2025-01-14,Port Hedland,Qingdao,iron_ore,Capesize,5.72,1033,90.93,112.21,4000,SYNTHETIC
+2025-01-14,Port Hedland,Gangavaram,coal,Capesize,6.69,1033,90.93,124.14,3800,SYNTHETIC
+2025-01-14,Samarinda,Gangavaram,coal,Panamax,8.06,1033,90.93,124.14,2200,SYNTHETIC
+2025-01-14,Samarinda,Shanghai,coal,Supramax,11.76,1033,90.93,124.14,2600,SYNTHETIC
+2025-01-14,Paradip,Rotterdam,grain,Supramax,12.3,1033,90.93,232.69,4800,SYNTHETIC
+2025-01-14,Paradip,Singapore,steel_coils,Handysize,21.05,1033,90.93,232.69,1900,SYNTHETIC
+2025-01-14,Dhamra,Singapore,steel_coils,Handymax,18.78,1033,90.93,232.69,2100,SYNTHETIC
+2025-01-14,Richards Bay,Rotterdam,coal,Panamax,10.0,1033,90.93,124.14,5200,SYNTHETIC
+2025-01-14,Newcastle,Qingdao,coal,Panamax,9.76,1033,90.93,124.14,4200,SYNTHETIC
+2025-01-14,Baltimore,Rotterdam,grain,Handymax,17.39,1033,90.93,232.69,3400,SYNTHETIC
+2025-01-14,Norfolk,Rotterdam,grain,Panamax,13.76,1033,90.93,232.69,3300,SYNTHETIC
+2025-01-14,Paradip,Rotterdam,iron_ore,Handymax,14.24,1033,90.93,112.21,4800,SYNTHETIC
+2025-01-14,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.17,1033,90.93,112.21,4700,SYNTHETIC
+2025-01-14,Port Hedland,Rotterdam,iron_ore,Capesize,5.5,1033,90.93,112.21,8200,SYNTHETIC
+2025-01-21,Paradip,Rotterdam,iron_ore,Panamax,10.24,1172,86.92,99.36,4800,SYNTHETIC
+2025-01-21,Port Hedland,Qingdao,iron_ore,Capesize,6.01,1172,86.92,99.36,4000,SYNTHETIC
+2025-01-21,Port Hedland,Gangavaram,coal,Capesize,7.12,1172,86.92,130.37,3800,SYNTHETIC
+2025-01-21,Samarinda,Gangavaram,coal,Panamax,10.07,1172,86.92,130.37,2200,SYNTHETIC
+2025-01-21,Samarinda,Shanghai,coal,Supramax,12.82,1172,86.92,130.37,2600,SYNTHETIC
+2025-01-21,Paradip,Rotterdam,grain,Supramax,14.31,1172,86.92,234.9,4800,SYNTHETIC
+2025-01-21,Paradip,Singapore,steel_coils,Handysize,22.86,1172,86.92,234.9,1900,SYNTHETIC
+2025-01-21,Dhamra,Singapore,steel_coils,Handymax,20.02,1172,86.92,234.9,2100,SYNTHETIC
+2025-01-21,Richards Bay,Rotterdam,coal,Panamax,11.24,1172,86.92,130.37,5200,SYNTHETIC
+2025-01-21,Newcastle,Qingdao,coal,Panamax,11.57,1172,86.92,130.37,4200,SYNTHETIC
+2025-01-21,Baltimore,Rotterdam,grain,Handymax,18.83,1172,86.92,234.9,3400,SYNTHETIC
+2025-01-21,Norfolk,Rotterdam,grain,Panamax,16.38,1172,86.92,234.9,3300,SYNTHETIC
+2025-01-21,Paradip,Rotterdam,iron_ore,Handymax,15.38,1172,86.92,99.36,4800,SYNTHETIC
+2025-01-21,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.34,1172,86.92,99.36,4700,SYNTHETIC
+2025-01-21,Port Hedland,Rotterdam,iron_ore,Capesize,5.16,1172,86.92,99.36,8200,SYNTHETIC
+2025-01-28,Paradip,Rotterdam,iron_ore,Panamax,9.8,1191,87.81,96.8,4800,SYNTHETIC
+2025-01-28,Port Hedland,Qingdao,iron_ore,Capesize,6.45,1191,87.81,96.8,4000,SYNTHETIC
+2025-01-28,Port Hedland,Gangavaram,coal,Capesize,7.07,1191,87.81,135.45,3800,SYNTHETIC
+2025-01-28,Samarinda,Gangavaram,coal,Panamax,9.23,1191,87.81,135.45,2200,SYNTHETIC
+2025-01-28,Samarinda,Shanghai,coal,Supramax,11.19,1191,87.81,135.45,2600,SYNTHETIC
+2025-01-28,Paradip,Rotterdam,grain,Supramax,14.05,1191,87.81,239.43,4800,SYNTHETIC
+2025-01-28,Paradip,Singapore,steel_coils,Handysize,23.73,1191,87.81,239.43,1900,SYNTHETIC
+2025-01-28,Dhamra,Singapore,steel_coils,Handymax,22.18,1191,87.81,239.43,2100,SYNTHETIC
+2025-01-28,Richards Bay,Rotterdam,coal,Panamax,11.41,1191,87.81,135.45,5200,SYNTHETIC
+2025-01-28,Newcastle,Qingdao,coal,Panamax,10.68,1191,87.81,135.45,4200,SYNTHETIC
+2025-01-28,Baltimore,Rotterdam,grain,Handymax,18.93,1191,87.81,239.43,3400,SYNTHETIC
+2025-01-28,Norfolk,Rotterdam,grain,Panamax,14.84,1191,87.81,239.43,3300,SYNTHETIC
+2025-01-28,Paradip,Rotterdam,iron_ore,Handymax,16.47,1191,87.81,96.8,4800,SYNTHETIC
+2025-01-28,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.58,1191,87.81,96.8,4700,SYNTHETIC
+2025-01-28,Port Hedland,Rotterdam,iron_ore,Capesize,5.78,1191,87.81,96.8,8200,SYNTHETIC
+2025-02-04,Paradip,Rotterdam,iron_ore,Panamax,11.52,1584,96.94,114.45,4800,SYNTHETIC
+2025-02-04,Port Hedland,Qingdao,iron_ore,Capesize,7.64,1584,96.94,114.45,4000,SYNTHETIC
+2025-02-04,Port Hedland,Gangavaram,coal,Capesize,7.44,1584,96.94,117.32,3800,SYNTHETIC
+2025-02-04,Samarinda,Gangavaram,coal,Panamax,10.21,1584,96.94,117.32,2200,SYNTHETIC
+2025-02-04,Samarinda,Shanghai,coal,Supramax,13.74,1584,96.94,117.32,2600,SYNTHETIC
+2025-02-04,Paradip,Rotterdam,grain,Supramax,15.43,1584,96.94,234.07,4800,SYNTHETIC
+2025-02-04,Paradip,Singapore,steel_coils,Handysize,28.86,1584,96.94,234.07,1900,SYNTHETIC
+2025-02-04,Dhamra,Singapore,steel_coils,Handymax,25.34,1584,96.94,234.07,2100,SYNTHETIC
+2025-02-04,Richards Bay,Rotterdam,coal,Panamax,13.51,1584,96.94,117.32,5200,SYNTHETIC
+2025-02-04,Newcastle,Qingdao,coal,Panamax,12.8,1584,96.94,117.32,4200,SYNTHETIC
+2025-02-04,Baltimore,Rotterdam,grain,Handymax,21.09,1584,96.94,234.07,3400,SYNTHETIC
+2025-02-04,Norfolk,Rotterdam,grain,Panamax,19.42,1584,96.94,234.07,3300,SYNTHETIC
+2025-02-04,Paradip,Rotterdam,iron_ore,Handymax,16.77,1584,96.94,114.45,4800,SYNTHETIC
+2025-02-04,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.26,1584,96.94,114.45,4700,SYNTHETIC
+2025-02-04,Port Hedland,Rotterdam,iron_ore,Capesize,6.32,1584,96.94,114.45,8200,SYNTHETIC
+2025-02-11,Paradip,Rotterdam,iron_ore,Panamax,11.95,1454,92.46,123.09,4800,SYNTHETIC
+2025-02-11,Port Hedland,Qingdao,iron_ore,Capesize,6.79,1454,92.46,123.09,4000,SYNTHETIC
+2025-02-11,Port Hedland,Gangavaram,coal,Capesize,7.47,1454,92.46,134.25,3800,SYNTHETIC
+2025-02-11,Samarinda,Gangavaram,coal,Panamax,10.39,1454,92.46,134.25,2200,SYNTHETIC
+2025-02-11,Samarinda,Shanghai,coal,Supramax,13.35,1454,92.46,134.25,2600,SYNTHETIC
+2025-02-11,Paradip,Rotterdam,grain,Supramax,15.78,1454,92.46,252.7,4800,SYNTHETIC
+2025-02-11,Paradip,Singapore,steel_coils,Handysize,25.35,1454,92.46,252.7,1900,SYNTHETIC
+2025-02-11,Dhamra,Singapore,steel_coils,Handymax,23.7,1454,92.46,252.7,2100,SYNTHETIC
+2025-02-11,Richards Bay,Rotterdam,coal,Panamax,12.62,1454,92.46,134.25,5200,SYNTHETIC
+2025-02-11,Newcastle,Qingdao,coal,Panamax,12.34,1454,92.46,134.25,4200,SYNTHETIC
+2025-02-11,Baltimore,Rotterdam,grain,Handymax,20.69,1454,92.46,252.7,3400,SYNTHETIC
+2025-02-11,Norfolk,Rotterdam,grain,Panamax,16.32,1454,92.46,252.7,3300,SYNTHETIC
+2025-02-11,Paradip,Rotterdam,iron_ore,Handymax,18.01,1454,92.46,123.09,4800,SYNTHETIC
+2025-02-11,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.15,1454,92.46,123.09,4700,SYNTHETIC
+2025-02-11,Port Hedland,Rotterdam,iron_ore,Capesize,5.8,1454,92.46,123.09,8200,SYNTHETIC
+2025-02-18,Paradip,Rotterdam,iron_ore,Panamax,11.29,1357,96.29,129.17,4800,SYNTHETIC
+2025-02-18,Port Hedland,Qingdao,iron_ore,Capesize,7.0,1357,96.29,129.17,4000,SYNTHETIC
+2025-02-18,Port Hedland,Gangavaram,coal,Capesize,7.12,1357,96.29,145.04,3800,SYNTHETIC
+2025-02-18,Samarinda,Gangavaram,coal,Panamax,10.86,1357,96.29,145.04,2200,SYNTHETIC
+2025-02-18,Samarinda,Shanghai,coal,Supramax,13.73,1357,96.29,145.04,2600,SYNTHETIC
+2025-02-18,Paradip,Rotterdam,grain,Supramax,15.23,1357,96.29,265.76,4800,SYNTHETIC
+2025-02-18,Paradip,Singapore,steel_coils,Handysize,26.63,1357,96.29,265.76,1900,SYNTHETIC
+2025-02-18,Dhamra,Singapore,steel_coils,Handymax,21.34,1357,96.29,265.76,2100,SYNTHETIC
+2025-02-18,Richards Bay,Rotterdam,coal,Panamax,11.68,1357,96.29,145.04,5200,SYNTHETIC
+2025-02-18,Newcastle,Qingdao,coal,Panamax,11.38,1357,96.29,145.04,4200,SYNTHETIC
+2025-02-18,Baltimore,Rotterdam,grain,Handymax,19.02,1357,96.29,265.76,3400,SYNTHETIC
+2025-02-18,Norfolk,Rotterdam,grain,Panamax,17.94,1357,96.29,265.76,3300,SYNTHETIC
+2025-02-18,Paradip,Rotterdam,iron_ore,Handymax,15.47,1357,96.29,129.17,4800,SYNTHETIC
+2025-02-18,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.31,1357,96.29,129.17,4700,SYNTHETIC
+2025-02-18,Port Hedland,Rotterdam,iron_ore,Capesize,5.87,1357,96.29,129.17,8200,SYNTHETIC
+2025-02-25,Paradip,Rotterdam,iron_ore,Panamax,11.94,1535,88.8,125.44,4800,SYNTHETIC
+2025-02-25,Port Hedland,Qingdao,iron_ore,Capesize,6.85,1535,88.8,125.44,4000,SYNTHETIC
+2025-02-25,Port Hedland,Gangavaram,coal,Capesize,7.87,1535,88.8,155.77,3800,SYNTHETIC
+2025-02-25,Samarinda,Gangavaram,coal,Panamax,11.49,1535,88.8,155.77,2200,SYNTHETIC
+2025-02-25,Samarinda,Shanghai,coal,Supramax,13.06,1535,88.8,155.77,2600,SYNTHETIC
+2025-02-25,Paradip,Rotterdam,grain,Supramax,15.74,1535,88.8,268.47,4800,SYNTHETIC
+2025-02-25,Paradip,Singapore,steel_coils,Handysize,29.86,1535,88.8,268.47,1900,SYNTHETIC
+2025-02-25,Dhamra,Singapore,steel_coils,Handymax,22.27,1535,88.8,268.47,2100,SYNTHETIC
+2025-02-25,Richards Bay,Rotterdam,coal,Panamax,12.79,1535,88.8,155.77,5200,SYNTHETIC
+2025-02-25,Newcastle,Qingdao,coal,Panamax,13.35,1535,88.8,155.77,4200,SYNTHETIC
+2025-02-25,Baltimore,Rotterdam,grain,Handymax,21.54,1535,88.8,268.47,3400,SYNTHETIC
+2025-02-25,Norfolk,Rotterdam,grain,Panamax,18.49,1535,88.8,268.47,3300,SYNTHETIC
+2025-02-25,Paradip,Rotterdam,iron_ore,Handymax,16.9,1535,88.8,125.44,4800,SYNTHETIC
+2025-02-25,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.16,1535,88.8,125.44,4700,SYNTHETIC
+2025-02-25,Port Hedland,Rotterdam,iron_ore,Capesize,6.29,1535,88.8,125.44,8200,SYNTHETIC
+2025-03-04,Paradip,Rotterdam,iron_ore,Panamax,12.49,1453,83.25,112.84,4800,SYNTHETIC
+2025-03-04,Port Hedland,Qingdao,iron_ore,Capesize,7.83,1453,83.25,112.84,4000,SYNTHETIC
+2025-03-04,Port Hedland,Gangavaram,coal,Capesize,7.86,1453,83.25,128.95,3800,SYNTHETIC
+2025-03-04,Samarinda,Gangavaram,coal,Panamax,9.85,1453,83.25,128.95,2200,SYNTHETIC
+2025-03-04,Samarinda,Shanghai,coal,Supramax,14.27,1453,83.25,128.95,2600,SYNTHETIC
+2025-03-04,Paradip,Rotterdam,grain,Supramax,14.33,1453,83.25,241.08,4800,SYNTHETIC
+2025-03-04,Paradip,Singapore,steel_coils,Handysize,28.9,1453,83.25,241.08,1900,SYNTHETIC
+2025-03-04,Dhamra,Singapore,steel_coils,Handymax,23.3,1453,83.25,241.08,2100,SYNTHETIC
+2025-03-04,Richards Bay,Rotterdam,coal,Panamax,13.87,1453,83.25,128.95,5200,SYNTHETIC
+2025-03-04,Newcastle,Qingdao,coal,Panamax,12.52,1453,83.25,128.95,4200,SYNTHETIC
+2025-03-04,Baltimore,Rotterdam,grain,Handymax,21.86,1453,83.25,241.08,3400,SYNTHETIC
+2025-03-04,Norfolk,Rotterdam,grain,Panamax,17.83,1453,83.25,241.08,3300,SYNTHETIC
+2025-03-04,Paradip,Rotterdam,iron_ore,Handymax,17.22,1453,83.25,112.84,4800,SYNTHETIC
+2025-03-04,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.85,1453,83.25,112.84,4700,SYNTHETIC
+2025-03-04,Port Hedland,Rotterdam,iron_ore,Capesize,6.35,1453,83.25,112.84,8200,SYNTHETIC
+2025-03-11,Paradip,Rotterdam,iron_ore,Panamax,11.63,1428,80.49,116.13,4800,SYNTHETIC
+2025-03-11,Port Hedland,Qingdao,iron_ore,Capesize,7.55,1428,80.49,116.13,4000,SYNTHETIC
+2025-03-11,Port Hedland,Gangavaram,coal,Capesize,7.25,1428,80.49,137.59,3800,SYNTHETIC
+2025-03-11,Samarinda,Gangavaram,coal,Panamax,10.07,1428,80.49,137.59,2200,SYNTHETIC
+2025-03-11,Samarinda,Shanghai,coal,Supramax,13.36,1428,80.49,137.59,2600,SYNTHETIC
+2025-03-11,Paradip,Rotterdam,grain,Supramax,14.65,1428,80.49,240.68,4800,SYNTHETIC
+2025-03-11,Paradip,Singapore,steel_coils,Handysize,27.45,1428,80.49,240.68,1900,SYNTHETIC
+2025-03-11,Dhamra,Singapore,steel_coils,Handymax,23.33,1428,80.49,240.68,2100,SYNTHETIC
+2025-03-11,Richards Bay,Rotterdam,coal,Panamax,12.79,1428,80.49,137.59,5200,SYNTHETIC
+2025-03-11,Newcastle,Qingdao,coal,Panamax,12.74,1428,80.49,137.59,4200,SYNTHETIC
+2025-03-11,Baltimore,Rotterdam,grain,Handymax,21.89,1428,80.49,240.68,3400,SYNTHETIC
+2025-03-11,Norfolk,Rotterdam,grain,Panamax,17.69,1428,80.49,240.68,3300,SYNTHETIC
+2025-03-11,Paradip,Rotterdam,iron_ore,Handymax,16.78,1428,80.49,116.13,4800,SYNTHETIC
+2025-03-11,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.3,1428,80.49,116.13,4700,SYNTHETIC
+2025-03-11,Port Hedland,Rotterdam,iron_ore,Capesize,6.7,1428,80.49,116.13,8200,SYNTHETIC
+2025-03-18,Paradip,Rotterdam,iron_ore,Panamax,12.2,1425,82.39,108.53,4800,SYNTHETIC
+2025-03-18,Port Hedland,Qingdao,iron_ore,Capesize,7.78,1425,82.39,108.53,4000,SYNTHETIC
+2025-03-18,Port Hedland,Gangavaram,coal,Capesize,8.07,1425,82.39,139.34,3800,SYNTHETIC
+2025-03-18,Samarinda,Gangavaram,coal,Panamax,9.91,1425,82.39,139.34,2200,SYNTHETIC
+2025-03-18,Samarinda,Shanghai,coal,Supramax,13.78,1425,82.39,139.34,2600,SYNTHETIC
+2025-03-18,Paradip,Rotterdam,grain,Supramax,15.67,1425,82.39,250.41,4800,SYNTHETIC
+2025-03-18,Paradip,Singapore,steel_coils,Handysize,26.54,1425,82.39,250.41,1900,SYNTHETIC
+2025-03-18,Dhamra,Singapore,steel_coils,Handymax,23.06,1425,82.39,250.41,2100,SYNTHETIC
+2025-03-18,Richards Bay,Rotterdam,coal,Panamax,13.5,1425,82.39,139.34,5200,SYNTHETIC
+2025-03-18,Newcastle,Qingdao,coal,Panamax,12.84,1425,82.39,139.34,4200,SYNTHETIC
+2025-03-18,Baltimore,Rotterdam,grain,Handymax,19.8,1425,82.39,250.41,3400,SYNTHETIC
+2025-03-18,Norfolk,Rotterdam,grain,Panamax,17.63,1425,82.39,250.41,3300,SYNTHETIC
+2025-03-18,Paradip,Rotterdam,iron_ore,Handymax,17.53,1425,82.39,108.53,4800,SYNTHETIC
+2025-03-18,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.12,1425,82.39,108.53,4700,SYNTHETIC
+2025-03-18,Port Hedland,Rotterdam,iron_ore,Capesize,6.04,1425,82.39,108.53,8200,SYNTHETIC
+2025-03-25,Paradip,Rotterdam,iron_ore,Panamax,12.81,1728,65.88,100.18,4800,SYNTHETIC
+2025-03-25,Port Hedland,Qingdao,iron_ore,Capesize,7.75,1728,65.88,100.18,4000,SYNTHETIC
+2025-03-25,Port Hedland,Gangavaram,coal,Capesize,8.59,1728,65.88,138.26,3800,SYNTHETIC
+2025-03-25,Samarinda,Gangavaram,coal,Panamax,11.67,1728,65.88,138.26,2200,SYNTHETIC
+2025-03-25,Samarinda,Shanghai,coal,Supramax,14.4,1728,65.88,138.26,2600,SYNTHETIC
+2025-03-25,Paradip,Rotterdam,grain,Supramax,17.21,1728,65.88,241.34,4800,SYNTHETIC
+2025-03-25,Paradip,Singapore,steel_coils,Handysize,28.45,1728,65.88,241.34,1900,SYNTHETIC
+2025-03-25,Dhamra,Singapore,steel_coils,Handymax,27.89,1728,65.88,241.34,2100,SYNTHETIC
+2025-03-25,Richards Bay,Rotterdam,coal,Panamax,15.56,1728,65.88,138.26,5200,SYNTHETIC
+2025-03-25,Newcastle,Qingdao,coal,Panamax,13.33,1728,65.88,138.26,4200,SYNTHETIC
+2025-03-25,Baltimore,Rotterdam,grain,Handymax,25.0,1728,65.88,241.34,3400,SYNTHETIC
+2025-03-25,Norfolk,Rotterdam,grain,Panamax,20.65,1728,65.88,241.34,3300,SYNTHETIC
+2025-03-25,Paradip,Rotterdam,iron_ore,Handymax,20.21,1728,65.88,100.18,4800,SYNTHETIC
+2025-03-25,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.45,1728,65.88,100.18,4700,SYNTHETIC
+2025-03-25,Port Hedland,Rotterdam,iron_ore,Capesize,6.89,1728,65.88,100.18,8200,SYNTHETIC
+2025-04-01,Paradip,Rotterdam,iron_ore,Panamax,12.34,1714,71.15,92.74,4800,SYNTHETIC
+2025-04-01,Port Hedland,Qingdao,iron_ore,Capesize,7.79,1714,71.15,92.74,4000,SYNTHETIC
+2025-04-01,Port Hedland,Gangavaram,coal,Capesize,9.13,1714,71.15,139.56,3800,SYNTHETIC
+2025-04-01,Samarinda,Gangavaram,coal,Panamax,11.39,1714,71.15,139.56,2200,SYNTHETIC
+2025-04-01,Samarinda,Shanghai,coal,Supramax,15.88,1714,71.15,139.56,2600,SYNTHETIC
+2025-04-01,Paradip,Rotterdam,grain,Supramax,18.03,1714,71.15,219.34,4800,SYNTHETIC
+2025-04-01,Paradip,Singapore,steel_coils,Handysize,29.72,1714,71.15,219.34,1900,SYNTHETIC
+2025-04-01,Dhamra,Singapore,steel_coils,Handymax,24.76,1714,71.15,219.34,2100,SYNTHETIC
+2025-04-01,Richards Bay,Rotterdam,coal,Panamax,15.46,1714,71.15,139.56,5200,SYNTHETIC
+2025-04-01,Newcastle,Qingdao,coal,Panamax,13.27,1714,71.15,139.56,4200,SYNTHETIC
+2025-04-01,Baltimore,Rotterdam,grain,Handymax,21.84,1714,71.15,219.34,3400,SYNTHETIC
+2025-04-01,Norfolk,Rotterdam,grain,Panamax,18.8,1714,71.15,219.34,3300,SYNTHETIC
+2025-04-01,Paradip,Rotterdam,iron_ore,Handymax,18.98,1714,71.15,92.74,4800,SYNTHETIC
+2025-04-01,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.13,1714,71.15,92.74,4700,SYNTHETIC
+2025-04-01,Port Hedland,Rotterdam,iron_ore,Capesize,7.35,1714,71.15,92.74,8200,SYNTHETIC
+2025-04-08,Paradip,Rotterdam,iron_ore,Panamax,11.11,1267,69.53,81.53,4800,SYNTHETIC
+2025-04-08,Port Hedland,Qingdao,iron_ore,Capesize,6.65,1267,69.53,81.53,4000,SYNTHETIC
+2025-04-08,Port Hedland,Gangavaram,coal,Capesize,7.83,1267,69.53,154.81,3800,SYNTHETIC
+2025-04-08,Samarinda,Gangavaram,coal,Panamax,10.82,1267,69.53,154.81,2200,SYNTHETIC
+2025-04-08,Samarinda,Shanghai,coal,Supramax,12.23,1267,69.53,154.81,2600,SYNTHETIC
+2025-04-08,Paradip,Rotterdam,grain,Supramax,15.69,1267,69.53,227.58,4800,SYNTHETIC
+2025-04-08,Paradip,Singapore,steel_coils,Handysize,24.26,1267,69.53,227.58,1900,SYNTHETIC
+2025-04-08,Dhamra,Singapore,steel_coils,Handymax,22.38,1267,69.53,227.58,2100,SYNTHETIC
+2025-04-08,Richards Bay,Rotterdam,coal,Panamax,12.95,1267,69.53,154.81,5200,SYNTHETIC
+2025-04-08,Newcastle,Qingdao,coal,Panamax,11.94,1267,69.53,154.81,4200,SYNTHETIC
+2025-04-08,Baltimore,Rotterdam,grain,Handymax,20.3,1267,69.53,227.58,3400,SYNTHETIC
+2025-04-08,Norfolk,Rotterdam,grain,Panamax,15.86,1267,69.53,227.58,3300,SYNTHETIC
+2025-04-08,Paradip,Rotterdam,iron_ore,Handymax,16.76,1267,69.53,81.53,4800,SYNTHETIC
+2025-04-08,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.26,1267,69.53,81.53,4700,SYNTHETIC
+2025-04-08,Port Hedland,Rotterdam,iron_ore,Capesize,5.61,1267,69.53,81.53,8200,SYNTHETIC
+2025-04-15,Paradip,Rotterdam,iron_ore,Panamax,11.51,1240,68.43,83.62,4800,SYNTHETIC
+2025-04-15,Port Hedland,Qingdao,iron_ore,Capesize,6.78,1240,68.43,83.62,4000,SYNTHETIC
+2025-04-15,Port Hedland,Gangavaram,coal,Capesize,7.13,1240,68.43,159.35,3800,SYNTHETIC
+2025-04-15,Samarinda,Gangavaram,coal,Panamax,9.27,1240,68.43,159.35,2200,SYNTHETIC
+2025-04-15,Samarinda,Shanghai,coal,Supramax,13.22,1240,68.43,159.35,2600,SYNTHETIC
+2025-04-15,Paradip,Rotterdam,grain,Supramax,14.42,1240,68.43,221.83,4800,SYNTHETIC
+2025-04-15,Paradip,Singapore,steel_coils,Handysize,25.76,1240,68.43,221.83,1900,SYNTHETIC
+2025-04-15,Dhamra,Singapore,steel_coils,Handymax,22.6,1240,68.43,221.83,2100,SYNTHETIC
+2025-04-15,Richards Bay,Rotterdam,coal,Panamax,12.83,1240,68.43,159.35,5200,SYNTHETIC
+2025-04-15,Newcastle,Qingdao,coal,Panamax,11.49,1240,68.43,159.35,4200,SYNTHETIC
+2025-04-15,Baltimore,Rotterdam,grain,Handymax,19.06,1240,68.43,221.83,3400,SYNTHETIC
+2025-04-15,Norfolk,Rotterdam,grain,Panamax,16.81,1240,68.43,221.83,3300,SYNTHETIC
+2025-04-15,Paradip,Rotterdam,iron_ore,Handymax,17.38,1240,68.43,83.62,4800,SYNTHETIC
+2025-04-15,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.73,1240,68.43,83.62,4700,SYNTHETIC
+2025-04-15,Port Hedland,Rotterdam,iron_ore,Capesize,5.47,1240,68.43,83.62,8200,SYNTHETIC
+2025-04-22,Paradip,Rotterdam,iron_ore,Panamax,11.12,1329,70.71,72.65,4800,SYNTHETIC
+2025-04-22,Port Hedland,Qingdao,iron_ore,Capesize,7.16,1329,70.71,72.65,4000,SYNTHETIC
+2025-04-22,Port Hedland,Gangavaram,coal,Capesize,7.6,1329,70.71,137.75,3800,SYNTHETIC
+2025-04-22,Samarinda,Gangavaram,coal,Panamax,9.52,1329,70.71,137.75,2200,SYNTHETIC
+2025-04-22,Samarinda,Shanghai,coal,Supramax,13.54,1329,70.71,137.75,2600,SYNTHETIC
+2025-04-22,Paradip,Rotterdam,grain,Supramax,15.98,1329,70.71,213.42,4800,SYNTHETIC
+2025-04-22,Paradip,Singapore,steel_coils,Handysize,24.44,1329,70.71,213.42,1900,SYNTHETIC
+2025-04-22,Dhamra,Singapore,steel_coils,Handymax,22.04,1329,70.71,213.42,2100,SYNTHETIC
+2025-04-22,Richards Bay,Rotterdam,coal,Panamax,13.13,1329,70.71,137.75,5200,SYNTHETIC
+2025-04-22,Newcastle,Qingdao,coal,Panamax,11.01,1329,70.71,137.75,4200,SYNTHETIC
+2025-04-22,Baltimore,Rotterdam,grain,Handymax,20.44,1329,70.71,213.42,3400,SYNTHETIC
+2025-04-22,Norfolk,Rotterdam,grain,Panamax,17.68,1329,70.71,213.42,3300,SYNTHETIC
+2025-04-22,Paradip,Rotterdam,iron_ore,Handymax,16.46,1329,70.71,72.65,4800,SYNTHETIC
+2025-04-22,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.21,1329,70.71,72.65,4700,SYNTHETIC
+2025-04-22,Port Hedland,Rotterdam,iron_ore,Capesize,6.47,1329,70.71,72.65,8200,SYNTHETIC
+2025-04-29,Paradip,Rotterdam,iron_ore,Panamax,11.31,1429,67.33,74.97,4800,SYNTHETIC
+2025-04-29,Port Hedland,Qingdao,iron_ore,Capesize,7.35,1429,67.33,74.97,4000,SYNTHETIC
+2025-04-29,Port Hedland,Gangavaram,coal,Capesize,7.47,1429,67.33,150.37,3800,SYNTHETIC
+2025-04-29,Samarinda,Gangavaram,coal,Panamax,11.19,1429,67.33,150.37,2200,SYNTHETIC
+2025-04-29,Samarinda,Shanghai,coal,Supramax,14.26,1429,67.33,150.37,2600,SYNTHETIC
+2025-04-29,Paradip,Rotterdam,grain,Supramax,16.26,1429,67.33,240.76,4800,SYNTHETIC
+2025-04-29,Paradip,Singapore,steel_coils,Handysize,27.96,1429,67.33,240.76,1900,SYNTHETIC
+2025-04-29,Dhamra,Singapore,steel_coils,Handymax,22.53,1429,67.33,240.76,2100,SYNTHETIC
+2025-04-29,Richards Bay,Rotterdam,coal,Panamax,14.06,1429,67.33,150.37,5200,SYNTHETIC
+2025-04-29,Newcastle,Qingdao,coal,Panamax,12.42,1429,67.33,150.37,4200,SYNTHETIC
+2025-04-29,Baltimore,Rotterdam,grain,Handymax,21.9,1429,67.33,240.76,3400,SYNTHETIC
+2025-04-29,Norfolk,Rotterdam,grain,Panamax,18.25,1429,67.33,240.76,3300,SYNTHETIC
+2025-04-29,Paradip,Rotterdam,iron_ore,Handymax,16.42,1429,67.33,74.97,4800,SYNTHETIC
+2025-04-29,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.09,1429,67.33,74.97,4700,SYNTHETIC
+2025-04-29,Port Hedland,Rotterdam,iron_ore,Capesize,6.43,1429,67.33,74.97,8200,SYNTHETIC
+2025-05-06,Paradip,Rotterdam,iron_ore,Panamax,12.59,1848,76.15,83.23,4800,SYNTHETIC
+2025-05-06,Port Hedland,Qingdao,iron_ore,Capesize,8.11,1848,76.15,83.23,4000,SYNTHETIC
+2025-05-06,Port Hedland,Gangavaram,coal,Capesize,9.52,1848,76.15,143.3,3800,SYNTHETIC
+2025-05-06,Samarinda,Gangavaram,coal,Panamax,11.52,1848,76.15,143.3,2200,SYNTHETIC
+2025-05-06,Samarinda,Shanghai,coal,Supramax,15.66,1848,76.15,143.3,2600,SYNTHETIC
+2025-05-06,Paradip,Rotterdam,grain,Supramax,17.52,1848,76.15,231.69,4800,SYNTHETIC
+2025-05-06,Paradip,Singapore,steel_coils,Handysize,33.05,1848,76.15,231.69,1900,SYNTHETIC
+2025-05-06,Dhamra,Singapore,steel_coils,Handymax,26.41,1848,76.15,231.69,2100,SYNTHETIC
+2025-05-06,Richards Bay,Rotterdam,coal,Panamax,15.1,1848,76.15,143.3,5200,SYNTHETIC
+2025-05-06,Newcastle,Qingdao,coal,Panamax,12.93,1848,76.15,143.3,4200,SYNTHETIC
+2025-05-06,Baltimore,Rotterdam,grain,Handymax,22.96,1848,76.15,231.69,3400,SYNTHETIC
+2025-05-06,Norfolk,Rotterdam,grain,Panamax,22.24,1848,76.15,231.69,3300,SYNTHETIC
+2025-05-06,Paradip,Rotterdam,iron_ore,Handymax,18.79,1848,76.15,83.23,4800,SYNTHETIC
+2025-05-06,Visakhapatnam,Rotterdam,iron_ore,Panamax,14.42,1848,76.15,83.23,4700,SYNTHETIC
+2025-05-06,Port Hedland,Rotterdam,iron_ore,Capesize,7.13,1848,76.15,83.23,8200,SYNTHETIC
+2025-05-13,Paradip,Rotterdam,iron_ore,Panamax,11.49,1464,67.09,77.14,4800,SYNTHETIC
+2025-05-13,Port Hedland,Qingdao,iron_ore,Capesize,7.89,1464,67.09,77.14,4000,SYNTHETIC
+2025-05-13,Port Hedland,Gangavaram,coal,Capesize,8.29,1464,67.09,126.88,3800,SYNTHETIC
+2025-05-13,Samarinda,Gangavaram,coal,Panamax,10.3,1464,67.09,126.88,2200,SYNTHETIC
+2025-05-13,Samarinda,Shanghai,coal,Supramax,12.73,1464,67.09,126.88,2600,SYNTHETIC
+2025-05-13,Paradip,Rotterdam,grain,Supramax,14.98,1464,67.09,218.8,4800,SYNTHETIC
+2025-05-13,Paradip,Singapore,steel_coils,Handysize,27.93,1464,67.09,218.8,1900,SYNTHETIC
+2025-05-13,Dhamra,Singapore,steel_coils,Handymax,24.09,1464,67.09,218.8,2100,SYNTHETIC
+2025-05-13,Richards Bay,Rotterdam,coal,Panamax,12.32,1464,67.09,126.88,5200,SYNTHETIC
+2025-05-13,Newcastle,Qingdao,coal,Panamax,13.28,1464,67.09,126.88,4200,SYNTHETIC
+2025-05-13,Baltimore,Rotterdam,grain,Handymax,23.43,1464,67.09,218.8,3400,SYNTHETIC
+2025-05-13,Norfolk,Rotterdam,grain,Panamax,18.21,1464,67.09,218.8,3300,SYNTHETIC
+2025-05-13,Paradip,Rotterdam,iron_ore,Handymax,18.09,1464,67.09,77.14,4800,SYNTHETIC
+2025-05-13,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.43,1464,67.09,77.14,4700,SYNTHETIC
+2025-05-13,Port Hedland,Rotterdam,iron_ore,Capesize,6.06,1464,67.09,77.14,8200,SYNTHETIC
+2025-05-20,Paradip,Rotterdam,iron_ore,Panamax,11.07,1209,66.0,79.32,4800,SYNTHETIC
+2025-05-20,Port Hedland,Qingdao,iron_ore,Capesize,7.12,1209,66.0,79.32,4000,SYNTHETIC
+2025-05-20,Port Hedland,Gangavaram,coal,Capesize,6.76,1209,66.0,120.63,3800,SYNTHETIC
+2025-05-20,Samarinda,Gangavaram,coal,Panamax,9.04,1209,66.0,120.63,2200,SYNTHETIC
+2025-05-20,Samarinda,Shanghai,coal,Supramax,11.49,1209,66.0,120.63,2600,SYNTHETIC
+2025-05-20,Paradip,Rotterdam,grain,Supramax,14.24,1209,66.0,195.15,4800,SYNTHETIC
+2025-05-20,Paradip,Singapore,steel_coils,Handysize,23.49,1209,66.0,195.15,1900,SYNTHETIC
+2025-05-20,Dhamra,Singapore,steel_coils,Handymax,22.57,1209,66.0,195.15,2100,SYNTHETIC
+2025-05-20,Richards Bay,Rotterdam,coal,Panamax,11.25,1209,66.0,120.63,5200,SYNTHETIC
+2025-05-20,Newcastle,Qingdao,coal,Panamax,10.6,1209,66.0,120.63,4200,SYNTHETIC
+2025-05-20,Baltimore,Rotterdam,grain,Handymax,19.01,1209,66.0,195.15,3400,SYNTHETIC
+2025-05-20,Norfolk,Rotterdam,grain,Panamax,15.7,1209,66.0,195.15,3300,SYNTHETIC
+2025-05-20,Paradip,Rotterdam,iron_ore,Handymax,16.57,1209,66.0,79.32,4800,SYNTHETIC
+2025-05-20,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.89,1209,66.0,79.32,4700,SYNTHETIC
+2025-05-20,Port Hedland,Rotterdam,iron_ore,Capesize,5.56,1209,66.0,79.32,8200,SYNTHETIC
+2025-05-27,Paradip,Rotterdam,iron_ore,Panamax,10.5,1183,69.99,97.03,4800,SYNTHETIC
+2025-05-27,Port Hedland,Qingdao,iron_ore,Capesize,7.06,1183,69.99,97.03,4000,SYNTHETIC
+2025-05-27,Port Hedland,Gangavaram,coal,Capesize,6.85,1183,69.99,140.05,3800,SYNTHETIC
+2025-05-27,Samarinda,Gangavaram,coal,Panamax,9.74,1183,69.99,140.05,2200,SYNTHETIC
+2025-05-27,Samarinda,Shanghai,coal,Supramax,11.89,1183,69.99,140.05,2600,SYNTHETIC
+2025-05-27,Paradip,Rotterdam,grain,Supramax,14.6,1183,69.99,197.59,4800,SYNTHETIC
+2025-05-27,Paradip,Singapore,steel_coils,Handysize,24.56,1183,69.99,197.59,1900,SYNTHETIC
+2025-05-27,Dhamra,Singapore,steel_coils,Handymax,21.11,1183,69.99,197.59,2100,SYNTHETIC
+2025-05-27,Richards Bay,Rotterdam,coal,Panamax,11.66,1183,69.99,140.05,5200,SYNTHETIC
+2025-05-27,Newcastle,Qingdao,coal,Panamax,10.43,1183,69.99,140.05,4200,SYNTHETIC
+2025-05-27,Baltimore,Rotterdam,grain,Handymax,18.3,1183,69.99,197.59,3400,SYNTHETIC
+2025-05-27,Norfolk,Rotterdam,grain,Panamax,16.73,1183,69.99,197.59,3300,SYNTHETIC
+2025-05-27,Paradip,Rotterdam,iron_ore,Handymax,16.78,1183,69.99,97.03,4800,SYNTHETIC
+2025-05-27,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.59,1183,69.99,97.03,4700,SYNTHETIC
+2025-05-27,Port Hedland,Rotterdam,iron_ore,Capesize,5.61,1183,69.99,97.03,8200,SYNTHETIC
+2025-06-03,Paradip,Rotterdam,iron_ore,Panamax,10.21,1092,75.67,85.36,4800,SYNTHETIC
+2025-06-03,Port Hedland,Qingdao,iron_ore,Capesize,6.56,1092,75.67,85.36,4000,SYNTHETIC
+2025-06-03,Port Hedland,Gangavaram,coal,Capesize,6.51,1092,75.67,153.2,3800,SYNTHETIC
+2025-06-03,Samarinda,Gangavaram,coal,Panamax,9.67,1092,75.67,153.2,2200,SYNTHETIC
+2025-06-03,Samarinda,Shanghai,coal,Supramax,12.6,1092,75.67,153.2,2600,SYNTHETIC
+2025-06-03,Paradip,Rotterdam,grain,Supramax,13.4,1092,75.67,183.55,4800,SYNTHETIC
+2025-06-03,Paradip,Singapore,steel_coils,Handysize,24.94,1092,75.67,183.55,1900,SYNTHETIC
+2025-06-03,Dhamra,Singapore,steel_coils,Handymax,19.9,1092,75.67,183.55,2100,SYNTHETIC
+2025-06-03,Richards Bay,Rotterdam,coal,Panamax,11.78,1092,75.67,153.2,5200,SYNTHETIC
+2025-06-03,Newcastle,Qingdao,coal,Panamax,11.02,1092,75.67,153.2,4200,SYNTHETIC
+2025-06-03,Baltimore,Rotterdam,grain,Handymax,18.83,1092,75.67,183.55,3400,SYNTHETIC
+2025-06-03,Norfolk,Rotterdam,grain,Panamax,15.79,1092,75.67,183.55,3300,SYNTHETIC
+2025-06-03,Paradip,Rotterdam,iron_ore,Handymax,14.94,1092,75.67,85.36,4800,SYNTHETIC
+2025-06-03,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.6,1092,75.67,85.36,4700,SYNTHETIC
+2025-06-03,Port Hedland,Rotterdam,iron_ore,Capesize,5.35,1092,75.67,85.36,8200,SYNTHETIC
+2025-06-10,Paradip,Rotterdam,iron_ore,Panamax,11.53,1341,72.1,110.0,4800,SYNTHETIC
+2025-06-10,Port Hedland,Qingdao,iron_ore,Capesize,6.56,1341,72.1,110.0,4000,SYNTHETIC
+2025-06-10,Port Hedland,Gangavaram,coal,Capesize,7.12,1341,72.1,153.66,3800,SYNTHETIC
+2025-06-10,Samarinda,Gangavaram,coal,Panamax,9.57,1341,72.1,153.66,2200,SYNTHETIC
+2025-06-10,Samarinda,Shanghai,coal,Supramax,13.19,1341,72.1,153.66,2600,SYNTHETIC
+2025-06-10,Paradip,Rotterdam,grain,Supramax,15.26,1341,72.1,167.15,4800,SYNTHETIC
+2025-06-10,Paradip,Singapore,steel_coils,Handysize,25.47,1341,72.1,167.15,1900,SYNTHETIC
+2025-06-10,Dhamra,Singapore,steel_coils,Handymax,23.75,1341,72.1,167.15,2100,SYNTHETIC
+2025-06-10,Richards Bay,Rotterdam,coal,Panamax,12.99,1341,72.1,153.66,5200,SYNTHETIC
+2025-06-10,Newcastle,Qingdao,coal,Panamax,12.63,1341,72.1,153.66,4200,SYNTHETIC
+2025-06-10,Baltimore,Rotterdam,grain,Handymax,20.2,1341,72.1,167.15,3400,SYNTHETIC
+2025-06-10,Norfolk,Rotterdam,grain,Panamax,16.09,1341,72.1,167.15,3300,SYNTHETIC
+2025-06-10,Paradip,Rotterdam,iron_ore,Handymax,16.06,1341,72.1,110.0,4800,SYNTHETIC
+2025-06-10,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.42,1341,72.1,110.0,4700,SYNTHETIC
+2025-06-10,Port Hedland,Rotterdam,iron_ore,Capesize,6.4,1341,72.1,110.0,8200,SYNTHETIC
+2025-06-17,Paradip,Rotterdam,iron_ore,Panamax,11.02,1340,70.59,92.21,4800,SYNTHETIC
+2025-06-17,Port Hedland,Qingdao,iron_ore,Capesize,6.57,1340,70.59,92.21,4000,SYNTHETIC
+2025-06-17,Port Hedland,Gangavaram,coal,Capesize,7.71,1340,70.59,144.76,3800,SYNTHETIC
+2025-06-17,Samarinda,Gangavaram,coal,Panamax,10.13,1340,70.59,144.76,2200,SYNTHETIC
+2025-06-17,Samarinda,Shanghai,coal,Supramax,13.75,1340,70.59,144.76,2600,SYNTHETIC
+2025-06-17,Paradip,Rotterdam,grain,Supramax,14.13,1340,70.59,189.99,4800,SYNTHETIC
+2025-06-17,Paradip,Singapore,steel_coils,Handysize,25.56,1340,70.59,189.99,1900,SYNTHETIC
+2025-06-17,Dhamra,Singapore,steel_coils,Handymax,20.79,1340,70.59,189.99,2100,SYNTHETIC
+2025-06-17,Richards Bay,Rotterdam,coal,Panamax,12.34,1340,70.59,144.76,5200,SYNTHETIC
+2025-06-17,Newcastle,Qingdao,coal,Panamax,11.68,1340,70.59,144.76,4200,SYNTHETIC
+2025-06-17,Baltimore,Rotterdam,grain,Handymax,21.66,1340,70.59,189.99,3400,SYNTHETIC
+2025-06-17,Norfolk,Rotterdam,grain,Panamax,18.5,1340,70.59,189.99,3300,SYNTHETIC
+2025-06-17,Paradip,Rotterdam,iron_ore,Handymax,17.09,1340,70.59,92.21,4800,SYNTHETIC
+2025-06-17,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.53,1340,70.59,92.21,4700,SYNTHETIC
+2025-06-17,Port Hedland,Rotterdam,iron_ore,Capesize,6.21,1340,70.59,92.21,8200,SYNTHETIC
+2025-06-24,Paradip,Rotterdam,iron_ore,Panamax,11.18,1307,66.44,100.78,4800,SYNTHETIC
+2025-06-24,Port Hedland,Qingdao,iron_ore,Capesize,6.51,1307,66.44,100.78,4000,SYNTHETIC
+2025-06-24,Port Hedland,Gangavaram,coal,Capesize,7.15,1307,66.44,151.7,3800,SYNTHETIC
+2025-06-24,Samarinda,Gangavaram,coal,Panamax,10.38,1307,66.44,151.7,2200,SYNTHETIC
+2025-06-24,Samarinda,Shanghai,coal,Supramax,13.78,1307,66.44,151.7,2600,SYNTHETIC
+2025-06-24,Paradip,Rotterdam,grain,Supramax,15.69,1307,66.44,247.14,4800,SYNTHETIC
+2025-06-24,Paradip,Singapore,steel_coils,Handysize,24.2,1307,66.44,247.14,1900,SYNTHETIC
+2025-06-24,Dhamra,Singapore,steel_coils,Handymax,23.65,1307,66.44,247.14,2100,SYNTHETIC
+2025-06-24,Richards Bay,Rotterdam,coal,Panamax,12.36,1307,66.44,151.7,5200,SYNTHETIC
+2025-06-24,Newcastle,Qingdao,coal,Panamax,12.07,1307,66.44,151.7,4200,SYNTHETIC
+2025-06-24,Baltimore,Rotterdam,grain,Handymax,19.81,1307,66.44,247.14,3400,SYNTHETIC
+2025-06-24,Norfolk,Rotterdam,grain,Panamax,16.66,1307,66.44,247.14,3300,SYNTHETIC
+2025-06-24,Paradip,Rotterdam,iron_ore,Handymax,15.88,1307,66.44,100.78,4800,SYNTHETIC
+2025-06-24,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.15,1307,66.44,100.78,4700,SYNTHETIC
+2025-06-24,Port Hedland,Rotterdam,iron_ore,Capesize,6.03,1307,66.44,100.78,8200,SYNTHETIC
+2025-07-01,Paradip,Rotterdam,iron_ore,Panamax,13.04,1520,66.46,97.31,4800,SYNTHETIC
+2025-07-01,Port Hedland,Qingdao,iron_ore,Capesize,7.46,1520,66.46,97.31,4000,SYNTHETIC
+2025-07-01,Port Hedland,Gangavaram,coal,Capesize,7.57,1520,66.46,165.05,3800,SYNTHETIC
+2025-07-01,Samarinda,Gangavaram,coal,Panamax,10.5,1520,66.46,165.05,2200,SYNTHETIC
+2025-07-01,Samarinda,Shanghai,coal,Supramax,13.71,1520,66.46,165.05,2600,SYNTHETIC
+2025-07-01,Paradip,Rotterdam,grain,Supramax,15.82,1520,66.46,217.69,4800,SYNTHETIC
+2025-07-01,Paradip,Singapore,steel_coils,Handysize,28.55,1520,66.46,217.69,1900,SYNTHETIC
+2025-07-01,Dhamra,Singapore,steel_coils,Handymax,23.35,1520,66.46,217.69,2100,SYNTHETIC
+2025-07-01,Richards Bay,Rotterdam,coal,Panamax,13.91,1520,66.46,165.05,5200,SYNTHETIC
+2025-07-01,Newcastle,Qingdao,coal,Panamax,13.31,1520,66.46,165.05,4200,SYNTHETIC
+2025-07-01,Baltimore,Rotterdam,grain,Handymax,23.89,1520,66.46,217.69,3400,SYNTHETIC
+2025-07-01,Norfolk,Rotterdam,grain,Panamax,19.86,1520,66.46,217.69,3300,SYNTHETIC
+2025-07-01,Paradip,Rotterdam,iron_ore,Handymax,17.51,1520,66.46,97.31,4800,SYNTHETIC
+2025-07-01,Visakhapatnam,Rotterdam,iron_ore,Panamax,13.28,1520,66.46,97.31,4700,SYNTHETIC
+2025-07-01,Port Hedland,Rotterdam,iron_ore,Capesize,6.45,1520,66.46,97.31,8200,SYNTHETIC
+2025-07-08,Paradip,Rotterdam,iron_ore,Panamax,12.91,1531,62.3,84.28,4800,SYNTHETIC
+2025-07-08,Port Hedland,Qingdao,iron_ore,Capesize,8.09,1531,62.3,84.28,4000,SYNTHETIC
+2025-07-08,Port Hedland,Gangavaram,coal,Capesize,7.5,1531,62.3,159.81,3800,SYNTHETIC
+2025-07-08,Samarinda,Gangavaram,coal,Panamax,11.39,1531,62.3,159.81,2200,SYNTHETIC
+2025-07-08,Samarinda,Shanghai,coal,Supramax,13.19,1531,62.3,159.81,2600,SYNTHETIC
+2025-07-08,Paradip,Rotterdam,grain,Supramax,15.14,1531,62.3,228.89,4800,SYNTHETIC
+2025-07-08,Paradip,Singapore,steel_coils,Handysize,29.69,1531,62.3,228.89,1900,SYNTHETIC
+2025-07-08,Dhamra,Singapore,steel_coils,Handymax,25.14,1531,62.3,228.89,2100,SYNTHETIC
+2025-07-08,Richards Bay,Rotterdam,coal,Panamax,13.16,1531,62.3,159.81,5200,SYNTHETIC
+2025-07-08,Newcastle,Qingdao,coal,Panamax,13.16,1531,62.3,159.81,4200,SYNTHETIC
+2025-07-08,Baltimore,Rotterdam,grain,Handymax,21.9,1531,62.3,228.89,3400,SYNTHETIC
+2025-07-08,Norfolk,Rotterdam,grain,Panamax,18.88,1531,62.3,228.89,3300,SYNTHETIC
+2025-07-08,Paradip,Rotterdam,iron_ore,Handymax,17.66,1531,62.3,84.28,4800,SYNTHETIC
+2025-07-08,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.87,1531,62.3,84.28,4700,SYNTHETIC
+2025-07-08,Port Hedland,Rotterdam,iron_ore,Capesize,6.46,1531,62.3,84.28,8200,SYNTHETIC
+2025-07-15,Paradip,Rotterdam,iron_ore,Panamax,11.05,1219,72.03,84.74,4800,SYNTHETIC
+2025-07-15,Port Hedland,Qingdao,iron_ore,Capesize,6.64,1219,72.03,84.74,4000,SYNTHETIC
+2025-07-15,Port Hedland,Gangavaram,coal,Capesize,7.54,1219,72.03,158.37,3800,SYNTHETIC
+2025-07-15,Samarinda,Gangavaram,coal,Panamax,10.55,1219,72.03,158.37,2200,SYNTHETIC
+2025-07-15,Samarinda,Shanghai,coal,Supramax,11.74,1219,72.03,158.37,2600,SYNTHETIC
+2025-07-15,Paradip,Rotterdam,grain,Supramax,13.99,1219,72.03,235.78,4800,SYNTHETIC
+2025-07-15,Paradip,Singapore,steel_coils,Handysize,25.46,1219,72.03,235.78,1900,SYNTHETIC
+2025-07-15,Dhamra,Singapore,steel_coils,Handymax,19.8,1219,72.03,235.78,2100,SYNTHETIC
+2025-07-15,Richards Bay,Rotterdam,coal,Panamax,11.18,1219,72.03,158.37,5200,SYNTHETIC
+2025-07-15,Newcastle,Qingdao,coal,Panamax,10.28,1219,72.03,158.37,4200,SYNTHETIC
+2025-07-15,Baltimore,Rotterdam,grain,Handymax,18.39,1219,72.03,235.78,3400,SYNTHETIC
+2025-07-15,Norfolk,Rotterdam,grain,Panamax,16.04,1219,72.03,235.78,3300,SYNTHETIC
+2025-07-15,Paradip,Rotterdam,iron_ore,Handymax,16.55,1219,72.03,84.74,4800,SYNTHETIC
+2025-07-15,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.04,1219,72.03,84.74,4700,SYNTHETIC
+2025-07-15,Port Hedland,Rotterdam,iron_ore,Capesize,5.49,1219,72.03,84.74,8200,SYNTHETIC
+2025-07-22,Paradip,Rotterdam,iron_ore,Panamax,9.14,1002,65.2,76.11,4800,SYNTHETIC
+2025-07-22,Port Hedland,Qingdao,iron_ore,Capesize,6.39,1002,65.2,76.11,4000,SYNTHETIC
+2025-07-22,Port Hedland,Gangavaram,coal,Capesize,6.27,1002,65.2,161.31,3800,SYNTHETIC
+2025-07-22,Samarinda,Gangavaram,coal,Panamax,9.38,1002,65.2,161.31,2200,SYNTHETIC
+2025-07-22,Samarinda,Shanghai,coal,Supramax,12.09,1002,65.2,161.31,2600,SYNTHETIC
+2025-07-22,Paradip,Rotterdam,grain,Supramax,13.71,1002,65.2,247.31,4800,SYNTHETIC
+2025-07-22,Paradip,Singapore,steel_coils,Handysize,23.75,1002,65.2,247.31,1900,SYNTHETIC
+2025-07-22,Dhamra,Singapore,steel_coils,Handymax,18.49,1002,65.2,247.31,2100,SYNTHETIC
+2025-07-22,Richards Bay,Rotterdam,coal,Panamax,11.31,1002,65.2,161.31,5200,SYNTHETIC
+2025-07-22,Newcastle,Qingdao,coal,Panamax,9.39,1002,65.2,161.31,4200,SYNTHETIC
+2025-07-22,Baltimore,Rotterdam,grain,Handymax,18.88,1002,65.2,247.31,3400,SYNTHETIC
+2025-07-22,Norfolk,Rotterdam,grain,Panamax,13.81,1002,65.2,247.31,3300,SYNTHETIC
+2025-07-22,Paradip,Rotterdam,iron_ore,Handymax,14.02,1002,65.2,76.11,4800,SYNTHETIC
+2025-07-22,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.19,1002,65.2,76.11,4700,SYNTHETIC
+2025-07-22,Port Hedland,Rotterdam,iron_ore,Capesize,5.47,1002,65.2,76.11,8200,SYNTHETIC
+2025-07-29,Paradip,Rotterdam,iron_ore,Panamax,10.28,1211,56.24,83.5,4800,SYNTHETIC
+2025-07-29,Port Hedland,Qingdao,iron_ore,Capesize,6.32,1211,56.24,83.5,4000,SYNTHETIC
+2025-07-29,Port Hedland,Gangavaram,coal,Capesize,6.7,1211,56.24,152.44,3800,SYNTHETIC
+2025-07-29,Samarinda,Gangavaram,coal,Panamax,9.72,1211,56.24,152.44,2200,SYNTHETIC
+2025-07-29,Samarinda,Shanghai,coal,Supramax,11.7,1211,56.24,152.44,2600,SYNTHETIC
+2025-07-29,Paradip,Rotterdam,grain,Supramax,15.05,1211,56.24,231.09,4800,SYNTHETIC
+2025-07-29,Paradip,Singapore,steel_coils,Handysize,25.91,1211,56.24,231.09,1900,SYNTHETIC
+2025-07-29,Dhamra,Singapore,steel_coils,Handymax,22.66,1211,56.24,231.09,2100,SYNTHETIC
+2025-07-29,Richards Bay,Rotterdam,coal,Panamax,12.9,1211,56.24,152.44,5200,SYNTHETIC
+2025-07-29,Newcastle,Qingdao,coal,Panamax,10.96,1211,56.24,152.44,4200,SYNTHETIC
+2025-07-29,Baltimore,Rotterdam,grain,Handymax,19.4,1211,56.24,231.09,3400,SYNTHETIC
+2025-07-29,Norfolk,Rotterdam,grain,Panamax,15.46,1211,56.24,231.09,3300,SYNTHETIC
+2025-07-29,Paradip,Rotterdam,iron_ore,Handymax,16.08,1211,56.24,83.5,4800,SYNTHETIC
+2025-07-29,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.25,1211,56.24,83.5,4700,SYNTHETIC
+2025-07-29,Port Hedland,Rotterdam,iron_ore,Capesize,5.93,1211,56.24,83.5,8200,SYNTHETIC
+2025-08-05,Paradip,Rotterdam,iron_ore,Panamax,11.11,1140,66.16,70.65,4800,SYNTHETIC
+2025-08-05,Port Hedland,Qingdao,iron_ore,Capesize,6.27,1140,66.16,70.65,4000,SYNTHETIC
+2025-08-05,Port Hedland,Gangavaram,coal,Capesize,7.13,1140,66.16,159.47,3800,SYNTHETIC
+2025-08-05,Samarinda,Gangavaram,coal,Panamax,9.05,1140,66.16,159.47,2200,SYNTHETIC
+2025-08-05,Samarinda,Shanghai,coal,Supramax,11.59,1140,66.16,159.47,2600,SYNTHETIC
+2025-08-05,Paradip,Rotterdam,grain,Supramax,13.31,1140,66.16,212.74,4800,SYNTHETIC
+2025-08-05,Paradip,Singapore,steel_coils,Handysize,22.47,1140,66.16,212.74,1900,SYNTHETIC
+2025-08-05,Dhamra,Singapore,steel_coils,Handymax,20.83,1140,66.16,212.74,2100,SYNTHETIC
+2025-08-05,Richards Bay,Rotterdam,coal,Panamax,12.3,1140,66.16,159.47,5200,SYNTHETIC
+2025-08-05,Newcastle,Qingdao,coal,Panamax,11.03,1140,66.16,159.47,4200,SYNTHETIC
+2025-08-05,Baltimore,Rotterdam,grain,Handymax,19.63,1140,66.16,212.74,3400,SYNTHETIC
+2025-08-05,Norfolk,Rotterdam,grain,Panamax,15.16,1140,66.16,212.74,3300,SYNTHETIC
+2025-08-05,Paradip,Rotterdam,iron_ore,Handymax,14.44,1140,66.16,70.65,4800,SYNTHETIC
+2025-08-05,Visakhapatnam,Rotterdam,iron_ore,Panamax,11.56,1140,66.16,70.65,4700,SYNTHETIC
+2025-08-05,Port Hedland,Rotterdam,iron_ore,Capesize,5.2,1140,66.16,70.65,8200,SYNTHETIC
+2025-08-12,Paradip,Rotterdam,iron_ore,Panamax,7.37,715,66.43,83.25,4800,SYNTHETIC
+2025-08-12,Port Hedland,Qingdao,iron_ore,Capesize,4.77,715,66.43,83.25,4000,SYNTHETIC
+2025-08-12,Port Hedland,Gangavaram,coal,Capesize,5.6,715,66.43,153.93,3800,SYNTHETIC
+2025-08-12,Samarinda,Gangavaram,coal,Panamax,6.96,715,66.43,153.93,2200,SYNTHETIC
+2025-08-12,Samarinda,Shanghai,coal,Supramax,8.73,715,66.43,153.93,2600,SYNTHETIC
+2025-08-12,Paradip,Rotterdam,grain,Supramax,10.16,715,66.43,195.84,4800,SYNTHETIC
+2025-08-12,Paradip,Singapore,steel_coils,Handysize,18.91,715,66.43,195.84,1900,SYNTHETIC
+2025-08-12,Dhamra,Singapore,steel_coils,Handymax,16.05,715,66.43,195.84,2100,SYNTHETIC
+2025-08-12,Richards Bay,Rotterdam,coal,Panamax,9.5,715,66.43,153.93,5200,SYNTHETIC
+2025-08-12,Newcastle,Qingdao,coal,Panamax,8.67,715,66.43,153.93,4200,SYNTHETIC
+2025-08-12,Baltimore,Rotterdam,grain,Handymax,14.21,715,66.43,195.84,3400,SYNTHETIC
+2025-08-12,Norfolk,Rotterdam,grain,Panamax,12.23,715,66.43,195.84,3300,SYNTHETIC
+2025-08-12,Paradip,Rotterdam,iron_ore,Handymax,11.32,715,66.43,83.25,4800,SYNTHETIC
+2025-08-12,Visakhapatnam,Rotterdam,iron_ore,Panamax,8.33,715,66.43,83.25,4700,SYNTHETIC
+2025-08-12,Port Hedland,Rotterdam,iron_ore,Capesize,4.61,715,66.43,83.25,8200,SYNTHETIC
+2025-08-19,Paradip,Rotterdam,iron_ore,Panamax,7.75,735,69.08,89.5,4800,SYNTHETIC
+2025-08-19,Port Hedland,Qingdao,iron_ore,Capesize,4.96,735,69.08,89.5,4000,SYNTHETIC
+2025-08-19,Port Hedland,Gangavaram,coal,Capesize,5.82,735,69.08,162.55,3800,SYNTHETIC
+2025-08-19,Samarinda,Gangavaram,coal,Panamax,7.87,735,69.08,162.55,2200,SYNTHETIC
+2025-08-19,Samarinda,Shanghai,coal,Supramax,9.48,735,69.08,162.55,2600,SYNTHETIC
+2025-08-19,Paradip,Rotterdam,grain,Supramax,11.3,735,69.08,219.48,4800,SYNTHETIC
+2025-08-19,Paradip,Singapore,steel_coils,Handysize,17.98,735,69.08,219.48,1900,SYNTHETIC
+2025-08-19,Dhamra,Singapore,steel_coils,Handymax,15.65,735,69.08,219.48,2100,SYNTHETIC
+2025-08-19,Richards Bay,Rotterdam,coal,Panamax,8.63,735,69.08,162.55,5200,SYNTHETIC
+2025-08-19,Newcastle,Qingdao,coal,Panamax,8.19,735,69.08,162.55,4200,SYNTHETIC
+2025-08-19,Baltimore,Rotterdam,grain,Handymax,15.75,735,69.08,219.48,3400,SYNTHETIC
+2025-08-19,Norfolk,Rotterdam,grain,Panamax,12.8,735,69.08,219.48,3300,SYNTHETIC
+2025-08-19,Paradip,Rotterdam,iron_ore,Handymax,11.48,735,69.08,89.5,4800,SYNTHETIC
+2025-08-19,Visakhapatnam,Rotterdam,iron_ore,Panamax,8.96,735,69.08,89.5,4700,SYNTHETIC
+2025-08-19,Port Hedland,Rotterdam,iron_ore,Capesize,4.57,735,69.08,89.5,8200,SYNTHETIC
+2025-08-26,Paradip,Rotterdam,iron_ore,Panamax,7.71,724,72.07,85.62,4800,SYNTHETIC
+2025-08-26,Port Hedland,Qingdao,iron_ore,Capesize,5.34,724,72.07,85.62,4000,SYNTHETIC
+2025-08-26,Port Hedland,Gangavaram,coal,Capesize,5.09,724,72.07,147.83,3800,SYNTHETIC
+2025-08-26,Samarinda,Gangavaram,coal,Panamax,6.82,724,72.07,147.83,2200,SYNTHETIC
+2025-08-26,Samarinda,Shanghai,coal,Supramax,9.63,724,72.07,147.83,2600,SYNTHETIC
+2025-08-26,Paradip,Rotterdam,grain,Supramax,10.64,724,72.07,208.61,4800,SYNTHETIC
+2025-08-26,Paradip,Singapore,steel_coils,Handysize,18.06,724,72.07,208.61,1900,SYNTHETIC
+2025-08-26,Dhamra,Singapore,steel_coils,Handymax,17.18,724,72.07,208.61,2100,SYNTHETIC
+2025-08-26,Richards Bay,Rotterdam,coal,Panamax,8.45,724,72.07,147.83,5200,SYNTHETIC
+2025-08-26,Newcastle,Qingdao,coal,Panamax,8.29,724,72.07,147.83,4200,SYNTHETIC
+2025-08-26,Baltimore,Rotterdam,grain,Handymax,13.92,724,72.07,208.61,3400,SYNTHETIC
+2025-08-26,Norfolk,Rotterdam,grain,Panamax,12.4,724,72.07,208.61,3300,SYNTHETIC
+2025-08-26,Paradip,Rotterdam,iron_ore,Handymax,12.08,724,72.07,85.62,4800,SYNTHETIC
+2025-08-26,Visakhapatnam,Rotterdam,iron_ore,Panamax,7.78,724,72.07,85.62,4700,SYNTHETIC
+2025-08-26,Port Hedland,Rotterdam,iron_ore,Capesize,4.2,724,72.07,85.62,8200,SYNTHETIC
+2025-09-02,Paradip,Rotterdam,iron_ore,Panamax,9.5,1139,85.68,91.46,4800,SYNTHETIC
+2025-09-02,Port Hedland,Qingdao,iron_ore,Capesize,6.49,1139,85.68,91.46,4000,SYNTHETIC
+2025-09-02,Port Hedland,Gangavaram,coal,Capesize,7.02,1139,85.68,156.45,3800,SYNTHETIC
+2025-09-02,Samarinda,Gangavaram,coal,Panamax,9.19,1139,85.68,156.45,2200,SYNTHETIC
+2025-09-02,Samarinda,Shanghai,coal,Supramax,11.45,1139,85.68,156.45,2600,SYNTHETIC
+2025-09-02,Paradip,Rotterdam,grain,Supramax,13.32,1139,85.68,204.03,4800,SYNTHETIC
+2025-09-02,Paradip,Singapore,steel_coils,Handysize,24.04,1139,85.68,204.03,1900,SYNTHETIC
+2025-09-02,Dhamra,Singapore,steel_coils,Handymax,20.4,1139,85.68,204.03,2100,SYNTHETIC
+2025-09-02,Richards Bay,Rotterdam,coal,Panamax,11.41,1139,85.68,156.45,5200,SYNTHETIC
+2025-09-02,Newcastle,Qingdao,coal,Panamax,10.46,1139,85.68,156.45,4200,SYNTHETIC
+2025-09-02,Baltimore,Rotterdam,grain,Handymax,19.15,1139,85.68,204.03,3400,SYNTHETIC
+2025-09-02,Norfolk,Rotterdam,grain,Panamax,16.01,1139,85.68,204.03,3300,SYNTHETIC
+2025-09-02,Paradip,Rotterdam,iron_ore,Handymax,16.34,1139,85.68,91.46,4800,SYNTHETIC
+2025-09-02,Visakhapatnam,Rotterdam,iron_ore,Panamax,10.1,1139,85.68,91.46,4700,SYNTHETIC
+2025-09-02,Port Hedland,Rotterdam,iron_ore,Capesize,5.1,1139,85.68,91.46,8200,SYNTHETIC
+2025-09-09,Paradip,Rotterdam,iron_ore,Panamax,10.44,1366,82.09,87.01,4800,SYNTHETIC
+2025-09-09,Port Hedland,Qingdao,iron_ore,Capesize,6.79,1366,82.09,87.01,4000,SYNTHETIC
+2025-09-09,Port Hedland,Gangavaram,coal,Capesize,7.0,1366,82.09,158.76,3800,SYNTHETIC
+2025-09-09,Samarinda,Gangavaram,coal,Panamax,9.68,1366,82.09,158.76,2200,SYNTHETIC
+2025-09-09,Samarinda,Shanghai,coal,Supramax,12.58,1366,82.09,158.76,2600,SYNTHETIC
+2025-09-09,Paradip,Rotterdam,grain,Supramax,15.33,1366,82.09,194.22,4800,SYNTHETIC
+2025-09-09,Paradip,Singapore,steel_coils,Handysize,27.23,1366,82.09,194.22,1900,SYNTHETIC
+2025-09-09,Dhamra,Singapore,steel_coils,Handymax,22.17,1366,82.09,194.22,2100,SYNTHETIC
+2025-09-09,Richards Bay,Rotterdam,coal,Panamax,11.88,1366,82.09,158.76,5200,SYNTHETIC
+2025-09-09,Newcastle,Qingdao,coal,Panamax,12.19,1366,82.09,158.76,4200,SYNTHETIC
+2025-09-09,Baltimore,Rotterdam,grain,Handymax,21.93,1366,82.09,194.22,3400,SYNTHETIC
+2025-09-09,Norfolk,Rotterdam,grain,Panamax,16.74,1366,82.09,194.22,3300,SYNTHETIC
+2025-09-09,Paradip,Rotterdam,iron_ore,Handymax,16.12,1366,82.09,87.01,4800,SYNTHETIC
+2025-09-09,Visakhapatnam,Rotterdam,iron_ore,Panamax,12.29,1366,82.09,87.01,4700,SYNTHETIC
+2025-09-09,Port Hedland,Rotterdam,iron_ore,Capesize,5.96,1366,82.09,87.01,8200,SYNTHETIC
