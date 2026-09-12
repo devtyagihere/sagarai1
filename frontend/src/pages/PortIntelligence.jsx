@@ -20,9 +20,6 @@ export default function PortIntelligence() {
   const shipment = getShipment();
   const analysis = getAnalysisResult();
 
-  const [extraWaitDays, setExtraWaitDays] = useState(1.5);
-  const [demurrageDailyRate, setDemurrageDailyRate] = useState(15000);
-
   if (!shipment) {
     return (
       <div className="port-page">
@@ -63,9 +60,6 @@ export default function PortIntelligence() {
   const originOps = portOps?.origin || portOps?.origin_port;
   const destOps = portOps?.destination || portOps?.destination_port;
 
-  const totalDemurrageUsd = Math.round(extraWaitDays * demurrageDailyRate);
-  const demurragePerMt = (totalDemurrageUsd / (Number(quantity) || 50000)).toFixed(2);
-
   return (
     <div className="port-page">
 
@@ -73,78 +67,18 @@ export default function PortIntelligence() {
 
       <section className="port-header">
         <div>
-          <p className="section-label">PORT INTELLIGENCE &amp; CONGESTION ENGINE</p>
+          <p className="section-label">PORT INTELLIGENCE</p>
 
           <h1>Know what is happening at the ports.</h1>
 
           <p>
-            Review real-time port activity, congestion queues, turnaround conditions and simulate financial demurrage exposure.
+            Review real-time port activity, congestion queues, and turnaround conditions.
           </p>
         </div>
 
         <div className="port-header-status">
           <Anchor size={17} />
           <span>Port operations workspace</span>
-        </div>
-      </section>
-
-      {/* INTERACTIVE DEMURRAGE RISK CALCULATOR */}
-      <section className="interactive-slider-box" style={{ marginBottom: '20px', background: '#f8fafc', border: '1.5px solid #f59e0b' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Sparkles size={18} color="#d97706" />
-            <strong style={{ fontSize: '0.95rem', color: '#0f172a' }}>Live Turnaround &amp; Demurrage Exposure Simulator</strong>
-          </div>
-          <span className="interactive-pill-tag amber">Financial Risk Model</span>
-        </div>
-
-        <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '16px' }}>
-          Simulate discharge port queue delay to calculate expected laytime breach and demurrage cost per MT:
-        </p>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
-          <div>
-            <div className="interactive-slider-header">
-              <span className="interactive-slider-label">Queue Delay (Days)</span>
-              <span className="interactive-slider-val">{extraWaitDays.toFixed(1)} Days</span>
-            </div>
-            <input
-              type="range"
-              min="0"
-              max="6.0"
-              step="0.5"
-              value={extraWaitDays}
-              onChange={(e) => setExtraWaitDays(Number(e.target.value))}
-              className="interactive-range-input"
-            />
-          </div>
-
-          <div>
-            <div className="interactive-slider-header">
-              <span className="interactive-slider-label">Charterparty Demurrage ($/day)</span>
-              <span className="interactive-slider-val">${demurrageDailyRate.toLocaleString()}/day</span>
-            </div>
-            <input
-              type="range"
-              min="10000"
-              max="30000"
-              step="1000"
-              value={demurrageDailyRate}
-              onChange={(e) => setDemurrageDailyRate(Number(e.target.value))}
-              className="interactive-range-input"
-            />
-          </div>
-
-          <div style={{ background: '#ffffff', padding: '10px 16px', borderRadius: '10px', border: '1px solid #cbd5e1', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div>
-              <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700, display: 'block' }}>PROJECTED DEMURRAGE</span>
-              <strong style={{ fontSize: '1.2rem', color: '#b45309' }}>${totalDemurrageUsd.toLocaleString()}</strong>
-              <span style={{ fontSize: '0.75rem', color: '#64748b' }}> (+${demurragePerMt}/MT)</span>
-            </div>
-            <div className={`interactive-pill-tag ${extraWaitDays > 2.5 ? "red" : extraWaitDays > 1.0 ? "amber" : "green"}`}>
-              {extraWaitDays > 2.5 ? "High Risk" : extraWaitDays > 1.0 ? "Moderate" : "Low Risk"}
-            </div>
-          </div>
         </div>
       </section>
 

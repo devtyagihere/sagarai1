@@ -23,8 +23,6 @@ export default function FreightForecast() {
   const analysis = getAnalysisResult();
 
   const [activeTab, setActiveTab] = useState("all");
-  const [bdiDelta, setBdiDelta] = useState(0);
-  const [oilDelta, setOilDelta] = useState(0);
 
   if (!shipment) {
     return (
@@ -71,11 +69,6 @@ export default function FreightForecast() {
   const originOps = portOps?.origin;
   const economics = analysis?.vessel_economics;
 
-  const baseRate = forecast?.current_rate_usd_mt ?? 24.50;
-  // Dynamic market sensitivity calculation
-  const simulatedRate = (baseRate * (1 + (bdiDelta * 0.0035) + (oilDelta * 0.002))).toFixed(2);
-  const simulatedDeltaPct = (((simulatedRate - baseRate) / baseRate) * 100).toFixed(1);
-
   return (
     <div className="forecast-page">
 
@@ -83,12 +76,12 @@ export default function FreightForecast() {
 
       <section className="forecast-header">
         <div>
-          <p className="section-label">FREIGHT FORECAST &amp; SENSITIVITY ENGINE</p>
+          <p className="section-label">FREIGHT FORECAST</p>
 
           <h1>Understand where freight is heading.</h1>
 
           <p>
-            Review machine learning forecast curves, test live market sensitivities, and evaluate price trajectory.
+            Review machine learning forecast curves, current spot levels, and forward pricing trajectory.
           </p>
         </div>
 
@@ -98,7 +91,7 @@ export default function FreightForecast() {
         </div>
       </section>
 
-      {/* INTERACTIVE TIMEFRAME SELECTOR */}
+      {/* TIMEFRAME SELECTOR */}
       <div className="interactive-tabs-bar">
         <button
           type="button"
@@ -121,80 +114,7 @@ export default function FreightForecast() {
         >
           30-Day Outlook
         </button>
-        <button
-          type="button"
-          className={`interactive-tab-btn ${activeTab === "simulator" ? "active" : ""}`}
-          onClick={() => setActiveTab("simulator")}
-        >
-          <SlidersHorizontal size={15} /> Live Rate Sensitivity
-        </button>
       </div>
-
-      {activeTab === "simulator" && (
-        <section className="interactive-slider-box" style={{ marginBottom: '20px', background: '#f8fafc', border: '1.5px solid #38bdf8' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Sparkles size={18} color="#0284c7" />
-              <strong style={{ fontSize: '0.95rem', color: '#0f172a' }}>Live Market Sensitivity Simulator</strong>
-            </div>
-            <button
-              type="button"
-              className="interactive-action-btn"
-              onClick={() => { setBdiDelta(0); setOilDelta(0); }}
-              style={{ padding: '4px 10px', fontSize: '0.75rem' }}
-            >
-              <RefreshCw size={13} /> Reset Sliders
-            </button>
-          </div>
-
-          <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '16px' }}>
-            Adjust market conditions below to simulate real-time freight rate variance against the ML baseline:
-          </p>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
-            <div>
-              <div className="interactive-slider-header">
-                <span className="interactive-slider-label">BDI Shift (%)</span>
-                <span className="interactive-slider-val">{bdiDelta >= 0 ? `+${bdiDelta}%` : `${bdiDelta}%`}</span>
-              </div>
-              <input
-                type="range"
-                min="-25"
-                max="25"
-                value={bdiDelta}
-                onChange={(e) => setBdiDelta(Number(e.target.value))}
-                className="interactive-range-input"
-              />
-            </div>
-
-            <div>
-              <div className="interactive-slider-header">
-                <span className="interactive-slider-label">Crude Oil Shift ($/bbl)</span>
-                <span className="interactive-slider-val">{oilDelta >= 0 ? `+$${oilDelta}` : `-$${Math.abs(oilDelta)}`}</span>
-              </div>
-              <input
-                type="range"
-                min="-20"
-                max="20"
-                value={oilDelta}
-                onChange={(e) => setOilDelta(Number(e.target.value))}
-                className="interactive-range-input"
-              />
-            </div>
-
-            <div style={{ background: '#ffffff', padding: '10px 16px', borderRadius: '10px', border: '1px solid #cbd5e1', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div>
-                <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700, display: 'block' }}>SIMULATED FREIGHT</span>
-                <strong style={{ fontSize: '1.25rem', color: '#0f766e' }}>${simulatedRate}</strong>
-                <span style={{ fontSize: '0.75rem', color: '#64748b' }}> / MT</span>
-              </div>
-              <div className={`interactive-pill-tag ${Number(simulatedDeltaPct) >= 0 ? "amber" : "green"}`}>
-                {Number(simulatedDeltaPct) >= 0 ? `+${simulatedDeltaPct}%` : `${simulatedDeltaPct}%`} vs base
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* SHIPMENT CONTEXT */}
 

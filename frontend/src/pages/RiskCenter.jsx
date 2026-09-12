@@ -23,12 +23,6 @@ export default function RiskCenter() {
   const shipment = getShipment();
   const analysis = getAnalysisResult();
 
-  const [mitigations, setMitigations] = useState({
-    weatherRouting: true,
-    demurrageBuffer: false,
-    bunkerHedge: false,
-  });
-
   if (!shipment) {
     return (
       <div className="risk-page">
@@ -86,13 +80,6 @@ export default function RiskCenter() {
 
   const rawOverall = risk?.overall_risk_score ?? risk?.overall_score ?? 35;
 
-  const mitigationDiscount =
-    (mitigations.weatherRouting ? 10 : 0) +
-    (mitigations.demurrageBuffer ? 8 : 0) +
-    (mitigations.bunkerHedge ? 6 : 0);
-
-  const effectiveRiskScore = Math.max(5, Math.round(rawOverall - mitigationDiscount));
-
   return (
     <div className="risk-page">
 
@@ -100,70 +87,18 @@ export default function RiskCenter() {
 
       <section className="risk-header">
         <div>
-          <p className="section-label">RISK CENTER &amp; MITIGATION SIMULATOR</p>
+          <p className="section-label">RISK CENTER</p>
 
           <h1>See what could disrupt the voyage.</h1>
 
           <p>
-            Review operational, meteorological and market risks, and simulate protective clauses to minimize voyage exposure.
+            Review operational, meteorological and market risks evaluated for your planned route.
           </p>
         </div>
 
         <div className="risk-header-status">
           <ShieldCheck size={17} />
           <span>Risk assessment workspace</span>
-        </div>
-      </section>
-
-      {/* INTERACTIVE MITIGATION STRATEGY BUILDER */}
-      <section className="interactive-slider-box" style={{ marginBottom: '20px', background: '#f8fafc', border: '1.5px solid #10b981' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Sparkles size={18} color="#059669" />
-            <strong style={{ fontSize: '0.95rem', color: '#0f172a' }}>Interactive Risk Mitigation Builder</strong>
-          </div>
-          <div className="interactive-pill-tag green">
-            -{mitigationDiscount} Risk Points Hedged
-          </div>
-        </div>
-
-        <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '14px' }}>
-          Toggle standard maritime risk mitigations to calculate residual post-mitigation risk score:
-        </p>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
-          {[
-            { id: 'weatherRouting', label: 'Dynamic Weather Routing Optimization', discount: '-10 pts', desc: 'Avoids heavy sea states & monsoon swells' },
-            { id: 'demurrageBuffer', label: 'Port Demurrage 48h Buffer Clause', discount: '-8 pts', desc: 'Hedges against discharge port congestion' },
-            { id: 'bunkerHedge', label: 'Bunker Fuel Price Ceiling Lock', discount: '-6 pts', desc: 'Caps VLSFO/MGO price exposure during voyage' },
-          ].map((item) => (
-            <div
-              key={item.id}
-              onClick={() => setMitigations(prev => ({ ...prev, [item.id]: !prev[item.id] }))}
-              style={{
-                background: mitigations[item.id] ? '#f0fdf4' : '#ffffff',
-                border: mitigations[item.id] ? '1.5px solid #86efac' : '1px solid #cbd5e1',
-                padding: '10px 14px',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '10px',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              <div style={{ marginTop: '2px', color: mitigations[item.id] ? '#059669' : '#94a3b8' }}>
-                {mitigations[item.id] ? <CheckSquare size={17} /> : <Square size={17} />}
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', fontWeight: 700, color: '#0f172a' }}>
-                  <span>{item.label}</span>
-                  <span style={{ color: '#059669', fontSize: '0.75rem' }}>{item.discount}</span>
-                </div>
-                <span style={{ fontSize: '0.74rem', color: '#64748b', display: 'block', marginTop: '2px' }}>{item.desc}</span>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -211,22 +146,15 @@ export default function RiskCenter() {
 
           <div className="risk-score-circle">
             <strong>
-              {effectiveRiskScore}
+              {Math.round(rawOverall)}
             </strong>
             <span>/ 100</span>
           </div>
 
           <div className="risk-overview-copy">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <p className="section-label">
-                POST-MITIGATION VOYAGE RISK
-              </p>
-              {mitigationDiscount > 0 && (
-                <span className="interactive-pill-tag green" style={{ fontSize: '0.68rem' }}>
-                  Base: {Math.round(rawOverall)}/100
-                </span>
-              )}
-            </div>
+            <p className="section-label">
+              OVERALL VOYAGE RISK
+            </p>
 
             <h2>{risk?.risk_level ? `${risk.risk_level} risk` : "Moderate risk"}</h2>
 

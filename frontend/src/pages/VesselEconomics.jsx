@@ -81,7 +81,7 @@ export default function VesselEconomics() {
 
       <section className="vessel-header">
         <div>
-          <p className="section-label">VESSEL ECONOMICS &amp; SIMULATOR</p>
+          <p className="section-label">VESSEL ECONOMICS</p>
 
           <h1>Find the vessel that makes the voyage work.</h1>
 
@@ -94,67 +94,6 @@ export default function VesselEconomics() {
         <div className="vessel-header-status">
           <Ship size={17} />
           <span>Vessel comparison workspace</span>
-        </div>
-      </section>
-
-      {/* INTERACTIVE SPEED & BUNKER SENSITIVITY CALCULATOR */}
-      <section className="interactive-slider-box" style={{ marginBottom: '20px', background: '#f8fafc', border: '1.5px solid #0284c7' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Zap size={18} color="#0284c7" />
-            <strong style={{ fontSize: '0.95rem', color: '#0f172a' }}>Live Speed &amp; Bunker Consumption Simulator</strong>
-          </div>
-          <span className="interactive-pill-tag blue">Real-Time Hydrodynamics</span>
-        </div>
-
-        <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '16px' }}>
-          Adjust vessel operating speed and IFO/VLSFO bunker prices to calculate dynamic voyage days and fuel cost impact:
-        </p>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
-          <div>
-            <div className="interactive-slider-header">
-              <span className="interactive-slider-label">Voyage Speed</span>
-              <span className="interactive-slider-val">{speedKnots.toFixed(1)} Knots</span>
-            </div>
-            <input
-              type="range"
-              min="11.0"
-              max="15.5"
-              step="0.5"
-              value={speedKnots}
-              onChange={(e) => setSpeedKnots(Number(e.target.value))}
-              className="interactive-range-input"
-            />
-          </div>
-
-          <div>
-            <div className="interactive-slider-header">
-              <span className="interactive-slider-label">Bunker Price ($/MT)</span>
-              <span className="interactive-slider-val">${bunkerPrice}/MT</span>
-            </div>
-            <input
-              type="range"
-              min="500"
-              max="850"
-              step="25"
-              value={bunkerPrice}
-              onChange={(e) => setBunkerPrice(Number(e.target.value))}
-              className="interactive-range-input"
-            />
-          </div>
-
-          <div style={{ background: '#ffffff', padding: '10px 16px', borderRadius: '10px', border: '1px solid #cbd5e1', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div>
-              <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700, display: 'block' }}>ESTIMATED DURATION</span>
-              <strong style={{ fontSize: '1.15rem', color: '#0f766e' }}>
-                {Math.round((cheapestItem?.voyage_days || 15) * (13.0 / speedKnots))} Days
-              </strong>
-            </div>
-            <div className="interactive-pill-tag green">
-              {speedKnots < 13.0 ? "Eco-Steaming (-12% Fuel)" : speedKnots > 13.0 ? "High Speed (+18% Fuel)" : "Standard Speed"}
-            </div>
-          </div>
         </div>
       </section>
 
