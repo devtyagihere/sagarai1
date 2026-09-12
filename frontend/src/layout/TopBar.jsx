@@ -1,6 +1,10 @@
 import { Menu, Bell, CircleUserRound } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import SagarLogo from "../components/SagarLogo";
 
 export default function TopBar({ onMenuClick }) {
+  const navigate = useNavigate();
+
   return (
     <header className="topbar">
       <div className="topbar-left">
@@ -12,13 +16,24 @@ export default function TopBar({ onMenuClick }) {
           <Menu size={23} strokeWidth={1.8} />
         </button>
 
+        {/* Clicking the brand takes you back to the landing page */}
+        <button
+          className="topbar-home-btn"
+          onClick={() => navigate("/")}
+          aria-label="Go to landing page"
+          title="Back to Home"
+        >
+          <SagarLogo size={20} />
+          <span className="topbar-home-label">Home</span>
+        </button>
+
         <div className="topbar-title">
           <span className="topbar-eyebrow">
-            MARITIME OPERATIONS
+            SAGARAI OPERATIONS
           </span>
 
           <span className="topbar-page-title">
-            Freight Decision Support
+            SagarAI Decision Support
           </span>
         </div>
       </div>

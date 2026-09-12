@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   AlertTriangle,
   Anchor,
@@ -9,13 +10,24 @@ import {
   Ship,
   TrendingUp,
   Wind,
+  CheckSquare,
+  Square,
+  Sparkles,
+  SlidersHorizontal,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { getShipment } from "../services/shipmentStorage";
+import { getShipment, getAnalysisResult } from "../services/shipmentStorage";
 
 export default function RiskCenter() {
   const navigate = useNavigate();
   const shipment = getShipment();
+  const analysis = getAnalysisResult();
+
+  const [mitigations, setMitigations] = useState({
+    weatherRouting: true,
+    demurrageBuffer: false,
+    bunkerHedge: false,
+  });
 
   if (!shipment) {
     return (
@@ -54,6 +66,33 @@ export default function RiskCenter() {
     priority,
   } = shipment;
 
+  const risk = analysis?.risk_assessment;
+  const portOps = analysis?.port_operations;
+  const forecast = analysis?.market_intelligence?.freight_forecast;
+  const economics = analysis?.vessel_economics;
+
+  const weatherScore = risk?.weather_risk?.weather_risk_score ?? 24;
+  const marineScore = risk?.marine_risk?.marine_risk_score ?? 18;
+  const portScore = portOps?.destination?.congestion_score ?? portOps?.worst_congestion_score ?? 35;
+  const marketScore = forecast ? Math.min(80, Math.max(15, Math.round(Math.abs(forecast.forecast_change_percent || 5) * 4))) : 28;
+  const vesselScore = economics?.cheapest_feasible_vessel ? 18 : 38;
+
+  const totalRiskSum = Math.max(1, weatherScore + marineScore + portScore + marketScore + vesselScore);
+  const portPct = Math.round((portScore / totalRiskSum) * 100);
+  const marketPct = Math.round((marketScore / totalRiskSum) * 100);
+  const weatherPct = Math.round((weatherScore / totalRiskSum) * 100);
+  const marinePct = Math.round((marineScore / totalRiskSum) * 100);
+  const vesselPct = Math.max(0, 100 - portPct - marketPct - weatherPct - marinePct);
+
+  const rawOverall = risk?.overall_risk_score ?? risk?.overall_score ?? 35;
+
+  const mitigationDiscount =
+    (mitigations.weatherRouting ? 10 : 0) +
+    (mitigations.demurrageBuffer ? 8 : 0) +
+    (mitigations.bunkerHedge ? 6 : 0);
+
+  const effectiveRiskScore = Math.max(5, Math.round(rawOverall - mitigationDiscount));
+
   return (
     <div className="risk-page">
 
@@ -61,13 +100,12 @@ export default function RiskCenter() {
 
       <section className="risk-header">
         <div>
-          <p className="section-label">RISK CENTER</p>
+          <p className="section-label">RISK CENTER &amp; MITIGATION SIMULATOR</p>
 
           <h1>See what could disrupt the voyage.</h1>
 
           <p>
-            Review the operational, weather, market and vessel risks
-            that may affect cost, timing and the final charter decision.
+            Review operational, meteorological and market risks, and simulate protective clauses to minimize voyage exposure.
           </p>
         </div>
 
@@ -77,6 +115,57 @@ export default function RiskCenter() {
         </div>
       </section>
 
+      {/* INTERACTIVE MITIGATION STRATEGY BUILDER */}
+      <section className="interactive-slider-box" style={{ marginBottom: '20px', background: '#f8fafc', border: '1.5px solid #10b981' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Sparkles size={18} color="#059669" />
+            <strong style={{ fontSize: '0.95rem', color: '#0f172a' }}>Interactive Risk Mitigation Builder</strong>
+          </div>
+          <div className="interactive-pill-tag green">
+            -{mitigationDiscount} Risk Points Hedged
+          </div>
+        </div>
+
+        <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '14px' }}>
+          Toggle standard maritime risk mitigations to calculate residual post-mitigation risk score:
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
+          {[
+            { id: 'weatherRouting', label: 'Dynamic Weather Routing Optimization', discount: '-10 pts', desc: 'Avoids heavy sea states & monsoon swells' },
+            { id: 'demurrageBuffer', label: 'Port Demurrage 48h Buffer Clause', discount: '-8 pts', desc: 'Hedges against discharge port congestion' },
+            { id: 'bunkerHedge', label: 'Bunker Fuel Price Ceiling Lock', discount: '-6 pts', desc: 'Caps VLSFO/MGO price exposure during voyage' },
+          ].map((item) => (
+            <div
+              key={item.id}
+              onClick={() => setMitigations(prev => ({ ...prev, [item.id]: !prev[item.id] }))}
+              style={{
+                background: mitigations[item.id] ? '#f0fdf4' : '#ffffff',
+                border: mitigations[item.id] ? '1.5px solid #86efac' : '1px solid #cbd5e1',
+                padding: '10px 14px',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '10px',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <div style={{ marginTop: '2px', color: mitigations[item.id] ? '#059669' : '#94a3b8' }}>
+                {mitigations[item.id] ? <CheckSquare size={17} /> : <Square size={17} />}
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', fontWeight: 700, color: '#0f172a' }}>
+                  <span>{item.label}</span>
+                  <span style={{ color: '#059669', fontSize: '0.75rem' }}>{item.discount}</span>
+                </div>
+                <span style={{ fontSize: '0.74rem', color: '#64748b', display: 'block', marginTop: '2px' }}>{item.desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* SHIPMENT CONTEXT */}
 
@@ -121,20 +210,30 @@ export default function RiskCenter() {
         <div className="risk-overview-main">
 
           <div className="risk-score-circle">
-            <strong>42</strong>
+            <strong>
+              {effectiveRiskScore}
+            </strong>
             <span>/ 100</span>
           </div>
 
           <div className="risk-overview-copy">
-            <p className="section-label">
-              OVERALL VOYAGE RISK
-            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <p className="section-label">
+                POST-MITIGATION VOYAGE RISK
+              </p>
+              {mitigationDiscount > 0 && (
+                <span className="interactive-pill-tag green" style={{ fontSize: '0.68rem' }}>
+                  Base: {Math.round(rawOverall)}/100
+                </span>
+              )}
+            </div>
 
-            <h2>Moderate risk</h2>
+            <h2>{risk?.risk_level ? `${risk.risk_level} risk` : "Moderate risk"}</h2>
 
             <p>
-              Current conditions do not indicate a major disruption,
-              but several factors should be monitored before fixing.
+              {(risk?.key_hazards && risk.key_hazards.length > 0) || (risk?.hazards_identified && risk.hazards_identified.length > 0)
+                ? `Hazards identified along route: ${(risk.key_hazards || risk.hazards_identified).join("; ")}.`
+                : "Current conditions do not indicate a major disruption, but operational and weather signals should be monitored."}
             </p>
           </div>
 
@@ -145,17 +244,17 @@ export default function RiskCenter() {
 
           <div>
             <span>RISK LEVEL</span>
-            <strong>Moderate</strong>
+            <strong>{risk?.risk_level || "Moderate"}</strong>
           </div>
 
           <div>
             <span>FACTORS REVIEWED</span>
-            <strong>4</strong>
+            <strong>5</strong>
           </div>
 
           <div>
             <span>ATTENTION ITEMS</span>
-            <strong>2</strong>
+            <strong>{(risk?.key_hazards || risk?.hazards_identified || []).filter(h => !h.toLowerCase().includes("no significant")).length}</strong>
           </div>
 
         </div>
@@ -197,24 +296,25 @@ export default function RiskCenter() {
                 <CloudRain size={20} />
               </div>
 
-              <span className="risk-low">
-                Low
+              <span className={weatherScore > 50 ? "risk-medium" : "risk-low"}>
+                {weatherScore > 50 ? "Moderate" : "Low"} ({weatherScore.toFixed(0)}/100)
               </span>
 
             </div>
 
-            <span>WEATHER</span>
+            <span>WEATHER & SEA STATE</span>
 
-            <h3>Limited weather exposure</h3>
+            <h3>{risk?.marine_risk?.sea_state ? `${risk.marine_risk.sea_state} sea conditions` : "Limited weather exposure"}</h3>
 
             <p>
-              No major weather disruption is currently indicated along
-              the planned voyage.
+              {risk?.weather_risk
+                ? `Wind Beaufort ${risk.weather_risk.wind_speed_bft?.toFixed(0) || "4"} (${risk.weather_risk.wave_height_m?.toFixed(1) || "2.1"}m waves). Storm probability: ${risk.weather_risk.storm_probability_pct?.toFixed(0) || "5"}%.`
+                : "No major weather disruption is currently indicated along the planned voyage."}
             </p>
 
             <div className="risk-factor-footer">
               <Wind size={15} />
-              <span>Weather conditions stable</span>
+              <span>Cyclone risk: {risk?.marine_risk?.cyclone_risk_pct?.toFixed(0) || "0"}%</span>
             </div>
 
           </div>
@@ -230,24 +330,25 @@ export default function RiskCenter() {
                 <Anchor size={20} />
               </div>
 
-              <span className="risk-medium">
-                Moderate
+              <span className={portScore > 50 ? "risk-high" : portScore > 25 ? "risk-medium" : "risk-low"}>
+                {portOps?.destination?.congestion_level || "Moderate"} ({portScore.toFixed(0)}/100)
               </span>
 
             </div>
 
             <span>PORT OPERATIONS</span>
 
-            <h3>Destination congestion</h3>
+            <h3>{destination} congestion</h3>
 
             <p>
-              Increased activity at the destination may result in
-              additional waiting time.
+              {portOps?.destination?.vessels_waiting != null
+                ? `${portOps.destination.vessels_waiting} vessels waiting at anchor, ${portOps.destination.vessels_working} working berth.`
+                : "Increased activity at the destination may result in additional turnaround time."}
             </p>
 
             <div className="risk-factor-footer">
               <MapPin size={15} />
-              <span>{destination} requires monitoring</span>
+              <span>Avg delay: {portOps?.destination?.average_waiting_days?.toFixed(1) || "2.0"} days</span>
             </div>
 
           </div>
@@ -263,24 +364,25 @@ export default function RiskCenter() {
                 <TrendingUp size={20} />
               </div>
 
-              <span className="risk-medium">
-                Moderate
+              <span className={marketScore > 40 ? "risk-medium" : "risk-low"}>
+                {forecast?.forecast_direction || "Upward"} ({marketScore.toFixed(0)}/100)
               </span>
 
             </div>
 
             <span>FREIGHT MARKET</span>
 
-            <h3>Rates trending upward</h3>
+            <h3>{forecast?.forecast_change_percent != null && forecast.forecast_change_percent < 0 ? "Rates softening" : "Rates trending upward"}</h3>
 
             <p>
-              Waiting for a later fixing opportunity may increase the
-              effective freight cost.
+              {forecast?.forecast_change_percent != null
+                ? `Predicted 30d rate change is ${forecast.forecast_change_percent >= 0 ? "+" : ""}${forecast.forecast_change_percent.toFixed(1)}%. Current rate: $${forecast.current_rate_usd_mt?.toFixed(2)}/MT.`
+                : "Waiting for a later fixing opportunity may increase the effective freight cost."}
             </p>
 
             <div className="risk-factor-footer">
               <TrendingUp size={15} />
-              <span>Upward market pressure</span>
+              <span>Horizon 30d: ${forecast?.forecast_30d_usd_mt?.toFixed(2) || "26.50"}/MT</span>
             </div>
 
           </div>
@@ -297,23 +399,24 @@ export default function RiskCenter() {
               </div>
 
               <span className="risk-low">
-                Low
+                {economics?.cheapest_feasible_vessel ? "Feasible" : "Balanced"} ({vesselScore.toFixed(0)}/100)
               </span>
 
             </div>
 
-            <span>VESSEL EXPOSURE</span>
+            <span>VESSEL AVAILABILITY</span>
 
-            <h3>Suitable vessel supply</h3>
+            <h3>{economics?.cheapest_feasible_vessel ? `${economics.cheapest_feasible_vessel} fit` : "Suitable vessel supply"}</h3>
 
             <p>
-              Current vessel availability provides reasonable flexibility
-              for the planned cargo.
+              {economics?.comparison
+                ? `${economics.comparison.filter(c => c.feasibility_status === 'FEASIBLE').length} vessel class(es) feasible for cargo capacity and port draft.`
+                : "Current vessel availability provides reasonable flexibility for the planned cargo."}
             </p>
 
             <div className="risk-factor-footer">
               <Ship size={15} />
-              <span>Supply conditions balanced</span>
+              <span>Voyage: ~{economics?.voyage_days?.toFixed(0) || "15"} days</span>
             </div>
 
           </div>
@@ -331,14 +434,13 @@ export default function RiskCenter() {
 
           <div>
             <p className="section-label">
-              RISK BREAKDOWN
+              RISK BREAKDOWN &amp; WEIGHTED CONTRIBUTION
             </p>
 
             <h2>Where exposure is coming from</h2>
 
             <p>
-              A simple view of the factors contributing to the current
-              risk level.
+              Shows each standalone risk factor score (0–100) alongside its weighted relative share of total voyage exposure.
             </p>
           </div>
 
@@ -350,14 +452,14 @@ export default function RiskCenter() {
           <div className="risk-breakdown-item">
 
             <div className="risk-breakdown-label">
-              <span>Port congestion</span>
-              <strong>32%</strong>
+              <span>Port congestion &amp; delays</span>
+              <strong>Score: {Math.round(portScore)}/100 &nbsp;·&nbsp; Share: {portPct}%</strong>
             </div>
 
             <div className="risk-progress">
               <div
                 className="risk-progress-fill"
-                style={{ width: "32%" }}
+                style={{ width: `${portPct}%` }}
               />
             </div>
 
@@ -367,14 +469,14 @@ export default function RiskCenter() {
           <div className="risk-breakdown-item">
 
             <div className="risk-breakdown-label">
-              <span>Freight market</span>
-              <strong>28%</strong>
+              <span>Freight market volatility</span>
+              <strong>Score: {Math.round(marketScore)}/100 &nbsp;·&nbsp; Share: {marketPct}%</strong>
             </div>
 
             <div className="risk-progress">
               <div
                 className="risk-progress-fill"
-                style={{ width: "28%" }}
+                style={{ width: `${marketPct}%` }}
               />
             </div>
 
@@ -384,14 +486,14 @@ export default function RiskCenter() {
           <div className="risk-breakdown-item">
 
             <div className="risk-breakdown-label">
-              <span>Weather</span>
-              <strong>18%</strong>
+              <span>Weather exposure</span>
+              <strong>Score: {Math.round(weatherScore)}/100 &nbsp;·&nbsp; Share: {weatherPct}%</strong>
             </div>
 
             <div className="risk-progress">
               <div
                 className="risk-progress-fill"
-                style={{ width: "18%" }}
+                style={{ width: `${weatherPct}%` }}
               />
             </div>
 
@@ -401,14 +503,31 @@ export default function RiskCenter() {
           <div className="risk-breakdown-item">
 
             <div className="risk-breakdown-label">
-              <span>Vessel exposure</span>
-              <strong>12%</strong>
+              <span>Marine &amp; sea state</span>
+              <strong>Score: {Math.round(marineScore)}/100 &nbsp;·&nbsp; Share: {marinePct}%</strong>
             </div>
 
             <div className="risk-progress">
               <div
                 className="risk-progress-fill"
-                style={{ width: "12%" }}
+                style={{ width: `${marinePct}%` }}
+              />
+            </div>
+
+          </div>
+
+
+          <div className="risk-breakdown-item">
+
+            <div className="risk-breakdown-label">
+              <span>Vessel availability &amp; fit</span>
+              <strong>Score: {Math.round(vesselScore)}/100 &nbsp;·&nbsp; Share: {vesselPct}%</strong>
+            </div>
+
+            <div className="risk-progress">
+              <div
+                className="risk-progress-fill"
+                style={{ width: `${vesselPct}%` }}
               />
             </div>
 

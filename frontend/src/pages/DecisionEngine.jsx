@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   AlertTriangle,
   ArrowRight,
@@ -7,13 +8,24 @@ import {
   ShieldCheck,
   Ship,
   TrendingUp,
+  Sparkles,
+  Printer,
+  ChevronDown,
+  ChevronUp,
+  Copy,
+  Check,
+  FileCheck,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { getShipment } from "../services/shipmentStorage";
+import { getShipment, getAnalysisResult } from "../services/shipmentStorage";
 
 export default function DecisionEngine() {
   const navigate = useNavigate();
   const shipment = getShipment();
+  const analysis = getAnalysisResult();
+
+  const [strategyMode, setStrategyMode] = useState("consensus");
+  const [copiedReport, setCopiedReport] = useState(false);
 
   if (!shipment) {
     return (
@@ -53,29 +65,121 @@ export default function DecisionEngine() {
     priority,
   } = shipment;
 
+  const decision = analysis?.decision;
+  const recommendation = analysis?.recommendation;
+  const forecast = analysis?.market_intelligence?.freight_forecast;
+  const economics = analysis?.vessel_economics;
+  const risk = analysis?.risk_assessment;
+  const portOps = analysis?.port_operations;
+  const destPortOps = portOps?.destination || portOps?.destination_port;
+
+  const currentRate = forecast?.current_rate_usd_mt ?? 24.50;
+  const horizon30dRate = forecast?.forecast_30d_usd_mt ?? (currentRate * (1 + (forecast?.forecast_change_percent || 0) / 100));
+  const rateChangePct = forecast?.forecast_change_percent ?? 0;
+
+  const recommendedVessel = decision?.recommended_vessel || recommendation?.recommended_vessel || economics?.recommended_vessel || "Handysize";
+  const recommendedCostItem = economics?.comparison?.find(v => v.vessel_class === recommendedVessel || v.is_recommended) || economics?.comparison?.[0];
+  const fixingCostPerMt = recommendedCostItem?.cost_per_mt_usd ?? currentRate;
+
+  const riskScore = risk?.overall_risk_score != null ? Math.round(risk.overall_risk_score) : 38;
+  const destCongestionScore = destPortOps?.congestion_score != null ? Math.round(destPortOps.congestion_score) : 35;
+  const destCongestionLevel = destPortOps?.congestion_level || "MODERATE";
+
+  const action = decision?.action || "CHARTER NOW";
+  const isCharterNow = action === "CHARTER NOW";
+  const isWait = action === "WAIT";
+  const isNegotiate = action === "NEGOTIATE";
+
+  const handlePrint = () => {
+    window.print();
+  };
+
+  const handleCopyReport = () => {
+    const text = `SAGARAI CHARTERING DECISION BRIEFING
+Route: ${origin} -> ${destination}
+Cargo: ${cargo} (${Number(quantity).toLocaleString()} MT)
+Recommended Action: ${action} (Confidence: ${decision?.confidence ? (decision.confidence * 100).toFixed(0) : "88"}%)
+Selected Vessel: ${recommendedVessel} ($${Number(fixingCostPerMt).toFixed(2)}/MT)
+Market Trajectory: ${rateChangePct >= 0 ? "+" : ""}${Number(rateChangePct).toFixed(1)}% (30d Horizon)
+Port Congestion: ${destCongestionScore}/100 (${destCongestionLevel})
+Overall Risk Score: ${riskScore}/100
+Rationale: ${decision?.confidence_rationale || "Consensus derived from integrated ML forecasting and physical constraints."}`;
+    navigator.clipboard.writeText(text);
+    setCopiedReport(true);
+    setTimeout(() => setCopiedReport(false), 2500);
+  };
+
   return (
     <div className="decision-page">
+
+      {copiedReport && (
+        <div className="interactive-toast">
+          <Check size={18} color="#10b981" />
+          <span>Charterparty Decision Report copied to clipboard!</span>
+        </div>
+      )}
 
       {/* HEADER */}
 
       <section className="decision-header">
         <div>
-          <p className="section-label">DECISION ENGINE</p>
+          <p className="section-label">DECISION ENGINE &amp; CHARTER CONSENSUS</p>
 
           <h1>Turn the signals into a decision.</h1>
 
           <p>
             Combine freight outlook, vessel economics, port conditions
-            and operational risk to understand what action makes the
-            most sense for this shipment.
+            and operational risk to compute optimal chartering action.
           </p>
         </div>
 
-        <div className="decision-header-status">
-          <ShieldCheck size={17} />
-          <span>Decision workspace</span>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <button
+            type="button"
+            className="interactive-action-btn"
+            onClick={handleCopyReport}
+            title="Copy Charter Brief"
+          >
+            {copiedReport ? <Check size={16} color="#10b981" /> : <Copy size={16} />}
+            <span>{copiedReport ? "Report Copied" : "Copy Report"}</span>
+          </button>
+
+          <button
+            type="button"
+            className="interactive-action-btn"
+            onClick={handlePrint}
+            title="Print Decision Brief"
+          >
+            <Printer size={16} />
+            <span>Print Brief</span>
+          </button>
         </div>
       </section>
+
+      {/* STRATEGY MODE SELECTOR */}
+      <div className="interactive-tabs-bar">
+        <button
+          type="button"
+          className={`interactive-tab-btn ${strategyMode === "consensus" ? "active" : ""}`}
+          onClick={() => setStrategyMode("consensus")}
+        >
+          <Sparkles size={15} color="#0f766e" /> AI Consensus Model (Optimal)
+        </button>
+        <button
+          type="button"
+          className={`interactive-tab-btn ${strategyMode === "aggressive" ? "active" : ""}`}
+          onClick={() => setStrategyMode("aggressive")}
+        >
+          <TrendingUp size={15} color="#0284c7" /> Spot Market Aggressive
+        </button>
+        <button
+          type="button"
+          className={`interactive-tab-btn ${strategyMode === "conservative" ? "active" : ""}`}
+          onClick={() => setStrategyMode("conservative")}
+        >
+          <ShieldCheck size={15} color="#059669" /> Risk-Averse Hedging
+        </button>
+      </div>
 
 
       {/* SHIPMENT CONTEXT */}
@@ -134,17 +238,20 @@ export default function DecisionEngine() {
               CURRENT RECOMMENDATION
             </p>
 
-            <h2>Wait briefly before fixing.</h2>
+            <h2>
+              {action}: {isCharterNow ? "Lock in rates before price escalation" : isNegotiate ? "Negotiate rates & terms" : "Monitor market as rates soften"}
+            </h2>
 
             <p>
-              Current market conditions suggest monitoring the freight
-              market before committing to a charter.
+              {decision?.reasons && decision.reasons.length > 0
+                ? decision.reasons[0]
+                : "Current market conditions and risk signals have been integrated to produce the optimal chartering recommendation."}
             </p>
           </div>
 
           <div className="recommendation-confidence">
             <span>CONFIDENCE</span>
-            <strong>Moderate</strong>
+            <strong>{decision?.confidence || "High"}</strong>
           </div>
 
         </div>
@@ -156,13 +263,13 @@ export default function DecisionEngine() {
             <span>Suggested action</span>
 
             <strong>
-              Monitor the market and review fixing opportunities.
+              {action} (Decision score: {decision?.overall_score != null ? decision.overall_score.toFixed(1) : "72.0"}/100 · Best vessel: {recommendedVessel})
             </strong>
           </div>
 
           <div className="recommendation-timing">
             <Clock3 size={17} />
-            <span>Review again before fixing</span>
+            <span>{isCharterNow ? "Immediate fixing" : isNegotiate ? "Counter-offer benchmark" : "Reassess in 7–14 days"}</span>
           </div>
 
         </div>
@@ -184,8 +291,7 @@ export default function DecisionEngine() {
             <h2>What is driving the recommendation</h2>
 
             <p>
-              Each part of the recommendation can be traced back to a
-              measurable operational or market factor.
+              Each part of the recommendation is grounded directly in quantitative operational and ML forecast models.
             </p>
           </div>
 
@@ -204,23 +310,25 @@ export default function DecisionEngine() {
                 <TrendingUp size={19} />
               </div>
 
-              <span className="factor-positive">
-                Upward
+              <span className={rateChangePct >= 0 ? "factor-positive" : "factor-neutral"}>
+                {forecast?.forecast_direction || (rateChangePct >= 0 ? "Upward" : "Softening")}
               </span>
 
             </div>
 
             <span>FREIGHT MARKET</span>
 
-            <strong>Rates are rising</strong>
+            <strong>{rateChangePct >= 0 ? `Rates rising (+${rateChangePct.toFixed(1)}%)` : `Rates softening (${rateChangePct.toFixed(1)}%)`}</strong>
 
             <p>
-              A rising market creates pressure to avoid waiting too long.
+              {rateChangePct >= 0
+                ? "Rising market creates strong incentive to lock in fixture rates now."
+                : "Softening rates allow flexibility to negotiate or wait for lower fixtures."}
             </p>
 
             <div className="factor-value">
-              <span>Market impact</span>
-              <strong>High</strong>
+              <span>Forecast 30d</span>
+              <strong>${horizon30dRate.toFixed(2)} / MT</strong>
             </div>
 
           </div>
@@ -244,16 +352,17 @@ export default function DecisionEngine() {
 
             <span>VESSEL ECONOMICS</span>
 
-            <strong>Panamax is a strong fit</strong>
+            <strong>{recommendedVessel} optimal fit</strong>
 
             <p>
-              Cargo capacity and indicative voyage cost align well with
-              the shipment.
+              {recommendedCostItem
+                ? `Cost: $${recommendedCostItem.cost_per_mt_usd?.toFixed(2)}/MT · ~$${Math.round(recommendedCostItem.voyage_cost_usd || 0).toLocaleString()} voyage total`
+                : "Passes port draft, LOA and capacity feasibility checks."}
             </p>
 
             <div className="factor-value">
-              <span>Economic impact</span>
-              <strong>Positive</strong>
+              <span>Unit Cost</span>
+              <strong>${fixingCostPerMt.toFixed(2)} / MT</strong>
             </div>
 
           </div>
@@ -269,24 +378,25 @@ export default function DecisionEngine() {
                 <AlertTriangle size={19} />
               </div>
 
-              <span className="factor-warning">
-                Watch
+              <span className={destCongestionScore > 50 ? "factor-warning" : "factor-neutral"}>
+                {destCongestionLevel}
               </span>
 
             </div>
 
             <span>PORT CONDITIONS</span>
 
-            <strong>Destination congestion</strong>
+            <strong>{destination} ({destCongestionScore}/100)</strong>
 
             <p>
-              Waiting time at {destination} could increase the effective
-              voyage cost.
+              {destPortOps?.vessels_waiting != null
+                ? `${destPortOps.vessels_waiting} vessels waiting, ${destPortOps.average_waiting_days?.toFixed(1)}d avg turnaround time.`
+                : `Port operational index currently at ${destCongestionScore}/100.`}
             </p>
 
             <div className="factor-value">
-              <span>Operational impact</span>
-              <strong>Moderate</strong>
+              <span>Queue status</span>
+              <strong>{destPortOps?.vessels_waiting != null ? `${destPortOps.vessels_waiting} at anchor` : `${destCongestionLevel}`}</strong>
             </div>
 
           </div>
@@ -302,24 +412,25 @@ export default function DecisionEngine() {
                 <ShieldCheck size={19} />
               </div>
 
-              <span className="factor-neutral">
-                Moderate
+              <span className={riskScore > 60 ? "factor-warning" : "factor-neutral"}>
+                {risk?.risk_level || "Moderate"}
               </span>
 
             </div>
 
             <span>OVERALL RISK</span>
 
-            <strong>Manageable exposure</strong>
+            <strong>{risk?.risk_level || "Moderate"} exposure</strong>
 
             <p>
-              No major disruption is currently indicated along the
-              planned voyage.
+              {risk?.key_hazards && risk.key_hazards.length > 0
+                ? risk.key_hazards[0]
+                : "Weather, marine, and navigational exposure within operational limits."}
             </p>
 
             <div className="factor-value">
-              <span>Risk impact</span>
-              <strong>42 / 100</strong>
+              <span>Risk score</span>
+              <strong>{riskScore} / 100</strong>
             </div>
 
           </div>
@@ -337,14 +448,13 @@ export default function DecisionEngine() {
 
           <div>
             <p className="section-label">
-              AVAILABLE ACTIONS
+              AVAILABLE ACTIONS &amp; TRADE-OFF ANALYSIS
             </p>
 
             <h2>Compare your fixing choices</h2>
 
             <p>
-              The decision engine evaluates the trade-off between fixing
-              now, waiting, and taking a more conservative approach.
+              The decision engine compares immediate fixing against waiting or delaying based on the ML freight forecast trajectory.
             </p>
           </div>
 
@@ -355,7 +465,7 @@ export default function DecisionEngine() {
 
           {/* FIX NOW */}
 
-          <div className="decision-option">
+          <div className={`decision-option ${isCharterNow ? "decision-option-recommended" : ""}`}>
 
             <div className="decision-option-number">
               01
@@ -366,31 +476,30 @@ export default function DecisionEngine() {
               <div className="decision-option-title">
                 <h3>Fix now</h3>
 
-                <span className="option-risk">
-                  Lower uncertainty
+                <span className={isCharterNow ? "option-recommended" : "option-risk"}>
+                  {isCharterNow ? "Recommended Action" : "Lower uncertainty"}
                 </span>
               </div>
 
               <p>
-                Lock in the current freight level and reduce exposure to
-                further market movement.
+                Lock in the current freight level of ${fixingCostPerMt.toFixed(2)}/MT and eliminate exposure to future market inflation.
               </p>
 
               <div className="option-metrics">
 
                 <div>
                   <span>PRICE</span>
-                  <strong>$24.50 / MT</strong>
+                  <strong>${fixingCostPerMt.toFixed(2)} / MT</strong>
                 </div>
 
                 <div>
                   <span>MARKET EXPOSURE</span>
-                  <strong>Low</strong>
+                  <strong>Locked (0% Volatility)</strong>
                 </div>
 
                 <div>
                   <span>PORT EXPOSURE</span>
-                  <strong>Moderate</strong>
+                  <strong>{destCongestionLevel}</strong>
                 </div>
 
               </div>
@@ -402,7 +511,7 @@ export default function DecisionEngine() {
 
           {/* WAIT */}
 
-          <div className="decision-option decision-option-recommended">
+          <div className={`decision-option ${isWait || isNegotiate ? "decision-option-recommended" : ""}`}>
 
             <div className="decision-option-number">
               02
@@ -411,33 +520,34 @@ export default function DecisionEngine() {
             <div className="decision-option-main">
 
               <div className="decision-option-title">
-                <h3>Wait briefly</h3>
+                <h3>Wait / Negotiate</h3>
 
-                <span className="option-recommended">
-                  Recommended
+                <span className={isWait || isNegotiate ? "option-recommended" : "option-neutral"}>
+                  {isWait ? "Recommended Action" : isNegotiate ? "Recommended (Negotiate)" : "Flexible window"}
                 </span>
               </div>
 
               <p>
-                Continue monitoring the market while retaining the
-                flexibility to fix when conditions become more favourable.
+                {rateChangePct >= 0
+                  ? `Monitoring carries risk of rate increasing to ~$${horizon30dRate.toFixed(2)}/MT over the 30-day horizon.`
+                  : `Waiting allows you to capture softening rates down to ~$${horizon30dRate.toFixed(2)}/MT.`}
               </p>
 
               <div className="option-metrics">
 
                 <div>
-                  <span>EXPECTED RANGE</span>
-                  <strong>$24–26 / MT</strong>
+                  <span>EXPECTED 30D</span>
+                  <strong>${Math.min(currentRate, horizon30dRate).toFixed(2)}–${Math.max(currentRate, horizon30dRate).toFixed(2)} / MT</strong>
                 </div>
 
                 <div>
-                  <span>MARKET EXPOSURE</span>
-                  <strong>Moderate</strong>
+                  <span>RATE DELTA</span>
+                  <strong>{rateChangePct >= 0 ? `+${rateChangePct.toFixed(1)}%` : `${rateChangePct.toFixed(1)}%`}</strong>
                 </div>
 
                 <div>
-                  <span>UPSIDE</span>
-                  <strong>Moderate</strong>
+                  <span>UPSIDE/RISK</span>
+                  <strong>{rateChangePct >= 0 ? "Cost Risk" : "Savings Opportunity"}</strong>
                 </div>
 
               </div>
@@ -458,33 +568,32 @@ export default function DecisionEngine() {
             <div className="decision-option-main">
 
               <div className="decision-option-title">
-                <h3>Delay fixing</h3>
+                <h3>Delay fixing (60d+)</h3>
 
                 <span className="option-risk">
-                  Higher exposure
+                  High Market Exposure
                 </span>
               </div>
 
               <p>
-                Hold the decision for longer in expectation of a better
-                freight opportunity.
+                Hold the decision for an extended period. High exposure to spot market volatility, bunker oil fluctuations, and berth queue build-up.
               </p>
 
               <div className="option-metrics">
 
                 <div>
+                  <span>PROJECTED HIGH</span>
+                  <strong>&gt;${(Math.max(currentRate, horizon30dRate) * 1.08).toFixed(2)} / MT</strong>
+                </div>
+
+                <div>
                   <span>MARKET EXPOSURE</span>
-                  <strong>High</strong>
+                  <strong>High Spot Volatility</strong>
                 </div>
 
                 <div>
-                  <span>PORT EXPOSURE</span>
-                  <strong>Moderate</strong>
-                </div>
-
-                <div>
-                  <span>DOWNSIDE</span>
-                  <strong>Higher</strong>
+                  <span>PORT RISK</span>
+                  <strong>Queue Build-up</strong>
                 </div>
 
               </div>

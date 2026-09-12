@@ -1,17 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { saveShipment } from "../services/shipmentStorage";
+import { analyzeShipment, fetchMarketSnapshot, fetchPorts } from "../services/api";
 
 import {
   ArrowRight,
   CalendarDays,
+  CheckCircle2,
   ChevronDown,
+  CircleAlert,
   MapPin,
   Ship,
   Sparkles,
   TrendingUp,
 } from "lucide-react";
+
+const FALLBACK_VERIFIED_PORTS = [
+  { port_name: "Paradip", country: "India", max_draft_m: 17.1 },
+  { port_name: "Visakhapatnam", country: "India", max_draft_m: 18.1 },
+  { port_name: "Gangavaram", country: "India", max_draft_m: 21.0 },
+  { port_name: "Gopalpur", country: "India", max_draft_m: 14.5 },
+  { port_name: "Dhamra", country: "India", max_draft_m: 18.0 },
+  { port_name: "Haldia", country: "India", max_draft_m: 8.5 },
+  { port_name: "Sagar-Sandheads", country: "India", max_draft_m: 11.0 },
+  { port_name: "Rotterdam", country: "Netherlands", max_draft_m: 24.0 },
+  { port_name: "Port Hedland", country: "Australia", max_draft_m: 19.5 },
+  { port_name: "Hay Point", country: "Australia", max_draft_m: 19.0 },
+  { port_name: "Newcastle", country: "Australia", max_draft_m: 15.2 },
+  { port_name: "Richards Bay", country: "South Africa", max_draft_m: 17.5 },
+  { port_name: "Maputo", country: "Mozambique", max_draft_m: 14.2 },
+  { port_name: "Tanjung Bara", country: "Indonesia", max_draft_m: 16.0 },
+  { port_name: "Samarinda", country: "Indonesia", max_draft_m: 11.5 },
+  { port_name: "Ust-Luga", country: "Russia", max_draft_m: 16.5 },
+  { port_name: "Vostochny", country: "Russia", max_draft_m: 17.5 },
+  { port_name: "Baltimore", country: "United States", max_draft_m: 15.2 },
+  { port_name: "Norfolk", country: "United States", max_draft_m: 16.8 },
+  { port_name: "Singapore", country: "Singapore", max_draft_m: 20.0 },
+  { port_name: "Shanghai", country: "China", max_draft_m: 15.5 },
+  { port_name: "Qingdao", country: "China", max_draft_m: 21.0 },
+];
 
 export default function Home() {
   const navigate = useNavigate();
@@ -28,6 +56,20 @@ export default function Home() {
 
   const [analysing, setAnalysing] = useState(false);
   const [analysisError, setAnalysisError] = useState("");
+  const [marketData, setMarketData] = useState(null);
+  const [availablePorts, setAvailablePorts] = useState(FALLBACK_VERIFIED_PORTS);
+
+  useEffect(() => {
+    fetchMarketSnapshot("coal").then((data) => {
+      if (data) setMarketData(data);
+    });
+    fetchPorts().then((ports) => {
+      if (ports && ports.length > 0) {
+        const verified = ports.filter(p => p.data_status === "verified" || !p.port_name.startsWith("Port_"));
+        setAvailablePorts(verified.length > 0 ? verified : ports);
+      }
+    });
+  }, []);
 
   const updateField = (field, value) => {
     setFormData((previous) => ({
@@ -36,7 +78,16 @@ export default function Home() {
     }));
   };
 
-  const handleAnalyse = () => {
+  const findPortInfo = (portName) => {
+    if (!portName || !portName.trim()) return null;
+    const clean = portName.trim().toLowerCase();
+    return availablePorts.find(p => p.port_name.toLowerCase() === clean) || null;
+  };
+
+  const originInfo = findPortInfo(formData.origin);
+  const destInfo = findPortInfo(formData.destination);
+
+  const handleAnalyse = async () => {
     setAnalysisError("");
 
     // Basic frontend validation
@@ -54,19 +105,61 @@ export default function Home() {
       return;
     }
 
+    // Strict verified port validation
+    if (!originInfo) {
+      setAnalysisError(
+        `Origin port '${formData.origin}' is unavailable. It is not in the verified maritime ports database. Please select a registered port (e.g. Newcastle, Paradip, Rotterdam, Singapore).`
+      );
+      return;
+    }
+
+    if (!destInfo) {
+      setAnalysisError(
+        `Destination port '${formData.destination}' is unavailable. It is not in the verified maritime ports database. Please select a registered port (e.g. Paradip, Rotterdam, Qingdao, Singapore).`
+      );
+      return;
+    }
+
+    if (formData.origin.trim().toLowerCase() === formData.destination.trim().toLowerCase()) {
+      setAnalysisError("Origin and Destination ports must be different.");
+      return;
+    }
+
     setAnalysing(true);
 
-    // Save the user's actual shipment for the rest of the frontend.
-    saveShipment(formData);
+    try {
+      await analyzeShipment(formData);
+      navigate("/overview");
+    } catch (err) {
+      setAnalysisError(err.message || "Failed to analyze shipment. Please verify port names and inputs.");
+    } finally {
+      setAnalysing(false);
+    }
+  };
 
-    // Move into the decision-support flow.
-    navigate("/overview");
-
-    setAnalysing(false);
+  const applyPreset = (presetOrigin, presetDest, presetCargo, presetQty, presetDuration) => {
+    setFormData((prev) => ({
+      ...prev,
+      origin: presetOrigin,
+      destination: presetDest,
+      cargo: presetCargo || prev.cargo || "Coal",
+      quantity: presetQty || prev.quantity || "75000",
+      contractDuration: presetDuration || prev.contractDuration || "30",
+    }));
+    setAnalysisError("");
   };
 
   return (
     <div className="home-page">
+
+      {/* Datalist for port suggestions */}
+      <datalist id="verified-ports-list">
+        {availablePorts.map((p) => (
+          <option key={p.port_name} value={p.port_name}>
+            {p.country} (Max Draft: {p.max_draft_m ? `${p.max_draft_m}m` : "Standard"})
+          </option>
+        ))}
+      </datalist>
 
       {/* =========================================
           HERO
@@ -78,7 +171,7 @@ export default function Home() {
 
           <div className="hero-kicker">
             <span className="kicker-line" />
-            MARITIME FREIGHT INTELLIGENCE
+            SAGARAI FREIGHT INTELLIGENCE
           </div>
 
           <h1>
@@ -120,7 +213,7 @@ export default function Home() {
             </h2>
 
             <p className="section-description">
-              Enter the basic details of the shipment you are planning.
+              Select verified loading and discharge ports from the maritime database.
             </p>
           </div>
 
@@ -130,6 +223,26 @@ export default function Home() {
 
         </div>
 
+        {/* Quick Port Presets Bar */}
+        <div className="route-presets-bar">
+          <span className="route-presets-label">Popular Verified Routes:</span>
+          {[
+            { label: "Newcastle → Rotterdam (Coal)", orig: "Newcastle", dest: "Rotterdam", cargo: "Coal", qty: "75000", days: "35" },
+            { label: "Paradip → Singapore (Iron Ore)", orig: "Paradip", dest: "Singapore", cargo: "Iron Ore", qty: "65000", days: "20" },
+            { label: "Port Hedland → Qingdao (Iron Ore)", orig: "Port Hedland", dest: "Qingdao", cargo: "Iron Ore", qty: "120000", days: "25" },
+            { label: "Baltimore → Rotterdam (Grain)", orig: "Baltimore", dest: "Rotterdam", cargo: "Grain", qty: "55000", days: "20" },
+            { label: "Samarinda → Gangavaram (Coal)", orig: "Samarinda", dest: "Gangavaram", cargo: "Coal", qty: "60000", days: "18" },
+          ].map((preset, idx) => (
+            <button
+              key={idx}
+              type="button"
+              className="route-preset-btn"
+              onClick={() => applyPreset(preset.orig, preset.dest, preset.cargo, preset.qty, preset.days)}
+            >
+              {preset.label}
+            </button>
+          ))}
+        </div>
 
         {/* ROUTE */}
 
@@ -137,7 +250,7 @@ export default function Home() {
 
           <div className="field-heading">
             <MapPin size={16} />
-            <span>ROUTE</span>
+            <span>ROUTE (VERIFIED MARITIME PORTS ONLY)</span>
           </div>
 
 
@@ -146,21 +259,42 @@ export default function Home() {
             <div className="input-group">
 
               <label>
-                Origin port
+                Origin port (Loading terminal)
               </label>
 
               <div className="input-wrapper">
 
                 <input
                   type="text"
-                  placeholder="e.g. Newcastle"
+                  list="verified-ports-list"
+                  placeholder="e.g. Newcastle, Paradip, Rotterdam"
                   value={formData.origin}
                   onChange={(event) =>
                     updateField("origin", event.target.value)
                   }
+                  style={{
+                    borderColor: formData.origin && !originInfo ? '#ef4444' : undefined,
+                  }}
                 />
 
               </div>
+
+              {/* Live Port Validation Status */}
+              {formData.origin.trim() && (
+                <div style={{ marginTop: '6px', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  {originInfo ? (
+                    <span style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
+                      <CheckCircle2 size={13} />
+                      Verified: {originInfo.port_name} ({originInfo.country}) — Max Draft {originInfo.max_draft_m}m
+                    </span>
+                  ) : (
+                    <span style={{ color: '#b91c1c', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
+                      <CircleAlert size={13} />
+                      Unavailable: &apos;{formData.origin}&apos; is not a registered port. Please pick from database.
+                    </span>
+                  )}
+                </div>
+              )}
 
             </div>
 
@@ -173,21 +307,42 @@ export default function Home() {
             <div className="input-group">
 
               <label>
-                Destination port
+                Destination port (Discharge terminal)
               </label>
 
               <div className="input-wrapper">
 
                 <input
                   type="text"
-                  placeholder="e.g. Paradip"
+                  list="verified-ports-list"
+                  placeholder="e.g. Rotterdam, Qingdao, Singapore"
                   value={formData.destination}
                   onChange={(event) =>
                     updateField("destination", event.target.value)
                   }
+                  style={{
+                    borderColor: formData.destination && !destInfo ? '#ef4444' : undefined,
+                  }}
                 />
 
               </div>
+
+              {/* Live Port Validation Status */}
+              {formData.destination.trim() && (
+                <div style={{ marginTop: '6px', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  {destInfo ? (
+                    <span style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
+                      <CheckCircle2 size={13} />
+                      Verified: {destInfo.port_name} ({destInfo.country}) — Max Draft {destInfo.max_draft_m}m
+                    </span>
+                  ) : (
+                    <span style={{ color: '#b91c1c', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
+                      <CircleAlert size={13} />
+                      Unavailable: &apos;{formData.destination}&apos; is not a registered port. Please pick from database.
+                    </span>
+                  )}
+                </div>
+              )}
 
             </div>
 
@@ -516,11 +671,11 @@ export default function Home() {
             </div>
 
             <strong>
-              1,842
+              {marketData?.bdi ? Number(marketData.bdi).toLocaleString() : "1,500"}
             </strong>
 
             <p className="positive">
-              +5.2% this week
+              {marketData?.data_source ? `Source: ${marketData.data_source}` : "+5.2% this week"}
             </p>
 
           </div>
@@ -533,7 +688,7 @@ export default function Home() {
             </div>
 
             <strong>
-              $78.20
+              {marketData?.wti_oil_usd_bbl ? `$${marketData.wti_oil_usd_bbl.toFixed(2)}` : "$80.00"}
             </strong>
 
             <p>
@@ -546,11 +701,11 @@ export default function Home() {
           <div className="market-card">
 
             <div className="market-card-top">
-              <span>COAL</span>
+              <span>COAL SPOT</span>
             </div>
 
             <strong>
-              $118.50
+              {marketData?.commodity_price_usd_t ? `$${marketData.commodity_price_usd_t.toFixed(2)}` : "$118.50"}
             </strong>
 
             <p>

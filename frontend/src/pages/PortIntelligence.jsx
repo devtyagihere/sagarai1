@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Anchor,
   ArrowRight,
@@ -7,13 +8,20 @@ import {
   MapPin,
   Ship,
   TrendingUp,
+  SlidersHorizontal,
+  Sparkles,
+  DollarSign,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { getShipment } from "../services/shipmentStorage";
+import { getShipment, getAnalysisResult } from "../services/shipmentStorage";
 
 export default function PortIntelligence() {
   const navigate = useNavigate();
   const shipment = getShipment();
+  const analysis = getAnalysisResult();
+
+  const [extraWaitDays, setExtraWaitDays] = useState(1.5);
+  const [demurrageDailyRate, setDemurrageDailyRate] = useState(15000);
 
   if (!shipment) {
     return (
@@ -51,6 +59,13 @@ export default function PortIntelligence() {
     deliveryDate,
   } = shipment;
 
+  const portOps = analysis?.port_operations;
+  const originOps = portOps?.origin || portOps?.origin_port;
+  const destOps = portOps?.destination || portOps?.destination_port;
+
+  const totalDemurrageUsd = Math.round(extraWaitDays * demurrageDailyRate);
+  const demurragePerMt = (totalDemurrageUsd / (Number(quantity) || 50000)).toFixed(2);
+
   return (
     <div className="port-page">
 
@@ -58,19 +73,78 @@ export default function PortIntelligence() {
 
       <section className="port-header">
         <div>
-          <p className="section-label">PORT INTELLIGENCE</p>
+          <p className="section-label">PORT INTELLIGENCE &amp; CONGESTION ENGINE</p>
 
           <h1>Know what is happening at the ports.</h1>
 
           <p>
-            Review port activity, congestion, turnaround conditions and
-            operational signals that can affect your voyage.
+            Review real-time port activity, congestion queues, turnaround conditions and simulate financial demurrage exposure.
           </p>
         </div>
 
         <div className="port-header-status">
           <Anchor size={17} />
           <span>Port operations workspace</span>
+        </div>
+      </section>
+
+      {/* INTERACTIVE DEMURRAGE RISK CALCULATOR */}
+      <section className="interactive-slider-box" style={{ marginBottom: '20px', background: '#f8fafc', border: '1.5px solid #f59e0b' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Sparkles size={18} color="#d97706" />
+            <strong style={{ fontSize: '0.95rem', color: '#0f172a' }}>Live Turnaround &amp; Demurrage Exposure Simulator</strong>
+          </div>
+          <span className="interactive-pill-tag amber">Financial Risk Model</span>
+        </div>
+
+        <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '16px' }}>
+          Simulate discharge port queue delay to calculate expected laytime breach and demurrage cost per MT:
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+          <div>
+            <div className="interactive-slider-header">
+              <span className="interactive-slider-label">Queue Delay (Days)</span>
+              <span className="interactive-slider-val">{extraWaitDays.toFixed(1)} Days</span>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="6.0"
+              step="0.5"
+              value={extraWaitDays}
+              onChange={(e) => setExtraWaitDays(Number(e.target.value))}
+              className="interactive-range-input"
+            />
+          </div>
+
+          <div>
+            <div className="interactive-slider-header">
+              <span className="interactive-slider-label">Charterparty Demurrage ($/day)</span>
+              <span className="interactive-slider-val">${demurrageDailyRate.toLocaleString()}/day</span>
+            </div>
+            <input
+              type="range"
+              min="10000"
+              max="30000"
+              step="1000"
+              value={demurrageDailyRate}
+              onChange={(e) => setDemurrageDailyRate(Number(e.target.value))}
+              className="interactive-range-input"
+            />
+          </div>
+
+          <div style={{ background: '#ffffff', padding: '10px 16px', borderRadius: '10px', border: '1px solid #cbd5e1', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700, display: 'block' }}>PROJECTED DEMURRAGE</span>
+              <strong style={{ fontSize: '1.2rem', color: '#b45309' }}>${totalDemurrageUsd.toLocaleString()}</strong>
+              <span style={{ fontSize: '0.75rem', color: '#64748b' }}> (+${demurragePerMt}/MT)</span>
+            </div>
+            <div className={`interactive-pill-tag ${extraWaitDays > 2.5 ? "red" : extraWaitDays > 1.0 ? "amber" : "green"}`}>
+              {extraWaitDays > 2.5 ? "High Risk" : extraWaitDays > 1.0 ? "Moderate" : "Low Risk"}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -198,31 +272,30 @@ export default function PortIntelligence() {
                 <Anchor size={19} />
               </div>
 
-              <span className="status-good">
-                Normal
+              <span className={originOps?.congestion_level === "LOW" ? "status-good" : "status-warning"}>
+                {originOps?.congestion_level || "Normal"}
               </span>
 
             </div>
 
             <span>{origin.toUpperCase()}</span>
 
-            <h3>Operationally stable</h3>
+            <h3>{originOps?.congestion_level === "LOW" ? "Operationally stable" : `${originOps?.congestion_level || "Normal"} congestion`}</h3>
 
             <p>
-              Current activity does not indicate significant loading
-              disruption.
+              {originOps?.vessels_waiting != null ? `${originOps.vessels_waiting} vessels waiting, ${originOps.vessels_working} working.` : "Current activity does not indicate significant loading disruption."}
             </p>
 
             <div className="port-mini-metrics">
 
               <div>
                 <span>WAIT TIME</span>
-                <strong>1.8 hrs</strong>
+                <strong>{originOps?.average_waiting_days != null ? `${originOps.average_waiting_days.toFixed(1)} days` : "1.8 hrs"}</strong>
               </div>
 
               <div>
-                <span>ACTIVITY</span>
-                <strong>Moderate</strong>
+                <span>CONGESTION</span>
+                <strong>{originOps?.congestion_score != null ? `${originOps.congestion_score.toFixed(0)}/100` : "Moderate"}</strong>
               </div>
 
             </div>
@@ -240,31 +313,30 @@ export default function PortIntelligence() {
                 <Anchor size={19} />
               </div>
 
-              <span className="status-warning">
-                Watch
+              <span className={destOps?.congestion_level === "LOW" ? "status-good" : "status-warning"}>
+                {destOps?.congestion_level || "Watch"}
               </span>
 
             </div>
 
             <span>{destination.toUpperCase()}</span>
 
-            <h3>Moderate congestion</h3>
+            <h3>{destOps?.congestion_level === "LOW" ? "Operationally stable" : `${destOps?.congestion_level || "Moderate"} congestion`}</h3>
 
             <p>
-              Increased vessel activity may result in longer turnaround
-              times.
+              {destOps?.vessels_waiting != null ? `${destOps.vessels_waiting} vessels waiting, ${destOps.vessels_working} working.` : "Increased vessel activity may result in longer turnaround times."}
             </p>
 
             <div className="port-mini-metrics">
 
               <div>
                 <span>WAIT TIME</span>
-                <strong>5.2 hrs</strong>
+                <strong>{destOps?.average_waiting_days != null ? `${destOps.average_waiting_days.toFixed(1)} days` : "5.2 hrs"}</strong>
               </div>
 
               <div>
-                <span>ACTIVITY</span>
-                <strong>High</strong>
+                <span>CONGESTION</span>
+                <strong>{destOps?.congestion_score != null ? `${destOps.congestion_score.toFixed(0)}/100` : "High"}</strong>
               </div>
 
             </div>
@@ -272,6 +344,89 @@ export default function PortIntelligence() {
           </div>
 
         </div>
+
+        {/* Dynamic Port Congestion Forecast Graph */}
+        {(originOps || destOps) && (
+          <div style={{
+            marginTop: '20px',
+            background: '#ffffff',
+            border: '1px solid #dce4e8',
+            borderRadius: '14px',
+            padding: '20px 24px',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <div>
+                <strong style={{ fontSize: '13px', color: '#1e293b', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  Port Congestion Progression (0–100 Index)
+                </strong>
+                <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#64748b' }}>
+                  Projected waiting conditions across 7d, 15d and 30d operational horizons
+                </p>
+              </div>
+              <div style={{ display: 'flex', gap: '14px', fontSize: '11px', fontWeight: 600 }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#0f766e' }}>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#0f766e' }} />
+                  {origin} (Origin)
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#0284c7' }}>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#0284c7' }} />
+                  {destination} (Destination)
+                </span>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px' }}>
+              {[
+                {
+                  period: 'Current / Now',
+                  origVal: originOps?.congestion_score ?? 30,
+                  destVal: destOps?.congestion_score ?? 55,
+                },
+                {
+                  period: '+7d Projection',
+                  origVal: originOps?.congestion_forecast_7d ?? ((originOps?.congestion_score ?? 30) * 1.02),
+                  destVal: destOps?.congestion_forecast_7d ?? ((destOps?.congestion_score ?? 55) * 1.04),
+                },
+                {
+                  period: '+15d Projection',
+                  origVal: originOps?.congestion_forecast_15d ?? ((originOps?.congestion_score ?? 30) * 1.04),
+                  destVal: destOps?.congestion_forecast_15d ?? ((destOps?.congestion_score ?? 55) * 1.07),
+                },
+                {
+                  period: '+30d Projection',
+                  origVal: originOps?.congestion_forecast_30d ?? ((originOps?.congestion_score ?? 30) * 1.05),
+                  destVal: destOps?.congestion_forecast_30d ?? ((destOps?.congestion_score ?? 55) * 1.09),
+                },
+              ].map((slot, idx) => (
+                <div key={idx} style={{ background: '#f8fafc', padding: '12px 14px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                  <span style={{ fontSize: '11px', color: '#64748b', fontWeight: 600, display: 'block', marginBottom: '8px' }}>
+                    {slot.period}
+                  </span>
+
+                  <div style={{ marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', marginBottom: '3px' }}>
+                      <span style={{ color: '#0f766e', fontWeight: 600 }}>{origin.slice(0, 8)}</span>
+                      <span style={{ fontWeight: 700 }}>{Math.round(slot.origVal)}/100</span>
+                    </div>
+                    <div style={{ height: '6px', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
+                      <div style={{ width: `${Math.min(100, slot.origVal)}%`, height: '100%', background: '#0f766e' }} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', marginBottom: '3px' }}>
+                      <span style={{ color: '#0284c7', fontWeight: 600 }}>{destination.slice(0, 8)}</span>
+                      <span style={{ fontWeight: 700 }}>{Math.round(slot.destVal)}/100</span>
+                    </div>
+                    <div style={{ height: '6px', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
+                      <div style={{ width: `${Math.min(100, slot.destVal)}%`, height: '100%', background: '#0284c7' }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
       </section>
 
@@ -298,68 +453,76 @@ export default function PortIntelligence() {
         </div>
 
 
-        <div className="port-indicator-grid">
+        {(() => {
+          const avgWaitDays = (((originOps?.average_waiting_days ?? 1.5) + (destOps?.average_waiting_days ?? 2.5)) / 2).toFixed(1);
+          const totalWaitVessels = (originOps?.vessels_waiting ?? 0) + (destOps?.vessels_waiting ?? 0);
+          const weatherRisk = analysis?.risk_assessment?.weather_risk?.weather_risk_score;
 
-          <div className="port-indicator">
+          return (
+            <div className="port-indicator-grid">
 
-            <div className="port-indicator-icon">
-              <Clock3 size={19} />
+              <div className="port-indicator">
+
+                <div className="port-indicator-icon">
+                  <Clock3 size={19} />
+                </div>
+
+                <div>
+                  <span>AVERAGE WAIT</span>
+                  <strong>{avgWaitDays} days</strong>
+                  <p>Across loading & discharge</p>
+                </div>
+
+              </div>
+
+
+              <div className="port-indicator">
+
+                <div className="port-indicator-icon">
+                  <Ship size={19} />
+                </div>
+
+                <div>
+                  <span>VESSEL ACTIVITY</span>
+                  <strong>{totalWaitVessels > 10 ? "Elevated" : "Normal"}</strong>
+                  <p>{totalWaitVessels} vessels currently waiting</p>
+                </div>
+
+              </div>
+
+
+              <div className="port-indicator">
+
+                <div className="port-indicator-icon">
+                  <CloudRain size={19} />
+                </div>
+
+                <div>
+                  <span>WEATHER IMPACT</span>
+                  <strong>{weatherRisk != null ? (weatherRisk > 50 ? "Moderate" : "Low") : "Low"}</strong>
+                  <p>Storm risk along corridor</p>
+                </div>
+
+              </div>
+
+
+              <div className="port-indicator">
+
+                <div className="port-indicator-icon">
+                  <TrendingUp size={19} />
+                </div>
+
+                <div>
+                  <span>PORT DELAY RISK</span>
+                  <strong>{destOps?.congestion_level || "Moderate"}</strong>
+                  <p>{destination} congestion status</p>
+                </div>
+
+              </div>
+
             </div>
-
-            <div>
-              <span>AVERAGE WAIT</span>
-              <strong>3.5 hrs</strong>
-              <p>Across selected ports</p>
-            </div>
-
-          </div>
-
-
-          <div className="port-indicator">
-
-            <div className="port-indicator-icon">
-              <Ship size={19} />
-            </div>
-
-            <div>
-              <span>VESSEL ACTIVITY</span>
-              <strong>High</strong>
-              <p>Increased arrivals observed</p>
-            </div>
-
-          </div>
-
-
-          <div className="port-indicator">
-
-            <div className="port-indicator-icon">
-              <CloudRain size={19} />
-            </div>
-
-            <div>
-              <span>WEATHER IMPACT</span>
-              <strong>Low</strong>
-              <p>No major disruption expected</p>
-            </div>
-
-          </div>
-
-
-          <div className="port-indicator">
-
-            <div className="port-indicator-icon">
-              <TrendingUp size={19} />
-            </div>
-
-            <div>
-              <span>THROUGHPUT</span>
-              <strong>Increasing</strong>
-              <p>Recent port activity</p>
-            </div>
-
-          </div>
-
-        </div>
+          );
+        })()}
 
       </section>
 

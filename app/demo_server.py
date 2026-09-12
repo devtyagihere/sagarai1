@@ -28,14 +28,24 @@ try:
 except ImportError:
     _PHASE3_AVAILABLE = False
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(
-    title="Shipping & Vessel Intelligence Engine API",
+    title="SagarAI - Maritime Freight Intelligence API",
     description=(
-        "Maritime decision support engine: vessel feasibility, port limits, "
+        "SagarAI decision support engine: vessel feasibility, port limits, "
         "route estimation, market data (BDI/oil), ML freight rate forecasting, "
         "port congestion, risk scoring, and vessel economics."
     ),
-    version="3.0.0",
+    version="4.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class AnalyzeRequestPayload(BaseModel):
@@ -82,6 +92,21 @@ def api_analyze(payload: AnalyzeRequestPayload) -> Dict[str, Any]:
         if not destination:
             raise ValueError("destination or destination_port is required")
 
+        default_data_loader.load_all()
+        orig_obj = default_data_loader.get_port(origin)
+        dest_obj = default_data_loader.get_port(destination)
+
+        if not orig_obj:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Loading port '{origin}' is unavailable. It is not in the verified maritime ports database. Please select a registered port (e.g. Paradip, Rotterdam, Newcastle, Singapore, Qingdao).",
+            )
+        if not dest_obj:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Destination port '{destination}' is unavailable. It is not in the verified maritime ports database. Please select a registered port (e.g. Paradip, Rotterdam, Newcastle, Singapore, Qingdao).",
+            )
+
         result = analyze_shipping_request(
             cargo_type=payload.cargo_type,
             cargo_quantity_tonnes=payload.cargo_quantity_tonnes,
@@ -90,6 +115,8 @@ def api_analyze(payload: AnalyzeRequestPayload) -> Dict[str, Any]:
             shipping_deadline_days=payload.shipping_deadline_days,
         )
         return result
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc))
 
@@ -333,9 +360,9 @@ def get_vessel_economics(
 def run_demo(host: str = "127.0.0.1", port: int = 8000) -> None:
     """Launch the demo server locally."""
     print(f"\n=======================================================")
-    print(f"🚢 Shipping & Vessel Intelligence Engine v3.0")
-    print(f"👉 Open in browser: http://{host}:{port}")
-    print(f"📖 Swagger API Docs: http://{host}:{port}/docs")
+    print(f"[SHIP] Shipping & Vessel Intelligence Engine v3.0")
+    print(f"-> Open in browser: http://{host}:{port}")
+    print(f"-> Swagger API Docs: http://{host}:{port}/docs")
     print(f"=======================================================\n")
     uvicorn.run(app, host=host, port=port)
 

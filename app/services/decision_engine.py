@@ -113,25 +113,26 @@ def _direction_to_score_commodity(direction: str) -> float:
 def _freight_trend_score(change_pct: float) -> float:
     """
     Convert freight rate forecast % change to a 0-100 score.
-    Falling rates favour chartering now; rising rates favour waiting.
+    Rising future rates favour chartering now to lock in lower costs;
+    Falling future rates favour waiting/negotiating as the market softens.
 
-    change_pct < -10%  -> 95  (rates falling sharply — charter now, lock in current)
-    -10% to -5%        -> 80
-    -5%  to  0%        -> 65
-     0%  to  5%        -> 45
-     5%  to 10%        -> 30
-    > 10%              -> 15  (rates rising sharply — wait for peak to pass)
+    change_pct > +15%  -> 95  (rates surging — fix now to lock in current lower rate)
+    +8% to +15%        -> 85  (rates rising — charter now before price escalation)
+    +2% to +8%         -> 70  (moderate increase — favorable to charter now)
+    -2% to +2%         -> 50  (stable — neutral charter window)
+    -8% to -2%         -> 35  (rates softening — consider waiting or negotiating)
+    < -8%              -> 15  (rates falling sharply — wait for market trough)
     """
-    if change_pct < -10:
+    if change_pct > 15:
         return 95.0
-    elif change_pct < -5:
-        return 80.0
-    elif change_pct < 0:
-        return 65.0
-    elif change_pct < 5:
-        return 45.0
-    elif change_pct < 10:
-        return 30.0
+    elif change_pct > 8:
+        return 85.0
+    elif change_pct > 2:
+        return 70.0
+    elif change_pct >= -2:
+        return 50.0
+    elif change_pct >= -8:
+        return 35.0
     else:
         return 15.0
 
@@ -310,11 +311,18 @@ class DecisionEngine:
             direction = str(ff["forecast_direction"])
             score = _clamp(_freight_trend_score(change_pct))
             contribution = round(score * weight, 3)
+            if change_pct > 8:
+                action_hint = "fix now to lock in current rate before price escalation."
+            elif change_pct > 0:
+                action_hint = "charter now before rate increases."
+            elif change_pct >= -2:
+                action_hint = "stable market window, proceed with standard chartering."
+            else:
+                action_hint = "rates softening, consider waiting or negotiating lower future fixture."
+
             signal = (
                 f"Freight rates forecast to move {direction} "
-                f"({change_pct:+.1f}% over 30d) — "
-                + ("charter now to lock in current rate." if change_pct <= 0
-                   else "rates rising, consider waiting.")
+                f"({change_pct:+.1f}% over 30d) — {action_hint}"
             )
             reasons.append(f"[Freight Trend] {signal}")
             factors.append(FactorScore(

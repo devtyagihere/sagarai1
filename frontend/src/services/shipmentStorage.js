@@ -23,4 +23,26 @@ export function getShipment() {
 
 export function clearShipment() {
   localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem("maritime_analysis_result");
 }
+
+export function saveAnalysisResult(result) {
+  localStorage.setItem(
+    "maritime_analysis_result",
+    JSON.stringify(result)
+  );
+}
+
+export function getAnalysisResult() {
+  const savedResult = localStorage.getItem("maritime_analysis_result");
+
+  if (!savedResult) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(savedResult);
+  } catch {
+    return null;
+  }
+}

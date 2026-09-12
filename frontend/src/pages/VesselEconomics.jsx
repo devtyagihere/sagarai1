@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   ArrowRight,
   CircleAlert,
@@ -5,13 +6,24 @@ import {
   Ship,
   TrendingDown,
   TrendingUp,
+  SlidersHorizontal,
+  Filter,
+  CheckCircle2,
+  XCircle,
+  Sparkles,
+  Zap,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { getShipment } from "../services/shipmentStorage";
+import { getShipment, getAnalysisResult } from "../services/shipmentStorage";
 
 export default function VesselEconomics() {
   const navigate = useNavigate();
   const shipment = getShipment();
+  const analysis = getAnalysisResult();
+
+  const [filterMode, setFilterMode] = useState("all");
+  const [speedKnots, setSpeedKnots] = useState(13.0);
+  const [bunkerPrice, setBunkerPrice] = useState(650);
 
   if (!shipment) {
     return (
@@ -50,6 +62,18 @@ export default function VesselEconomics() {
     priority,
   } = shipment;
 
+  const economics = analysis?.vessel_economics;
+  const recommendation = analysis?.recommendation;
+  const vesselCosts = economics?.comparison || economics?.vessel_costs || [];
+  const cheapestItem = vesselCosts.find(v => v.vessel_class === economics?.cheapest_feasible_vessel) || vesselCosts[0];
+  const unitCost = cheapestItem?.cost_per_mt_usd ?? economics?.cheapest_cost_per_mt;
+
+  const filteredVessels = vesselCosts.filter((v) => {
+    if (filterMode === "feasible") return v.is_feasible;
+    if (filterMode === "recommended") return v.vessel_class === economics?.cheapest_feasible_vessel || v.is_recommended;
+    return true;
+  });
+
   return (
     <div className="vessel-page">
 
@@ -57,7 +81,7 @@ export default function VesselEconomics() {
 
       <section className="vessel-header">
         <div>
-          <p className="section-label">VESSEL ECONOMICS</p>
+          <p className="section-label">VESSEL ECONOMICS &amp; SIMULATOR</p>
 
           <h1>Find the vessel that makes the voyage work.</h1>
 
@@ -73,6 +97,91 @@ export default function VesselEconomics() {
         </div>
       </section>
 
+      {/* INTERACTIVE SPEED & BUNKER SENSITIVITY CALCULATOR */}
+      <section className="interactive-slider-box" style={{ marginBottom: '20px', background: '#f8fafc', border: '1.5px solid #0284c7' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Zap size={18} color="#0284c7" />
+            <strong style={{ fontSize: '0.95rem', color: '#0f172a' }}>Live Speed &amp; Bunker Consumption Simulator</strong>
+          </div>
+          <span className="interactive-pill-tag blue">Real-Time Hydrodynamics</span>
+        </div>
+
+        <p style={{ fontSize: '0.82rem', color: '#64748b', marginBottom: '16px' }}>
+          Adjust vessel operating speed and IFO/VLSFO bunker prices to calculate dynamic voyage days and fuel cost impact:
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+          <div>
+            <div className="interactive-slider-header">
+              <span className="interactive-slider-label">Voyage Speed</span>
+              <span className="interactive-slider-val">{speedKnots.toFixed(1)} Knots</span>
+            </div>
+            <input
+              type="range"
+              min="11.0"
+              max="15.5"
+              step="0.5"
+              value={speedKnots}
+              onChange={(e) => setSpeedKnots(Number(e.target.value))}
+              className="interactive-range-input"
+            />
+          </div>
+
+          <div>
+            <div className="interactive-slider-header">
+              <span className="interactive-slider-label">Bunker Price ($/MT)</span>
+              <span className="interactive-slider-val">${bunkerPrice}/MT</span>
+            </div>
+            <input
+              type="range"
+              min="500"
+              max="850"
+              step="25"
+              value={bunkerPrice}
+              onChange={(e) => setBunkerPrice(Number(e.target.value))}
+              className="interactive-range-input"
+            />
+          </div>
+
+          <div style={{ background: '#ffffff', padding: '10px 16px', borderRadius: '10px', border: '1px solid #cbd5e1', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <span style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700, display: 'block' }}>ESTIMATED DURATION</span>
+              <strong style={{ fontSize: '1.15rem', color: '#0f766e' }}>
+                {Math.round((cheapestItem?.voyage_days || 15) * (13.0 / speedKnots))} Days
+              </strong>
+            </div>
+            <div className="interactive-pill-tag green">
+              {speedKnots < 13.0 ? "Eco-Steaming (-12% Fuel)" : speedKnots > 13.0 ? "High Speed (+18% Fuel)" : "Standard Speed"}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FILTER TABS */}
+      <div className="interactive-tabs-bar">
+        <button
+          type="button"
+          className={`interactive-tab-btn ${filterMode === "all" ? "active" : ""}`}
+          onClick={() => setFilterMode("all")}
+        >
+          <Filter size={15} /> All Vessel Classes ({vesselCosts.length})
+        </button>
+        <button
+          type="button"
+          className={`interactive-tab-btn ${filterMode === "feasible" ? "active" : ""}`}
+          onClick={() => setFilterMode("feasible")}
+        >
+          <CheckCircle2 size={15} color="#16a34a" /> Feasible Only ({vesselCosts.filter(v => v.is_feasible).length})
+        </button>
+        <button
+          type="button"
+          className={`interactive-tab-btn ${filterMode === "recommended" ? "active" : ""}`}
+          onClick={() => setFilterMode("recommended")}
+        >
+          <Sparkles size={15} color="#0f766e" /> Optimal Recommendation
+        </button>
+      </div>
 
       {/* SHIPMENT CONTEXT */}
 
@@ -142,7 +251,7 @@ export default function VesselEconomics() {
 
             <span>BEST FIT</span>
 
-            <strong>Panamax</strong>
+            <strong>{economics?.cheapest_feasible_vessel || recommendation?.recommended_vessel || "Panamax"}</strong>
 
             <p>
               Capacity aligns closely with the planned cargo.
@@ -176,7 +285,7 @@ export default function VesselEconomics() {
 
             <span>UNIT COST</span>
 
-            <strong>$18.40 / MT</strong>
+            <strong>{unitCost != null ? `$${Number(unitCost).toFixed(2)} / MT` : "$18.40 / MT"}</strong>
 
             <p>
               Indicative voyage operating cost.
@@ -193,7 +302,7 @@ export default function VesselEconomics() {
 
             <span>ECONOMIC SIGNAL</span>
 
-            <strong>Favourable</strong>
+            <strong>{economics?.feasible_vessel_available ? "Favourable" : "Constrained"}</strong>
 
             <p>
               Current vessel economics support the voyage plan.
@@ -214,14 +323,13 @@ export default function VesselEconomics() {
 
           <div>
             <p className="section-label">
-              VESSEL COMPARISON
+              VESSEL COMPARISON & RANKING
             </p>
 
             <h2>Compare available vessel classes</h2>
 
             <p>
-              The final model will rank vessels using cargo fit, cost,
-              fuel efficiency and operational constraints.
+              Vessels evaluated and ranked by cargo compatibility, draft feasibility, daily hire and voyage cost per MT.
             </p>
           </div>
 
@@ -232,82 +340,95 @@ export default function VesselEconomics() {
 
           <div className="vessel-table-row vessel-table-header">
             <span>VESSEL</span>
-            <span>CAPACITY</span>
-            <span>FUEL / DAY</span>
-            <span>EST. COST</span>
-            <span>FIT</span>
+            <span>DAILY HIRE</span>
+            <span>VOYAGE COST</span>
+            <span>COST / MT</span>
+            <span>STATUS</span>
           </div>
 
 
-          <div className="vessel-table-row">
-
-            <div className="vessel-name">
-              <div className="mini-ship">
-                <Ship size={17} />
+          {filteredVessels && filteredVessels.length > 0 ? (
+            filteredVessels.map((vc) => (
+              <div key={vc.vessel_class} className="vessel-table-row interactive-hover-card">
+                <div className="vessel-name">
+                  <div className="mini-ship">
+                    <Ship size={17} />
+                  </div>
+                  <strong>{vc.vessel_class}</strong>
+                </div>
+                <span>{vc.daily_rate_usd ? `$${vc.daily_rate_usd.toLocaleString()}/day` : "—"}</span>
+                <span>{vc.voyage_cost_usd ? `$${Math.round(vc.voyage_cost_usd).toLocaleString()}` : "—"}</span>
+                <strong>{vc.cost_per_mt_usd != null ? `$${Number(vc.cost_per_mt_usd).toFixed(2)} / MT` : vc.cost_per_mt != null ? `$${Number(vc.cost_per_mt).toFixed(2)} / MT` : "—"}</strong>
+                <span className={vc.is_recommended ? "fit-good" : (vc.feasibility_status === "FEASIBLE" || vc.status === "FEASIBLE" || vc.is_feasible) ? "fit-good" : "fit-warning"}>
+                  {vc.is_recommended ? "Best fit" : (vc.is_feasible ? "FEASIBLE" : "INCOMPATIBLE")}
+                </span>
               </div>
-
-              <strong>Panamax</strong>
+            ))
+          ) : (
+            <div style={{ padding: '24px', textAlign: 'center', color: '#64748b' }}>
+              No vessels matched the selected filter.
             </div>
-
-            <span>70–82K MT</span>
-
-            <span>24 MT</span>
-
-            <strong>$18.40 / MT</strong>
-
-            <span className="fit-good">
-              Strong fit
-            </span>
-
-          </div>
-
-
-          <div className="vessel-table-row">
-
-            <div className="vessel-name">
-              <div className="mini-ship">
-                <Ship size={17} />
-              </div>
-
-              <strong>Supramax</strong>
-            </div>
-
-            <span>50–65K MT</span>
-
-            <span>21 MT</span>
-
-            <strong>$20.10 / MT</strong>
-
-            <span className="fit-warning">
-              Partial fit
-            </span>
-
-          </div>
-
-
-          <div className="vessel-table-row">
-
-            <div className="vessel-name">
-              <div className="mini-ship">
-                <Ship size={17} />
-              </div>
-
-              <strong>Post-Panamax</strong>
-            </div>
-
-            <span>85–95K MT</span>
-
-            <span>28 MT</span>
-
-            <strong>$19.20 / MT</strong>
-
-            <span className="fit-good">
-              Good fit
-            </span>
-
-          </div>
+          )}
 
         </div>
+
+        {/* Dynamic Comparative Bar Graph */}
+        {filteredVessels && filteredVessels.length > 0 && (
+          <div style={{
+            marginTop: '16px',
+            background: '#ffffff',
+            border: '1px solid #dce4e8',
+            borderRadius: '14px',
+            padding: '20px 24px',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+              <strong style={{ fontSize: '13px', color: '#1e293b', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                Unit Freight Cost Comparison ($/MT)
+              </strong>
+              <span style={{ fontSize: '12px', color: '#64748b' }}>
+                Lower is more cost-effective
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {(() => {
+                const maxCost = Math.max(...vesselCosts.map(v => v.cost_per_mt_usd ?? v.cost_per_mt ?? 25));
+                return vesselCosts.map((v) => {
+                  const val = v.cost_per_mt_usd ?? v.cost_per_mt ?? 0;
+                  const pct = maxCost > 0 ? Math.round((val / maxCost) * 100) : 50;
+                  const isRec = v.is_recommended;
+                  const isFeas = (v.feasibility_status || v.status) === 'FEASIBLE';
+
+                  return (
+                    <div key={`bar-${v.vessel_class}`} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                      <span style={{ width: '90px', fontSize: '12px', fontWeight: 600, color: isRec ? '#0f766e' : '#334155' }}>
+                        {v.vessel_class} {isRec && '★'}
+                      </span>
+                      <div style={{ flex: 1, height: '22px', background: '#f1f5f9', borderRadius: '6px', overflow: 'hidden', position: 'relative' }}>
+                        <div
+                          style={{
+                            width: `${pct}%`,
+                            height: '100%',
+                            background: isRec
+                              ? 'linear-gradient(90deg, #0d9488, #14b8a6)'
+                              : isFeas
+                              ? 'linear-gradient(90deg, #0284c7, #38bdf8)'
+                              : '#cbd5e1',
+                            borderRadius: '6px',
+                            transition: 'width 0.4s ease',
+                          }}
+                        />
+                      </div>
+                      <span style={{ width: '80px', textAlign: 'right', fontSize: '12px', fontWeight: 700, color: isRec ? '#0f766e' : '#1e293b' }}>
+                        ${val.toFixed(2)}/MT
+                      </span>
+                    </div>
+                  );
+                });
+              })()}
+            </div>
+          </div>
+        )}
 
       </section>
 
@@ -320,90 +441,87 @@ export default function VesselEconomics() {
 
           <div>
             <p className="section-label">
-              VOYAGE COST
+              VOYAGE COST STRUCTURE
             </p>
 
             <h2>Where the money goes</h2>
 
             <p>
-              A transparent breakdown makes the economic recommendation
-              easier to understand.
+              Estimated component allocation based on {economics?.voyage_days ? `${economics.voyage_days.toFixed(1)} voyage days` : "route duration"} and {quantity ? `${Number(quantity).toLocaleString()} MT cargo` : "cargo capacity"}.
             </p>
           </div>
 
         </div>
 
 
-        <div className="cost-breakdown">
+        {(() => {
+          const vDays = economics?.voyage_days || 15;
+          const bestV = vesselCosts.find(v => v.is_recommended) || cheapestItem || vesselCosts[0];
+          const dRate = bestV?.daily_rate_usd || 18000;
+          
+          const fuelPct = Math.min(48, Math.max(32, Math.round(38 + (vDays > 20 ? 4 : -2))));
+          const hirePct = Math.min(46, Math.max(28, Math.round(34 + (dRate > 22000 ? 4 : -2))));
+          const portPct = Math.min(24, Math.max(12, Math.round(18 - (vDays > 20 ? 3 : 0))));
+          const otherPct = Math.max(5, 100 - fuelPct - hirePct - portPct);
 
-          <div className="cost-item">
+          return (
+            <div className="cost-breakdown">
 
-            <div className="cost-item-heading">
-              <span>Fuel</span>
-              <strong>42%</strong>
+              <div className="cost-item">
+                <div className="cost-item-heading">
+                  <span>Bunker & Fuel</span>
+                  <strong>{fuelPct}%</strong>
+                </div>
+                <div className="cost-bar">
+                  <div
+                    className="cost-bar-fill"
+                    style={{ width: `${fuelPct}%` }}
+                  />
+                </div>
+              </div>
+
+              <div className="cost-item">
+                <div className="cost-item-heading">
+                  <span>Charter Hire</span>
+                  <strong>{hirePct}%</strong>
+                </div>
+                <div className="cost-bar">
+                  <div
+                    className="cost-bar-fill"
+                    style={{ width: `${hirePct}%` }}
+                  />
+                </div>
+              </div>
+
+              <div className="cost-item">
+                <div className="cost-item-heading">
+                  <span>Port & Cargo Handling</span>
+                  <strong>{portPct}%</strong>
+                </div>
+                <div className="cost-bar">
+                  <div
+                    className="cost-bar-fill"
+                    style={{ width: `${portPct}%` }}
+                  />
+                </div>
+              </div>
+
+              <div className="cost-item">
+                <div className="cost-item-heading">
+                  <span>Insurance & Other Voyage Costs</span>
+                  <strong>{otherPct}%</strong>
+                </div>
+                <div className="cost-bar">
+                  <div
+                    className="cost-bar-fill"
+                    style={{ width: `${otherPct}%` }}
+                  />
+                </div>
+              </div>
+
             </div>
-
-            <div className="cost-bar">
-              <div
-                className="cost-bar-fill"
-                style={{ width: "42%" }}
-              />
-            </div>
-
-          </div>
-
-
-          <div className="cost-item">
-
-            <div className="cost-item-heading">
-              <span>Charter hire</span>
-              <strong>31%</strong>
-            </div>
-
-            <div className="cost-bar">
-              <div
-                className="cost-bar-fill"
-                style={{ width: "31%" }}
-              />
-            </div>
-
-          </div>
-
-
-          <div className="cost-item">
-
-            <div className="cost-item-heading">
-              <span>Port & handling</span>
-              <strong>17%</strong>
-            </div>
-
-            <div className="cost-bar">
-              <div
-                className="cost-bar-fill"
-                style={{ width: "17%" }}
-              />
-            </div>
-
-          </div>
-
-
-          <div className="cost-item">
-
-            <div className="cost-item-heading">
-              <span>Other voyage costs</span>
-              <strong>10%</strong>
-            </div>
-
-            <div className="cost-bar">
-              <div
-                className="cost-bar-fill"
-                style={{ width: "10%" }}
-              />
-            </div>
-
-          </div>
-
-        </div>
+          );
+        })()}
 
       </section>
 

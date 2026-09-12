@@ -7,12 +7,18 @@ import {
   Target,
   GitCompare,
   History,
-  Settings,
   X,
   ChevronRight,
+  Navigation,
 } from "lucide-react";
+import SagarLogo from "../components/SagarLogo";
 
 const mainNavigation = [
+  {
+    label: "Plan Shipment",
+    path: "/plan",
+    icon: Navigation,
+  },
   {
     label: "Overview",
     path: "/overview",
@@ -89,12 +95,12 @@ export default function Sidebar({ open, onClose, onNavigate }) {
       <aside className={`sidebar ${open ? "sidebar-open" : ""}`}>
         <div className="sidebar-header">
           <div className="brand-mark">
-            <Anchor size={22} strokeWidth={2} />
+            <SagarLogo size={26} />
           </div>
 
           <div className="brand-text">
-            <strong>Maritime Freight</strong>
-            <span>Decision Support</span>
+            <strong>SagarAI</strong>
+            <span>Maritime Intelligence</span>
           </div>
 
           <button
@@ -143,14 +149,7 @@ export default function Sidebar({ open, onClose, onNavigate }) {
             ))}
           </div>
 
-          <div className="sidebar-section sidebar-bottom-section">
-            <p className="sidebar-section-title">SYSTEM</p>
 
-            <button className="sidebar-nav-item">
-              <Settings size={18} strokeWidth={1.8} />
-              <span>Settings</span>
-            </button>
-          </div>
         </div>
 
         <div className="sidebar-status">
