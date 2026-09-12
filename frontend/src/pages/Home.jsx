@@ -41,6 +41,57 @@ const FALLBACK_VERIFIED_PORTS = [
   { port_name: "Qingdao", country: "China", max_draft_m: 21.0 },
 ];
 
+const PRESET_ROUTES = [
+  {
+    orig: "Newcastle",
+    dest: "Rotterdam",
+    cargo: "Coal",
+    qty: "75000",
+    days: "35",
+    tagColor: "blue",
+  },
+  {
+    orig: "Port Hedland",
+    dest: "Qingdao",
+    cargo: "Iron Ore",
+    qty: "120000",
+    days: "25",
+    tagColor: "amber",
+  },
+  {
+    orig: "Paradip",
+    dest: "Singapore",
+    cargo: "Iron Ore",
+    qty: "65000",
+    days: "20",
+    tagColor: "teal",
+  },
+  {
+    orig: "Baltimore",
+    dest: "Rotterdam",
+    cargo: "Grain",
+    qty: "55000",
+    days: "20",
+    tagColor: "green",
+  },
+  {
+    orig: "Samarinda",
+    dest: "Gangavaram",
+    cargo: "Coal",
+    qty: "60000",
+    days: "18",
+    tagColor: "purple",
+  },
+  {
+    orig: "Richards Bay",
+    dest: "Visakhapatnam",
+    cargo: "Coal",
+    qty: "80000",
+    days: "22",
+    tagColor: "indigo",
+  },
+];
+
 export default function Home() {
   const navigate = useNavigate();
 
@@ -223,25 +274,60 @@ export default function Home() {
 
         </div>
 
-        {/* Quick Port Presets Bar */}
-        <div className="route-presets-bar">
-          <span className="route-presets-label">Popular Verified Routes:</span>
-          {[
-            { label: "Newcastle → Rotterdam (Coal)", orig: "Newcastle", dest: "Rotterdam", cargo: "Coal", qty: "75000", days: "35" },
-            { label: "Paradip → Singapore (Iron Ore)", orig: "Paradip", dest: "Singapore", cargo: "Iron Ore", qty: "65000", days: "20" },
-            { label: "Port Hedland → Qingdao (Iron Ore)", orig: "Port Hedland", dest: "Qingdao", cargo: "Iron Ore", qty: "120000", days: "25" },
-            { label: "Baltimore → Rotterdam (Grain)", orig: "Baltimore", dest: "Rotterdam", cargo: "Grain", qty: "55000", days: "20" },
-            { label: "Samarinda → Gangavaram (Coal)", orig: "Samarinda", dest: "Gangavaram", cargo: "Coal", qty: "60000", days: "18" },
-          ].map((preset, idx) => (
-            <button
-              key={idx}
-              type="button"
-              className="route-preset-btn"
-              onClick={() => applyPreset(preset.orig, preset.dest, preset.cargo, preset.qty, preset.days)}
-            >
-              {preset.label}
-            </button>
-          ))}
+        {/* Quick Port Presets Section */}
+        <div className="route-presets-container">
+          <div className="route-presets-header">
+            <div className="route-presets-title">
+              <Sparkles size={15} className="route-presets-icon" />
+              <span>Popular Verified Trade Routes</span>
+            </div>
+            <span className="route-presets-badge">1-Click Auto-Fill</span>
+          </div>
+
+          <div className="route-presets-grid">
+            {PRESET_ROUTES.map((preset, idx) => {
+              const isSelected =
+                formData.origin.toLowerCase() === preset.orig.toLowerCase() &&
+                formData.destination.toLowerCase() === preset.dest.toLowerCase();
+
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  className={`route-preset-card ${isSelected ? "selected" : ""}`}
+                  onClick={() =>
+                    applyPreset(
+                      preset.orig,
+                      preset.dest,
+                      preset.cargo,
+                      preset.qty,
+                      preset.days
+                    )
+                  }
+                >
+                  <div className="route-preset-main">
+                    <div className="route-preset-ports">
+                      <span className="preset-port origin">{preset.orig}</span>
+                      <ArrowRight size={13} className="preset-arrow" />
+                      <span className="preset-port dest">{preset.dest}</span>
+                    </div>
+                    {isSelected && (
+                      <CheckCircle2 size={15} className="preset-selected-check" />
+                    )}
+                  </div>
+
+                  <div className="route-preset-details">
+                    <span className={`preset-cargo-badge ${preset.tagColor}`}>
+                      {preset.cargo}
+                    </span>
+                    <span className="preset-meta">
+                      {Number(preset.qty).toLocaleString()} MT • ~{preset.days}d
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* ROUTE */}
