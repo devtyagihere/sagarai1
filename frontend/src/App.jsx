@@ -12,6 +12,7 @@ import RiskCenter from "./pages/RiskCenter";
 import DecisionEngine from "./pages/DecisionEngine";
 import ScenarioSimulator from "./pages/ScenarioSimulator";
 import DecisionHistory from "./pages/DecisionHistory";
+import ScrollToTop from "./components/ScrollToTop";
 import "./styles/interactive.css";
 
 class ErrorBoundary extends React.Component {
@@ -63,6 +64,7 @@ class ErrorBoundary extends React.Component {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* Landing page – full screen, no sidebar/topbar */}
         <Route path="/" element={<LandingPage />} />
