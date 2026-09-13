@@ -42,20 +42,20 @@ export default function FreightRateChart({
   const r2 = evaluation?.r2_score ?? 0.95;
   const modelName = evaluation?.model_name || 'RandomForestRegressor';
 
-  // Build dates based on deliveryDate or today
-  const baseDate = deliveryDate ? new Date(deliveryDate) : new Date();
-  if (isNaN(baseDate.getTime())) {
-    baseDate.setTime(Date.now());
-  }
+  // Always anchor the trajectory timeline to TODAY (current actual date)
+  const today = new Date();
 
   const formatDateOffset = (daysOffset, label) => {
-    const d = new Date(baseDate.getTime() + daysOffset * 86400000);
+    const d = new Date(today.getTime() + daysOffset * 86400000);
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return {
       dateStr: `${months[d.getMonth()]} ${String(d.getDate()).padStart(2, '0')}`,
       label: label || `${daysOffset >= 0 ? '+' : ''}${daysOffset}d`,
     };
   };
+
+  const todayMonthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][today.getMonth()];
+  const todayDayStr = String(today.getDate()).padStart(2, '0');
 
   // Trajectory points dynamically driven by actual variables
   const rateDelta = f30 - currentRate;
@@ -97,7 +97,7 @@ export default function FreightRateChart({
       label: 'Current',
       rate: Number(currentRate.toFixed(2)),
       isForecast: false,
-      descriptor: 'Current Base Rate (Prompt Fixing)',
+      descriptor: `Current Spot Rate (Prompt Fixing · ${todayMonthName} ${todayDayStr})`,
       bdiImpact: 'BDI Live Spot',
       bunkerImpact: 'VLSFO Market Spot',
     },

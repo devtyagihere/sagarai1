@@ -189,6 +189,10 @@ export default function Home() {
   };
 
   const applyPreset = (presetOrigin, presetDest, presetCargo, presetQty, presetDuration) => {
+    const days = Number(presetDuration) || 30;
+    const targetDate = new Date(Date.now() + days * 86400000);
+    const targetDateStr = targetDate.toISOString().split("T")[0];
+
     setFormData((prev) => ({
       ...prev,
       origin: presetOrigin,
@@ -196,6 +200,7 @@ export default function Home() {
       cargo: presetCargo || prev.cargo || "Coal",
       quantity: presetQty || prev.quantity || "75000",
       contractDuration: presetDuration || prev.contractDuration || "30",
+      deliveryDate: prev.deliveryDate || targetDateStr,
     }));
     setAnalysisError("");
   };
@@ -551,6 +556,7 @@ export default function Home() {
 
                 <input
                   type="date"
+                  min={new Date().toISOString().split("T")[0]}
                   value={formData.deliveryDate}
                   onChange={(event) =>
                     updateField(
