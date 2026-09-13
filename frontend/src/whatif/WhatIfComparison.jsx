@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 function WhatIfComparison({ scenario }) {
   const [whatIf, setWhatIf] = useState({
@@ -49,7 +50,7 @@ function WhatIfComparison({ scenario }) {
           <div className="scenario-details">
             <div>
               <span>Cargo</span>
-              <strong>{scenario?.cargoType || "—"}</strong>
+              <strong>{scenario?.cargoType || scenario?.cargo || "—"}</strong>
             </div>
 
             <div>
@@ -69,7 +70,7 @@ function WhatIfComparison({ scenario }) {
 
             <div>
               <span>Urgency</span>
-              <strong>{scenario?.urgency || "—"}</strong>
+              <strong>{scenario?.urgency || scenario?.priority || "Normal"}</strong>
             </div>
           </div>
         </div>
@@ -81,60 +82,67 @@ function WhatIfComparison({ scenario }) {
 
           <h3>Modify Parameters</h3>
 
-          <div className="whatif-fields">
+          <div className="whatif-fields" style={{ display: "flex", flexDirection: "column", gap: "16px", marginTop: "16px" }}>
 
-            <div className="whatif-field">
+            <div className="input-group">
               <label htmlFor="whatif-quantity">
                 Cargo Quantity (MT)
               </label>
 
-              <input
-                id="whatif-quantity"
-                name="quantity"
-                type="number"
-                min="1"
-                value={whatIf.quantity}
-                onChange={handleChange}
-              />
+              <div className="quantity-wrapper">
+                <input
+                  id="whatif-quantity"
+                  name="quantity"
+                  type="number"
+                  min="1"
+                  value={whatIf.quantity}
+                  onChange={handleChange}
+                  placeholder="50,000"
+                />
+                <span>MT</span>
+              </div>
             </div>
 
-            <div className="whatif-field">
+            <div className="input-group">
               <label htmlFor="whatif-date">
                 Required Delivery Date
               </label>
 
-              <input
-                id="whatif-date"
-                name="deliveryDate"
-                type="date"
-                value={whatIf.deliveryDate}
-                onChange={handleChange}
-              />
+              <div className="input-wrapper">
+                <input
+                  id="whatif-date"
+                  name="deliveryDate"
+                  type="date"
+                  value={whatIf.deliveryDate}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
 
-            <div className="whatif-field">
+            <div className="input-group">
               <label htmlFor="whatif-urgency">
                 Procurement Urgency
               </label>
 
-              <select
-                id="whatif-urgency"
-                name="urgency"
-                value={whatIf.urgency}
-                onChange={handleChange}
-              >
-                <option value="low">
-                  Low — Flexible procurement
-                </option>
-
-                <option value="medium">
-                  Medium — Normal procurement
-                </option>
-
-                <option value="high">
-                  High — Time sensitive
-                </option>
-              </select>
+              <div className="select-wrapper">
+                <select
+                  id="whatif-urgency"
+                  name="urgency"
+                  value={whatIf.urgency}
+                  onChange={handleChange}
+                >
+                  <option value="low">
+                    Low — Flexible procurement
+                  </option>
+                  <option value="medium">
+                    Medium — Normal procurement
+                  </option>
+                  <option value="high">
+                    High — Time sensitive
+                  </option>
+                </select>
+                <ChevronDown size={16} />
+              </div>
             </div>
 
           </div>
