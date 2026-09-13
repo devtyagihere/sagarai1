@@ -5,11 +5,6 @@ import {
   TrendingDown,
   Info,
   ShieldCheck,
-  Eye,
-  EyeOff,
-  Crosshair,
-  Sliders,
-  Sparkles,
   Layers,
 } from 'lucide-react';
 
@@ -24,10 +19,7 @@ export default function FreightRateChart({
 }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const [horizonFilter, setHorizonFilter] = useState('all'); // 'all', '7d', '15d', '30d'
-  const [showConfidenceBand, setShowConfidenceBand] = useState(true);
-  const [showBenchmarkLine, setShowBenchmarkLine] = useState(false);
-  const [benchmarkRate, setBenchmarkRate] = useState(25.0);
+  const showConfidenceBand = true;
 
   const svgRef = useRef(null);
 
@@ -59,7 +51,7 @@ export default function FreightRateChart({
 
   // Trajectory points dynamically driven by actual variables
   const rateDelta = f30 - currentRate;
-  const rawPoints = [
+  const points = [
     {
       ...formatDateOffset(-30, '-30d'),
       rate: Number((currentRate - rateDelta * 0.82).toFixed(2)),
@@ -130,16 +122,6 @@ export default function FreightRateChart({
     },
   ];
 
-  // Filter points based on selected horizon
-  let points = rawPoints;
-  if (horizonFilter === '7d') {
-    points = rawPoints.filter((p) => !p.isForecast || p.horizon === '7d');
-  } else if (horizonFilter === '15d') {
-    points = rawPoints.filter((p) => !p.isForecast || p.horizon === '7d' || p.horizon === '15d');
-  } else if (horizonFilter === 'forecast_only') {
-    points = rawPoints.filter((p) => p.isForecast || p.label === 'Current');
-  }
-
   // SVG Coordinates calculation
   const svgWidth = 840;
   const svgHeight = 290;
@@ -149,8 +131,8 @@ export default function FreightRateChart({
   const innerHeight = svgHeight - padding.top - padding.bottom;
 
   const rates = points.map((p) => p.rate);
-  const minRateVal = Math.min(...rates, showBenchmarkLine ? benchmarkRate : 9999);
-  const maxRateVal = Math.max(...rates, showBenchmarkLine ? benchmarkRate : 0);
+  const minRateVal = Math.min(...rates);
+  const maxRateVal = Math.max(...rates);
   const spread = Math.max(maxRateVal - minRateVal, 1.5);
 
   const minRate = Math.max(0, Number((minRateVal - spread * 0.18).toFixed(2)));
@@ -216,7 +198,7 @@ export default function FreightRateChart({
 
   return (
     <div style={{ width: '100%', fontFamily: 'inherit' }}>
-      {/* ── Top Controls & Interactive Legend Bar ── */}
+      {/* ── Top Controls & Route Information Bar ── */}
       <div
         style={{
           display: 'flex',
@@ -263,125 +245,28 @@ export default function FreightRateChart({
           </span>
         </div>
 
-        {/* Interactive Horizon Filter & Layer Toggles */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '11px', color: '#64748b', fontWeight: 600, marginRight: '2px' }}>
-            VIEW:
+        {/* Horizon Indicator: Full Trajectory Only */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span
+            style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              padding: '4px 10px',
+              borderRadius: '6px',
+              border: '1px solid #0f766e',
+              background: '#0f766e',
+              color: '#ffffff',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              letterSpacing: '0.02em',
+            }}
+          >
+            <Layers size={13} />
+            Full Trajectory
           </span>
-          {[
-            { id: 'all', label: 'Full Trajectory' },
-            { id: '7d', label: '7-Day' },
-            { id: '15d', label: '15-Day' },
-            { id: 'forecast_only', label: 'Forecast Only' },
-          ].map((btn) => (
-            <button
-              key={btn.id}
-              type="button"
-              onClick={() => setHorizonFilter(btn.id)}
-              style={{
-                fontSize: '11px',
-                fontWeight: 600,
-                padding: '4px 9px',
-                borderRadius: '6px',
-                border: horizonFilter === btn.id ? '1px solid #0f766e' : '1px solid #cbd5e1',
-                background: horizonFilter === btn.id ? '#0f766e' : '#ffffff',
-                color: horizonFilter === btn.id ? '#ffffff' : '#475569',
-                cursor: 'pointer',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              {btn.label}
-            </button>
-          ))}
-
-          {/* Confidence Band Toggle */}
-          <button
-            type="button"
-            onClick={() => setShowConfidenceBand(!showConfidenceBand)}
-            title="Toggle 95% Confidence Band"
-            style={{
-              fontSize: '11px',
-              fontWeight: 600,
-              padding: '4px 9px',
-              borderRadius: '6px',
-              border: showConfidenceBand ? '1px solid #10b981' : '1px solid #cbd5e1',
-              background: showConfidenceBand ? '#f0fdf4' : '#ffffff',
-              color: showConfidenceBand ? '#15803d' : '#64748b',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-              marginLeft: '4px',
-            }}
-          >
-            {showConfidenceBand ? <Eye size={12} /> : <EyeOff size={12} />}
-            <span>±MAE Band</span>
-          </button>
-
-          {/* Benchmark Target Toggle */}
-          <button
-            type="button"
-            onClick={() => setShowBenchmarkLine(!showBenchmarkLine)}
-            title="Toggle Target Rate Benchmark"
-            style={{
-              fontSize: '11px',
-              fontWeight: 600,
-              padding: '4px 9px',
-              borderRadius: '6px',
-              border: showBenchmarkLine ? '1px solid #f59e0b' : '1px solid #cbd5e1',
-              background: showBenchmarkLine ? '#fef3c7' : '#ffffff',
-              color: showBenchmarkLine ? '#b45309' : '#64748b',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-            }}
-          >
-            <Crosshair size={12} />
-            <span>Target Line</span>
-          </button>
         </div>
       </div>
-
-      {/* Target Rate Benchmark Slider Bar (when enabled) */}
-      {showBenchmarkLine && (
-        <div
-          style={{
-            background: '#fffbeb',
-            border: '1px solid #fde68a',
-            borderRadius: '8px',
-            padding: '8px 14px',
-            marginBottom: '12px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, color: '#b45309' }}>
-            <Crosshair size={14} />
-            <span>Charterer Budget Threshold Target:</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1, maxWidth: '300px' }}>
-            <input
-              type="range"
-              min={Number((minRate + 0.5).toFixed(1))}
-              max={Number((maxRate - 0.5).toFixed(1))}
-              step="0.25"
-              value={benchmarkRate}
-              onChange={(e) => setBenchmarkRate(Number(e.target.value))}
-              className="interactive-range-input"
-              style={{ accentColor: '#d97706' }}
-            />
-            <strong style={{ fontSize: '12px', color: '#b45309', minWidth: '70px' }}>
-              ${benchmarkRate.toFixed(2)}/MT
-            </strong>
-          </div>
-          <span style={{ fontSize: '11px', color: '#78350f' }}>
-            {currentRate <= benchmarkRate ? `✓ Under target by $${(benchmarkRate - currentRate).toFixed(2)}/MT` : `⚠ Above target by $${(currentRate - benchmarkRate).toFixed(2)}/MT`}
-          </span>
-        </div>
-      )}
 
       {/* ── Main Interactive SVG Chart Container ── */}
       <div
@@ -496,31 +381,6 @@ export default function FreightRateChart({
               </g>
             );
           })}
-
-          {/* Target Rate Benchmark Horizontal Line */}
-          {showBenchmarkLine && (
-            <g>
-              <line
-                x1={padding.left}
-                y1={getY(benchmarkRate)}
-                x2={svgWidth - padding.right}
-                y2={getY(benchmarkRate)}
-                stroke="#d97706"
-                strokeWidth="1.5"
-                strokeDasharray="6 3"
-              />
-              <text
-                x={svgWidth - padding.right}
-                y={getY(benchmarkRate) - 6}
-                textAnchor="end"
-                fontSize="10"
-                fontWeight="700"
-                fill="#d97706"
-              >
-                TARGET: ${benchmarkRate.toFixed(2)}/MT
-              </text>
-            </g>
-          )}
 
           {/* Confidence Interval Band (95% CI) */}
           {confidencePath && showConfidenceBand && (
