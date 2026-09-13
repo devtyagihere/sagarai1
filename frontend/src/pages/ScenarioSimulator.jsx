@@ -326,11 +326,12 @@ export default function ScenarioSimulator() {
 
 
           {/* NEXT STEP */}
+          <section className="page-next-banner">
+            <div className="banner-icon">
+              <SlidersHorizontal size={22} />
+            </div>
 
-          <section className="simulator-next">
-
-            <div>
-
+            <div className="banner-content">
               <p className="section-label">
                 NEXT STEP
               </p>
@@ -341,20 +342,18 @@ export default function ScenarioSimulator() {
 
               <p>
                 Use different assumptions to understand how the
-                shipment decision may change.
+                shipment decision may change and finalize your chartering strategy.
               </p>
-
             </div>
 
             <button
-              className="text-action"
+              className="page-cta-button"
               onClick={() => navigate("/decision")}
               type="button"
             >
-              Return to decision engine
-              <ArrowRight size={16} />
+              <span>Return to decision engine</span>
+              <ArrowRight size={18} />
             </button>
-
           </section>
 
         </>

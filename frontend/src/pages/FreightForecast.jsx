@@ -426,14 +426,12 @@ export default function FreightForecast() {
 
 
       {/* FORECAST INTERPRETATION */}
-
-      <section className="forecast-interpretation">
-
-        <div className="interpretation-icon">
-          <Info size={20} />
+      <section className="page-next-banner">
+        <div className="banner-icon">
+          <Info size={22} />
         </div>
 
-        <div>
+        <div className="banner-content">
           <p className="section-label">
             MARKET INTERPRETATION
           </p>
@@ -451,14 +449,13 @@ export default function FreightForecast() {
         </div>
 
         <button
-          className="text-action"
+          className="page-cta-button"
           onClick={() => navigate("/vessels")}
           type="button"
         >
-          Continue to vessel economics
-          <ArrowRight size={16} />
+          <span>Continue to vessel economics</span>
+          <ArrowRight size={18} />
         </button>
-
       </section>
 
     </div>

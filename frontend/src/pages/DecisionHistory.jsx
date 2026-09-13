@@ -233,23 +233,36 @@ export default function DecisionHistory() {
       </div>
 
       {/* FOOTER ACTION */}
-      <div className="history-footer">
-        <div>
-          <span className="history-kicker">READY TO CONTINUE?</span>
+      <div className="page-next-banner">
+        <div className="banner-icon">
+          <TrendingUp size={22} />
+        </div>
+
+        <div className="banner-content">
+          <p className="section-label">
+            READY TO CONTINUE?
+          </p>
 
           <h2>
             {shipment
               ? "Continue analysing this shipment."
               : "Start a new shipment analysis."}
           </h2>
+
+          <p>
+            {shipment
+              ? "Review real-time AI decision insights, optimal vessel allocation, and risk ratings."
+              : "Input shipment specifications to calculate optimal voyage economics."}
+          </p>
         </div>
 
         <button
-          className="primary-action"
+          className="page-cta-button"
           onClick={() => navigate(shipment ? "/decision" : "/")}
+          type="button"
         >
-          {shipment ? "Continue to decision" : "Plan shipment"}
-          <ArrowRight size={16} />
+          <span>{shipment ? "Continue to decision engine" : "Plan shipment"}</span>
+          <ArrowRight size={18} />
         </button>
       </div>
     </section>

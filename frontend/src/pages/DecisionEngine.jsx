@@ -644,10 +644,12 @@ Rationale: ${decision?.confidence_rationale || "Consensus derived from integrate
 
 
       {/* NEXT STEP */}
+      <section className="page-next-banner">
+        <div className="banner-icon">
+          <Sparkles size={22} />
+        </div>
 
-      <section className="decision-next">
-
-        <div>
+        <div className="banner-content">
           <p className="section-label">
             NEXT STEP
           </p>
@@ -657,20 +659,19 @@ Rationale: ${decision?.confidence_rationale || "Consensus derived from integrate
           </h2>
 
           <p>
-            Use the scenario simulator to compare different freight,
-            timing and operational assumptions.
+            Use the scenario simulator to stress-test your decision against different freight rate shocks,
+            timing adjustments, and port delays.
           </p>
         </div>
 
         <button
-          className="text-action"
+          className="page-cta-button"
           onClick={() => navigate("/simulator")}
           type="button"
         >
-          Open scenario simulator
-          <ArrowRight size={16} />
+          <span>Open scenario simulator</span>
+          <ArrowRight size={18} />
         </button>
-
       </section>
 
     </div>

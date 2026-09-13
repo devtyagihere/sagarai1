@@ -467,25 +467,21 @@ export default function RiskCenter() {
 
 
       {/* WATCH ITEMS */}
-
-      <section className="risk-watch-card">
-
-        <div className="risk-watch-icon">
-          <AlertTriangle size={21} />
+      <section className="page-next-banner risk-watch-banner">
+        <div className="banner-icon risk-watch-icon">
+          <AlertTriangle size={22} />
         </div>
 
-        <div className="risk-watch-copy">
-
+        <div className="banner-content">
           <p className="section-label">
             WATCH ITEMS
           </p>
 
           <h2>
-            Two things deserve attention before fixing.
+            Two key factors deserve attention before fixing.
           </h2>
 
           <div className="risk-watch-list">
-
             <div>
               <span>01</span>
               <p>
@@ -500,20 +496,17 @@ export default function RiskCenter() {
                 expensive.
               </p>
             </div>
-
           </div>
-
         </div>
 
         <button
-          className="text-action"
+          className="page-cta-button"
           onClick={() => navigate("/decision")}
           type="button"
         >
-          Continue to decision engine
-          <ArrowRight size={16} />
+          <span>Continue to decision engine</span>
+          <ArrowRight size={18} />
         </button>
-
       </section>
 
 

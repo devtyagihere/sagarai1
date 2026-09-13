@@ -465,16 +465,13 @@ export default function VesselEconomics() {
       </section>
 
 
-      {/* ECONOMIC NOTE */}
-
-      <section className="vessel-note">
-
-        <div className="vessel-note-icon">
-          <CircleAlert size={20} />
+      {/* VESSEL NOTE */}
+      <section className="page-next-banner">
+        <div className="banner-icon">
+          <Ship size={22} />
         </div>
 
-        <div>
-
+        <div className="banner-content">
           <p className="section-label">
             ECONOMIC NOTE
           </p>
@@ -488,18 +485,16 @@ export default function VesselEconomics() {
             voyage duration and freight conditions all influence the true
             economics of a charter.
           </p>
-
         </div>
 
         <button
-          className="text-action"
+          className="page-cta-button"
           onClick={() => navigate("/ports")}
           type="button"
         >
-          Continue to port intelligence
-          <ArrowRight size={16} />
+          <span>Continue to port intelligence</span>
+          <ArrowRight size={18} />
         </button>
-
       </section>
 
     </div>

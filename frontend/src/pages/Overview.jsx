@@ -548,6 +548,37 @@ Route Risk Score: ${Math.round(risk?.overall_risk_score ?? risk?.overall_score ?
 
       </section>
 
+
+      {/* NEXT STEP BANNER */}
+      <section className="page-next-banner">
+        <div className="banner-icon">
+          <TrendingUp size={22} />
+        </div>
+
+        <div className="banner-content">
+          <p className="section-label">
+            NEXT STEP
+          </p>
+
+          <h2>
+            Explore AI freight forecast & market signals.
+          </h2>
+
+          <p>
+            Analyse 30-day charter rate projections, market momentum, and bunker fuel indicators to time your fixture optimally.
+          </p>
+        </div>
+
+        <button
+          className="page-cta-button"
+          onClick={() => navigate("/forecast")}
+          type="button"
+        >
+          <span>Continue to freight forecast</span>
+          <ArrowRight size={18} />
+        </button>
+      </section>
+
     </div>
   );
 }

@@ -462,15 +462,12 @@ export default function PortIntelligence() {
 
 
       {/* PORT IMPACT */}
-
-      <section className="port-impact">
-
-        <div className="port-impact-icon">
-          <CircleAlert size={21} />
+      <section className="page-next-banner">
+        <div className="banner-icon">
+          <Anchor size={22} />
         </div>
 
-        <div className="port-impact-copy">
-
+        <div className="banner-content">
           <p className="section-label">
             VOYAGE IMPACT
           </p>
@@ -484,18 +481,16 @@ export default function PortIntelligence() {
             The final voyage economics should account for potential waiting
             costs before fixing the vessel.
           </p>
-
         </div>
 
         <button
-          className="text-action"
+          className="page-cta-button"
           onClick={() => navigate("/risk")}
           type="button"
         >
-          Continue to risk center
-          <ArrowRight size={16} />
+          <span>Continue to risk center</span>
+          <ArrowRight size={18} />
         </button>
-
       </section>
 
     </div>
