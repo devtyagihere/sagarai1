@@ -22,8 +22,6 @@ export default function FreightForecast() {
   const shipment = getShipment();
   const analysis = getAnalysisResult();
 
-  const [activeTab, setActiveTab] = useState("all");
-
   if (!shipment) {
     return (
       <div className="forecast-page">
@@ -93,27 +91,9 @@ export default function FreightForecast() {
 
       {/* TIMEFRAME SELECTOR */}
       <div className="interactive-tabs-bar">
-        <button
-          type="button"
-          className={`interactive-tab-btn ${activeTab === "all" ? "active" : ""}`}
-          onClick={() => setActiveTab("all")}
-        >
+        <div className="interactive-tab-btn active" style={{ cursor: "default", userSelect: "none" }}>
           <BarChart3 size={15} /> All Horizons (7d / 15d / 30d)
-        </button>
-        <button
-          type="button"
-          className={`interactive-tab-btn ${activeTab === "7d" ? "active" : ""}`}
-          onClick={() => setActiveTab("7d")}
-        >
-          7-Day Short Term
-        </button>
-        <button
-          type="button"
-          className={`interactive-tab-btn ${activeTab === "30d" ? "active" : ""}`}
-          onClick={() => setActiveTab("30d")}
-        >
-          30-Day Outlook
-        </button>
+        </div>
       </div>
 
       {/* SHIPMENT CONTEXT */}
