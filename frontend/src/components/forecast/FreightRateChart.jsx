@@ -5,6 +5,10 @@ import {
   TrendingDown,
   Info,
   ShieldCheck,
+  Eye,
+  EyeOff,
+  Crosshair,
+  Sliders,
   Sparkles,
   Layers,
 } from 'lucide-react';
@@ -20,7 +24,10 @@ export default function FreightRateChart({
 }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const [horizonFilter, setHorizonFilter] = useState('30d'); // '7d', '15d', '30d'
+  const [horizonFilter, setHorizonFilter] = useState('all'); // 'all', '7d', '15d', '30d'
+  const [showConfidenceBand, setShowConfidenceBand] = useState(true);
+  const [showBenchmarkLine, setShowBenchmarkLine] = useState(false);
+  const [benchmarkRate, setBenchmarkRate] = useState(25.0);
 
   const svgRef = useRef(null);
 
@@ -123,15 +130,14 @@ export default function FreightRateChart({
     },
   ];
 
-  // Filter points based on selected horizon (7d, 15d, 30d)
+  // Filter points based on selected horizon
   let points = rawPoints;
   if (horizonFilter === '7d') {
     points = rawPoints.filter((p) => !p.isForecast || p.horizon === '7d');
   } else if (horizonFilter === '15d') {
     points = rawPoints.filter((p) => !p.isForecast || p.horizon === '7d' || p.horizon === '15d');
-  } else {
-    // 30d: shows all points
-    points = rawPoints;
+  } else if (horizonFilter === 'forecast_only') {
+    points = rawPoints.filter((p) => p.isForecast || p.label === 'Current');
   }
 
   // SVG Coordinates calculation
@@ -143,8 +149,8 @@ export default function FreightRateChart({
   const innerHeight = svgHeight - padding.top - padding.bottom;
 
   const rates = points.map((p) => p.rate);
-  const minRateVal = Math.min(...rates);
-  const maxRateVal = Math.max(...rates);
+  const minRateVal = Math.min(...rates, showBenchmarkLine ? benchmarkRate : 9999);
+  const maxRateVal = Math.max(...rates, showBenchmarkLine ? benchmarkRate : 0);
   const spread = Math.max(maxRateVal - minRateVal, 1.5);
 
   const minRate = Math.max(0, Number((minRateVal - spread * 0.18).toFixed(2)));
@@ -161,7 +167,7 @@ export default function FreightRateChart({
   const forecastPoints = points.filter((p) => p.isForecast);
   const todayIndex = points.findIndex((p) => p.label === 'Current');
   let confidencePath = '';
-  if (forecastPoints.length > 0 && todayIndex >= 0) {
+  if (forecastPoints.length > 0 && todayIndex >= 0 && showConfidenceBand) {
     const bandPoints = [points[todayIndex], ...forecastPoints];
     const upperPoints = bandPoints.map((p) => {
       const idx = points.indexOf(p);
@@ -210,7 +216,7 @@ export default function FreightRateChart({
 
   return (
     <div style={{ width: '100%', fontFamily: 'inherit' }}>
-      {/* ── Top Controls & Horizon Filter Bar ── */}
+      {/* ── Top Controls & Interactive Legend Bar ── */}
       <div
         style={{
           display: 'flex',
@@ -227,13 +233,13 @@ export default function FreightRateChart({
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
           <span
             style={{
-              fontSize: '13px',
+              fontSize: '12px',
               fontWeight: 700,
-              letterSpacing: '0.02em',
+              letterSpacing: '0.04em',
               color: '#0f766e',
               background: '#ccfbf1',
-              padding: '5px 12px',
-              borderRadius: '7px',
+              padding: '4px 10px',
+              borderRadius: '6px',
             }}
           >
             {origin || 'Origin'} → {destination || 'Destination'} ({cargo || 'Dry Bulk'})
@@ -242,51 +248,98 @@ export default function FreightRateChart({
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '5px',
-              fontSize: '13px',
-              fontWeight: 700,
+              gap: '4px',
+              fontSize: '12px',
+              fontWeight: 600,
               color: changePct >= 0 ? '#15803d' : '#b91c1c',
               background: changePct >= 0 ? '#f0fdf4' : '#fef2f2',
-              padding: '5px 10px',
-              borderRadius: '7px',
+              padding: '4px 8px',
+              borderRadius: '6px',
             }}
           >
-            {changePct >= 0 ? <TrendingUp size={15} /> : <TrendingDown size={15} />}
+            {changePct >= 0 ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
             {changePct >= 0 ? '+' : ''}
-            {changePct.toFixed(1)}% {horizonFilter === '7d' ? '7d' : horizonFilter === '15d' ? '15d' : '30d'} Trajectory
+            {changePct.toFixed(1)}% 30d Trajectory
           </span>
         </div>
 
-        {/* Horizon Filter: 7-Day, 15-Day, 30-Day */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '13px', color: '#475569', fontWeight: 700, marginRight: '4px' }}>
-            HORIZON:
+        {/* Interactive Horizon Filter & Layer Toggles */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+          <span style={{ fontSize: '11px', color: '#64748b', fontWeight: 600, marginRight: '2px' }}>
+            VIEW:
           </span>
           {[
+            { id: 'all', label: 'Full Trajectory' },
             { id: '7d', label: '7-Day' },
             { id: '15d', label: '15-Day' },
-            { id: '30d', label: '30-Day' },
+            { id: 'forecast_only', label: 'Forecast Only' },
           ].map((btn) => (
             <button
               key={btn.id}
               type="button"
               onClick={() => setHorizonFilter(btn.id)}
               style={{
-                fontSize: '13px',
-                fontWeight: 700,
-                padding: '6px 14px',
-                borderRadius: '8px',
-                border: horizonFilter === btn.id ? '1.5px solid #0f766e' : '1px solid #cbd5e1',
+                fontSize: '11px',
+                fontWeight: 600,
+                padding: '4px 9px',
+                borderRadius: '6px',
+                border: horizonFilter === btn.id ? '1px solid #0f766e' : '1px solid #cbd5e1',
                 background: horizonFilter === btn.id ? '#0f766e' : '#ffffff',
-                color: horizonFilter === btn.id ? '#ffffff' : '#334155',
+                color: horizonFilter === btn.id ? '#ffffff' : '#475569',
                 cursor: 'pointer',
-                boxShadow: horizonFilter === btn.id ? '0 2px 6px rgba(15, 118, 110, 0.25)' : 'none',
-                transition: 'all 0.18s ease',
+                transition: 'all 0.15s ease',
               }}
             >
               {btn.label}
             </button>
           ))}
+
+          {/* Confidence Band Toggle */}
+          <button
+            type="button"
+            onClick={() => setShowConfidenceBand(!showConfidenceBand)}
+            title="Toggle 95% Confidence Band"
+            style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              padding: '4px 9px',
+              borderRadius: '6px',
+              border: showConfidenceBand ? '1px solid #10b981' : '1px solid #cbd5e1',
+              background: showConfidenceBand ? '#f0fdf4' : '#ffffff',
+              color: showConfidenceBand ? '#15803d' : '#64748b',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              marginLeft: '4px',
+            }}
+          >
+            {showConfidenceBand ? <Eye size={12} /> : <EyeOff size={12} />}
+            <span>±MAE Band</span>
+          </button>
+
+          {/* Benchmark Target Toggle */}
+          <button
+            type="button"
+            onClick={() => setShowBenchmarkLine(!showBenchmarkLine)}
+            title="Toggle Target Rate Benchmark"
+            style={{
+              fontSize: '11px',
+              fontWeight: 600,
+              padding: '4px 9px',
+              borderRadius: '6px',
+              border: showBenchmarkLine ? '1px solid #f59e0b' : '1px solid #cbd5e1',
+              background: showBenchmarkLine ? '#fef3c7' : '#ffffff',
+              color: showBenchmarkLine ? '#b45309' : '#64748b',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}
+          >
+            <Crosshair size={12} />
+            <span>Target Line</span>
+          </button>
         </div>
       </div>
 
@@ -444,8 +497,33 @@ export default function FreightRateChart({
             );
           })}
 
+          {/* Target Rate Benchmark Horizontal Line */}
+          {showBenchmarkLine && (
+            <g>
+              <line
+                x1={padding.left}
+                y1={getY(benchmarkRate)}
+                x2={svgWidth - padding.right}
+                y2={getY(benchmarkRate)}
+                stroke="#d97706"
+                strokeWidth="1.5"
+                strokeDasharray="6 3"
+              />
+              <text
+                x={svgWidth - padding.right}
+                y={getY(benchmarkRate) - 6}
+                textAnchor="end"
+                fontSize="10"
+                fontWeight="700"
+                fill="#d97706"
+              >
+                TARGET: ${benchmarkRate.toFixed(2)}/MT
+              </text>
+            </g>
+          )}
+
           {/* Confidence Interval Band (95% CI) */}
-          {confidencePath && (
+          {confidencePath && showConfidenceBand && (
             <path
               d={confidencePath}
               fill="url(#confidenceGradient)"
