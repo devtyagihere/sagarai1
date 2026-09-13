@@ -367,15 +367,15 @@ export default function Home() {
 
               {/* Live Port Validation Status */}
               {formData.origin.trim() && (
-                <div style={{ marginTop: '6px', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                <div style={{ marginTop: '7px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   {originInfo ? (
-                    <span style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
-                      <CheckCircle2 size={13} />
+                    <span style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '5px', fontWeight: 600 }}>
+                      <CheckCircle2 size={15} />
                       Verified: {originInfo.port_name} ({originInfo.country}) — Max Draft {originInfo.max_draft_m}m
                     </span>
                   ) : (
-                    <span style={{ color: '#b91c1c', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
-                      <CircleAlert size={13} />
+                    <span style={{ color: '#b91c1c', display: 'flex', alignItems: 'center', gap: '5px', fontWeight: 600 }}>
+                      <CircleAlert size={15} />
                       Unavailable: &apos;{formData.origin}&apos; is not a registered port. Please pick from database.
                     </span>
                   )}
@@ -415,15 +415,15 @@ export default function Home() {
 
               {/* Live Port Validation Status */}
               {formData.destination.trim() && (
-                <div style={{ marginTop: '6px', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                <div style={{ marginTop: '7px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   {destInfo ? (
-                    <span style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
-                      <CheckCircle2 size={13} />
+                    <span style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '5px', fontWeight: 600 }}>
+                      <CheckCircle2 size={15} />
                       Verified: {destInfo.port_name} ({destInfo.country}) — Max Draft {destInfo.max_draft_m}m
                     </span>
                   ) : (
-                    <span style={{ color: '#b91c1c', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
-                      <CircleAlert size={13} />
+                    <span style={{ color: '#b91c1c', display: 'flex', alignItems: 'center', gap: '5px', fontWeight: 600 }}>
+                      <CircleAlert size={15} />
                       Unavailable: &apos;{formData.destination}&apos; is not a registered port. Please pick from database.
                     </span>
                   )}
